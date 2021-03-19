@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+
+<mapper namespace="com.team3.prj.dao.FaqDAO"> 
+
+  <select id="selectAllFaq" resultType="com.team3.prj.vo.FaqVO">
+      SELECT no, cate_id, title, content       
+      		 C_USER, M_USER, C_DATE, M_DATE        
+      FROM   faq
+  </select>
+  
+  
+  
+</mapper>
