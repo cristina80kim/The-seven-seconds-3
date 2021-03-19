@@ -24,5 +24,4 @@ public class UserController {
 		return service.selectAll();
 	}
 	
-
 }

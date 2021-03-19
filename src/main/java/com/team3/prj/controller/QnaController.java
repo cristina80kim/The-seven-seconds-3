@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.QnaVO;
 
-
-//http://localhost:8081/Qna/selectAll
 @Controller
-@RequestMapping("/Qna") //모든 클래스안에 있는것에 적용 실행하면 /Qna/selectAll이 실행됨
+@RequestMapping("/qna")
 public class QnaController {
-	
+	private final String className = "QnaController";
+
 	@Autowired
 	QnaService service;
 
+// http://localhost:8081/qna/selectAll
 	@GetMapping("/selectAll")
-	public @ResponseBody List<QnaVO> selectAll() { //json형태로 받는거 @ResponseBody
-		System.out.println("selectAll()");
-		return service.selectAll(); //serviceimpl에 selectAll로 감
+	public @ResponseBody List<QnaVO> selectAll() {
+		System.out.println(className + ".selectAll()");
+		return service.selectAll();
 	}
-	
 
-	@GetMapping("/insert") //qna/insert
-	public @ResponseBody String insert(QnaVO param) {
-		System.out.println("insert()");
-		return service.insert(param);
+// http://localhost:8081/qna/insert?nickname=yskim&no=1&cateId=aaaa&isPub=Y&title=title&q=question&cUser=yskim
+	@GetMapping("/insert")
+	public @ResponseBody String insert(QnaVO vo) {
+		System.out.println(className + ".insert(): " + vo.toString());
+		return service.insert(vo).toString(); //@
 	}
 
 }

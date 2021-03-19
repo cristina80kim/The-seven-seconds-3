@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.team3.prj.dao.QnaDAO"> 
+<mapper namespace="com.team3.prj.dao.QnaDAO">
+	<select id="qnaSelectAll" resultType="com.team3.prj.vo.QnaVO">
+		SELECT nickname, no, cate_id, is_pub, title, q, a
+		FROM qna
+	</select>
 
-<!-- List형태 <QnaVO>형태로 -->
-  <select id="qnaSelectAll" resultType="com.team3.prj.vo.QnaVO"> <!-- EmpVO값을 selectAllEmps로 넣어서 DAO에서 받음-->
-      SELECT    nickname, no, cate_id, is_pub, title, q, a
-      FROM      qna
-  </select>
-  
-  <insert id="qnaInsert" > <!-- EmpVO값을 selectAllEmps로 넣어서 DAO에서 받음-->
-      INSERT   INTO 	qna
-      (nickname, no, cate_id, is_pub, title, q, a)
-      VALUES
-      (#{param.nickname}, #{param.no}, #{param.cate_id}, #{param.is_pub}, #{param.title}, #{param.q}, #{param.a})
-  </insert> 
-</mapper> 
+	<insert id="qnaInsert"> <!-- </insert> resultType="java.lang.String"> -->
+		INSERT INTO qna
+		(id,
+		nickname, no, cate_id,
+		is_pub, title, q, c_user)
+		VALUES
+		(seq_qna.nextval, <!-- 시퀀스값 받아옴 seq_qna -->
+		#{nickname}, #{no}, #{cateId},
+		#{isPub}, #{title}, #{q}, #{cUser})
+	</insert>
+
+</mapper>
