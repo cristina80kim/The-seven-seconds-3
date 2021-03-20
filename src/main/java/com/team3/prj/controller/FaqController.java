@@ -23,4 +23,6 @@ public class FaqController {
 	      List<FaqVO> lstFaq = faqService.selectAllFaq();
 	      return lstFaq;
 	   }
+	   
+	   
 }

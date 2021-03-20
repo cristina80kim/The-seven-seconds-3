@@ -6,7 +6,7 @@
 
   <select id="selectAllFaq" resultType="com.team3.prj.vo.FaqVO">
       SELECT no, cate_id, title, content       
-      		 C_USER, M_USER, C_DATE, M_DATE        
+      		 C_USER     
       FROM   faq
   </select>
   
