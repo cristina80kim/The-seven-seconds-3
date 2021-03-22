@@ -1,1 +1,53 @@
 @charset "UTF-8";
+@import url(reset.css);
+
+#skipNavi {
+	display: none;
+}
+
+header {
+	width: 1080px;
+	height:105px;  
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+header a {
+	color: black;
+}
+
+#logo {
+	width: 400px;
+	float: left;
+}
+
+#logo img {
+	width: 100%;
+}
+
+#logo a {
+	display: block;
+}
+
+#logoTopMenu{
+	height: 75px;
+}
+#topMenu {
+	float: right;
+}
+
+#topMenu>li {
+	float: left;
+	margin-right:15px;
+}
+
+#topMenu #inComm {
+	display: none;
+	padding-top:10px;
+	line-height:2em;
+}
+
+.gnb>li {
+	float: left;
+	margin-left:20px;
+}
