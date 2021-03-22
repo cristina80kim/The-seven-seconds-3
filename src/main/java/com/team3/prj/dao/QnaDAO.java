@@ -10,5 +10,5 @@ import com.team3.prj.vo.QnaVO;
 public interface QnaDAO {
 	public List<QnaVO> qnaSelectAll();
 
-	public Integer qnaInsert(QnaVO vo);
+	public Long qnaInsert(QnaVO vo);
 }

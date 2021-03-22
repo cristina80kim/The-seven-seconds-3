@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQGrid 관련 js파일들 임포트 -->
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script> 
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery.jqGrid.min.js"></script> 
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/i18n/grid.locale-kr.js"></script> 
+
+<!-- jQGrid 관련 css파일들 임포트 -->
+<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap-ui.css" />
+<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap.css" />
+<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap4.css" />
+<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid.css" />
+
+<!-- jQuery UI 관련 css파일들 임포트 -->
+<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.css" />
+<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.structure.css" />
+<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.theme.css" />
+
+<script>
+  $(function() {
+    console.log(">>> $(): 1");
+    showGridDatas("/qna/selectAll", "GET"); // ajaxGetJson("/qna/selectAll", showDatas);
+  });
+  
+  //-------------------------------------------------------
+  // 기능: param이 빈 값인지 검사한다.      
+  //-------------------------------------------------------      
+  var isEmpty = function(param) {
+    return (typeof str == "undefined" || str == null || str == "") ? true : false;
+  }
+
+  //-------------------------------------------------------
+  // 기능: param이 유효한 값인지 검사한다.      
+  //-------------------------------------------------------      
+  var isNotEmpty = function(param) {
+    return (typeof param == "undefined" || param == null || param == "") ? false : true;
+  }
+
+  //-------------------------------------------------------
+  // 기능: param이 유효한 값인지 param을 그렇지 않으며 defVal를 응답한다.      
+  //-------------------------------------------------------      
+  var nvl = function(param, defVal) {
+    return (typeof param == "undefined" || param == null || param == "") ? defVal : param;
+  }
+
+  //-------------------------------------------------------      
+  // 기능: ajax 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
+  //-------------------------------------------------------      
+  var ajaxGetJson = function(loc, callbackFunc) {
+     // window.open(loc);
+     // window.location.href = loc; 
+    console.log(">>> ajaxGetJson(): 1");
+    console.log(">>> ajaxGetJson(): " + loc);
+      
+     $.ajax({ 
+      type : "GET", 
+      dataType : "json", 
+      url : loc, 
+      success : function(jsonParam) {
+        console.log(">>> ajaxGetJson(): 2");
+        console.log(jsonParam);
+        
+        if(isNotEmpty(callbackFunc)) {
+          console.log(">>> ajaxGetJson(): 3");
+          callbackFunc(jsonParam);
+        }
+        
+        console.log(">>> ajaxGetJson(): 4");
+       } 
+     }); 
+  }
+    
+  //-------------------------------------------------------
+  // 기능: jㅂGrid에 jsonParam을 출력한다.
+  //-------------------------------------------------------      
+  var showGridDatas = function(loc, mtype) {
+    console.log(">>> showGridDatas(): 1");
+    
+    $("#gridData").jqGrid({ 
+      url:          loc,                // 서버 호출 주소
+      datatype:     "json",             // 데이터 타입("json", "xml", "array", "local", ...)
+      mtype:        mtype,              // "POST" 또는 "GET"   
+   // data:         jsonParam,          // 출력 데이터
+      height:       300,                // 그리드 높이
+      width:        800,                // 그리드 넓이(폭)
+   // caption:      ">>> Q & A <<<",    // Caption에 출력할 메시지
+      colNames:                         // 그리드 헤더의 제목(배열 형태임)  
+        ["닉네임", "글번호", "카테고리ID", "공개여부", "제목", "질문", "작성자"], 
+   // colNames: ["ID", "글번호", "카테고리ID", "카테고리", "제목", "질문", "답변", "닉네임", "공개여부", "등록일"], 
+      colModel: [                       // 그리드 행 데이터 정의(colNames의 갯수 = colModel 갯수) 
+   //   {name: "id",       index: "id",       width: 5,  resizable: false, align: "center", hidden: true},
+        {name: "nickname", index: "nickname", width: 5,  resizable: false, align: "center", hidden: true}, 
+        {name: "no",       index: "no",       width: 5,   resizable: false, align: "right",  hidden: false}, 
+        {name: "cateId",   index: "cateId",   width: 10,  resizable: true,  align: "left",   hidden: true}, 
+   //   {name: "cate",     index: "cate",     width: 10,  resizable: true,  align: "left",   hidden: false},
+        {name: "isPub",    index: "isPub",    width: 5,   resizable: false, align: "center", hidden: true}, 
+        {name: "title",    index: "title",    width: 20,  resizable: true,  align: "left",   hidden: false},
+        {name: "q",        index: "q",        width: 50,  resizable: true,  align: "left",   hidden: false},
+   //   {name: "a",        index: "a",        width: 50,  resizable: true,  align: "left",   hidden: false},
+   //   {name: "cDate",    index: "cDate",    width: 10,  resizable: false, align: "center", hidden: true},
+        {name: "cUser",    index: "cUser",    width: 10,  resizable: false, align: "center", hidden: true}
+      ], 
+      pager:        "#gridPager",       // Pagin 정보를 표시할 Tag의 ID명
+      rowNum:       5,                  // 보여줄 행의 개수 설정
+      loadtext:     "데이터 로딩 중...",   // 데이터를 불려 올 때 보여줄 메시지
+      emptyrecode : "자료가 없습니다.",     // 출력가 자료가 없는 경우 보여줄 메시지
+   // scroll:       true,               // 스크로 바 보이기(페이징 기능 X)/안 보이기 
+   // rownumbers:   true, 
+   // viewrecords:  true, 
+   // pgbuttons:    true, 
+   // pginput:      true, 
+   // shrinkToFit:  true, 
+   // sortable:     false, 
+   // loadonce:     false, 
+   // hidegrid:     true 
+   // loadComplete: function(data) { }
+    });
+    
+    console.log(">>> showGridDatas(): 2");
+  };  
+    
+</script>
+
+</head>
+<body>
+  <h1>Q & A 목록</h1>
+  <table id="gridData"></table>
+  <div id="gridPager"></div>
+</body>
+</html>

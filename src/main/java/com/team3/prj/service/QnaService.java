@@ -6,5 +6,5 @@ import com.team3.prj.vo.QnaVO;
 
 public interface QnaService {
 public List<QnaVO> selectAll();
-public Integer insert(QnaVO vo);
+public Long insert(QnaVO vo);
 }

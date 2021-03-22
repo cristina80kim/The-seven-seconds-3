@@ -13,6 +13,7 @@ public class QnaVO {
 	private String q; //질문 내용
 	private String a; //답변 내용
 	private String cUser;
+	
 	/*
 	 * #{nickname}, #{no}, #{cateId}, #{isPub}, #{title}, #{q}, #{cUser})
 	 */

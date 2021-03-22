@@ -10,13 +10,21 @@
 
 	<insert id="qnaInsert"> <!-- </insert> resultType="java.lang.String"> -->
 		INSERT INTO qna
-		(id,
-		nickname, no, cate_id,
-		is_pub, title, q, c_user)
-		VALUES
-		(seq_qna.nextval, <!-- 시퀀스값 받아옴 seq_qna -->
-		#{nickname}, #{no}, #{cateId},
-		#{isPub}, #{title}, #{q}, #{cUser})
+		(
+               id,
+		       nickname, no, cate_id,
+		       is_pub, title, q, c_user
+        )
+		VALUES 
+        (
+               seq_qna.nextval, <!-- 시퀀스값 받아옴 seq_qna -->
+		       #{nickname}, #{no}, #{cateId},
+		       #{isPub}, #{title}, #{q}, #{cUser}
+        )
+    
+        <selectKey keyProperty="id" resultType="Long" order="AFTER"> 
+          SELECT seq_qna.CURRVAL FROM DUAL 
+        </selectKey> 
 	</insert>
 
 </mapper>

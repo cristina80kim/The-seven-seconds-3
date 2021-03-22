@@ -19,14 +19,21 @@ public class QnaController {
 	@Autowired
 	QnaService service;
 
-// http://localhost:8081/qna/selectAll
+    // http://localhost:8081/qna/frmSelectAll
+    @GetMapping("/frmSelectAll")
+    public String frmSelectAll() {
+        System.out.println(className + ".frmSelectAll()");
+        return "frmQnaSelectAll";  // .html
+    }
+
+	// http://localhost:8081/qna/selectAll
 	@GetMapping("/selectAll")
 	public @ResponseBody List<QnaVO> selectAll() {
 		System.out.println(className + ".selectAll()");
 		return service.selectAll();
 	}
 
-// http://localhost:8081/qna/insert?nickname=yskim&no=1&cateId=aaaa&isPub=Y&title=title&q=question&cUser=yskim
+	// http://localhost:8081/qna/insert?nickname=yskim&no=1&cateId=aaaa&isPub=Y&title=title&q=question&cUser=yskim
 	@GetMapping("/insert")
 	public @ResponseBody String insert(QnaVO vo) {
 		System.out.println(className + ".insert(): " + vo.toString());

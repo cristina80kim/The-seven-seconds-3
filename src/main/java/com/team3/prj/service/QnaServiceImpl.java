@@ -20,7 +20,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public Integer insert(QnaVO vo) {
+	public Long insert(QnaVO vo) {
 		return dao.qnaInsert(vo);
 	}
 }
