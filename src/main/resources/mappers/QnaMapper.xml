@@ -26,5 +26,21 @@
           SELECT seq_qna.CURRVAL FROM DUAL 
         </selectKey> 
 	</insert>
+	
+	<update id="qUpdate">
+		UPDATE qna
+		SET title=#{title}, q=#{q}, cate_id=#{cateId}, is_pub=#{isPub}
+		WHERE id=#{id}
+	</update>
+	
+	<update id="aUpdate">
+		UPDATE qna
+		SET a=#{a}
+		WHERE id=#{id}
+	</update>
 
+	<delete id="qnaDelete">
+		DELETE qna
+		where id=#{id}	
+	</delete>
 </mapper>

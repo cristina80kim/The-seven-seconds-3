@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import url(reset.css);
+
+footer {
+	width: 1080px;
+	height:105px;
+	margin: 0 auto;
+	font-size:10.5pt;
+}
+  
+footer a {
+	color: black;
+	font-size:10.5pt;
+}
+
+
+.fLogo{
+		width:250px;
+		padding-top: 20px;
+		margin-right:10px;
+}
+.fLogo img{
+		width:100%;
+}
+
+footer ul{margin-right:20px;}
+
+footer li{float:left;margin-right:25px;line-height:2em;}
