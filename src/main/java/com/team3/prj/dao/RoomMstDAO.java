@@ -11,4 +11,9 @@ public interface RoomMstDAO {
 	public List<RoomMstVO> roomMstSelectAll();
 
 	public Long roomMstInsert(RoomMstVO vo);
+	
+	public Long roomMstUpdate(RoomMstVO vo);
+	
+	public Long roomMstDelete(RoomMstVO vo);
+	
 }
