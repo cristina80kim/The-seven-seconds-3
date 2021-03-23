@@ -10,14 +10,10 @@ header {
 	height:105px;  
 	margin: 0 auto;
 	padding-top: 20px;
-	background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 header a {
 	color: black;
-	text-decoration: none;
 }
 
 #logo {
