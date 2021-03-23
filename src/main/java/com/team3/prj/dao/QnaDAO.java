@@ -11,4 +11,11 @@ public interface QnaDAO {
 	public List<QnaVO> qnaSelectAll();
 
 	public Long qnaInsert(QnaVO vo);
+
+	public Long qUpdate(QnaVO vo);
+	
+	public Long aUdate(QnaVO vo);
+	
+	public Long qnaDelete(QnaVO vo);
+	
 }

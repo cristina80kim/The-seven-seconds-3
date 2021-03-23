@@ -37,7 +37,27 @@ public class QnaController {
 	@GetMapping("/insert")
 	public @ResponseBody String insert(QnaVO vo) {
 		System.out.println(className + ".insert(): " + vo.toString());
-		return service.insert(vo).toString(); //@
+		return service.insert(vo).toString(); 
+	}
+	
+	// http://localhost:8081/qna/update?title=cddcdd&q=aaaaa&cateId=bbbb&isPub=y&id=
+	@GetMapping("/qupdate")
+	public @ResponseBody String qupdate(QnaVO vo) {
+		System.out.println(className+".Qupdate():"+vo.toString());
+		return service.qupdate(vo).toString();
+	}
+	
+	@GetMapping("/aupdate")
+	public @ResponseBody String aupdate(QnaVO vo) {
+		System.out.println(className+"Aupdate():"+ vo.toString());
+		return service.aupdate(vo).toString();
+	}
+	
+	// http://localhost:8081/qna/delete?id=
+	@GetMapping("/delete")
+	public @ResponseBody String delete(QnaVO vo) {
+		System.out.println(className+".delete():"+vo.toString());
+		return service.Delete(vo).toString();
 	}
 
 }

@@ -23,4 +23,20 @@ public class QnaServiceImpl implements QnaService {
 	public Long insert(QnaVO vo) {
 		return dao.qnaInsert(vo);
 	}
+
+	@Override
+	public Long qupdate(QnaVO vo) {
+		return dao.qUpdate(vo);
+		
+	}
+	@Override
+	public Long aupdate(QnaVO vo) {
+		return dao.qUpdate(vo);
+		
+	}
+
+	@Override
+	public Long Delete(QnaVO vo) {
+		return dao.qnaDelete(vo);
+	}
 }
