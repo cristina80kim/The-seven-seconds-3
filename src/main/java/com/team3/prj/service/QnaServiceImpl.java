@@ -36,7 +36,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public Long Delete(QnaVO vo) {
+	public Long delete(QnaVO vo) {
 		return dao.qnaDelete(vo);
 	}
 }

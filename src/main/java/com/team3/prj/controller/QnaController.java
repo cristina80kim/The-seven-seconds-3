@@ -57,7 +57,7 @@ public class QnaController {
 	@GetMapping("/delete")
 	public @ResponseBody String delete(QnaVO vo) {
 		System.out.println(className+".delete():"+vo.toString());
-		return service.Delete(vo).toString();
+		return service.delete(vo).toString();
 	}
 
 }

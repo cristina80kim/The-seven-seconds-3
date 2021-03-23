@@ -24,4 +24,14 @@ public class RoomMstServiceImpl implements RoomMstService {
 		return dao.roomMstInsert(vo);
 	}
 
+	@Override
+	public Long update(RoomMstVO vo) {
+		return dao.roomMstUpdate(vo);
+	}
+
+	@Override
+	public Long delete(RoomMstVO vo) {
+		return dao.roomMstDelete(vo);
+	}
+
 }

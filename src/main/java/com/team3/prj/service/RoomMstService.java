@@ -8,4 +8,10 @@ public interface RoomMstService {
 	public List<RoomMstVO> selectAll();
 
 	public Long insert(RoomMstVO vo);
+	
+	public Long update(RoomMstVO vo);
+	
+	public Long delete(RoomMstVO vo);
+	
+	
 }
