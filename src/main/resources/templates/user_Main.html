@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>user_메인</title>
+<style>
+#banner {
+width:400px;
+height:50px;
+background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+
+	<section id="userMainSrch">
+	
+		<input type="text" name="userMainSrch" id="userMainSrch" /><br />
+		<label for="userChkIn">
+			<input type="checkbox" name="userChkIn" id="userChkIn" />
+			체크인
+		</label>
+		<label for="userChkOut">
+			<input type="checkbox" name="userChkOut" id="userChkOut" />
+			체크아웃
+		</label><br />
+		
+		<input type="text" name="numGuests" id="numGuests" placeholder="인원수"/><br />
+		<input type="submit" value="검색" />
+	</section>
+	<hr />
+	
+	
+	<section id="userSubSrch">
+		<label for="price">가격</label><br />
+		<input type="text" name="price" id="priceMin" />
+		~
+		<input type="text" name="price" id="priceMax" />
+		<br />	
+		<label for="">숙박 유형</label><br />	
+		<input type="checkbox" name="room_name" id="room_name" />전체
+		<input type="checkbox" name="room_name" id="room_name" />호텔
+		<input type="checkbox" name="room_name" id="room_name" />모텔
+		<input type="checkbox" name="room_name" id="room_name" />펜션/풀빌라
+		<input type="checkbox" name="room_name" id="room_name" />글램핑/캠핑
+		<input type="checkbox" name="room_name" id="room_name" />게하/한옥
+		<input type="checkbox" name="room_name" id="room_name" />리조트/콘도
+		
+	</section>
+	
+	<hr />
+	
+	<article>
+	
+		<input type="submit" value="서울" />
+		<input type="submit" value="경기도" />
+		<input type="submit" value="경상도" />
+		<input type="submit" value="전라도" />
+		<input type="submit" value="충청도" />
+		<input type="submit" value="강원도" />
+		<input type="submit" value="제주도" />
+		<input type="submit" value="국외" />
+		
+		<div id="banner">
+			banner 배너칸~
+		</div>
+		
+		<a href=""><img src="images/" alt="여행지1_img" /></a>
+		<a href=""><img src="images/" alt="여행지2_img" /></a>
+		<a href=""><img src="images/" alt="여행지3_img" /></a>
+		<a href=""><img src="images/" alt="여행지4_img" /></a>
+	
+		
+	</article>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

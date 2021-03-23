@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>user_마이페이지_내정보수정</title>
+</head>
+<body>
+
+	<div id="wrap">
+		<article>
+		
+			<h1>내 정보 수정</h1>
+			
+			 <br />
+			 
+			 <label>구분</label>
+			 <label for="userJoin">
+			 	<input type="text" name="userJoin" id="userJoin" value="개인" readonly />
+		 	</label>
+
+			
+			<br />
+			 <label for="userId">아이디</label>
+			 <input type="text" name="userId" id="userId" value="abc" readonly/>
+			 
+			 
+			 <br />
+			 <label for="userPw">비밀번호</label>
+			 <input type="password" name="userPw" id="userPw" />
+			 <br />
+			 <label for="userPwChk">비밀번호 확인</label>
+			 <input type="password" name="userPwChk" id="userPwChk" />
+			 
+			 <br />
+			 <label for="userName">이름</label>
+			 <input type="text" name="userName" id="userName" value="김철수" readonly/>
+			 
+			 <br />
+			 <label for="userTel1">전화번호</label>
+			 <input type="text" name="userTel1" id="" value="010"/>
+			 -
+			 <input type="text" name="userTel2" id="" />
+			 -
+			 <input type="text" name="userTel3" id="" />
+			 
+			 <br />
+			 <label for="userEmail">이메일</label>
+			 <input type="text" name="userEmail" id="userEmail" />
+			 @
+			 <select name="sltEmail" id="slt_Email">
+			 	<option value="sltEmail1">naver.com</option>
+			 </select>
+			
+			<br />
+			  <label for="userGen">성별</label>
+			  <label for="genF"><input type="text" name="userGen" id="genF" value="여자" readonly/></label>
+			  
+			  
+			  <br /><br />
+			  <input type="submit" value="수정" />
+			  <input type="reset" value="취소" />
+		</article>
+		
+	
+	</div>
+
+
+
+
+
+
+</body>
+</html>
