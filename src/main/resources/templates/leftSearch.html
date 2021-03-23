@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>leftSearch</title>
+<style>
+#wrap {
+	width: 1080px;
+	margin: 0 auto;
+	font-size:10pt;
+}
+
+aside{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 350px;
+	outline:1px solid black;
+}
+
+fieldset {
+	border: none;
+}
+
+input{
+	margin-bottom:10px;
+}
+
+.btnSearch {
+	display: block;
+}
+
+.priceBox{
+	width:100px;
+}
+
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<aside>
+			<section id="topSearch">
+				<form action="post">
+					<fieldset>
+						<input type="text" name="searchText" placeholder="지역명 또는 호텔명 검색" />
+						<div class="dateArea">
+							<input type="date" name="userChkIn" /> ~ <input type="date" name="userChkOut" />
+						</div>
+						<input type="text" name="num_of_guests" placeholder="인원수" /> <input
+							type="submit" value="검색" class="btnSearch" />
+					</fieldset>
+				</form>
+			</section>
+			<section id="bottOption">
+				<form action="post">
+					<fieldset>
+						<legend>가격</legend>
+						<input type="text" name="minPrice" class="priceBox" placeholder="최저가격" /> ~ <input type="text" name="maxPrice" class="priceBox" placeholder="최대가격" />
+						<legend>숙박 유형</legend>
+						<input type="checkbox" name="type_of_acco" value="all"> 전체
+						<input type="checkbox" name="type_of_acco" value="ht"> 호텔
+						<input type="checkbox" name="type_of_acco" value="mt"> 모텔
+						<input type="checkbox" name="type_of_acco" value="ps "> 펜션/풀빌라
+						<input type="checkbox" name="type_of_acco" value="gh "> 게하/한옥
+						 <input type="checkbox" name="type_of_acco" value="gp"> 글램핑/캠핑 
+						 <input type="checkbox" name="type_of_acco" value="resort"> 리조트/콘도
+					</fieldset>
+				</form>
+			</section>
+		</aside>
+	</div>
+</body>
+</html>

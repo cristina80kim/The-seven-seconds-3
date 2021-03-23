@@ -6,13 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller 
-public class HeaderController {
-	// http://localhost:8081/header
+@Controller
+public class LeftSearchController {
+	// http://localhost:8081/leftSearch
 	  
-	  @RequestMapping("/header")
+	  @RequestMapping("/leftSearch")
 	  public String test(){
-	      return "header";
+	      return "leftSearch";
 	  }
-	   
 }
