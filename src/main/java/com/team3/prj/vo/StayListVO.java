@@ -10,5 +10,5 @@ public class StayListVO {
 	public String addr; //주소
 	public int weekday_Price; //평일가격
 	public int weekend_Price; //휴일가격
-	public int star; //별점
+	//public int star; //별점
 }

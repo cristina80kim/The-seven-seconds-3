@@ -4,22 +4,12 @@
 
 <mapper namespace="com.team3.prj.dao.StayListDAO">
 	<select id="StayListAll" resultType="com.team3.prj.vo.StayListVO">
-		SELECT region,title,addr
-				
-		FROM room_mst;
+	SELECT m.region, m.title, m.addr,
+		   d.weekday_price, d.weekend_price
+	FROM room_mst m
+	INNER JOIN room_dtl d
+	ON m.id = d.mst_id
 
-		
-		
 	</select>
 	
-	<select id="StayListAll" resultType="com.team3.prj.vo.StayListVO">
-		SELECT weekday_pirce,weekend_price
-				
-		FROM room_dtl;
-		</select>
-		<select id="StayListAll" resultType="com.team3.prj.vo.StayListVO">
-		SELECT star
-				
-		FROM revu;
-		</select>
 </mapper>
