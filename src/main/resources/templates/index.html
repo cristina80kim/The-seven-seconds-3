@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
+<script>
+//-------------------------------------------------------      
+// 기능: ajax 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
+//-------------------------------------------------------      
+var ajaxGetJson = function(loc, callbackFunc) {
+   // window.open(loc);
+   // window.location.href = loc; 
+  console.log(">>> ajaxGetJson(): 1");
+  console.log(">>> ajaxGetJson(): " + loc);
+    
+   $.ajax({ 
+    type : "GET", 
+    dataType : "json", 
+    url : loc, 
+    success : function(jsonParam) {
+      console.log(">>> ajaxGetJson(): 2");
+      console.log(jsonParam);
+      
+      if(isNotEmpty(callbackFunc)) {
+        console.log(">>> ajaxGetJson(): 3");
+        callbackFunc(jsonParam);
+      }
+      
+      console.log(">>> ajaxGetJson(): 4");
+     } 
+   }); 
+}
+</script> 
+<title>index</title>
+</head>
+<body>
+	<div th:include="header.html"></div>
+	<div th:include="leftSearch.html"></div>
+	<div id="contents"></div>
+	<div th:include="footer.html"></div>
+</body>
+</html>
