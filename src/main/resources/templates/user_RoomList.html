@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.OdrTabMenu input[type=text]{
+ border: none;
+}
+
+.OdrTabMenu input[type=text]:focus {
+outline:none;
+}
+
+</style>
 </head>
 <body>
-
 
 <div id="wrap">
 
@@ -13,15 +22,28 @@
 	
 		<input type="text" name="userMainSrch" id="userMainSrch" /><br />
 		<label for="userChkIn">
-			<input type="checkbox" name="userChkIn" id="userChkIn" />
+			<input type="month" name="userChkIn" id="userChkIn" />
 			체크인
 		</label>
 		<label for="userChkOut">
-			<input type="checkbox" name="userChkOut" id="userChkOut" />
-			체크아웃1
+			<input type="month" name="userChkOut" id="userChkOut" />
+			체크아웃
 		</label><br />
-		
-		<input type="text" name="numGuests" id="numGuests" placeholder="인원수"/><br />
+		<label for="numGuests">인원수</label>
+		<select name="numGuests" id="numGuests" >
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+   		    <option value="5">5</option>
+		    <option value="6">6</option>
+		    <option value="7">7</option>
+		    <option value="8">8</option>
+   		    <option value="9">9</option>
+		    <option value="10">10</option>
+		    <option value="11">11</option>
+		</select>
+		<br />
 		<input type="submit" value="검색" />
 	</section>
 	<hr />
@@ -48,26 +70,26 @@
 	
 	<article>
 	
-		<input type="submit" value="서울" />
-		<input type="submit" value="경기도" />
-		<input type="submit" value="경상도" />
-		<input type="submit" value="전라도" />
-		<input type="submit" value="충청도" />
-		<input type="submit" value="강원도" />
-		<input type="submit" value="제주도" />
-		<input type="submit" value="국외" />
 		
+		<input type="button" value="서울" />
+		<input type="button" value="경기도" />
+		<input type="button" value="경상도" />
+		<input type="button" value="전라도" />
+		<input type="button" value="충청도" />
+		<input type="button" value="강원도" />
+		<input type="button" value="제주도" />
+		<input type="button" value="국외" />
 		
 		<div id="banner">
 			banner 배너칸~
 		</div>
 		
 		<div class="OdrTabMenu"><!--인기순/후기순/가격순 탭메뉴  -->
+			
 			<ul>
 			
 				<li id="PopulOdr" class="btnCon"><!--인기순 -->
-					<input type="radio" cheked name ="tabmenu" id="tabmenu1" />
-					<label for="tabmenu1">인기순</label>
+					<input type="button" value="인기순" cheked name ="tabmenu" id="tabmenu1" />
 					<div id="tabCon">
 						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
 						<ul>
@@ -85,8 +107,7 @@
 				<hr>
 				
 				<li id="RevuOdr" class="btnCon"><!--후기순-->
-					<input type="radio"  name ="tabmenu" id="tabmenu2" />
-					<label for="tabmenu2">후기순</label>
+					<input type="button"  value="후기순" name ="tabmenu" id="tabmenu2" />
 					<div id="tabCon">
 						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
 						<ul>
@@ -102,8 +123,7 @@
 				</li>
 				<hr>
 		 		<li id="PriceOdr" class="btnCon"><!--가격순 -->
-					<input type="radio"  name ="tabmenu" id="tabmenu3" />
-					<label for="tabmenu3">가격순</label>
+					<input type="button"  value="가격순" name ="tabmenu" id="tabmenu3" />
 					<div id="tabCon">
 						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
 						<ul>
