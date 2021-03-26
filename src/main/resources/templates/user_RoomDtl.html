@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>133.user_숙박시설상세</title>
+<style>
+input[type=text]{
+border:none;
+}
+
+input:focus {outline:none;}
+
+</style>
+</head>
+<body>
+
+	<div id="wrap">
+		<section>
+			
+			<span><input type="button" value="즐겨찾기" /></span>
+			<span><input type="text" name="roomDtl" id="" value="강남역 XXX 호텔" readonly/></span>
+			<span><input type="text" name="roomDtl" id="" value="800,000원"readonly/></span>
+			<span><input type="text" name="roomDtl" id="" value="주소"readonly></span>
+			<span><input type="text" name="roomDtl" id="" value="800,000원"readonly/></span>
+			<hr />
+			
+			<!--banner  -->
+			<div id="slideShow">
+				<div id="slide">
+					<img src="images/" alt="방사진방사진방사빈배너배너배너배너배너배너배너" />
+				</div>
+			</div>
+			
+	    	<div class="prev btnmove"><!--bannerBtn  START-->
+		        <a href="#" title="이전"><i class="fas fa-chevron-left"></i></a>
+		    </div>
+		    <div class="next btnmove">
+		        <a href="#" title="다음"><i class="fas fa-chevron-right"></i></a>
+		    </div> <!--bannerBtn END -->
+			<!--banner  -->
+			
+			<label for="checkInTime">체크인</label>
+			<input type="datetime-local" name="checkInTime" id="checkInTime" />
+			
+			<label for="checkOutTime">체크아웃</label>
+			<input type="datetime-local" name="checkOutTime" id="checkOutTime" />
+			
+			<label for="">인원수</label>
+			<input type="number" name="guestsNum" id="guestsNum" />
+			<br />
+			
+			
+			<p><label for="dtl">설명</label></p>
+			<textarea name="dtl" id="dtl" cols="30" rows="10">
+				설명어쩌구~
+			</textarea>
+			<br />
+			
+			<p><label for="">객실</label></p>
+			<table class="roomTbl">
+				<tr>
+					<td><img alt="이미지" src="images/"></td>
+					<td><input type="text" name="" id="" value="스탠다드"/></td>
+					<td><input type="text" name="" id="" value="100,000원" /></td>
+					<td><input type="button" value="예약하기" /></td>
+				</tr>
+				<tr>
+					<td><img alt="이미지" src="images/"></td>
+					<td><input type="text" name="" id="" value="스탠다드"/></td>
+					<td><input type="text" name="" id="" value="100,000원" /></td>
+					<td><input type="button" value="예약하기" /></td>
+				</tr>
+			
+			</table>
+			
+
+			
+			<table class="revuTbl_title">
+				<tr>
+					<td><input type="text" value="리뷰(100)" name="revuTitle" id="revuTitle" readonly/></td>
+					<td><input type="text" value="★★★★☆" name="RevuStar" id="RevuStar" readonly/></td>
+					<td><input type="text" value="4.5" name="revuGrade" id="revuGrade" readonly/></td>
+				</tr>
+			</table>
+			
+			<table class="revuTbl">
+				<tr>
+					<td><input type="text" value="스위트한 감성과 친절한 직원들, 모든게 만족" name="revuTitle" id="revuTitle" /></td>
+					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/></td>
+					<td><input type="text" name="C_USER" id="C_USER" value="ㅇㅇㅇ님"/></td>
+					<td><input type="text" name="RevuStar" id="RevuStar" value="★★★★☆"/></td>
+					<td><input type="number" min="1" max="5" value="4"name="revuGrade" id="revuGrade"/></td>
+				</tr>
+				
+				<tr>
+					<td><input type="text" value="너무 좋았네요~ 재방문 의사 100%!" name="revuTitle" id="revuTitle" /></td>
+					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/></td>
+					<td><input type="text" name="C_USER" id="C_USER" value="xxx님"/></td>
+					<td><input type="text" name="RevuStar" id="RevuStar" value="★★★★☆"/></td>
+					<td><input type="number" min="1" max="5" value="4"name="revuGrade" id="revuGrade"/></td>
+				</tr>
+			</table>
+			
+				
+	    <div id="paging">
+	        <span class="block">《</span>
+	        <span class="block">〈</span>
+	        <span class="pageNo" id="nowPage">1</span>
+	        <span class="pageNo">2</span>
+	        <span class="pageNo">3</span>
+	        <span class="pageNo">4</span>
+	        <span class="pageNo">5</span>
+	        <span class="pageNo">6</span>
+	        <span class="pageNo">7</span>
+	        <span class="pageNo">8</span>  
+	        <span class="block">〉</span>
+	        <span class="block">》</span>
+	      </div>
+		
+			
+		</section>
+	</div>
+
+
+
+
+
+</body>
+</html>
