@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>manager_마이페이지_내정보수정</title>
+</head>
+<body>
+	<div id="wrap">
+		<article>
+		
+
+			<h1>내 정보 수정</h1>
+			
+			 <br />
+			 
+			 
+			 <label for="managerJoin">
+			 	구분
+			 	<input type="text" name="managerJoin" id="managerJoin" value="개인" readonly />
+		 	</label>
+
+			
+			<br />
+			 <label for="managerId">아이디
+			 	<input type="text" name="managerId" id="managerId" value="abc" readonly/>
+			 </label>
+			 
+			 
+			 <br />
+			 <label for="managerPw">비밀번호
+			 	<input type="password" name="managerPw" id="managerPw" />
+			 </label>
+			 <br />
+			 <label for="managerPwChk">비밀번호 확인
+				 <input type="password" name="managerPwChk" id="managerPwChk" />
+			 </label>
+			 
+			 <br />
+			 <label for="managerName">이름
+				 <input type="text" name="managerName" id="managerName" value="김철수" readonly/>
+			 </label>
+			 
+			 <br />
+			 <label for="managerNickName">닉네임
+				 <input type="text" name="managerNickName" id="managerNickName" value="김철수" readonly/>
+			 </label>
+			 
+			 <br />
+			 <label for="managerTel2">전화번호
+				 <input type="text" name="managerTel1" id="managerTel1" value="010"/>
+				 -
+				 <input type="text" name="managerTel2" id="managerTel2" />
+				 -
+				 <input type="text" name="managerTel3" id="managerTel3" />
+			 </label>
+			 
+			 <br />
+			 <label for="managerEmail">이메일
+				 <input type="text" name="managerEmail" id="managerEmail" />
+				 @
+				 <select name="sltEmail" id="slt_Email">
+				 	<option value="sltEmail1">naver.com</option>
+				 </select>
+			 </label>
+			
+			<br />
+			  <label for="managerGen">성별
+			 	 <input type="text" name="managerGen" id="genF" value="여자" readonly/>
+			  </label>
+			  
+			  
+			  <br /><br />
+			  <input type="submit" value="수정" />
+			  <input type="reset" value="취소" />
+		</article>
+		
+	
+	</div>
+
+</body>
+</html>
