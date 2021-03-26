@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>231. manager_예약관리_예약열기</title>
+<style>
+input:focus{
+outline:none;}
+input[type=text]{
+border:none;}
+.month {
+    border: 1px solid #444444;
+    border-collapse: collapse;
+}
+.month th td {border:1px solid black;}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<section>
+			<h1>예약 열기/닫기</h1>
+			<span>예약 열고자 하는 방이나 예약 닫고자 하는 방을 체크해주세요</span>
+			<hr />
+			
+			<div class="head">
+	            <div class="year-month"></div>
+	            <div class="nav">
+	                <button class="nav-btn prev">&lt;</button>
+	                <button class="nav-btn today">2021.03</button>
+	                <button class="nav-btn next">&gt;</button>
+	            </div>
+	        </div>
+			
+			<table class="month" name="month">
+				
+				<tr>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th>토</th>
+					<th>일</th>
+				</tr>
+				<tr>
+					<td colspan="7">
+	            	<hr>
+	            </td>
+	            
+	            <tr>
+	            	<td>
+	            		<label for="id">
+		            		<input type="text" name="id" id="id" value="01"/><br />
+		            		<input type="checkbox" name="id" id="id" />
+		            		<input type="text" name="RsrvOpen" id="RsrvOpen" />
+	            		</label>
+            		</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="02"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" value="예약닫힘" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="03"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="04"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="05"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="06"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="07"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+	            </tr>
+				
+				<tr>
+					<td colspan="7">
+	            	<hr>
+	            </td>
+	            
+	            <tr>
+	            	<td>
+	            		<label for="id">
+		            		<input type="text" name="id" id="id" value="08"/><br />
+		            		<input type="checkbox" name="id" id="id" />
+		            		<input type="text" name="RsrvOpen" id="RsrvOpen" />
+	            		</label>
+            		</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="09"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="10"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="11"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="12"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="13"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="14"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+	            </tr>
+	            
+	           <tr>
+					<td colspan="7">
+	            	<hr>
+	            </td>
+	            
+	            <tr>
+	            	<td>
+	            		<label for="id">
+		            		<input type="text" name="id" id="id" value="15"/><br />
+		            		<input type="checkbox" name="id" id="id" />
+		            		<input type="text" name="RsrvOpen" id="RsrvOpen" />
+	            		</label>
+            		</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="16"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="17"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="18"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="19"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="20"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="21"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+	            </tr>
+	            
+	            <tr>
+					<td colspan="7">
+	            	<hr>
+	            </td>
+	            
+	            <tr>
+	            	<td>
+	            		<label for="id">
+		            		<input type="text" name="id" id="id" value="22"/><br />
+		            		<input type="checkbox" name="id" id="id" />
+		            		<input type="text" name="RsrvOpen" id="RsrvOpen" />
+	            		</label>
+            		</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="23"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="24"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="25"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="26"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="27"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" value="28"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+	            </tr>
+	            
+	            <tr>
+					<td colspan="7">
+	            	<hr>
+	            </td>
+	            
+	            <tr>
+	            	<td>
+	            		<label for="id">
+		            		<input type="text" name="id" id="id" value="29"/><br />
+		            		<input type="checkbox" name="id" id="id" />
+		            		<input type="text" name="RsrvOpen" id="RsrvOpen" />
+	            		</label>
+            		</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="30"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" value="31"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id"/><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="id">
+							<input type="text" name="id" id="id" /><br />
+							<input type="checkbox" name="id" id="id" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id" />
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+					<td>
+						<label for="is_holi">
+							<input type="text" name="id" id="id"/>
+							<br />
+							<input type="checkbox" name="is_holi" id="is_holi" />
+							<input type="text" name="RsrvOpen" id="RsrvOpen" />
+						</label>
+					</td>
+	            </tr>
+	            
+	            
+	             				
+				
+			</table>
+			
+			<br />
+			<div id="RsrvBtn">
+				<input type="button" value="예약 열기" name="rsrvOpenBtn" id="rsrvOpenBtn" />
+				<input type="button" value="예약 닫기" name="rsrvCloseBtn" id="rsrvCloseBtn" />
+			</div>
+			
+		</section>
+	</div>
+</body>
+</html>

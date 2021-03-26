@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>233. manager_예약관리_취소리스트</title>
+<style>
+input[type=text]:focus { outline: none; }
+#roomDtlSearch {
+border:1px solid black;}
+input[type=text]{
+border:none;
+}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<section>
+			
+			<div id="cancelSrch">
+			  <h1>취소 리스트</h1>
+			  <hr />
+		      <form id="roomDtlFrm">
+		      	<label for="UseDaySrch">이용일 검색
+					<input type="date" name="UseDaySrchMin" id="UseDaySrchMin"/>~
+					<input type="date" name="UseDaySrchMax" id="UseDaySrchMax"/>
+		      	</label>
+			   <label for="roomDtlSearch">통합 검색
+					<input type="text" name="roomDtlSearch" id="roomDtlSearch"/>
+		      	</label><br />
+		        <input type="button" value="조회하기">
+		        <input type="button" value="취소">
+		      </form>
+		    </div>
+		    
+		    
+			    <div id="roomDtl">
+			     <hr />
+			      <table>
+			        <tr>
+			          <th>예약 날짜</th>
+			          <th>숙소</th>
+			          <th>룸</th>
+			          <th>예약자 정보</th>
+	    		      <th>결제 정보</th>
+			          <th>취소날짜</th>
+			        </tr>
+			        <tr>
+			          <td colspan="6">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td>
+				          	<input type="date" value="2021-03-16" name="Rsrv_date" id="Rsrv_date" />~
+				          	<input type="date"  value="2021-03-17" name="Rsrv_date" id="Rsrv_date" />
+			          </td>
+					  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+					  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
+					  <td>
+					  		<input type="text" value="김xx" name="price" id="price" />
+					  		<input type="text" value="(여)" name="price" id="price" /><br />
+					  		<input type="text" value="010-xxxx-xxxx" name="price" id="price" />
+					  </td>
+					  <td>
+					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
+					  		<input type="text" value="60000" name="price" id="price" />		
+					  </td>
+					  <td>
+							<input type="text"  value="2021.03.16" name="Cancl_DATE" id="Cancl_DATE" />
+					  </td>
+			        </tr>
+			        <tr>
+			          <td colspan="6">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td>
+				          	<input type="date" value="2021-03-16" name="Rsrv_date" id="Rsrv_date" />~
+				          	<input type="date"  value="2021-03-17" name="Rsrv_date" id="Rsrv_date" />
+			          </td>
+					  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+					  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
+					  <td>
+					  		<input type="text" value="김xx" name="price" id="price" />
+					  		<input type="text" value="(여)" name="price" id="price" /><br />
+					  		<input type="text" value="010-xxxx-xxxx" name="price" id="price" />
+					  </td>
+					  <td>
+					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
+					  		<input type="text" value="60000" name="price" id="price" />		
+					  </td>
+					  <td>
+							<input type="text"  value="2021.03.16" name="Cancl_DATE" id="Cancl_DATE" />
+					  </td>
+			        </tr>
+			        <tr>
+			          <td colspan="6">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td>
+				          	<input type="date" value="2021-03-16" name="Rsrv_date" id="Rsrv_date" />~
+				          	<input type="date"  value="2021-03-17" name="Rsrv_date" id="Rsrv_date" />
+			          </td>
+					  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+					  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
+					  <td>
+					  		<input type="text" value="김xx" name="price" id="price" />
+					  		<input type="text" value="(여)" name="price" id="price" /><br />
+					  		<input type="text" value="010-xxxx-xxxx" name="price" id="price" />
+					  </td>
+					  <td>
+					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
+					  		<input type="text" value="60000" name="price" id="price" />		
+					  </td>
+					  <td>
+							<input type="text"  value="2021.03.16" name="Cancl_DATE" id="Cancl_DATE" />
+					  </td>
+			        </tr>
+			        <tr>
+			          <td colspan="6">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td>
+				          	<input type="date" value="2021-03-16" name="Rsrv_date" id="Rsrv_date" />~
+				          	<input type="date"  value="2021-03-17" name="Rsrv_date" id="Rsrv_date" />
+			          </td>
+					  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+					  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
+					  <td>
+					  		<input type="text" value="김xx" name="price" id="price" />
+					  		<input type="text" value="(여)" name="price" id="price" /><br />
+					  		<input type="text" value="010-xxxx-xxxx" name="price" id="price" />
+					  </td>
+					  <td>
+					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
+					  		<input type="text" value="60000" name="price" id="price" />		
+					  </td>
+					  <td>
+							<input type="text"  value="2021.03.16" name="Cancl_DATE" id="Cancl_DATE" />
+					  </td>
+			        </tr>
+			        <tr>
+			          <td colspan="6">
+			            <hr>
+			          </td>
+			        </tr>
+	
+		
+			      </table>
+
+			    </div>
+				
+							      
+    			<div id="paging">
+			        <span class="block">《</span>
+			        <span class="block">〈</span>
+			        <span class="pageNo" id="nowPage">1</span>
+			        <span class="pageNo">2</span>
+			        <span class="pageNo">3</span>
+			        <span class="pageNo">4</span>
+			        <span class="pageNo">5</span>
+			        <span class="pageNo">6</span>
+			        <span class="pageNo">7</span>
+			        <span class="pageNo">8</span>  
+			        <span class="block">〉</span>
+			        <span class="block">》</span>
+		      </div>
+			
+		</section>
+	</div><!--wrap  -->
+</body>
+</html>

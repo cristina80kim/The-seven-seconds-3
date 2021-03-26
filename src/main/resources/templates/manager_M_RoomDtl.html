@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>222. manager_룸수정</title>
+</head>
+<body>
+	
+	<div id="wrap">
+		<section>
+			
+			<form action="post" id="roomDtlFrm" name="roomDtlFrm">
+				<h1>룸 수정</h1>
+				<hr />
+				<label for="room_name">룸명<input type="text" name="room_name" id="room_name" /></label><br />
+				<label for="num_of_guests">인원수
+					<input type="number" min="1" max="11" name="num_of_guests" id="num_of_guests" />
+				</label>
+				<label for="check_in_time">입실 시간<input type="datetime-local" /></label>
+				<label for="check_out_time">퇴실 시간<input type="datetime-local" /></label><br />
+				<label for="">기간별 가격</label>
+				<label for="weekday_price">평일<input type="text" name="weekday_price" id="weekday_price" />원</label>
+				<label for="weekend_price">주말/공휴일<input type="text" name="weekend_price" id="weekend_price" />원</label><br />
+				<label for="pic">사진<input type="file" name="pic" id="pic" multiple/></label><br />
+				<hr />
+				<input type="button" value="수정" />
+			</form>
+		
+		</section>
+	</div>
+</body>
+</html>
