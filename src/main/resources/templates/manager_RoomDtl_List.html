@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>210.manager_숙소관리_숙소리스트</title>
+<title>manager_숙소관리_룸리스트</title>
 <style>
 input[type=text]:focus { outline: none; }
-#roomMstSearch {
+#roomDtlSearch {
 border:1px solid black;}
 input[type=text]{
 border:none;
@@ -14,23 +14,21 @@ border:none;
 </style>
 </head>
 <body>
-
 <div id="wrap">
-	
 	<section>
-	
-		<div id="roomMstSrch">
-		  <h1>숙소 리스트</h1>
+		
+		<div id="roomDtlSrch">
+		  <h1>룸 리스트</h1>
 		  <hr />
-	      <form id="roomMstFrm">
-	      	<label for="roomMstSearch">통합 검색
-				<input type="text" name="roomMstSearch" id="roomMstSearch"/>
+	      <form id="roomDtlFrm">
+	      	<label for="roomDtlSearch">통합 검색
+				<input type="text" name="roomDtlSearch" id="roomDtlSearch"/>
 	      	</label>
 	        <input type="submit" value="조회하기">
 	      </form>
 	     
 	    </div>
-		    <div id="roomMst">
+		    <div id="roomDtl">
 		     <hr />
 		      <table>
 		        <tr>
@@ -65,9 +63,9 @@ border:none;
 		        </tr>
 		        <tr>
 		          <td><input type="text" value="서울" name="region" id="region" /></td>
-				  <td><input type="text" value="강남역 JA" name="Rsrv_stay" id="Rsrv_stay" /></td>
-				  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
-				  <td><input type="text" value="80,000" name="price" id="price" /></td>
+				  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+				  <td><input type="text" value="스탠다드" name="Rsrv_room" id="Rsrv_room" /></td>
+				  <td><input type="text" value="70,000" name="price" id="price" /></td>
 				  <td><input type="text" value="예약 완료" name="Rsrv_state" id="Rsrv_state" /></td>
 				  <td><input type="button" value="룸 추가"/></td>
 				  <td><input type="button" value="수정"/></td>
@@ -80,9 +78,9 @@ border:none;
 		        </tr>
 		        <tr>
 		          <td><input type="text" value="서울" name="region" id="region" /></td>
-				  <td><input type="text" value="선릉역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
-				  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
-				  <td><input type="text" value="80,000" name="price" id="price" /></td>
+				  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+				  <td><input type="text" value="럭셔리" name="Rsrv_room" id="Rsrv_room" /></td>
+				  <td><input type="text" value="70,000" name="price" id="price" /></td>
 				  <td><input type="text" value="예약 완료" name="Rsrv_state" id="Rsrv_state" /></td>
 				  <td><input type="button" value="룸 추가"/></td>
 				  <td><input type="button" value="수정"/></td>
@@ -95,9 +93,9 @@ border:none;
 		        </tr>
 		        <tr>
 		          <td><input type="text" value="서울" name="region" id="region" /></td>
-				  <td><input type="text" value="잠실역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
-				  <td><input type="text" value="스탠다드 트윈" name="Rsrv_room" id="Rsrv_room" /></td>
-				  <td><input type="text" value="80,000" name="price" id="price" /></td>
+				  <td><input type="text" value="강남역 YAM" name="Rsrv_stay" id="Rsrv_stay" /></td>
+				  <td><input type="text" value="스탠다드 더블" name="Rsrv_room" id="Rsrv_room" /></td>
+				  <td><input type="text" value="70,000" name="price" id="price" /></td>
 				  <td><input type="text" value="예약 완료" name="Rsrv_state" id="Rsrv_state" /></td>
 				  <td><input type="button" value="룸 추가"/></td>
 				  <td><input type="button" value="수정"/></td>
@@ -112,14 +110,8 @@ border:none;
 	
 		      </table>
 		    </div>
-		
-
 	
 	</section>
-
-
-
-
 </div>
 
 </body>
