@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>150.user_마이페이지_포인트관리</title>
+<style>
+#PointBbs input[type=text]:focus { outline: none; }
+</style>
+</head>
+<body>
+
+<div id="wrap">
+
+	<section>
+		
+	    <div id="PointBbs">
+	    
+			<h1>포인트 관리</h1>
+			<p>포인트는 결제 금액의 2%가 적립되며 1000 포인트 이상 사용 가능합니다</p>
+			<hr />
+			
+			<p><input type="text" name="userID" id="userID" value="아이디" readonly/>			
+			님의 현재 포인트는
+			<input type="text" name="userPoin" id="userPoin" value="포인트" readonly/>
+			점입니다
+			</p>
+			<hr />
+		    
+	      <table>
+	        <tr>
+	          <th>적립/사용</th>
+	          <th>내역</th>
+	          <th>일시</th>
+	          <th>포인트</th>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="적립"/></td>
+	          <td><input type="text" name="title" id="title" value="강남역 YAM"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number" name="kind" id="kind" value="2000"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="사용"/></td>
+	          <td><input type="text" name="title" id="title" value="강남역 굿호텔"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number" name="kind" id="kind" value="-1500"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="적립"/></td>
+	          <td><input type="text" name="title" id="title" value="영종도 굿호텔"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number" name="kind" id="kind" value="3000"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="사용"/></td>
+	          <td><input type="text" name="title" id="title" value="전주 한옥 호텔"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number"name="kind" id="kind" value="-1000"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="적립"/></td>
+	          <td><input type="text" name="title" id="title" value="여수 무인 호텔"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number" name="kind" id="kind" value="1000"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td><input type="text" name="point" id="point" value="적립"/></td>
+	          <td><input type="text" name="title" id="title" value="제주 G 호텔"/></td>
+	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+	          <td><input type="number" name="kind" id="kind" value="4000"/></td>
+	        </tr>
+	        <tr>
+	          <td colspan="4">
+	            <hr>
+	          </td>
+	        </tr>
+	        
+	      </table>
+	    </div>
+	
+	
+	
+	    <div id="paging">
+	        <span class="block">《</span>
+	        <span class="block">〈</span>
+	        <span class="pageNo" id="nowPage">1</span>
+	        <span class="pageNo">2</span>
+	        <span class="pageNo">3</span>
+	        <span class="pageNo">4</span>
+	        <span class="pageNo">5</span>
+	        <span class="pageNo">6</span>
+	        <span class="pageNo">7</span>
+	        <span class="pageNo">8</span>  
+	        <span class="block">〉</span>
+	        <span class="block">》</span>
+	      </div>
+		
+	
+	</section>
+
+</div>
+
+
+</body>
+</html>
