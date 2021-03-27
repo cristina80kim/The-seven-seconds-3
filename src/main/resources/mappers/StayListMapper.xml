@@ -13,7 +13,7 @@
 <!--     AND    m.xxxx   = d.xxxx -->
 
 	</select>
-	<select id ="search" resultType="com.team3.prj.vo.SearchVO">
+	<select id ="search" resultType="com.team3.prj.vo.StayListSearchVO">
 	SELECT
 	FROM (SELECT * FROM room_mst M where...)ROOM_MST M
 	INNER JOIN(SELECT * FROM room_mst M where...) ROOM_DTL D
