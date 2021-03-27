@@ -33,14 +33,13 @@ public class QnaController {
 		return service.selectAll();
 	}
 
-	/*
-	 * // 기능 : Qna_user 글쓰기(html연결함) // pram : QnaVO중 - ID(자동대입), nickname(로그인사용자
-	 * 닉네임 자동 대입), // no(자동대입), cate_Id, isPub(공개(Y)/비공개(N)), title, q //
-	 * http://localhost:8081/qnawriter
-	 * 
-	 * @GetMapping("/qnawriter") public String qnaWriter() { System.out.println("");
-	 * return "user_ComuQnAwrite"; }
-	 */
+	
+//	  // 기능 : Qna_user 글쓰기(html연결함) // pram : QnaVO중 - ID(자동대입), nickname(로그인사용자 닉네임 자동 대입), 
+//	  // no(자동대입), cate_Id, isPub(공개(Y)/비공개(N)), title, q
+//	  // http://localhost:8081/qnawriter
+//	   @GetMapping("/qnawriter") public String qnaWriter() { System.out.println("");
+//	  return "user_ComuQnAwrite"; }
+	 
 	
 	
 	// 기능 : Qna_user 글쓰기 (위"/qnawriter 과 동일한 기능)
@@ -53,15 +52,18 @@ public class QnaController {
 		return service.insert(vo).toString();
 	}
 		
-	// 기능 : Qna_user 글 수정하기
-	// param : QnaVO 중 - ID(insert된 ID/자동대입), no(insert된 no/자동대입), cate_ID, isPub(공개(Y)/비공개(N)),
-	//	 	  			title, q
-	// http://localhost:8081/qna/update?title=cddcdd&q=aaaaa&cateId=bbbb&isPub=y&id=
-	@GetMapping("/qupdate")
-	public @ResponseBody String qupdate(QnaVO vo) {
-		System.out.println(className + ".Qupdate():" + vo.toString());
-		return service.qupdate(vo).toString();
-	}
+	
+	
+	  // 기능 : Qna_user 글 수정하기 
+	  // param : QnaVO 중 - ID(insert된 ID/자동대입), no(insert된 no/자동대입), cate_ID, isPub(공개(Y)/비공개(N)),
+	  // title, q 
+	  //  http://localhost:8081/qna/update?title=cddcdd&q=aaaaa&cateId=bbbb&isPub=y&id=
+	  
+	  @GetMapping("/qupdate") public @ResponseBody String qupdate(QnaVO vo) {
+	  System.out.println(className + ".Qupdate():" + vo.toString()); return
+	  service.qupdate(vo).toString(); }
+	 
+	 
 
 	// 기능 : Qna_admin 답변쓰기
 	// param : QnaVO 중 - id(insert된 ID/자동대입), a
@@ -72,7 +74,7 @@ public class QnaController {
 	}
 	
 	// 기능 : Qna_admin 게시글 삭제
-	// param : id(insert된 ID/자동대입)
+	// param :QnaVO 중 - id(insert된 ID/자동대입)
 	// http://localhost:8081/qna/delete?id=
 	@GetMapping("/delete")
 	public @ResponseBody String delete(QnaVO vo) {

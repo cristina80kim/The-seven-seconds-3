@@ -30,11 +30,7 @@ public class RoomMstController {
 	@Autowired
 	RoomMstService service;
 
-	// http://localhost:8081/manager_RoomMstRegist
-	@GetMapping("/manager_RoomMstRegist")
-	public String manager_RoomMstRegist() {
-		return "manager_RoomMstRegist";
-	}
+
 
 	// http://localhost:8081/roomMst/selectAll
 	@GetMapping("/selectAll")
@@ -43,9 +39,23 @@ public class RoomMstController {
 		return service.selectAll();
 	}
 
+	
+	
 	@Value("${file.upload.directory}")
 	String uploadDir;
 
+	// 기능 : 숙소등록
+	// param : roomMstVO 중 - id(자동대입), region(mainAddr의데이터 substring), title,
+	// 						 zipCode(api사용), addr(mainAddr+dtlAddr), tel, info,
+	//						 pic1Org(파일업로드1),pic1Uuid(파일업로드1의 uuid.확장자),
+	//						 pic2Org(파일업로드2),pic2Uuid(파일업로드2의 uuid.확장자),
+	//						 pic3Org(파일업로드3),pic3Uuid(파일업로드3의 uuid.확장자),
+	//						 cUser(로그인된 ID/자동대입), typeOfAcco(공통코드)
+	// http://localhost:8081/roomMst/manager_RoomMstRegist
+	@GetMapping("/manager_RoomMstRegist")
+	public String manager_RoomMstRegist() {
+		return "manager_RoomMstRegist";
+	}
 	@PostMapping(value = "/insert")
 	public @ResponseBody String insert(RoomMstVO vo, @RequestParam("files") List<MultipartFile> files)
 			throws IllegalStateException, IOException {
@@ -88,6 +98,8 @@ public class RoomMstController {
 				}
 			}
 		}
+		String regeion = vo.getMainAddr().substring(0,2); 
+		vo.setRegion(regeion);
 		String addr = vo.getMainAddr() + " , " + vo.getDtlAddr();
 		vo.setAddr(addr);
 		System.out.println(className + ".insert(): " + vo.toString());
