@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class StayListVO {
 
-	public String region;//Áö¿ª
-	public String title; //¼÷¼Ò¸í
-	public String addr; //ÁÖ¼Ò
-	public int weekday_Price; //ÆòÀÏ°¡°İ
-	public int weekend_Price; //ÈŞÀÏ°¡°İ
-	//public int star; //º°Á¡
+	public String region;// 
+	public String title; //
+	public String addr; //ì£¼ì†Œ
+	public int weekday_Price; // ì£¼ì¤‘ê°€ê²©
+	public int weekend_Price; // ì£¼ë§ê°€ê²©
+	//public int star; // ë³„ì 
 }

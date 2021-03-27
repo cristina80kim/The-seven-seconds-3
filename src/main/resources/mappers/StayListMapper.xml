@@ -6,10 +6,24 @@
 	<select id="StayListAll" resultType="com.team3.prj.vo.StayListVO">
 	SELECT m.region, m.title, m.addr,
 		   d.weekday_price, d.weekend_price
-	FROM room_mst m
-	INNER JOIN room_dtl d
-	ON m.id = d.mst_id
+	FROM   room_mst m
+	INNER  JOIN room_dtl d
+	ON     m.id     = d.mst_id
+<!--  	AND    m.yyyyyy = d.yyyyyy -->
+<!--     AND    m.xxxx   = d.xxxx -->
 
 	</select>
-	
+	<select id ="search" resultType="com.team3.prj.vo.SearchVO">
+	SELECT
+	FROM (SELECT * FROM room_mst M where...)ROOM_MST M
+	INNER JOIN(SELECT * FROM room_mst M where...) ROOM_DTL D
+	ON M.ID = D.MST_ID
+	WHERE (weekday_price between #{minWeekdayprice} and #{maxWeekdayprice})
+	OR
+	WHERE (weekend_price between #{minWeekendprice} and #{maxWeekendprice})
+	AND num_of_guests = #{numofguests}
+	(@인원수 = '' OR B.NUM_OF_GUESTS = @인원수)
+	AND ((@최저가격 = '' OR (B.WEEKDAY_PRICE <![CDATA[ > ]]> @최저가격 AND B.WEEKDAY_PRICE <![CDATA[ > ]]> @최저가격)
+	AND ((@최고가격 = '' OR (B.WEEKEND_PRICE <![CDATA[ < ]]> @최고가격 AND B.WEEKEND_PRICE <![CDATA[ < ]]> @최고가격) 
+</select>
 </mapper>
