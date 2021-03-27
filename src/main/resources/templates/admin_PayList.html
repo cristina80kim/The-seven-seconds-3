@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>320. admin_결제관리_결제리스트</title>
+<style>
+input:focus{
+outline:none;
+}
+
+input[type=text]#payListSrch{
+border:1px solid black;
+}
+
+input[type=text]{
+border:none;}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+	<section>
+		
+		<form action="post" id="payListSrchFrm" name="payListSrchFrm">
+			<h1>결제 관리</h1>
+			<hr />
+			<label for="payListSrch">통합 검색</label>
+			<input type="text" name="payListSrch" id="payListSrch" />
+			<input type="button" value="조회하기" />
+		</form>
+		
+		<hr />
+		
+		      <table>
+		        <tr>
+		          <th>번호</th>
+		          <th>숙소명</th>
+		          <th>룸</th>
+		          <th>결제 수단</th>
+		          <th>결제 금액</th>
+		          <th>예약자</th>
+		          <th>취소</th>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="appr_no" id="appr_no" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="Rsrv_stay" id="Rsrv_stay" /></td>
+		          <td><input type="text" value="럭셔리" name="Rsrv_room" id="Rsrv_room" /></td>
+		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
+		          <td><input type="text" value="70,000" name="price" id="price" /></td>
+		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
+		          <td><input type="button" value="취소" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="appr_no" id="appr_no" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="Rsrv_stay" id="Rsrv_stay" /></td>
+		          <td><input type="text" value="럭셔리" name="Rsrv_room" id="Rsrv_room" /></td>
+		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
+		          <td><input type="text" value="70,000" name="price" id="price" /></td>
+		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
+		          <td><input type="button" value="취소" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		       <tr>
+		          <td><input type="text" value="01" name="appr_no" id="appr_no" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="Rsrv_stay" id="Rsrv_stay" /></td>
+		          <td><input type="text" value="럭셔리" name="Rsrv_room" id="Rsrv_room" /></td>
+		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
+		          <td><input type="text" value="70,000" name="price" id="price" /></td>
+		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
+		          <td><input type="button" value="취소" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="appr_no" id="appr_no" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="Rsrv_stay" id="Rsrv_stay" /></td>
+		          <td><input type="text" value="럭셔리" name="Rsrv_room" id="Rsrv_room" /></td>
+		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
+		          <td><input type="text" value="70,000" name="price" id="price" /></td>
+		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
+		          <td><input type="button" value="취소" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        
+		      </table>
+			
+			   <div id="paging">
+		        <span class="block">《</span>
+		        <span class="block">〈</span>
+		        <span class="pageNo" id="nowPage">1</span>
+		        <span class="pageNo">2</span>
+		        <span class="pageNo">3</span>
+		        <span class="pageNo">4</span>
+		        <span class="pageNo">5</span>
+		        <span class="pageNo">6</span>
+		        <span class="pageNo">7</span>
+		        <span class="pageNo">8</span>  
+		        <span class="block">〉</span>
+		        <span class="block">》</span>
+		      </div>
+		
+	</section>
+</div>
+
+
+
+
+</body>
+</html>

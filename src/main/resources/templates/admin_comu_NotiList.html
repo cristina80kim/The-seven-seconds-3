@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>340. admin_커뮤니티관리_공지사항목록</title>
+<style>
+input:focus{
+outline:none;
+}
+
+input[type=text]#notiSrch{
+border:1px solid black;
+}
+
+input[type=text]{
+border:none;}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+	<section>
+		
+		<form action="post" id="notiSrchFrm" name="notiSrchFrm">
+			<h1>공지사항 관리</h1>
+			<hr />
+			<input type="button" value="글 쓰기" name="writeBtn" id="writeBtn" />
+			<label for="notiSrch">통합 검색
+				<input type="text" name="notiSrch" id="notiSrch" />
+			</label>
+				<input type="button" value="조회하기" name="notiSrchBtn" id="notiSrchBtn" />
+		</form>
+		
+		<hr />
+		
+		      <table>
+		        <tr>
+		          <th>번호</th>
+		          <th>제목</th>
+		          <th>일시</th>
+		          <th>삭제</th>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="no" id="no" /></td>
+		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
+		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="no" id="no" /></td>
+		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
+		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		       <tr>
+		          <td><input type="text" value="01" name="no" id="no" /></td>
+		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
+		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="01" name="no" id="no" /></td>
+		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
+		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        
+		      </table>
+			
+			   <div id="paging">
+		        <span class="block">《</span>
+		        <span class="block">〈</span>
+		        <span class="pageNo" id="nowPage">1</span>
+		        <span class="pageNo">2</span>
+		        <span class="pageNo">3</span>
+		        <span class="pageNo">4</span>
+		        <span class="pageNo">5</span>
+		        <span class="pageNo">6</span>
+		        <span class="pageNo">7</span>
+		        <span class="pageNo">8</span>  
+		        <span class="block">〉</span>
+		        <span class="block">》</span>
+		      </div>
+		
+	</section>
+</div>
+
+
+
+</body>
+</html>
