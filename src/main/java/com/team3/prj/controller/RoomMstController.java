@@ -44,7 +44,7 @@ public class RoomMstController {
 	@Value("${file.upload.directory}")
 	String uploadDir;
 
-	// 기능 : 숙소등록
+	// 기능 : 숙소등록 
 	// param : roomMstVO 중 - id(자동대입), region(mainAddr의데이터 substring), title,
 	// 						 zipCode(api사용), addr(mainAddr+dtlAddr), tel, info,
 	//						 pic1Org(파일업로드1),pic1Uuid(파일업로드1의 uuid.확장자),

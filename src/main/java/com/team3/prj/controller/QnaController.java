@@ -38,7 +38,7 @@ public class QnaController {
 //	  // no(자동대입), cate_Id, isPub(공개(Y)/비공개(N)), title, q
 //	  // http://localhost:8081/qnawriter
 //	   @GetMapping("/qnawriter") public String qnaWriter() { System.out.println("");
-//	  return "user_ComuQnAwrite"; }
+//	  return "user_ComuQnAwrite";  }
 	 
 	
 	
