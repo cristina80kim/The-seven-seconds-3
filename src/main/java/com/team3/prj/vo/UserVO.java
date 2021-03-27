@@ -4,15 +4,15 @@ import lombok.Data;
 
 @Data
 public class UserVO {
-	private String ID        ;
-    private String PWD       ;
-    private String NAME      ;
-    private String NICKNAME  ;
-    private String TEL       ;
-    private String EMAIL     ;
-    private String GEN       ;
-    private String ROLE      ;
-    private String POINT     ;  
-	                  
+	private String id;
+	private String pwd;
+	private String name;
+	private String nickname;
+	private String tel;
+	private String email;
+	private String gen;
+	private String role;
+	private String point;
+	private String cUser;
 
 }

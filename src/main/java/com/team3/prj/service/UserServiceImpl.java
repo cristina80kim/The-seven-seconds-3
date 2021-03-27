@@ -1,5 +1,6 @@
 package com.team3.prj.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,4 +19,19 @@ public class UserServiceImpl implements UserService {
 		public List<UserVO> selectAll() {
 			return userDAO.userSelectAll();
 		}
+		
+		@Override
+		public Long login(UserVO vo) {
+			return userDAO.userLogin(vo);
+		}
+		/*
+		 * @Override public UserVO login(HashMap<String, String> map) { return
+		 * userDAO.login(map); }
+		 */
+		
+		@Override
+		public Long join(UserVO vo) {
+			return userDAO.userJoin(vo);
+		}
+		
 }
