@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>300. admin_회원관리_회원리스트</title>
+<style>
+input:focus{
+outline:none;
+}
+
+input[type=text]#roleSrch{
+border:1px solid black;
+}
+
+input[type=text]{
+border:none;}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+	<section>
+		
+		<form action="post" id="memberSrchFrm" name="memberSrchFrm">
+			<h1>회원 관리</h1>
+			<hr />
+			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />전체</label>
+			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />개인</label>
+			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />사장님</label>
+			<input type="text" name="Srch" id="roleSrch" />
+			<input type="button" value="조회하기" />
+		</form>
+		
+		<hr />
+		
+		      <table>
+		        <tr>
+		          <th>구분</th>
+		          <th>아이디</th>
+		          <th>이름</th>
+		          <th>닉네임</th>
+		          <th>전화번호</th>
+		          <th>이메일</th>
+		          <th>성별</th>
+		          <th>탈퇴</th>
+		        </tr>
+		        <tr>
+		          <td colspan="8">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="개인" name="role" id="role" /></td>
+		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
+		          <td><input type="text" value="김철수" name="name" id="name" /></td>
+		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
+		          <td><input type="button" value="탈퇴" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="8">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="개인" name="role" id="role" /></td>
+		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
+		          <td><input type="text" value="김철수" name="name" id="name" /></td>
+		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
+		          <td><input type="button" value="탈퇴" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="8">
+		            <hr>
+		          </td>
+		        </tr>
+		       <tr>
+		          <td><input type="text" value="개인" name="role" id="role" /></td>
+		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
+		          <td><input type="text" value="김철수" name="name" id="name" /></td>
+		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
+		          <td><input type="button" value="탈퇴" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="8">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="개인" name="role" id="role" /></td>
+		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
+		          <td><input type="text" value="김철수" name="name" id="name" /></td>
+		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
+		          <td><input type="button" value="탈퇴" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="8">
+		            <hr>
+		          </td>
+		        </tr>
+		        
+		      </table>
+			
+			   <div id="paging">
+		        <span class="block">《</span>
+		        <span class="block">〈</span>
+		        <span class="pageNo" id="nowPage">1</span>
+		        <span class="pageNo">2</span>
+		        <span class="pageNo">3</span>
+		        <span class="pageNo">4</span>
+		        <span class="pageNo">5</span>
+		        <span class="pageNo">6</span>
+		        <span class="pageNo">7</span>
+		        <span class="pageNo">8</span>  
+		        <span class="block">〉</span>
+		        <span class="block">》</span>
+		      </div>
+		
+	</section>
+</div>
+
+
+</body>
+</html>

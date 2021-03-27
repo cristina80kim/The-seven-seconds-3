@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>360. admin_커뮤니티관리_QnA관리</title>
+<style>
+input:focus{
+outline:none;
+}
+
+input[type=text]#QnASrch{
+border:1px solid black;
+}
+
+input[type=text]{
+border:none;}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+	<section>
+		
+		<form action="post" id="QnASrchFrm" name="QnASrchFrm">
+			<h1>Q&A 관리</h1>
+			<hr />
+			<select name="cate_id" id="cate_id">
+				<option value="cate_id">카테고리</option>
+			</select>
+			<label for="QnASrch">통합 검색
+				<input type="text" name="QnASrch" id="QnASrch" />
+			</label>
+				<input type="button" value="조회하기" name="QnASrchBtn" id="QnASrchBtn" />
+		</form>
+		
+		<hr />
+		
+		      <table>
+		        <tr>
+		          <th>카테고리</th>
+		          <th>제목</th>
+		          <th>답변</th>
+		          <th>삭제</th>
+		        </tr>
+		        <tr>
+		         <td colspan="4">
+		            <hr>
+		         </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
+		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
+		          <td><input type="button" value="답변"/></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
+		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
+		          <td><input type="button" value="답변"/></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		       <tr>
+		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
+		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
+		          <td><input type="button" value="답변"/></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
+		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
+		          <td><input type="button" value="답변"/></td>
+		          <td><input type="button" value="삭제"/></td>
+		        </tr>
+		        <tr>
+		          <td colspan="4">
+		            <hr>
+		          </td>
+		        </tr>
+		        
+		      </table>
+			
+			   <div id="paging">
+		        <span class="block">《</span>
+		        <span class="block">〈</span>
+		        <span class="pageNo" id="nowPage">1</span>
+		        <span class="pageNo">2</span>
+		        <span class="pageNo">3</span>
+		        <span class="pageNo">4</span>
+		        <span class="pageNo">5</span>
+		        <span class="pageNo">6</span>
+		        <span class="pageNo">7</span>
+		        <span class="pageNo">8</span>  
+		        <span class="block">〉</span>
+		        <span class="block">》</span>
+		      </div>
+		
+	</section>
+</div>
+
+
+</body>
+</html>

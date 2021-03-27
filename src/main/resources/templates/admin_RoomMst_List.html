@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>310. admin_숙소관리_숙소리스트</title>
+<style>
+input:focus{
+outline:none;
+}
+
+input[type=text]#roomMstSrch{
+border:1px solid black;
+}
+
+input[type=text]{
+border:none;}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+	<section>
+		
+		<form action="post" id="roomMstSrchFrm" name="roomMstSrchFrm">
+			<h1>숙소 리스트</h1>
+			<hr />
+			<label for="roomMstSrch">통합 검색</label>
+			<input type="text" name="roomMstSrch" id="roomMstSrch" />
+			<input type="button" value="조회하기" />
+		</form>
+		
+		<hr />
+		
+		      <table>
+		        <tr>
+		          <th>지역</th>
+		          <th>숙소명</th>
+		          <th>룸</th>
+		          <th>주소</th>
+		          <th>전화번호</th>
+		          <th>게시자</th>
+		          <th>삭제</th>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="서울" name="region" id="region" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="title" id="title" /></td>
+		          <td><input type="text" value="럭셔리" name="room_name" id="room_name" /></td>
+		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
+		          <td><input type="button" value="삭제" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="서울" name="region" id="region" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="title" id="title" /></td>
+		          <td><input type="text" value="럭셔리" name="room_name" id="room_name" /></td>
+		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
+		          <td><input type="button" value="삭제" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		       <tr>
+		          <td><input type="text" value="서울" name="region" id="region" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="title" id="title" /></td>
+		          <td><input type="text" value="럭셔리" name="room_name" id="room_name" /></td>
+		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
+		          <td><input type="button" value="삭제" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td><input type="text" value="서울" name="region" id="region" /></td>
+		          <td><input type="text" value="강남 xx호텔" name="title" id="title" /></td>
+		          <td><input type="text" value="럭셔리" name="room_name" id="room_name" /></td>
+		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
+		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
+		          <td><input type="button" value="삭제" /></td>
+		        </tr>
+		        <tr>
+		          <td colspan="7">
+		            <hr>
+		          </td>
+		        </tr>
+		        
+		      </table>
+			
+			   <div id="paging">
+		        <span class="block">《</span>
+		        <span class="block">〈</span>
+		        <span class="pageNo" id="nowPage">1</span>
+		        <span class="pageNo">2</span>
+		        <span class="pageNo">3</span>
+		        <span class="pageNo">4</span>
+		        <span class="pageNo">5</span>
+		        <span class="pageNo">6</span>
+		        <span class="pageNo">7</span>
+		        <span class="pageNo">8</span>  
+		        <span class="block">〉</span>
+		        <span class="block">》</span>
+		      </div>
+		
+	</section>
+</div>
+
+
+</body>
+</html>
