@@ -13,15 +13,19 @@ public class RoomMstVO {
   private String addr;		//주소
   private String tel;		//전화번호
   private String info;		//설명
-  private MultipartFile pic1Org;	//사진1 원본파일명
+  private String pic1Org;	//사진1 원본파일명
   private String pic1Uuid;	//사진1 UUID
-  private MultipartFile pic2Org;	//사진2 원본파일명
+  private String pic2Org;	//사진2 원본파일명
   private String pic2Uuid;	//사진2 UUID
-  private MultipartFile pic3Org;	//사진3 원본파일명
+  private String pic3Org;	//사진3 원본파일명
   private String pic3Uuid;	//사진3 UUID
   private String cUser;		//생성자 id
   private String mUser;		//수정자 id
   private String cDate;		//생성일자/시간
   private String mDate;		//수정일자/시간
+  private String typeOfAcco; // 숙박시설종류/ 공통코드
+  private String mainAddr;   // 00시 00구 
+  private String dtlAddr;	// 00아파트000동000호
+  
 
 }

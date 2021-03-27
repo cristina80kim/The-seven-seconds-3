@@ -21,18 +21,19 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	public Long insert(QnaVO vo) {
-		return dao.qnaInsert(vo);
+		return dao.qnaInsert(vo) == 1 ? vo.getId() : 0;
 	}
 
 	@Override
 	public Long qupdate(QnaVO vo) {
 		return dao.qUpdate(vo);
-		
+
 	}
+
 	@Override
 	public Long aupdate(QnaVO vo) {
 		return dao.qUpdate(vo);
-		
+
 	}
 
 	@Override

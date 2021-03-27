@@ -4,35 +4,39 @@
 
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 	<select id="qnaSelectAll" resultType="com.team3.prj.vo.QnaVO">
-		SELECT nickname, no, cate_id, is_pub, title, q, a
+		SELECT nickname, no,
+		cate_id, is_pub, title, q, a
 		FROM qna
 	</select>
 
-	<insert id="qnaInsert"> <!-- </insert> resultType="java.lang.String"> -->
+	<insert id="qnaInsert">
+		<selectKey keyProperty="id" resultType="Long" order="BEFORE"> <!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
+			SELECT seq_qna.NEXTVAL FROM DUAL
+		</selectKey>
+
 		INSERT INTO qna
 		(
-               id,
-		       nickname, no, cate_id,
-		       is_pub, title, q, c_user
-        )
-		VALUES 
-        (
-               seq_qna.nextval, <!-- 시퀀스값 받아옴 seq_qna -->
-		       #{nickname}, #{no}, #{cateId},
-		       #{isPub}, #{title}, #{q}, #{cUser}
-        )
-    
-        <selectKey keyProperty="id" resultType="Long" order="AFTER"> 
-          SELECT seq_qna.CURRVAL FROM DUAL 
-        </selectKey> 
+		id,
+		nickname, no, cate_id,
+		is_pub, title, q, c_user
+		)
+		VALUES
+		(
+		#{id}, <!-- 시퀀스 ID값이 들어감. -->
+		#{nickname},
+		(SELECT NVL(MAX(no),0) + 1 FROM qna), <!-- #{no}, -->
+		#{cateId},
+		#{isPub}, #{title}, #{q}, #{cUser}
+		)
 	</insert>
-	
+
 	<update id="qUpdate">
 		UPDATE qna
-		SET title=#{title}, q=#{q}, cate_id=#{cateId}, is_pub=#{isPub}
+		SET title=#{title}, q=#{q},
+		cate_id=#{cateId}, is_pub=#{isPub}
 		WHERE id=#{id}
 	</update>
-	
+
 	<update id="aUpdate">
 		UPDATE qna
 		SET a=#{a}
@@ -41,6 +45,6 @@
 
 	<delete id="qnaDelete">
 		DELETE qna
-		where id=#{id}	
+		where id=#{id}
 	</delete>
 </mapper>

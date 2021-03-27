@@ -13,15 +13,19 @@
 	<insert id="roomMstInsert"> <!-- </insert> resultType="java.lang.String"> -->
 		INSERT INTO room_mst
 		(	
-				id,
+			   id,
                title, zip_code, addr, tel, info,
-               pic1_org, pic1_uuid, pic2_org, pic2_uuid, pic3_org, pic3_uuid,
+               region, type_of_acco,
+               pic1_org, pic1_uuid,
+               pic2_org, pic2_uuid,
+               pic3_org, pic3_uuid,
                c_user
         )
 		VALUES 
         (
-        		seq_qna.nextval, <!-- 시퀀스값 받아옴 seq_qna -->
+        		seq_room_mst.nextval, <!-- 시퀀스값 받아옴 seq_room_mst -->
                #{title}, #{zipCode}, #{addr}, #{tel}, #{info},
+               #{region},#{typeOfAcco},
                #{pic1Org}, #{pic1Uuid}, 
                #{pic2Org}, #{pic2Uuid},
                #{pic3Org}, #{pic3Uuid},
@@ -29,7 +33,7 @@
         )
         
          <selectKey keyProperty="id" resultType="Long" order="AFTER"> 
-          SELECT seq_qna.CURRVAL FROM DUAL 
+          SELECT seq_room_mst.CURRVAL FROM DUAL 
         </selectKey> 
 	</insert>
 	

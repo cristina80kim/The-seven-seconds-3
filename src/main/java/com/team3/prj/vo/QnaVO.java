@@ -14,8 +14,8 @@ public class QnaVO {
 	private String a; //답변 내용
 	private String cUser; // 생성자
 	private String mDate; // 수정날짜
-	
+	 
 	/*
-	 * #{nickname}, #{no}, #{cateId}, #{isPub}, #{title}, #{q}, #{cUser})
+	 * #{nickname}, #{no}, #{cateId},  #{isPub}, #{title}, #{q}, #{cUser})
 	 */
 }
