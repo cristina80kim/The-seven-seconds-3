@@ -12,6 +12,13 @@ header {
 	padding-top: 20px;
 }
 
+#hWrap{
+		width: 1080px;
+	height:105px;  
+	margin: 0 auto;
+	padding-top: 20px;
+	
+}
 header a {
 	color: black;
 }
