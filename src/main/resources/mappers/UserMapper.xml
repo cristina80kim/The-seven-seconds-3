@@ -15,7 +15,7 @@
   WHERE id=#{id} AND pwd=#{pwd}
   </select>
   
-  <insert id="join">
+  <insert id="userJoin">
   INSERT INTO users
   (
   id, pwd, name, nickname,
@@ -24,7 +24,7 @@
   VALUES
   (
   #{id}, #{pwd}, #{name}, #{nickname},
-  #{tel}, #{email}, #{gen}, #{cUser}
+  #{tel}, #{email}, #{gen}, #{id}
   )
   </insert>
   

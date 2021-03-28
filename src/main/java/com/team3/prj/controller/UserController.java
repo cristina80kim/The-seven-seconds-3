@@ -34,26 +34,33 @@ public class UserController {
 		return "user_Login"; //user_Login.html
 	}
 	
-
-	//http://localhost:8081/User/login
 	@GetMapping("/login")
 	public @ResponseBody UserVO login(UserVO vo) {
 		System.out.println(className + ".login()");
 		System.out.println(vo);
 		return userservice.login(vo);
 	}
-	/*
-	 * public String login(String id, String pw, HttpSession session) {
-	 * HashMap<String, String> map = new HashMap<String, String>();
-	 * 
-	 * map.put("id", id); map.put("pw", pw); UserVO vo = userservice.login(map);
-	 * session.setAttribute("user_Login", vo); return ; }
-	 */
+	
+	//http://localhost:8081/User/frmJoin
+	@GetMapping("/frmJoin")
+	public String frmJoin() {
+		System.out.println(className + ".frmJoin()");
+		return "user_Join";// user_Join.html
+	}
 	
 	@GetMapping("/join")
-	public @ResponseBody String join(UserVO vo) {
-		System.out.println(className + ".join" + vo.toString());
-		return userservice.join(vo).toString();
+	public @ResponseBody UserVO join(UserVO vo) {
+		System.out.println(className + ".join()");
+		System.out.println(vo);
+		return userservice.join(vo);
 	}
 	
 }
+
+
+
+
+
+
+
+

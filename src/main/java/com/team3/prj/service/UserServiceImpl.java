@@ -23,10 +23,6 @@ public class UserServiceImpl implements UserService {
 		public UserVO login(UserVO vo) {
 			return userDAO.userLogin(vo);
 		}
-		/*
-		 * @Override public UserVO login(HashMap<String, String> map) { return
-		 * userDAO.login(map); }
-		 */
 		
 		@Override
 		public UserVO join(UserVO vo) {
