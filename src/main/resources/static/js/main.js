@@ -111,6 +111,25 @@ var main = {
     return (typeof param == "undefined" || param == null || param == "") ? defVal : param;
   },
 
+  ajaxGetHtml: function(loc, componentName) {
+    // window.open(loc);
+    // window.location.href =
+    console.log(">>> ajaxGetHtml(): 1");
+    console.log(">>> ajaxGetHtml(): " + loc);
+
+    $.ajax({ 
+        type : "GET", 
+        dataType : "html", 
+        url : loc, 
+        success : function(msg) {
+            console.log(msg); 
+            $("#" + componentName).html(msg); 
+        } 
+    });
+ 
+    console.log(">>> ajaxGetHtml(): 2");
+  },
+
   //============================================================
   // 기능: ajax 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
   //============================================================

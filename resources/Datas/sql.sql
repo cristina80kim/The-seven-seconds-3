@@ -398,6 +398,28 @@
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
     VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'suite',    null, '스위트룸',    'suite room',    'admin');
     
+    -- Q&N/FAQ 질문유형: 회원/개인정보, 숙소, 포인트, 서비스이용, 취소/환불, 예약/결제, 기타
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'member', null, '회원/개인정보', 'member_info', 'admin');         -- 회원/개인정보
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'accomodation', null, '숙소', 'accomodation', 'admin');        -- 숙소
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'point', null, '포인트', 'point', 'admin');                     -- 포인트
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'service', null, '서비스이용', 'service', 'admin');               -- 서비스이용
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'refund', null, '취소/환불', 'refund', 'admin');                 -- 취소/환불
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'payment', null, '예약/결제', 'payment', 'admin');               -- 예약/결제
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'etc', null, '기타', 'etc', 'admin');                          -- 기타
+
 
     -- 15. 공통노트(Note; Common Notes); 이용약관, 개인정보처리방침 등
     CREATE SEQUENCE seq_note START WITH 1000000000 INCREMENT BY 1 CACHE 10;
