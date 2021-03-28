@@ -41,6 +41,11 @@ var main = {
   onGuestHouseChanged: function(chk) {
     main.onCheckBoxChanged(chk, "guest_house", "");
   },
+
+  // 기능: checkbox인 chk가 checked이면 value를 "resort"로 그렇지 않으면 ""으로 설정한다.
+  onResortChanged: function(chk) {
+    main.onCheckBoxChanged(chk, "resort", "");
+  },
   
   //------------------------------------------------------------
   // 룸-유형(...)

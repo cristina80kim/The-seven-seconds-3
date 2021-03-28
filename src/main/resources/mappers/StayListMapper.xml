@@ -10,23 +10,23 @@
 		SELECT 
 		FROM room_mst
 		<where>
-		(<if test='ishotel != null and !"".equals(ishotel)'>
-		OR type_of_acco = #{ishotel} <!-- 공통코드 class3 참조 -->
+		(<if test='isHotel != null and !"".equals(isHotel)'>
+		OR type_of_acco = #{isHotel} <!-- 공통코드 class3 참조 -->
         </if> 
-		<if test='ismotel != null and !"".equals(ismotel)'>
-		OR type_of_acco = #{ismotel} <!-- 공통코드 class3 참조 -->
+		<if test='isMotel != null and !"".equals(isMotel)'>
+		OR type_of_acco = #{isMotel} <!-- 공통코드 class3 참조 -->
         </if> 
-		<if test='ispension != null and !"".equals(ispension)'>
-		OR type_of_acco = #{ispension} <!-- 공통코드 class3 참조 -->
+		<if test='isPension != null and !"".equals(isPension)'>
+		OR type_of_acco = #{isPension} <!-- 공통코드 class3 참조 -->
         </if> 
-		<if test='isglamping != null and !"".equals(isglamping)'>
-		OR type_of_acco = #{isglamping} <!-- 공통코드 class3 참조 -->
+		<if test='isGlamping != null and !"".equals(isGlamping)'>
+		OR type_of_acco = #{isGlamping} <!-- 공통코드 class3 참조 -->
         </if> 
-		<if test='isguestHouse != null and !"".equals(isguestHouse)'>
-		OR type_of_acco = #{isguestHouse} <!-- 공통코드 class3 참조 -->
+		<if test='isGuestHouse != null and !"".equals(isGuestHouse)'>
+		OR type_of_acco = #{isGuestHouse} <!-- 공통코드 class3 참조 -->
         </if> 
-		<if test='isresort != null and !"".equals(isresort)'>
-		OR type_of_acco = #{isresort} <!-- 공통코드 class3 참조 -->
+		<if test='isResort != null and !"".equals(isResort)'>
+		OR type_of_acco = #{isResort} <!-- 공통코드 class3 참조 -->
         </if>)
       
         <if test='keyword!= null and !"".equals(keyword)'>

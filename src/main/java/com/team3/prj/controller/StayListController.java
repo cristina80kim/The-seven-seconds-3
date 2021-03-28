@@ -24,4 +24,13 @@ private final String className="StayListController";
 		System.out.println(className+".StayListAll()");
 		return stayService.StayListAll();
 	}
+	
+	//http://localhost:8081/staylist/userRoomList
+	@GetMapping("/userRoomList")
+	public String userRoomList() {
+		System.out.println(className+".userRoomList()");
+		return "user_RoomList";
+	}
+	
+	
 }

@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
+<script src="/js/main.js?ver=1.1"></script>
 <style>
 .OdrTabMenu input[type=text]{
  border: none;
@@ -13,6 +15,16 @@ outline:none;
 }
 
 </style>
+<script>
+var changeCheckBoxes = function(chk,arr){
+	console.log("changeCheckBoxes():1");
+	for(var i in arr) {
+		i.checked = chk.checked;	
+	}
+	console.log("changeCheckBoxes():2"); 
+}
+
+</script>
 </head>
 <body>
 
@@ -22,11 +34,11 @@ outline:none;
 	
 		<input type="text" name="userMainSrch" id="userMainSrch" /><br />
 		<label for="userChkIn">
-			<input type="month" name="userChkIn" id="userChkIn" />
+			<input type="date" name="userChkIn" id="userChkIn" />
 			체크인
 		</label>
 		<label for="userChkOut">
-			<input type="month" name="userChkOut" id="userChkOut" />
+			<input type="date" name="userChkOut" id="userChkOut" />
 			체크아웃
 		</label><br />
 		<label for="numGuests">인원수</label>
@@ -56,13 +68,14 @@ outline:none;
 		<input type="text" name="price" id="priceMax" placeholder="최고가"/>
 		<br />	
 		<label for="">숙박 유형</label><br />	
-		<input type="checkbox" name="room_name" id="room_name" />전체
-		<input type="checkbox" name="room_name" id="room_name" />호텔
-		<input type="checkbox" name="room_name" id="room_name" />모텔
-		<input type="checkbox" name="room_name" id="room_name" />펜션/풀빌라
-		<input type="checkbox" name="room_name" id="room_name" />글램핑/캠핑
-		<input type="checkbox" name="room_name" id="room_name" />게하/한옥
-		<input type="checkbox" name="room_name" id="room_name" />리조트/콘도
+		<input type="checkbox" name="onAccoCheckAll" id="onAccoCheckAll" value="" onchange="changeCheckBoxes(this,[isHotel,isMotel,isPension,isGlamping,isGuestHouse,isResort]);"/>전체
+		<input type="checkbox" name="isHotel" id="isHotel" value="" onchange="main.onHotelChanged(this);"/>호텔
+		<input type="checkbox" name="isMotel" id="isMotel" value="" onchange="main.onMotelChanged(this);"/>모텔
+		<input type="checkbox" name="isPension" id="isPension" value="" onchange="main.onPensionChanged(this);"/>펜션/풀빌라
+		<input type="checkbox" name="isGlamping" id="isGlamping" value="" onchange="main.onGlampingChanged(this);"/>글램핑/캠핑
+		<input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);"/>게하/한옥
+		<input type="checkbox" name="isResort" id="isResort" value="" onchange="main.onResortChanged(this);"/>리조트/콘도
+	
 		
 	</section>
 	
