@@ -23,6 +23,7 @@
 	
 	var onJoinClicked=function(){
 		console.log("onJoinClicked()");
+		main.ajaxGetHtml("/User/frmJoin", "test1");
 	}
 	
 </script>
@@ -47,6 +48,10 @@
 		<div class="SubmitBtn">
 			<button type="button" class="loginBtn" id="login" onclick="onLoginClicked();">로그인</button>
 			<button type="button" class="joinBtn" id="join" onclick="onJoinClicked();">회원가입</button>
+		</div>
+		
+		<div id="test1">
+		
 		</div>
 	</article>
 
