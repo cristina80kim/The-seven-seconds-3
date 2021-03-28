@@ -11,9 +11,9 @@ import com.team3.prj.vo.UserVO;
 public interface UserDAO {
 	public List<UserVO> userSelectAll();
 	
-	public Long userLogin(UserVO vo);
+	public UserVO userLogin(UserVO vo);
 	/*
 	 * public UserVO login(HashMap<String, String>map);*/
-	public Long userJoin(UserVO vo);
+	public UserVO userJoin(UserVO vo);
 
 }

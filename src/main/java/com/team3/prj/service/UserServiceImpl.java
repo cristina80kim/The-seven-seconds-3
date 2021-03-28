@@ -1,6 +1,5 @@
 package com.team3.prj.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		@Override
-		public Long login(UserVO vo) {
+		public UserVO login(UserVO vo) {
 			return userDAO.userLogin(vo);
 		}
 		/*
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		 */
 		
 		@Override
-		public Long join(UserVO vo) {
+		public UserVO join(UserVO vo) {
 			return userDAO.userJoin(vo);
 		}
 		

@@ -9,11 +9,11 @@ public interface UserService {
 	
 	public List<UserVO> selectAll();
 	
-	public Long login(UserVO vo);
+	public UserVO login(UserVO vo);
 
 	/* UserVO login(HashMap<String, String> map); */
 	
-	public Long join(UserVO vo);
+	public UserVO join(UserVO vo);
 
 
 }

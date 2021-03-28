@@ -9,8 +9,8 @@
       FROM      users
   </select>
   
-  <select id="login" resultType="com.team3.prj.vo.UserVO">
-  SELECT *
+  <select id="userLogin" resultType="com.team3.prj.vo.UserVO">
+  SELECT role, name, nickname
   FROM users
   WHERE id=#{id} AND pwd=#{pwd}
   </select>

@@ -1,9 +1,6 @@
 package com.team3.prj.controller;
 
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +27,20 @@ public class UserController {
 		return lstUser;
 	}
 	
-	//http://localhost:8081/User/login
+	//http://localhost:8081/User/frmLogin
+	@GetMapping("/frmLogin")
+	public String frmLogin() {
+		System.out.println(className + ".frmLogin");
+		return "user_Login"; //user_Login.html
+	}
 	
+
+	//http://localhost:8081/User/login
 	@GetMapping("/login")
-	public @ResponseBody String login(UserVO vo) {
-		System.out.println(className + ".login");
-		return userservice.login(vo).toString();
+	public @ResponseBody UserVO login(UserVO vo) {
+		System.out.println(className + ".login()");
+		System.out.println(vo);
+		return userservice.login(vo);
 	}
 	/*
 	 * public String login(String id, String pw, HttpSession session) {
