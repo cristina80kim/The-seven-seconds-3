@@ -10,8 +10,6 @@ public interface UserService {
 	public List<UserVO> selectAll();
 	
 	public UserVO login(UserVO vo);
-
-	/* UserVO login(HashMap<String, String> map); */
 	
 	public UserVO join(UserVO vo);
 

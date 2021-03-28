@@ -12,8 +12,7 @@ public interface UserDAO {
 	public List<UserVO> userSelectAll();
 	
 	public UserVO userLogin(UserVO vo);
-	/*
-	 * public UserVO login(HashMap<String, String>map);*/
+	
 	public UserVO userJoin(UserVO vo);
 
 }
