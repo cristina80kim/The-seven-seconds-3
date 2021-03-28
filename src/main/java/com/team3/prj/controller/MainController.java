@@ -24,7 +24,7 @@ public class MainController {
 	public String mainMenu() {
         return "index";
 	}
-	
+
     // http://localhost:8081//main/selectCommonCodes
     // http://localhost:8081//main/selectCommonCodes?class1=ROOM&class2=TYPE_OF_ACCO
     // http://localhost:8081//main/selectCommonCodes?class1=ROOM&class2=TYPE_OF_ACCO&class3=resort
