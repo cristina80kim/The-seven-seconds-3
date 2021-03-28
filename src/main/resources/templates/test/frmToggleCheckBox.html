@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<!-- <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script> -->    
-<script src="js/main.js"></script>
+
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
+<script src="/js/main.js"></script>
+
 <script>
   $(function() {
     console.log(">>> $(): begin");
@@ -19,7 +21,7 @@
 <body>
 <form action="/test/toggleCheckBox" method="GET">
   이름: <input type="text" name="name" id="name"> <br />
-  <input type="checkbox" name="isPub" id="isPub" value="N" onchange="sevenSecs.onIsPubChanged(this);"/>비밀글 <br />
+  <input type="checkbox" name="isPub" id="isPub" value="N" onchange="main.onIsPubChanged(this);"/>비밀글 <br />
   <input type="submit" value="전송">
 </form>
 </body>

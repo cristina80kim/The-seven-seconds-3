@@ -1,4 +1,4 @@
-var sevenSecs = {
+var main = {
 
   //============================================================
   // 기능: checkbox인 chk가 checked이면 value를 vChecked로 그렇지 않으면 vUnchecked로 설정한다.
@@ -11,7 +11,7 @@ var sevenSecs = {
   //------------------------------------------------------------
   // 기능: checkbox인 chk가 checked이면 value를 "Y"로 그렇지 않으면 "N"으로 설정한다.
   onIsPubChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "Y", "N");
+    main.onCheckBoxChanged(chk, "Y", "N");
   },
   
   //------------------------------------------------------------
@@ -19,27 +19,27 @@ var sevenSecs = {
   //------------------------------------------------------------
   // 기능: checkbox인 chk가 checked이면 value를 "hotel"로 그렇지 않으면 ""으로 설정한다.
   onHotelChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "hotel", "");
+    main.onCheckBoxChanged(chk, "hotel", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "motel"로 그렇지 않으면 ""으로 설정한다.
   onMotelChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "motel", "");
+    main.onCheckBoxChanged(chk, "motel", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "pension"로 그렇지 않으면 ""으로 설정한다.
   onPensionChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "pension", "");
+    main.onCheckBoxChanged(chk, "pension", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "glamping"로 그렇지 않으면 ""으로 설정한다.
   onGlampingChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "glamping", "");
+    main.onCheckBoxChanged(chk, "glamping", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "guest_house"로 그렇지 않으면 ""으로 설정한다.
   onGuestHouseChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "guest_house", "");
+    main.onCheckBoxChanged(chk, "guest_house", "");
   },
   
   //------------------------------------------------------------
@@ -47,42 +47,42 @@ var sevenSecs = {
   //------------------------------------------------------------
   // 기능: checkbox인 chk가 checked이면 value를 "standard"로 그렇지 않으면 ""으로 설정한다.
   onStandardChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "standard", "");
+    main.onCheckBoxChanged(chk, "standard", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "single"로 그렇지 않으면 ""으로 설정한다.
   onSingleChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "single", "");
+    main.onCheckBoxChanged(chk, "single", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "double"로 그렇지 않으면 ""으로 설정한다.
   onDoubleChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "double", "");
+    main.onCheckBoxChanged(chk, "double", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "triple"로 그렇지 않으면 ""으로 설정한다.
   onTripleChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "triple", "");
+    main.onCheckBoxChanged(chk, "triple", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "twin"로 그렇지 않으면 ""으로 설정한다.
   onTwinChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "twin", "");
+    main.onCheckBoxChanged(chk, "twin", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "superior"로 그렇지 않으면 ""으로 설정한다.
   onSuperiorChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "superior", "");
+    main.onCheckBoxChanged(chk, "superior", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "deluxe"로 그렇지 않으면 ""으로 설정한다.
   onDeluxeChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "deluxe", "");
+    main.onCheckBoxChanged(chk, "deluxe", "");
   },
   
   // 기능: checkbox인 chk가 checked이면 value를 "suite"로 그렇지 않으면 ""으로 설정한다.
   onSuiteChanged: function(chk) {
-    sevenSecs.onCheckBoxChanged(chk, "suite", "");
+    main.onCheckBoxChanged(chk, "suite", "");
   },
   
   //============================================================
