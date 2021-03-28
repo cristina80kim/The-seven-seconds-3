@@ -8,7 +8,9 @@
       SELECT id,Rsrv_room,C_User
       FROM   rsrv
   </select>
-  
+  <delete id="MypageRsrvDelete">
+  DELETE rsrvwhere id=#{id} 
+  </delete>
   
   
 </mapper>

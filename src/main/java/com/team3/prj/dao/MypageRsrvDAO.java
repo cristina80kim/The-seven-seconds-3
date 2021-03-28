@@ -9,4 +9,6 @@ import com.team3.prj.vo.MypageRsrvVO;
 @Mapper
 public interface MypageRsrvDAO {
 	public List<MypageRsrvVO> selectAllMypage();
+	
+	public Long MypageRsrvDelete(MypageRsrvVO vo);
 }

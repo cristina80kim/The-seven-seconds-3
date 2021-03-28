@@ -18,4 +18,9 @@ public class MypageRsrvServiceImpl implements MypageRsrvService {
 	public List<MypageRsrvVO> selectAllMypage(){
 		return mypageRsrvDao.selectAllMypage();
 	}
+	//삭제
+	@Override
+	public Long delete(MypageRsrvVO vo) {
+		return mypageRsrvDao.MypageRsrvDelete(vo);
+	}
 }
