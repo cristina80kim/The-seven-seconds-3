@@ -46,10 +46,10 @@
 			info = #{info},
 			pic1_org = #{pic1Org},
 			pic1_uuid = #{pic1Uuid},
-			pic2_org = #{pic1Org},
-			pic2_uuid = #{pic1Uuid},
-			pic3_org = #{pic1Org},
-			pic3_uuid = #{pic1Uuid}
+			pic2_org = #{pic2Org},
+			pic2_uuid = #{pic2Uuid},
+			pic3_org = #{pic3Org},
+			pic3_uuid = #{pic3Uuid}
 		WHERE id=#{id}
 	</update>
 	

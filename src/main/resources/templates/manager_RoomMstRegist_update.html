@@ -58,8 +58,8 @@
 </script>
 <div id="wrap">
 	<section>
-		<form method="post" action="/roomMst/insert" id="RoomMstRegistFrm" name="RoomMstRegistFrm" enctype="multipart/form-data">
-			<h1>숙소 등록</h1>
+		<form method="post" action="/roomMst/update" id="RoomMstRegistFrm" name="RoomMstRegistFrm" enctype="multipart/form-data">
+			<h1>숙소 수정</h1>
 			<hr />
 			
 			
@@ -101,7 +101,8 @@
 			<hr />
 			<input type="hidden" name="cUser" value="jho">
 			<input type="hidden" name="region" value="">
-			<input type="submit" value="등록" />
+			<input type="hidden" name="id" value="1000000000" />
+			<input type="submit" value="수정" />
 			
 		</form>
 	</section>
