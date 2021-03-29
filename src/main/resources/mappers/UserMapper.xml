@@ -19,12 +19,12 @@
 		INSERT INTO users
 		(
 		id, pwd, name, nickname,
-		tel, email, gen, c_user
+		tel, email, gen, role, c_user
 		)
 		VALUES
 		(
 		#{id}, #{pwd}, #{name}, #{nickname},
-		#{tel}, #{email}, #{gen}, #{id}
+		#{tel}, #{email}, #{gen}, 'U', #{id}
 		)
 	</insert>
 

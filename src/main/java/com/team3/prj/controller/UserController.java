@@ -49,10 +49,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/join")
-	public @ResponseBody UserVO join(UserVO vo) {
+	public @ResponseBody String join(UserVO vo) {
 		System.out.println(className + ".join()");
 		System.out.println(vo);
-		return userservice.join(vo);
+		return userservice.join(vo).toString();
 	}
 	
 }

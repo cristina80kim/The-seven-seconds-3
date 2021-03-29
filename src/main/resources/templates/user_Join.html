@@ -16,8 +16,9 @@
 		var nickname=$("#nickname").val();
 		var tel=$("#tel").val();
 		var email=$("#email").val();
-		var gen=$("#gen").val();
-		var loc = "/User/join?id=" + id + "&pwd=" + pwd + "&name=" + name + "&nickname=" + nickname + "&tel=" + tel + "&email=" + email + "&gen=" + gen;
+		var gen=$('input[name="gen"]:checked').val();
+		var role=$('input[name="role"]:checked').val();
+		var loc = "/User/join?id=" + id + "&pwd=" + pwd + "&name=" + name + "&nickname=" + nickname + "&tel=" + tel + "&email=" + email + "&gen=" + gen + "&role=" + role;
 		console.log(loc);
 		//id=, pwd=, name=성승현, nickname=ㄴ닉, tel=12341234, email=sshyun90@naver.com, gen=undefined, role=null, point=null, cUser=null
 		main.ajaxGetJson(loc, userJoin.joinCallback);
@@ -51,12 +52,8 @@
 		 
 		 <br />
 		 <label>구분</label>
-		 <label for="U">
-		 	<input type="radio" name="U" id="U" />개인
-	 	</label>
-	 	<label for="M">
-	 		<input type="radio" name="M" id="M" />사장님
-		</label>
+		 	<label for="role"><input type="radio" name="role" value="U" />개인</label>
+	 		<label for="role"><input type="radio" name="role" value="M" />사장</label>
 		
 		<br />
 		 <label for="id">아이디</label>

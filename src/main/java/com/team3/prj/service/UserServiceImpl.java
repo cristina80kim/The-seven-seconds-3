@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		@Override
-		public UserVO join(UserVO vo) {
+		public int join(UserVO vo) {
 			return userDAO.userJoin(vo);
 		}
 		

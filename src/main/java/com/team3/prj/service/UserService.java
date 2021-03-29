@@ -11,7 +11,7 @@ public interface UserService {
 	
 	public UserVO login(UserVO vo);
 	
-	public UserVO join(UserVO vo);
+	public int join(UserVO vo);
 
 
 }
