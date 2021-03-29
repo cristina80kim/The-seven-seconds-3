@@ -29,6 +29,19 @@ var userRoomList = {
         }
         console.log("changeCheckBoxes(): 2"); 
     },
+    search: function(){
+        console.log("search(): 1");
+        var loc = "/staylist/userRoomList";
+        var param = "";
+        
+        main.ajaxGetJson2(loc,param,callBackSearchResult);
+    },
+   
+    callBackSearchResult: function(json){
+    	console.log("callBackSearchResult(): 1");
+    	console.log(json);
+    	
+    },
     
     log: function(msg) {
         console.log(">>> " + msg);
@@ -67,7 +80,7 @@ var userRoomList = {
 		    <option value="11">11</option>
 		</select>
 		<br />
-		<input type="button" value="검색" onclick=""/>
+		<input type="button" value="검색" onclick="userRoomList.search();"/>
 	</section>
 	<hr />
 	
