@@ -4,13 +4,21 @@
 
 <mapper namespace="com.team3.prj.dao.StayListDAO">
 	<select id="StayListAll" resultType="com.team3.prj.vo.StayListVO">
-	SELECT m.region, m.title, m.addr,
+	</select>
+
+	
+<!--  	AND    m.yyyyyy = d.yyyyyy -->
+<!--     AND    m.xxxx   = d.xxxx -->
+
+	<select id ="search" resultType="com.team3.prj.vo.StayListSearchVO">
+		SELECT m.region, m.title, m.addr,
 		   d.weekday_price, d.weekend_price
 	FROM(
 		SELECT 
 		FROM room_mst
 		<where>
-		(<if test='isHotel != null and !"".equals(isHotel)'>
+		(
+		<if test='isHotel != null and !"".equals(isHotel)'>
 		OR type_of_acco = #{isHotel} <!-- 공통코드 class3 참조 -->
         </if> 
 		<if test='isMotel != null and !"".equals(isMotel)'>
@@ -27,7 +35,8 @@
         </if> 
 		<if test='isResort != null and !"".equals(isResort)'>
 		OR type_of_acco = #{isResort} <!-- 공통코드 class3 참조 -->
-        </if>)
+        </if>
+        )
       
         <if test='keyword!= null and !"".equals(keyword)'>
 		AND( region LIKE '%'|| #{keyword} ||'%'
@@ -38,16 +47,6 @@
        
         </where>
 	)
-	INNER  JOIN room_dtl d
-	ON     m.id     = d.mst_id
-	
-<!--  	AND    m.yyyyyy = d.yyyyyy -->
-<!--     AND    m.xxxx   = d.xxxx -->
-
-	</select>
-	<select id ="search" resultType="com.team3.prj.vo.StayListSearchVO">
-	SELECT
-	FROM (SELECT * FROM room_mst WHERE...)romm_mst m
 	INNER JOIN(
 		SELECT * 
 		FROM room_dtl
@@ -59,13 +58,5 @@
 	
 	
 	
-	
-	<!-- <if test='class1 != null and !"".equals(class1)'>
-         AND class1 = #{class1}
-         </if> 
-    -->
-	<!-- (@인원수 = '' OR B.NUM_OF_GUESTS = @인원수)
-	AND ((@최저가격 = '' OR (B.WEEKDAY_PRICE <![CDATA[ > ]]> @최저가격 AND B.WEEKDAY_PRICE <![CDATA[ > ]]> @최저가격)
-	AND ((@최고가격 = '' OR (B.WEEKEND_PRICE <![CDATA[ < ]]> @최고가격 AND B.WEEKEND_PRICE <![CDATA[ < ]]> @최고가격)  -->
 </select>
 </mapper>
