@@ -17,13 +17,13 @@ public class UserController {
 	private final String className = "UserController";
 	
 	@Autowired
-	UserService userservice;
+	UserService userService;
 	
 	//http://localhost:8081/User/userAll
 	@GetMapping("/userAll")
 	public @ResponseBody List<UserVO> selectAll() {
 		System.out.println("selectAll()");
-		List<UserVO> lstUser = userservice.selectAll();
+		List<UserVO> lstUser = userService.selectAll();
 		return lstUser;
 	}
 	
@@ -38,7 +38,7 @@ public class UserController {
 	public @ResponseBody UserVO login(UserVO vo) {
 		System.out.println(className + ".login()");
 		System.out.println(vo);
-		return userservice.login(vo);
+		return userService.login(vo);
 	}
 	
 	//http://localhost:8081/User/frmJoin
@@ -52,7 +52,7 @@ public class UserController {
 	public @ResponseBody String join(UserVO vo) {
 		System.out.println(className + ".join()");
 		System.out.println(vo);
-		return userservice.join(vo).toString();
+		return String.valueOf(userService.join(vo));
 	}
 	
 }
