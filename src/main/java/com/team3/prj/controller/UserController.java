@@ -41,6 +41,7 @@ public class UserController {
 		return userservice.login(vo);
 	}
 	
+	
 	//http://localhost:8081/User/frmJoin
 	@GetMapping("/frmJoin")
 	public String frmJoin() {
