@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+input:focus{
+outline:none;
+}
+
+
+
+input[type=text]{
+border:none;
+}
+
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+	color:#785aef;
+}
+
+section>h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+table {
+	table-layout: fixed;
+	color:#785aef;
+	width: 700px;
+	width: 100%;
+	border-collapse: collapse;
+	font-size:1.0em;
+	
+}
+
+
+th td {
+	white-space: nowrap;
+	border: 1px solid #444444;
+	padding: 10px;
+}
+
+/*/////////////////////////////////////////////////// */
+
+
+#FAQSrchFrm {
+	color:#785aef;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#FAQSrchFrm label{
+	font-size:1.0em;
+	display:inline-block;
+	line-height:5px;
+}
+
+
+#FAQSrchFrm input{
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	
+}
+
+#FAQSrchFrm input[type=text]{
+	width:200px;
+	padding:5px;
+	font-size:0.7em;
+	vertical-align :middle;
+}
+
+
+/* //////////////////////// */
+
+#faq_cateth{
+	width: 30%;
+	text-align: left;
+	padding-left:20px;
+}
+#titleth{
+	width:300px;
+	width: 30%;
+	text-align: center;
+}
+#deleteBtnth{
+	width: 30%;
+	text-align: right;
+	padding-right:20px;
+}
+
+#faq_cate{
+	width: 30%;
+	text-align: left;
+	padding-left:20px;
+}
+
+#title {
+	width: 30%;
+	text-align: center;
+	width:200px;
+}
+
+#deleteBtn {
+	width: 30%;
+	text-align: right;
+	padding-right:20px;
+	margin-left:150px;
+}
+
+
+#writeBtn, #FAQSrchBtn {
+	width: 100px;
+	height: 30px;
+	font-size:0.8em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	font-weight:bolder;
+}
+
+#writeBtn {
+	margin-right:70px;
+}
+#FAQSrchBtn{
+	margin-left:70px;
+}
+
+#writeBtn:hover, #FAQSrchBtn:hover{
+	cursor:pointer;
+	color: white;
+	font-weight:bolder;
+	border:2px solid #9881f3;
+    font-size:0.8em;
+	background-color:#9881f3;	
+}
+
+#FAQSrchFrm span {
+	vertical-align:middle;
+	margin-top:-20px;
+	padding-right:5px;
+}
+
+
+#deleteBtn {
+	border:none;
+	
+}
+
+
+#deleteBtn:hover {
+	cursor:pointer;
+	color: white;
+	background-color:#9881f3;	
+	opacity:0.5;
+}
+
+
+#paging{
+	margin: 0 auto;
+	text-align: center;
+
+	padding-top:10px;
+}

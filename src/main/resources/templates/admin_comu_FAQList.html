@@ -3,41 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>350. admin_커뮤니티관리_FAQ목록</title>
-<style>
-input:focus{
-outline:none;
-}
-
-input[type=text]#FAQSrch{
-border:1px solid black;
-}
-
-input[type=text]{
-border:none;}
-</style>
+<link rel="stylesheet" href="css/admin_comu_FAQList.css" />
 </head>
 <body>
 
 <div id="wrap">
+	
 	<section>
 		
-		<form action="post" id="FAQSrchFrm" name="FAQSrchFrm">
-			<h1>공지사항 관리</h1>
-			<hr />
-			<input type="button" value="글 쓰기" name="writeBtn" id="writeBtn" />
-			<label for="FAQSrch">통합 검색
-				<input type="text" name="FAQSrch" id="FAQSrch" />
-			</label>
-				<input type="button" value="조회하기" name="FAQSrchBtn" id="FAQSrchBtn" />
-		</form>
+			<h1>FAQ 관리</h1>
+			<form action="post" id="FAQSrchFrm" name="FAQSrchFrm">
+				<hr />
+				<input type="button" value="글 쓰기" name="writeBtn" id="writeBtn" />
+				<label for="FAQSrch">
+					<span>통합 검색</span>
+					<input type="text" name="FAQSrch" id="FAQSrch" />
+				</label>
+					<input type="button" value="조회하기" name="FAQSrchBtn" id="FAQSrchBtn" />
+			</form>
 		
 		<hr />
 		
 		      <table>
 		        <tr>
-		          <th>카테고리</th>
-		          <th>제목</th>
-		          <th>삭제</th>
+		          <th id="faq_cateth">카테고리</th>
+		          <th id="titleth">제목</th>
+		          <th id="deleteBtnth">삭제</th>
 		        </tr>
 		        <tr>
 		          <td colspan="3">
@@ -47,7 +38,7 @@ border:none;}
 		        <tr>
 		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
 		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="3">
@@ -57,7 +48,7 @@ border:none;}
 		        <tr>
 		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
 		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="3">
@@ -67,7 +58,7 @@ border:none;}
 		       <tr>
 		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
 		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="3">
@@ -77,7 +68,7 @@ border:none;}
 		        <tr>
 		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
 		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="3">
