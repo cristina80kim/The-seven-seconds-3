@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.team3.prj.dao.UserDAO"> 
+<mapper namespace="com.team3.prj.dao.UserDAO">
 
-  <select id="selectAll" resultType="com.team3.prj.vo.UserVO">
-      SELECT    *
-      FROM      users
-  </select>
-  
-  <select id="userLogin" resultType="com.team3.prj.vo.UserVO">
-  SELECT role, name, nickname
-  FROM users
-  WHERE id=#{id} AND pwd=#{pwd}
-  </select>
-  
-  <insert id="userJoin">
-  INSERT INTO users
-  (
-  id, pwd, name, nickname,
-  tel, email, gen, c_user
-  )
-  VALUES
-  (
-  #{id}, #{pwd}, #{name}, #{nickname},
-  #{tel}, #{email}, #{gen}, #{id}
-  )
-  </insert>
-  
+	<select id="selectAll" resultType="com.team3.prj.vo.UserVO">
+		SELECT *
+		FROM users
+	</select>
+
+	<select id="userLogin" resultType="com.team3.prj.vo.UserVO">
+		SELECT role, name, nickname
+		FROM users
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+
+	<insert id="userJoin">
+		INSERT INTO users
+		(
+		id, pwd, name, nickname,
+		tel, email, gen, c_user
+		)
+		VALUES
+		(
+		#{id}, #{pwd}, #{name}, #{nickname},
+		#{tel}, #{email}, #{gen}, #{id}
+		)
+	</insert>
+
 </mapper>
