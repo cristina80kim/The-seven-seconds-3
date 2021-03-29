@@ -3,18 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>340. admin_커뮤니티관리_공지사항목록</title>
-<style>
-input:focus{
-outline:none;
-}
-
-input[type=text]#notiSrch{
-border:1px solid black;
-}
-
-input[type=text]{
-border:none;}
-</style>
+<link rel="stylesheet" href="css/admin_comu_NotiList.css" />
 </head>
 <body>
 
@@ -35,10 +24,10 @@ border:none;}
 		
 		      <table>
 		        <tr>
-		          <th>번호</th>
-		          <th>제목</th>
-		          <th>일시</th>
-		          <th>삭제</th>
+		          <th id="noth">번호</th>
+		          <th id="titleth">제목</th>
+		          <th id="c_dateth">일시</th>
+		          <th id="deleteBtnth">삭제</th>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -49,7 +38,7 @@ border:none;}
 		          <td><input type="text" value="01" name="no" id="no" /></td>
 		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
 		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -60,7 +49,7 @@ border:none;}
 		          <td><input type="text" value="01" name="no" id="no" /></td>
 		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
 		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -71,7 +60,7 @@ border:none;}
 		          <td><input type="text" value="01" name="no" id="no" /></td>
 		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
 		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -82,7 +71,7 @@ border:none;}
 		          <td><input type="text" value="01" name="no" id="no" /></td>
 		          <td><input type="text" value="세븐 세컨즈 포인트 적립 정책 변경 안내" name="title" id="title" /></td>
 		          <td><input type="text" value="21.03.16" name="c_date" id="c_date" /></td>
-		          <td><input type="button" value="삭제"/></td>
+		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
