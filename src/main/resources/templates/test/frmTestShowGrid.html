@@ -34,6 +34,33 @@
     console.log(">>> showResult(): 1");
     $("#ajaxResult").html("<h1>" + jsonData + "</h1>");
     
+    var result = '';
+    result +='<table border="1">'
+    result += "<tr>" 
+           + "<th>Nickname</th>" 
+           + "<th>번호</th>" 
+           + "<th>공개여부</th>"
+           + "<th>제목</th>"
+           + "<th>질문</th>"
+           + "<th>답변</th>"
+           + "<th>작성자</th>"
+           + "</tr>";
+    
+    $.each(jsonData, function(index, item) {
+        result += "<tr>"
+               + "<td>" + item["nickname"] +"</td>"
+               + "<td>" + item["no"] +"</td>"
+               + "<td>" + item["cateId"] +"</td>"
+               + "<td>" + item["isPub"] +"</td>"
+               + "<td>" + item["title"] +"</td>"
+               + "<td>" + item["q"] +"</td>"
+               + "<td>" + item["a"] +"</td>"
+               + "<td>" + item["cuser"] +"</td>"
+               + "</tr>";
+    })
+    result += "</table>";
+    $("#ajaxResult2").html("<h1>" + result + "</h1>");
+    
     /*
     var list = $.parseJSON(jsonData);  // VM23:1 Uncaught SyntaxError: Unexpected token o in JSON at position 1
     var len = list.length;
@@ -92,10 +119,13 @@ var data1 = [
 
 </head>
 <body>
-  <h1>ajax에서 받아온 결과</h1>
+  <h3>ajax에서 받아온 결과</h3>
   <div id="ajaxResult"></div>
-    
-  <hr><br />
+  <hr>
+  <h3>ajax에서 받아온 결과 테이블로 출력</h3>
+  <div id="ajaxResult2"></div>
+  <hr>
+  
   
   <h1>Q & A 목록</h1>
   
