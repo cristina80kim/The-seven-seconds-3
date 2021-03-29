@@ -1,6 +1,5 @@
 package com.team3.prj.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -13,6 +12,6 @@ public interface UserDAO {
 	
 	public UserVO userLogin(UserVO vo);
 	
-	public UserVO userJoin(UserVO vo);
+	public int userJoin(UserVO vo);
 
 }
