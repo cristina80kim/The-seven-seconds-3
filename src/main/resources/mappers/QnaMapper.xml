@@ -9,8 +9,28 @@
 		FROM qna
 	</select>
 
+	<select id="qnaSearch" resultType="com.team3.prj.vo.QnaVO">
+		SELECT *
+		FROM qna
+		<where>
+		<if test='cateIdValue!= null and !"".equals(cateIdValue)'>
+		AND	cate_id = #{cateIdValue}
+		</if>
+		<if test='keyWord!= null and !"".equals(keyWord)'>
+			<if test='searchType == "title"'>
+				AND title LIKE '%'||#{keyWord}||'%'
+				</if>
+			<if test='searchType == "nickname"'>
+				AND nickname LIKE '%'||#{keyWord}||'%'
+				</if>
+			</if>
+		</where>
+		ORDER BY id
+	</select>
+
 	<insert id="qnaInsert">
-		<selectKey keyProperty="id" resultType="Long" order="BEFORE"> <!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
+		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
+		 <!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
 			SELECT seq_qna.NEXTVAL FROM DUAL
 		</selectKey>
 
