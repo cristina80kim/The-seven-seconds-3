@@ -25,12 +25,20 @@ public class PaymentController {
 	}
 	
 	
-	//수정
+	
 	//http://localhost:8081/userRoomPay
 	@GetMapping("/userRoomPay")
 	public String userRoomPay() {
 	    return "user_RoomPay";
 	}
+	
+	//결제 취소시 메인으로 돌아옴
+	//http://localhost:8081/userMain
+	@GetMapping("/userMain")
+	public String userMain() {
+	    return "user_Main";
+	}
+	
 	
 	
 }

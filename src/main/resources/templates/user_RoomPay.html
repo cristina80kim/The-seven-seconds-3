@@ -16,16 +16,23 @@
 		<hr />
 		<label for="">내역</label><br />
 		<input type="text"  value="강남 xxx 호텔" readonly name="" id="title" /><br />
-		<input type="text" value="스탠다드 트윈" readonly name="" id="" /><br />
+		<input type="text" value="스탠다드 트윈" readonly name="" id="roomname" /><br />
 		
 		<label for="">체크인</label>
-		<input type="datetime-local" name="" id="" />
+		<input type="date" name="" id="checkin" />
 		
 		<label for="">체크아웃</label>
-		<input type="datetime-local" name="" id="" />
+		<input type="date" name="" id="checkout" />
 		
 		<label for="">인원수</label>
-		<input type="text" name="" id="" value="2명" />
+		<input type="text" readonly name=""  id="numOfGuests" value="2명" />
+		
+		<label for="">이름</label>
+		<input type="text" name="" id="userName" value="" />
+		
+		<h4>정확한 이메일을 입력해주세요, 예약하신 정보를 보내드립니다.</h4>
+		<label for="">이메일</label>
+		<input type="email" name="" id="userEmail" value="" required/>
 		
 		<hr >
 		
@@ -33,9 +40,7 @@
 		<input type="text" name="" id="" value="100,000" />
 		-
 		<label for="">총 할인 금액</label>
-		<input type="text" name=""  value="100000" />
-		
-		= 총
+		<input type="text" name=""  value="100000" /> = 총
 		
 		<input type="text" name="totalPrice" id="totalPrice" value="100000" /><span>원</span>
 		<hr />
@@ -72,17 +77,28 @@
         IMP.init('imp44221020');
         var money = $('#totalPrice').val();
         var title = $('#title').val();
+        var roomname = $('#roomname').val();
+        var checkin = $('#checkin').val();
+        var checkout = $('#checkout').val();
+        var numOfGuests = $('#numOfGuests').val();
+        var userEmail = $('#userEmail').val();
+        var userName = $('#userName').val();
         console.log(money);
         console.log(title);
+        console.log(roomname);
+        console.log(checkin);
+        console.log(checkout);
+        console.log(numOfGuests);
+        console.log(userEmail);
+        console.log(userName);
 
         IMP.request_pay({
             pg: 'inicis',
             merchant_uid: 'merchant_' + new Date().getTime(),
-
             name: title,
             amount: money,
-            buyer_email: 'iamport@siot.do',
-            buyer_name: '구매자이름',
+            buyer_email: userEmail,
+            buyer_name: userName,
             buyer_tel: '010-1234-5678',
             buyer_addr: '인천광역시 부평구',
             buyer_postcode: '123-456'
@@ -96,9 +112,14 @@
                 msg += '카드 승인번호 : ' + rsp.apply_num;
                 $.ajax({
                     type: "GET", 
-                    url: "", //충전 금액값을 보낼 url 설정
+                    url: "", //완료된 값을 보낼 url 설정
+                    dataType: "json", 
+                    contentType: "application/json; charset=utf-8",
                     data: {
-                        "amount" : money
+                    	"name" : title,
+                        "amount" : money,
+                        "buyer_email" : userEmail,
+                        "buyer_name" : userName
                     },
                 });
             } else {
@@ -106,7 +127,7 @@
                 msg += '에러내용 : ' + rsp.error_msg;
             }
             alert(msg);
-            document.location.href=""; //alert창 확인 후 이동할 url 설정
+            document.location.href="userMain"; //alert창 확인 후 이동할 url 설정
         });
     });
 </script>
