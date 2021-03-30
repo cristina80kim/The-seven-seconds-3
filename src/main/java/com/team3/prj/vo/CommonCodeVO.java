@@ -13,5 +13,12 @@ public class CommonCodeVO {
     String dtl;       // 상세 설명
     String extInfo;   // 추가정보
     String cUser;     // 생성자 ID.
+    
+    public static CommonCodeVO createCommonCode(String class1, String class2) {
+        CommonCodeVO result = new CommonCodeVO();
+        result.class1 = class1;
+        result.class2 = class2;
+        return result;
+    }
 
 }
