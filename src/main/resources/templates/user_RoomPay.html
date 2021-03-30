@@ -42,7 +42,7 @@
 		<label for="">총 할인 금액</label>
 		<input type="text" name=""  value="100000" /> = 총
 		
-		<input type="text" name="totalPrice" id="totalPrice" value="100000" /><span>원</span>
+		<input type="text" name="totalPrice" id="totalPrice" value="100" /><span>원</span>
 		<hr />
 		
 		<label for="">규정 및 약관 동의</label>
@@ -75,7 +75,7 @@
         // getter
         var IMP = window.IMP;
         IMP.init('imp44221020');
-        var money = $('#totalPrice').val();
+        var totalPrice = $('#totalPrice').val();
         var title = $('#title').val();
         var roomname = $('#roomname').val();
         var checkin = $('#checkin').val();
@@ -83,7 +83,7 @@
         var numOfGuests = $('#numOfGuests').val();
         var userEmail = $('#userEmail').val();
         var userName = $('#userName').val();
-        console.log(money);
+        console.log(totalPrice);
         console.log(title);
         console.log(roomname);
         console.log(checkin);
@@ -96,7 +96,7 @@
             pg: 'inicis',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: title,
-            amount: money,
+            amount: totalPrice,
             buyer_email: userEmail,
             buyer_name: userName,
             buyer_tel: '010-1234-5678',
@@ -105,19 +105,17 @@
         }, function (rsp) {
             console.log(rsp);
             if (rsp.success) {
-                var msg = '결제가 완료되었습니다.';
-                msg += '고유ID : ' + rsp.imp_uid;
-                msg += '상점 거래ID : ' + rsp.merchant_uid;
+                var msg = '결제가 완료되었습니다.';              
                 msg += '결제 금액 : ' + rsp.paid_amount;
                 msg += '카드 승인번호 : ' + rsp.apply_num;
                 $.ajax({
-                    type: "GET", 
-                    url: "", //완료된 값을 보낼 url 설정
+                    type: "POST", 
+                    url: "userRoomPay", //완료된 값을 보낼 url 설정
                     dataType: "json", 
                     contentType: "application/json; charset=utf-8",
                     data: {
                     	"name" : title,
-                        "amount" : money,
+                        "amount" : totalPrice,
                         "buyer_email" : userEmail,
                         "buyer_name" : userName
                     },
