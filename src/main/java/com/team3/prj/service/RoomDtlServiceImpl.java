@@ -26,4 +26,14 @@ public class RoomDtlServiceImpl implements RoomDtlService {
 		return dao.roomDtlInsert(vo);
 	}
 
+	@Override
+	public Long update(RoomDtlVO vo) {
+		return dao.roomDtlUpdate(vo);
+	}
+
+	@Override
+	public Long delete(RoomDtlVO vo) {
+		return dao.roomDtlDelete(vo);
+	}
+
 }

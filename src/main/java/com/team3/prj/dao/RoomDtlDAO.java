@@ -11,4 +11,8 @@ public interface RoomDtlDAO {
 	public List<RoomDtlVO> roomDtlSelectAll();
 
 	public Long roomDtlInsert(RoomDtlVO vo);
+
+	public Long roomDtlUpdate(RoomDtlVO vo);
+
+	public Long roomDtlDelete(RoomDtlVO vo);
 }

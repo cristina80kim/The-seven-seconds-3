@@ -105,6 +105,12 @@ public class RoomMstController {
 	}
 	
 	//http://localhost:8081/roomMst/manager_RoomMstRegist_update
+	
+	@GetMapping("/manager_RoomMstRegist_update")
+	public String manager_RoomMstRegist_update() {
+		return "manager_RoomMstRegist_update";
+	}
+	
 	@PostMapping(value = "/update")
 	public @ResponseBody String update(RoomMstVO vo, @RequestParam("files") List<MultipartFile> files)
 			throws IllegalStateException, IOException {

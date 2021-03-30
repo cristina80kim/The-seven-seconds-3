@@ -53,7 +53,8 @@
 			pic2_org = #{pic2Org},
 			pic2_uuid = #{pic2Uuid},
 			pic3_org = #{pic3Org},
-			pic3_uuid = #{pic3Uuid}
+			pic3_uuid = #{pic3Uuid},
+			type_of_acco = #{typeOfAcco}
 		WHERE id=#{id}
 	</update>
 	

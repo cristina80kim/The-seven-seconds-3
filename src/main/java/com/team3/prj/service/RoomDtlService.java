@@ -9,4 +9,9 @@ public interface RoomDtlService {
 	public List<RoomDtlVO> selectAll();
 
 	public Long insert(RoomDtlVO vo);
+
+	public Long update(RoomDtlVO vo);
+	
+	public Long delete(RoomDtlVO vo);
+	
 }

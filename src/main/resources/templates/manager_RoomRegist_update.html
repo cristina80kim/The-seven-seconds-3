@@ -10,7 +10,7 @@
 
 	<section>
 		<form method="post" action="/roomDtl/update" id="RoomMstRegistFrm" name="RoomMstRegistFrm" enctype="multipart/form-data">
-		<h1>룸 등록</h1>
+		<h1>룸 수정</h1>
 		<hr />
 		<label for="roomName">룸명</label>
 		<input type="text" name="roomName" id="roomName" />
@@ -37,9 +37,10 @@
 		<input type="file" name="files" id="files"  multiple/>
 		
 		<hr />
-		<input type="hidden" name="mstId" id="mstId" value="1000000000" />
+		<input type="hidden" name="id" id="id" value="1000000005" />
+		<input type="hidden" name="mstId" id="mstId" value="1000000000" />		
 		<input type="hidden" name="cUser" id="cUser" value="hyunwoong" />
-		<input type="hidden" name="typeOfRoom" id="typeOfRoom" value="스텐다드" />
+		<input type="hidden" name="typeOfRoom" id="typeOfRoom" value="디럭스" />
 		<input type="submit" value="수정" />
 		</form>
 	
