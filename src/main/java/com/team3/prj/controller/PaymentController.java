@@ -23,4 +23,14 @@ public class PaymentController {
 		List<PaymentVO> lstPayment = paymentService.selectAllPayment();
 				return lstPayment;
 	}
+	
+	
+	//수정
+	//http://localhost:8081/userRoomPay
+	@GetMapping("/userRoomPay")
+	public String userRoomPay() {
+	    return "user_RoomPay";
+	}
+	
+	
 }
