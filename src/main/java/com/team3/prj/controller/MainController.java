@@ -52,7 +52,7 @@ public class MainController {
     }
     
     // 기능: 질문유형(Q&A, FAQ) 유형 공통코드 읽기
-    // http://localhost:8081//main/getQnaCommonCode
+    // http://localhost:8081//main/getQnaCommonCode 
     @GetMapping("/main/getQnaCommonCode")
     public @ResponseBody List<CommonCodeVO> getQnaCommonCode() {
         System.out.println(className + ".getQnaCommonCode()");
