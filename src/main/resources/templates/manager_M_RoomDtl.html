@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>222. manager_룸수정</title>
+<link rel="stylesheet" href="css/manager_M_RoomDtl.css" />
 </head>
 <body>
 	
 	<div id="wrap">
 		<section>
 			
+			<h1>룸 수정</h1>
 			<form action="post" id="roomDtlFrm" name="roomDtlFrm">
-				<h1>룸 수정</h1>
 				<hr />
 				<label for="room_name">룸명<input type="text" name="room_name" id="room_name" /></label><br />
 				<label for="num_of_guests">인원수
@@ -23,7 +24,9 @@
 				<label for="weekend_price">주말/공휴일<input type="text" name="weekend_price" id="weekend_price" />원</label><br />
 				<label for="pic">사진<input type="file" name="pic" id="pic" multiple/></label><br />
 				<hr />
-				<input type="button" value="수정" />
+				<div id="roomDtlBtn_">
+					<input type="button" value="수정" id="roomDtlReBtn" />
+				</div>
 			</form>
 		
 		</section>
