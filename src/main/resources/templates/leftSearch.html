@@ -54,10 +54,18 @@ var leftSearch = {
     },
     search: function(){
         console.log("search(): 1");
-        var loc = "/staylist/leftSearch";
-        var param = "";
+        console.log($('input:checkbox[id="isHotel"]').val());
+        var loc = "/staylist/userRoomList";
+        var param = {
+        		isHotel:$('input:checkbox[id="isHotel"]').val(),
+        		isMotel:$('input:checkbox[id="isMotel"]').val(),
+        		isPension:$('input:checkbox[id="isPension"]').val(),
+        		isGlamping:$('input:checkbox[id="isGlamping"]').val(),
+        		isGuestHouse:$('input:checkbox[id="isGuestHouse"]').val(),
+        		isResort:$('input:checkbox[id="isResort"]').val()
+        };
         
-        main.ajaxGetJson2(loc,param,callBackSearchResult);
+        main.ajaxPostJson(loc,param,leftSearch.callBackSearchResult);
     },
    
     callBackSearchResult: function(json){
