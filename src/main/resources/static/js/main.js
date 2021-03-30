@@ -120,8 +120,8 @@ var main = {
 
     $.ajax({ 
         type : "GET", 
-        dataType : "html", 
         url : loc, 
+        dataType : "html", 
         success : function(msg) {
             console.log(msg); 
             $("#" + componentName).html(msg); 
@@ -132,7 +132,7 @@ var main = {
   },
 
   //============================================================
-  // 기능: ajax 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
+  // 기능: ajax GET 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
   //============================================================
   ajaxGetJson: function(loc, callbackFunc) {
      // window.open(loc);
@@ -141,9 +141,9 @@ var main = {
     console.log(">>> ajaxGetJson(): " + loc);
       
      $.ajax({ 
-      type : "GET", 
+      type : "GET",
+      url : loc,
       dataType : "json", 
-      url : loc, 
       success : function(jsonParam) {
         console.log(">>> ajaxGetJson(): 2");
         console.log(jsonParam);
@@ -158,6 +158,46 @@ var main = {
      }); 
   },
 
+  //============================================================
+  // 기능: ajax POST 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
+  //============================================================
+  ajaxPostJson: function(loc, param, callbackSuccess, callbackFail) {
+     // window.open(loc);
+     // window.location.href = loc; 
+    console.log(">>> ajaxPostJson(): 1---");
+    console.log(">>> ajaxPostJson(): loc=" + loc + ", param="+ param);
+      
+    $.ajax({ 
+      type : "POST",
+      url : loc,
+      dataType : "json", 
+      data : JSON.stringify(param),   // (X) encodeURIComponent(JSON.stringify(param)), 
+      contentType: "application/json; charset=UTF-8",
+      success : function(jsonParam) {
+        console.log(">>> ajaxPostJson(): success 1");
+        console.log(jsonParam);
+        
+        if(main.isNotEmpty(callbackSuccess)) {
+          console.log(">>> ajaxPostJson(): success 2");
+          callbackSuccess(jsonParam);
+        }
+        
+        console.log(">>> ajaxPostJson(): success 3");
+      },
+//       fial: function(jsonParam) {
+//        console.log(">>> ajaxPostJson(): fail 1");
+//        console.log(jsonParam);
+//        
+//        if(main.isNotEmpty(callbackFail)) {
+//          console.log(">>> ajaxGetJson(): fail 2");
+//          callbackFail(jsonParam);
+//        }
+//        
+//        console.log(">>> ajaxPostJson(): fail 3");
+//       },
+    }); 
+  },
+  
   //============================================================
   // 기능: jㅂGrid에 jsonParam을 출력한다.
   //============================================================
