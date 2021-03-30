@@ -198,6 +198,25 @@ var main = {
     }); 
   },
   
+  ajaxCommonCodeToSelectBox: function(componentName) {
+    console.log("ajaxCommonCodeToSelectBox(): 1");
+    
+    main.ajaxGetJson("/main/getAccoCommonCode", function(jsonData) {
+      console.log("ajaxCommonCodeToSelectBox(): 2");
+      console.log(jsonData);
+   
+      var str = "<option value=''>=========</option>";
+    
+      $.each(jsonData, function(index, item) {
+        str += "<option value='" + item["class4"] + "'>" + item["name"] + "</option>";
+      });
+    
+      $("#" + componentName).html(str);
+    });
+  },
+    
+
+
   //============================================================
   // 기능: jㅂGrid에 jsonParam을 출력한다.
   //============================================================
