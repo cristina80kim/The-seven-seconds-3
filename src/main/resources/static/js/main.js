@@ -198,6 +198,9 @@ var main = {
     }); 
   },
   
+  //============================================================
+  // 기능: ajax GET 형태로 공통코드를 불러와 componentName(<select>)에 대입한다.      
+  //============================================================
   ajaxCommonCodeToSelectBox: function(componentName) {
     console.log("ajaxCommonCodeToSelectBox(): 1");
     
