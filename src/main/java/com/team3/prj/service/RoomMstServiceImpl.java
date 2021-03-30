@@ -21,7 +21,7 @@ public class RoomMstServiceImpl implements RoomMstService {
 
 	@Override
 	public Long insert(RoomMstVO vo) {
-		return dao.roomMstInsert(vo);
+		return dao.roomMstInsert(vo) == 1 ? vo.getId() : 0;
 	}
 
 	@Override

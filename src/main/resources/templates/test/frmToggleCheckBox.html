@@ -14,15 +14,37 @@
     main.log("main.log() 잘 동작합니다.");
     console.log(">>> $(): end");
   });
+  
+  var onAjaxClicked = function() {
+    console.log("onAjaxClicked()");
+    
+    var param = {
+      pub:  $("#pub").val(),
+      name: $("#name").val(),
+      age:  $("#age").val(),  // parseInt($("#age").val().trim()),
+      tel:  $("#tel").val()
+    };
+    console.log(param);
+    main.ajaxPostJson("/test/ajaxToggleCheckBox", param, callbackAjaxResult);
+  }
+  
+  var callbackAjaxResult = function(jsonStr) {
+    console.log("callbackAjaxResult()");
+    console.log(jsonStr);
+  }
+  
 </script>
     
 </head>
 
 <body>
-<form action="/test/toggleCheckBox" method="GET">
-  이름: <input type="text" name="name" id="name"> <br />
-  <input type="checkbox" name="isPub" id="isPub" value="N" onchange="main.onIsPubChanged(this);"/>비밀글 <br />
-  <input type="submit" value="전송">
+<form action="/test/toggleCheckBox" method="POST">
+  이름: <input type="text"     name="name" id="name" value="yskim"> <br />
+  나이: <input type="number"   name="age"  id="age"  value="999"> <br />
+  전화: <input type="text"     name="tel"  id="tel"  value="010-1234-9999"> <br />
+       <input type="checkbox" name="pub"  id="pub"  value="N" onchange="main.onIsPubChanged(this);"/>비밀글 <br />
+       <input type="submit" value="전송"> 
+       <input type="button" value="ajax전송" onclick="onAjaxClicked();">
 </form>
 </body>
 

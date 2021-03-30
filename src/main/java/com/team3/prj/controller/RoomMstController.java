@@ -39,8 +39,6 @@ public class RoomMstController {
 		return service.selectAll();
 	}
 
-	
-	
 	@Value("${file.upload.directory}")
 	String uploadDir;
 
@@ -105,5 +103,63 @@ public class RoomMstController {
 		System.out.println(className + ".insert(): " + vo.toString());
 		return service.insert(vo).toString();
 	}
+	
+	//http://localhost:8081/roomMst/manager_RoomMstRegist_update
+	@PostMapping(value = "/update")
+	public @ResponseBody String update(RoomMstVO vo, @RequestParam("files") List<MultipartFile> files)
+			throws IllegalStateException, IOException {
+
+		String uploadPath = new File("").getAbsolutePath() + uploadDir;
+		String fileName = null;
+
+		if (files != null) {
+			int index = 0;
+			for (MultipartFile file : files) {
+				if (!file.isEmpty()) {
+					UUID uuid = UUID.randomUUID();
+					String destName = uuid.toString().replace("-", "");
+					String orgName = file.getOriginalFilename();
+					String ext = Libs.getFileExt(orgName);
+					String destPath = uploadPath + destName + ext;
+
+					System.out.println("원본파일명: " + orgName);
+					System.out.println("생성된 파일: " + destPath);
+
+					File dest = new File(destPath);
+					file.transferTo(dest);
+
+					if (index == 0) {
+						String uuidPic1 = destName + ext;
+						vo.setPic1Org(orgName);
+						vo.setPic1Uuid(uuidPic1);
+					} else if (index == 1) {
+						String uuidPic2 = destName + ext;
+						vo.setPic2Org(orgName);
+						vo.setPic2Uuid(uuidPic2);
+					} else {
+						String uuidPic3 = destName + ext;
+						vo.setPic3Org(orgName);
+						vo.setPic3Uuid(uuidPic3);
+					}
+					index++;
+				}
+			}
+		}
+		String regeion = vo.getMainAddr().substring(0,2); 
+		vo.setRegion(regeion);
+		String addr = vo.getMainAddr() + " , " + vo.getDtlAddr();
+		vo.setAddr(addr);
+		System.out.println(className + ".insert(): " + vo.toString());
+		return service.update(vo).toString();
+	}
+	
+	//http://localhost:8081/roomMst/delete?id=
+	@GetMapping("/delete")
+	public @ResponseBody String delete(RoomMstVO vo) {
+		return service.delete(vo).toString();
+		
+	}
+	
+	
 
 }

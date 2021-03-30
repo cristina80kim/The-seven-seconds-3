@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>351. admin_커뮤니티관리_FAQ목록_글쓰기</title>
+<link rel="stylesheet" href="css/admin_comu_FAQList_Write.css" />
 </head>
 <body>
 <div id="wrap">
@@ -10,14 +11,15 @@
 	
 		<h1>FAQ 글 쓰기</h1>
 		<form action="" name="FAQWriteFrm" id="FAQWriteFrm">
-			<label for="cate_id">카테고리
+			<span>카테고리</span>
 				<select name="faq_cate" id="faq_cate">
 					<option value="">문의</option>
 				</select>
-			</label>
+			
 			<br />
-			<label for="title">제목<input type="text" name="title" id="title" /></label><br />
-			<label for="content">내용<textarea name="content" id="content" cols="30" rows="10"></textarea></label>
+			<span>제목</span><input type="text" name="title" id="title" /><br />
+			<span>내용</span><textarea name="content" id="content" 
+			placeholder="내용을 입력하세요"  cols="55" rows="20"></textarea>
 			
 			<br />
 			<div id="FAQwriteBtn">

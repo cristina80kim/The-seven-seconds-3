@@ -7,9 +7,10 @@
 <!-- <script src="js/jquery-3.4.1.min.js"></script>
 <script src=js/index.js></script> -->
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
-<script src="/js/main.js?ver=1.0"></script>
+<script src="/js/main.js?ver=1.11"></script>
 
 <script>
+
 var userLogin = {
 	onLoginClicked: function() {
 		console.log("onLoginClicked()");
@@ -25,7 +26,7 @@ var userLogin = {
 	
 	onJoinClicked: function() {
 		console.log("onJoinClicked()");
-		main.ajaxGetHtml("/User/frmJoin", "test1");
+		main.ajaxGetHtml("/User/frmJoin", "contents");
 	},
   
     log: function(msg) {
