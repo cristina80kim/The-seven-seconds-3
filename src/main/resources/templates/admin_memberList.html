@@ -3,18 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>300. admin_회원관리_회원리스트</title>
-<style>
-input:focus{
-outline:none;
-}
-
-input[type=text]#roleSrch{
-border:1px solid black;
-}
-
-input[type=text]{
-border:none;}
-</style>
+<link rel="stylesheet" href="css/admin_memberList.css" />
 </head>
 <body>
 
@@ -24,25 +13,27 @@ border:none;}
 		<form action="post" id="memberSrchFrm" name="memberSrchFrm">
 			<h1>회원 관리</h1>
 			<hr />
-			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />전체</label>
-			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />개인</label>
-			<label for="roleChk"><input type="checkbox" name="roleChk" id="roleChk" />사장님</label>
+			<div id="chkBox">
+				<label for="roleChk1"><input type="checkbox" name="roleChk1" id="roleChk1" />전체</label>
+				<label for="roleChk2"><input type="checkbox" name="roleChk2" id="roleChk2" />개인</label>
+				<label for="roleChk3"><input type="checkbox" name="roleChk3" id="roleChk3" />사장님</label>
+			</div>
 			<input type="text" name="Srch" id="roleSrch" />
-			<input type="button" value="조회하기" />
+			<input type="button" value="조회하기" id="memberSrchBtn"/>
 		</form>
 		
 		<hr />
 		
 		      <table>
 		        <tr>
-		          <th>구분</th>
-		          <th>아이디</th>
-		          <th>이름</th>
-		          <th>닉네임</th>
-		          <th>전화번호</th>
-		          <th>이메일</th>
-		          <th>성별</th>
-		          <th>탈퇴</th>
+		          <th id="roleth">구분</th>
+		          <th id="idth" >아이디</th>
+		          <th id="nameth">이름</th>
+		          <th id="nickNameth">닉네임</th>
+		          <th id="telth">전화번호</th>
+		          <th id="emailth">이메일</th>
+		          <th id="genth">성별</th>
+		          <th id="secth">탈퇴</th>
 		        </tr>
 		        <tr>
 		          <td colspan="8">
@@ -57,7 +48,7 @@ border:none;}
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
 		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" /></td>
+		          <td><input type="button" value="탈퇴" id="sec" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="8">
@@ -72,7 +63,7 @@ border:none;}
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
 		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" /></td>
+		          <td><input type="button" value="탈퇴" id="sec" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="8">
@@ -87,7 +78,7 @@ border:none;}
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
 		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" /></td>
+		          <td><input type="button" value="탈퇴" id="sec" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="8">
@@ -102,7 +93,7 @@ border:none;}
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
 		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" /></td>
+		          <td><input type="button" value="탈퇴" id="sec" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="8">

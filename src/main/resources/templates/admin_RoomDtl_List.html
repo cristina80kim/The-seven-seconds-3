@@ -3,43 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>311.admin_숙소관리_룸리스트</title>
-<style>
-input:focus{
-outline:none;
-}
-
-input[type=text]#roomDtlSrch{
-border:1px solid black;
-}
-
-input[type=text]{
-border:none;}
-</style>
+<link rel="stylesheet" href="css/admin_RoomDtl_List.css" />
 </head>
 <body>
 
 <div id="wrap">
+	
 	<section>
 		
+		<h1>룸 리스트</h1>
 		<form action="post" id="roomDtlSrchFrm" name="roomDtlSrchFrm">
-			<h1>룸 리스트</h1>
 			<hr />
 			<label for="roomDtlSrch">통합 검색</label>
 			<input type="text" name="roomDtlSrch" id="roomDtlSrch" />
-			<input type="button" value="조회하기" />
+			<input type="button" value="조회하기" id="roomDtlSrchBtn"/>
 		</form>
 		
 		<hr />
 		
 		      <table>
 		        <tr>
-		          <th>지역</th>
-		          <th>숙소명</th>
-		          <th>룸</th>
-		          <th>주소</th>
-		          <th>전화번호</th>
-		          <th>게시자</th>
-		          <th>삭제</th>
+		          <th id="regionth">지역</th>
+		          <th id="titleth">숙소명</th>
+		          <th id="room_nameth">룸</th>
+		          <th id="addrth">주소</th>
+		          <th id="telth">전화번호</th>
+		          <th id="c_userth">게시자</th>
+		          <th id="deleteBtnth">삭제</th>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -53,7 +43,7 @@ border:none;}
 		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
-		          <td><input type="button" value="삭제" /></td>
+		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -67,7 +57,7 @@ border:none;}
 		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
-		          <td><input type="button" value="삭제" /></td>
+		          <td><input type="button" value="삭제"  id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -81,7 +71,7 @@ border:none;}
 		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
-		          <td><input type="button" value="삭제" /></td>
+		          <td><input type="button" value="삭제"  id="deleteBtn"/></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -95,7 +85,7 @@ border:none;}
 		          <td><input type="text" value="강남역 3번 출구 도보 3분" name="addr" id="addr" /></td>
 		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
 		          <td><input type="text" value="김xx" name="c_user" id="c_user" /></td>
-		          <td><input type="button" value="삭제" /></td>
+		          <td><input type="button" value="삭제" id="deleteBtn" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">

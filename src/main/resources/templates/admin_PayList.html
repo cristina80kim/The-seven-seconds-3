@@ -3,18 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>320. admin_결제관리_결제리스트</title>
-<style>
-input:focus{
-outline:none;
-}
-
-input[type=text]#payListSrch{
-border:1px solid black;
-}
-
-input[type=text]{
-border:none;}
-</style>
+<link rel="stylesheet" href="css/admin_PayList.css" />
 </head>
 <body>
 
@@ -26,20 +15,20 @@ border:none;}
 			<hr />
 			<label for="payListSrch">통합 검색</label>
 			<input type="text" name="payListSrch" id="payListSrch" />
-			<input type="button" value="조회하기" />
+			<input type="button" value="조회하기" id="paySrchBtn"/>
 		</form>
 		
 		<hr />
 		
 		      <table>
 		        <tr>
-		          <th>번호</th>
-		          <th>숙소명</th>
-		          <th>룸</th>
-		          <th>결제 수단</th>
-		          <th>결제 금액</th>
-		          <th>예약자</th>
-		          <th>취소</th>
+		          <th id="appr_noth">번호</th>
+		          <th id="Rsrv_stayth">숙소명</th>
+		          <th id="Rsrv_roomth">룸</th>
+		          <th id="Rsrv_infoth">결제 수단</th>
+		          <th id="priceth">결제 금액</th>
+		          <th id="Rsrv_nameth">예약자</th>
+		          <th id="cancleBtnth">취소</th>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -53,7 +42,7 @@ border:none;}
 		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
 		          <td><input type="text" value="70,000" name="price" id="price" /></td>
 		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
-		          <td><input type="button" value="취소" /></td>
+		          <td><input type="button" value="취소" id="cancleBtn" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -67,7 +56,7 @@ border:none;}
 		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
 		          <td><input type="text" value="70,000" name="price" id="price" /></td>
 		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
-		          <td><input type="button" value="취소" /></td>
+		          <td><input type="button" value="취소"id="cancleBtn"  /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -81,7 +70,7 @@ border:none;}
 		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
 		          <td><input type="text" value="70,000" name="price" id="price" /></td>
 		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
-		          <td><input type="button" value="취소" /></td>
+		          <td><input type="button" value="취소"id="cancleBtn"  /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">
@@ -95,7 +84,7 @@ border:none;}
 		          <td><input type="text" value="카카오페이" name="Rsrv_info" id="Rsrv_info" /></td>
 		          <td><input type="text" value="70,000" name="price" id="price" /></td>
 		          <td><input type="text" value="김xx" name="Rsrv_name" id="Rsrv_name" /></td>
-		          <td><input type="button" value="취소" /></td>
+		          <td><input type="button" value="취소" id="cancleBtn" /></td>
 		        </tr>
 		        <tr>
 		          <td colspan="7">

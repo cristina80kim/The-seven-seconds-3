@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+input:focus{
+outline:none;
+}
+
+
+input[type=text]{
+border:none;}
+
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+	color:#785aef;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+table {
+	table-layout: fixed;
+	color:#785aef;
+	width: 700px;
+	width: 100%;
+	border-collapse: collapse;
+	font-size:1.0em;
+	
+}
+
+
+th td {
+	white-space: nowrap;
+	border: 1px solid #444444;
+	padding: 10px;
+}
+
+/*/////////////////////////////////////////////////// */
+
+
+#memberSrchFrm {
+	color:#785aef;
+	text-align: center;
+	margin: 0 auto;
+}
+#memberSrchFrm label{
+	font-size:1.0em;
+	display:inline-block;
+	line-height:5px;
+}
+
+#memberSrchFrm input{
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	font-size:0.8em;
+	font-weight:bolder;
+}
+
+#memberSrchBtn {
+	width: 100px;
+	height: 34px;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	font-size:0.8em;
+	font-weight:bolder;
+}
+
+#memberSrchBtn:hover {
+	width: 100px;
+	height: 34px;
+	cursor:pointer;
+	color: white;
+	font-weight:bolder;
+	border:2px solid #9881f3;
+    font-size:0.8em;
+	background-color:#9881f3;	
+			
+}
+
+#memberSrchFrm input[type=text]{
+	width:290px;
+	padding:7px;
+	margin-left:-90px;
+	font-size:0.7em;
+	vertical-align :middle;
+	border:2px solid #9881f3;
+}
+
+
+
+#memberSrchFrm input[type=checkbox]{
+	width:15px;
+	padding-right:15px;
+	display: inline-block;
+	margin-left:5px;
+	text-align: left;
+}
+
+#chkBox {
+	display: inline-block;
+	width: 220px;
+	text-align: left;
+	margin-right:120px;
+}
+
+
+
+/* //////////////////////// */
+
+#roleth{
+	width: 10%;
+	text-align: left;
+
+}
+#idth{
+	width: 10%;
+	text-align: left;
+}
+#nameth{
+	width: 10%;
+	text-align: left;
+}
+
+#nickNameth{
+	width: 10%;
+	text-align: left;
+
+}
+
+#telth{
+	width: 12%;
+	text-align: right;
+}
+
+#emailth{
+	width: 12%;
+	text-align: right;
+}
+
+#genth{
+	width: 10%;
+	text-align: right;
+
+}
+
+#secth{
+	width: 10%;
+	text-align: right;
+}
+
+/* ////////////////////////////// */
+
+#role{
+	width: 12%;
+	text-align: left;
+	padding-left:10px;
+	width: 200px;
+}
+
+#id {
+	width: 12%;
+	text-align: left;
+	width:200px;
+}
+
+#name {
+	width: 10%;
+	text-align: left;
+	width: 200px;
+}
+
+
+#nickName{
+	width: 10%;
+	text-align: left;
+	width: 200px;
+}
+
+#tel{
+	width: 12%;
+	text-align: left;
+	width:200px;
+
+}
+
+#email {
+	width: 24%;
+	width: 200px;
+	text-align: left;
+	padding-left:5px;
+}
+
+#gen{
+	width: 10%;
+	text-align: right;
+	width: 80px;
+}
+
+#sec {
+	width: 12%;
+	width: 40px;
+	text-align: center;
+    padding-right:5px;
+}
+
+/*  */
+#deleteBtn {
+	width: 24%;
+	text-align: center;
+/* 	padding-right:18px;
+	margin-left:150px; */
+	width: 50px;
+	margin-left:100px;
+}
+
+
+#writeBtn, #notiSrchBtn{
+	width: 100px;
+	height: 30px;
+	font-size:0.8em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	font-weight:bolder;
+}
+
+#writeBtn {
+	margin-right:70px;
+}
+#notiSrchBtn{
+	margin-left:70px;
+}
+
+#writeBtn:hover, #notiSrchBtn:hover{
+	cursor:pointer;
+	color: white;
+	font-weight:bolder;
+	border:2px solid #9881f3;
+    font-size:0.8em;
+	background-color:#9881f3;	
+}
+
+#notiSrchFrm span {
+	vertical-align:middle;
+	margin-top:-20px;
+	padding-right:5px;
+}
+
+
+
+#sec {
+	margin-left:40px;
+	border:none;
+	text-align: right;
+}
+
+
+#sec:hover {
+	cursor:pointer;
+	color: white;
+	background-color:#9881f3;	
+	opacity:0.5;
+}
+
+/* 하단 페이징 paging */
+
+#paging{
+	margin: 0 auto;
+	text-align: center;
+	padding-top:10px;
+}
