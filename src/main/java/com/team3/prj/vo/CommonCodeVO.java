@@ -14,6 +14,7 @@ public class CommonCodeVO {
     String extInfo;   // 추가정보
     String cUser;     // 생성자 ID.
     
+    // 기능: 공통코드를 읽기위해 CommonCodeVO를 생성하고 class1, class2를 할당함.
     public static CommonCodeVO createCommonCode(String class1, String class2) {
         CommonCodeVO result = new CommonCodeVO();
         result.class1 = class1;
