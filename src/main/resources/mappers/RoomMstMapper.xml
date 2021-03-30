@@ -10,7 +10,13 @@
 		FROM room_mst
 	</select>
 
+
 	<insert id="roomMstInsert"> <!-- </insert> resultType="java.lang.String"> -->
+	
+	  <selectKey keyProperty="id" resultType="Long" order="BEFORE"> 
+          SELECT seq_room_mst.NEXTVAL FROM DUAL 
+        </selectKey> 
+        
 		INSERT INTO room_mst
 		(	
 			   id,
@@ -23,7 +29,7 @@
         )
 		VALUES 
         (
-        		seq_room_mst.nextval, <!-- 시퀀스값 받아옴 seq_room_mst -->
+        	   #{id}, <!-- 시퀀스값 받아옴 seq_room_mst -->
                #{title}, #{zipCode}, #{addr}, #{tel}, #{info},
                #{region},#{typeOfAcco},
                #{pic1Org}, #{pic1Uuid}, 
@@ -32,9 +38,7 @@
                #{cUser}
         )
         
-         <selectKey keyProperty="id" resultType="Long" order="AFTER"> 
-          SELECT seq_room_mst.CURRVAL FROM DUAL 
-        </selectKey> 
+       
 	</insert>
 	
 	<update id="roomMstUpdate">
