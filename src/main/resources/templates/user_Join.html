@@ -18,10 +18,22 @@
 		var email=$("#email").val();
 		var gen=$('input[name="gen"]:checked').val();
 		var role=$('input[name="role"]:checked').val();
-		var loc = "/User/join?id=" + id + "&pwd=" + pwd + "&name=" + name + "&nickname=" + nickname + "&tel=" + tel + "&email=" + email + "&gen=" + gen + "&role=" + role;
+		//var loc = "/User/join?id=" + id + "&pwd=" + pwd + "&name=" + name + "&nickname=" + nickname + "&tel=" + tel + "&email=" + email + "&gen=" + gen + "&role=" + role;
+		var loc = "/User/join?id=";
 		console.log(loc);
+		var param={
+			id: id,
+			pwd: pwd,
+			name: name,
+			nickname: nickname,
+			tel: tel,
+			email: email,
+			gen: gen,
+			role: role
+		};
 		//id=, pwd=, name=성승현, nickname=ㄴ닉, tel=12341234, email=sshyun90@naver.com, gen=undefined, role=null, point=null, cUser=null
-		main.ajaxGetJson(loc, userJoin.joinCallback);
+		//main.ajaxGetJson(loc, userJoin.joinCallback);
+		main.ajaxPostJson(loc, param, userJoin.joinCallback);
 	},
 	joinCallback: function(jsonStr){
 		console.log(jsonStr);
