@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>user_회원가입</title>
+<title>101. user_회원가입</title>
+<link rel="stylesheet" href="css/user_Join.css" />
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
 <script src="/js/main.js?ver=1.0"></script>
 
@@ -52,62 +53,94 @@
 
 <div id="wrap">
 
-	<article>
-	<form>
-		<h1>회원가입</h1>
-		
-		<textarea name="" id="" cols="30" rows="10">가입약관...</textarea>
-		<br />
-		<label for="JoinAgree">
-			<input type="checkbox" name="JoinAgree" id="JoinAgree" />동의함
-		 </label>
-		 
-		 <br />
-		 <label>구분</label>
-		 	<label for="role"><input type="radio" name="role" value="U" />개인</label>
-	 		<label for="role"><input type="radio" name="role" value="M" />사장</label>
-		
-		<br />
-		 <label for="id">아이디</label>
-		 <input type="text" class="id" name="id" id="id" value="ssh"/>
-		 <input type="submit" value="중복 확인" />
-		 
-		 <br />
-		 <label for="pwd">비밀번호</label>
-		 <input type="password" class="pwd" name="pwd" id="pwd" value="1234" />
-		 <br />
-		 <label for="userPwChk">비밀번호 확인</label>
-		 <input type="password" name="userPwChk" id="userPwChk" />
-		 
-		 <br />
-		 <label for="name">이름</label>
-		 <input type="text" name="name" id="name" value="성승현"/>
-		 
-		  <br />
-		 <label for="nickname">닉네임</label>
-		 <input type="text" name="nickname" id="nickname" value="ㄴ닉" />
-		 
-		 <br />
-		 <label for="tel">전화번호</label>
-		 <input type="text" name="userTel1" id="" value="010"/>
-		 -
-		 <input type="text" name="tel" id="tel" value="12341234"/>
+	<section>
+			<h1>회원가입</h1>
+			<form id="userJoinFrm">
+				
+				<textarea name="" id="" cols="60" rows="10">
+제 1 조 (목적)
+1. 본 약관은 기업마당 사이트가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 기업마당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+제 2 조 (약관의 효력과 변경)
+1. 기업마당 사이트는 귀하가 본 약관 내용에 동의하는 경우 기업마당 사이트의 서비스 제공 행위 및 귀하의 서비스 사용 행위에 본 약관이 우선적으로 적용됩니다.
+2. 기업마당 사이트는 본 약관을 사전 고지 없이 변경할 수 있고 변경된 약관은 기업마당 사이트 내에 공지하거나 e-mail을 통해 회원에게 공지하며, 공지와 동시에 그 효력이 발생됩니다.
+이용자가 변경된 약관에 동의하지 않는 경우, 이용자는 본인의 회원등록을 취소 (회원탈락)할 수 있으며 계속 사용의 경우는 약관 변경에 대한 동의로 간주 됩니다.
+제 3 조 (약관 외 준칙)
+1. 본 약관에 명시되지 않은 사항은 전기통신기본법, 전기통신사업법, 정보통신윤리위원회심의규정, 정보통신 윤리강령, 프로그램보호법 및 기타 관련 법령의 규정에 의합니다.
+제 4 조 (용어의 정의)
+본 약관에서 사용하는 용어의 정의는 다음과 같습니다.
 
-		 
-		 <br />
-		 <label for="email">이메일</label>
-		 <input type="text" name="email" id="email" value="sshyun90@naver.com"/>
-		
-		<br />
-		  <label for="userGen">성별</label>
-		  <label for="gen"><input type="radio" name="gen" value="F" />여자</label>
-		  <label for="gen"><input type="radio" name="gen" value="M" />남자</label>
-		  
-		  <br /><br />
-		  <input type="button" value="회원가입" onclick="userJoin.onJoinClicked();"/>
-		  <input type="reset" value="취소" />
-	</form>
-		</article>
+1. 이용자 : 본 약관에 따라 기업마당 사이트가 제공하는 서비스를 받는 자.
+2. 가입 : 기업마당 사이트가 제공하는 신청서 양식에 해당 정보를 기입하고, 본 약관에 동의하여 서비스 이용계약을 완료시키는 행위.
+3. 회원 : 기업마당 사이트에 개인 정보를 제공하여 회원 등록을 한 자로서 기업마당 사이트가 제공하는 서비스를 이용할 수 있는 자.
+4. 비밀번호 : 이용자와 회원ID가 일치하는지를 확인하고 통신상의 자신의 비밀보호를 위하여 이용자 자신이 선정한 문자와 숫자의 조합.
+5. 탈퇴 : 회원이 이용계약을 종료시키는 행위.
+제 2 장 서비스 제공 및 이용
+제 5 조 (이용계약의 성립)
+				</textarea>
+				<br />
+				<label for="JoinAgree">
+					<input type="checkbox" name="JoinAgree" id="JoinAgree" />동의함
+				 </label>
+				 
+				 <br />
+				 <label>구분</label>
+				 	<label for="roleU" id="roleArea">
+				 		<input type="radio" name="role" id="roleU" value="U" />개인
+				 	</label>
+			 		<label for="roleM" id="roleArea">
+			 			<input type="radio" name="role" id="roleM" value="M" />사장
+			 		</label>
+				
+				<br />
+				 <label for="id">아이디
+					 <input type="text" class="id" name="id" id="id" value="ssh"/>
+					 <input type="button" value="중복 확인" id="doubleChk"/>
+				 </label>
+				 
+				 <br />
+				 <label for="pwd">비밀번호
+					 <input type="password" class="pwd" name="pwd" id="pwd" value="1234" />
+				 </label>
+				 <br />
+				 <label for="userPwChk">비밀번호 확인
+					 <input type="password" name="userPwChk" id="userPwChk" />
+				 </label>
+				 
+				 <br />
+				 <label for="name">이름
+					 <input type="text" name="name" id="name" value="성승현"/>
+				 </label>
+				 
+				  <br />
+				 <label for="nickname">닉네임
+					 <input type="text" name="nickname" id="nickname" value="ㄴ닉" />
+				 </label>
+				 
+				 <br />
+				 <label>전화번호
+					 <input type="text" name="tel" id="tel" value="010"/>
+					 -
+					 <input type="text" name="tel" id="tel" value="12341234"/>
+				</label>
+				 
+				 <br />
+				 <label for="email">이메일
+					 <input type="text" name="email" id="email" value="sshyun90@naver.com"/>
+				 </label>
+				
+				<br />
+				  <label for="userGen">성별
+				  </label>
+				  <label for="genF" id="genArea"><input type="radio" name="gen" id="genF" value="F" />여자</label>
+				  <label for="genM" id="genArea"><input type="radio" name="gen" id="genM" value="M" />남자</label>
+				  
+				  <br /><br />
+				  <div id="joinBtn">
+				  	<input type="button" value="회원가입" id="joinBtn" onclick="userJoin.onJoinClicked();"/>
+				  	<input type="button" value="취소" id="cancleBtn" />
+				  </div>
+			</form>
+		</section>
 	</div>
 	
 	
