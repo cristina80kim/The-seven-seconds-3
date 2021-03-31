@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+input:focus{
+outline:none;
+}
+
+
+
+input[type=text]{
+border:none;
+}
+
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.1em;
+	color:#785aef;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+#slt_Email, option:focus {
+	outline:none;
+}
+
+
+#role, #id, #name, #nickName,#gen {
+	font-size:1.5em;
+	font-weight:bold;
+}
+
+/*/////////////////////////////////////////////////// */
+
+
+#myPageMinfoFrm {
+	width: 700px;
+	margin: 0 auto;
+	color:#785aef;
+	text-align: center;
+}
+
+#myPageMinfoFrm label{
+	font-size:1.0em;
+	display:inline-block;
+	line-height:5px;
+	text-align: left;
+	/* padding-left:120px; */
+	vertical-align:middle;
+	padding-top:25px;
+}
+
+
+#myPageMinfoFrm input{
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: left;
+}
+
+
+#myPageMinfoFrm #slt_Email, option{
+	border:2px solid #9881f3;
+	color:#785aef;
+}
+
+#myPageMinfoFrm #id  {
+	width: 100px;
+}
+
+#roleArea{
+	width: 120px;
+	margin-left:-100px;
+	text-align: left;
+}
+
+#genArea {
+	width: 120px;
+	margin-left:-100px;
+	text-align: left;
+}
+
+#doubleChk {
+
+}
+
+#doubleChk:hover {
+	cursor:pointer;
+	color: white;
+	background-color:#9881f3;	
+	opacity:0.5;
+}
+
+#myPageMinfoFrm input[type=text], input[type=password]{
+	width:250px;
+	padding-right:20px;
+	padding:5px;
+	font-size:0.6em;
+	vertical-align :middle;
+	text-align: left;
+
+}
+
+#myPageMinfoFrm #tel {
+	width:80px;
+
+}
+
+
+
+
+
+/*회원가입,취소 Btn///////////////////  */
+
+#MinfoBtn {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#MinfoBtn input[type=button]{
+	width: 150px;
+	height: 40px;
+	margin-top:10px;
+	font-size:1.0em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+}
+
+#MinfoBtn input[type=button]:hover {
+	cursor:pointer;
+	color: white;
+	border:2px solid #9881f3;
+    font-size:1.0em;
+	background-color:#9881f3;
+}
