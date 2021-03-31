@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+input:focus{
+outline:none;
+}
+
+textarea:focus{
+	outline:none;
+}
+
+/* input[type=text]{
+border:none;}
+ */
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 700px;
+	text-align: center;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+	color:#785aef;
+	
+}
+
+
+textarea {
+	border:2px solid #785aef;
+	margin-top:5px;
+	resize: none;
+}
+
+
+/*/////////////////////////////////////////////////// */
+
+#RoomMstRegistFrm h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+#RoomMstRegistFrm {
+	width: 600px;
+	margin: 0 auto;
+	color:#785aef;
+	text-align: left;
+
+}
+
+#RoomMstRegistFrm span{
+	
+	padding:15px;
+	font-weight:bolder;
+	text-align: left;
+	margin: 0 auto;
+	padding-right: 20px;
+}
+
+#RoomMstRegistFrm input[type=text],input[type=button]{
+	border:2px solid #9881f3;
+	color:#785aef;
+
+}
+
+
+#updateBtn_ {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top:20px;
+}
+
+
+
+#updateBtn {
+	width: 150px;
+	height: 40px;
+	background-color:white;
+	text-align: center;
+	font-size:0.8em;
+	font-weight:bolder;
+}
+
+#updateBtn:hover {
+	width: 150px;
+	height: 40px;
+	cursor:pointer;
+	color: white;
+	font-weight:bolder;
+	border:2px solid #9881f3;
+    font-size:0.8em;
+	background-color:#9881f3;	
+}
+
+#RoomMstRegistFrm input{
+
+}
+
+
+#RoomMstRegistFrm input[type=file] {
+	border:none;
+}
+
+#RoomMstRegistFrm #title{
+	width: 420px; 
+	padding:3px;
+	text-align: left;
+}
+#fileUpload{ /* 사진첨부 input*/
+	border:none;
+	text-align: center;
+}
+
+#zipCode1 {
+	display:inline-block;
+	width: 100px;
+	padding:3px;
+}
+
+#tel {
+	padding: 3px;
+	display:inline-block;
+	width: 454px;
+}
+
+#addr{
+	display: inline-block;
+	width: 492px;
+	margin-left:80px;
+	padding:3px;
+}
+
+#exp {
+	display: inline-block;
+	width:74px;
+
+	margin-left:38px;
+}
+
+input[type=button]{
+	font-weight:bolder;
+	border:2px solid #9881f3;
+	font-size:0.8em;
+}
+
+input[type=button]:hover{
+	cursor:pointer;
+	color: white;
+	border:2px solid #9881f3;
+	background-color:#9881f3;	
+}
+
+
