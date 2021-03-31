@@ -28,5 +28,20 @@ public class UserServiceImpl implements UserService {
 		public int join(UserVO vo) {
 			return userDAO.userJoin(vo);
 		}
+
+		@Override
+		public UserVO mypage(UserVO vo) {
+			return userDAO.userMypage(vo);
+		}
+
+		@Override
+		public Long update(UserVO vo) {
+			return userDAO.userUpdate(vo);
+		}
+
+		@Override
+		public Long delete(UserVO vo) {
+			return userDAO.userDelete(vo);
+		}
 		
 }
