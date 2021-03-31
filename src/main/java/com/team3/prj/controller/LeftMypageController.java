@@ -9,10 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller 
 public class LeftMypageController {
-	// http://localhost:8081/leftMypage
-	  
-	  @RequestMapping("/leftMypage")
-	  public String test(){
-	      return "leftMypage";
-	  }
+
 }

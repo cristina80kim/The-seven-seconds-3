@@ -55,9 +55,38 @@ public class UserController {
 	public @ResponseBody String join(@RequestBody UserVO vo) {
 		System.out.println(className + ".join()");
 		System.out.println(vo);
-		return String.valueOf(userService.join(vo));
+		return userService.join(vo);
 	}
 	
+	//http://localhost:8081/User/frmMypage
+	@GetMapping("frmMypage")
+	public String frmMypage() {
+		System.out.println(className + ".frmMypage");
+		return "user_Main";
+	}
+	
+	//http://localhost:8081/User/frmUpdate
+	@GetMapping("frmUpdate")
+	public String frmUpdate() {
+		System.out.println(className + ".frmUpdate");
+		return "user_Mypage_M_Info";
+	}
+	
+	//http://localhost:8081/User/Update?pwd=&nickname=&tel=&email=&id=
+	@GetMapping("Update")
+	public @ResponseBody String update(UserVO vo) {
+		System.out.println(className + ".update()");
+		System.out.println(vo);
+		return userService.update(vo);
+	}
+	
+	//http://localhost:8081/User/Delete?id=&pwd=
+	@GetMapping("Delete")
+	public @ResponseBody Long delete(UserVO vo) {
+		System.out.println(className + ".delete()");
+		System.out.println(vo);
+		return userService.delete(vo);
+	}
 }
 
 

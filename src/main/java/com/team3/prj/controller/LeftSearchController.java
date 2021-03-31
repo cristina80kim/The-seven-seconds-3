@@ -8,10 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LeftSearchController {
-	// http://localhost:8081/leftSearch
-	  
-	  @RequestMapping("/leftSearch")
-	  public String test(){
-	      return "leftSearch";
-	  }
+
 }

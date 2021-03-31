@@ -27,5 +27,17 @@
 		#{tel}, #{email}, #{gen}, 'U', #{id}
 		)
 	</insert>
+	
+	<update id="userUpdate">
+		UPDATE users
+		SET pwd=#{pwd}, nickname=#{nickname},
+			tel=#{tel}, email=#{email}
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="userDelete">
+		DELETE users
+		WHERE id=#{id} AND pwd=#{pwd}
+	</delete>
 
 </mapper>

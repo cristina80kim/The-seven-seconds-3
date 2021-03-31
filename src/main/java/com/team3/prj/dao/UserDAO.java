@@ -13,5 +13,11 @@ public interface UserDAO {
 	public UserVO userLogin(UserVO vo);
 	
 	public int userJoin(UserVO vo);
+	
+	public UserVO userMypage(UserVO vo);
+	
+	public Long userUpdate(UserVO vo);
+	
+	public Long userDelete(UserVO vo);
 
 }
