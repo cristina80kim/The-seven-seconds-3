@@ -38,18 +38,18 @@ public class RoomMstController {
 
 //	1개 출력(숙소수정 누를시 저장되어있는 숙소 정보 불러오기)
 //	http://localhost:8081/roomMst/oneSelect?id=1000000006
-	@GetMapping("/oneSelect")
-	public @ResponseBody List<RoomMstVO> oneSelect(RoomMstVO vo) {
-		System.out.println(className + ".selectAll()");
-		return service.oneSelect(vo);
+	@GetMapping("/selectOne")
+	public @ResponseBody List<RoomMstVO> selectOne(RoomMstVO vo) {
+		System.out.println(className + ".selectOne()");
+		return service.selectOne(vo);
 	}
 
 //	검색기능
 //	http://localhost:8081/roomMst/roomMstSearch?keyWord=서울
-	@GetMapping("/roomMstSearch")
-	public @ResponseBody List<RoomMstVO> roomMstSearch(RoomMstSearchVO svo) {
-		System.out.println(className + ".roomMstSearch()");
-		return service.roomMstSearch(svo);
+	@GetMapping("/search")
+	public @ResponseBody List<RoomMstVO> search(RoomMstSearchVO svo) {
+		System.out.println(className + ".search()");
+		return service.search(svo);
 
 	}
 
@@ -64,8 +64,8 @@ public class RoomMstController {
 //	 pic3Org(파일업로드3),pic3Uuid(파일업로드3의 uuid.확장자),
 //	 cUser(로그인된 ID/자동대입), typeOfAcco(공통코드)
 //	 http://localhost:8081/roomMst/manager_RoomMstRegist
-	@GetMapping("/manager_RoomMstRegist")
-	public String manager_RoomMstRegist() {
+	@GetMapping("/roomInsert")
+	public String roonInsert() {
 		return "manager_RoomMstRegist";
 	}
 
@@ -121,8 +121,8 @@ public class RoomMstController {
 
 	
 //	http://localhost:8081/roomMst/manager_RoomMstRegist_update
-	@GetMapping("/manager_RoomMstRegist_update")
-	public String manager_RoomMstRegist_update() {
+	@GetMapping("/roomUpdate")
+	public String roomUpdate() {
 		return "manager_RoomMstRegist_update";
 	}
 

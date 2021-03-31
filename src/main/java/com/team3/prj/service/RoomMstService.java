@@ -14,9 +14,9 @@ public interface RoomMstService {
 	
 	public Long delete(RoomMstVO vo);
 
-	public List<RoomMstVO> roomMstSearch(RoomMstSearchVO svo);
+	public List<RoomMstVO> search(RoomMstSearchVO svo);
 
-	public List<RoomMstVO> oneSelect(RoomMstVO vo);
+	public List<RoomMstVO> selectOne(RoomMstVO vo);
 	
 	
 }

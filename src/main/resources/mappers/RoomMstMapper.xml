@@ -4,7 +4,7 @@
 
 <mapper namespace="com.team3.prj.dao.RoomMstDAO">
 
-	<select id="roomMstSelectAll"
+	<select id="selectAll"
 		resultType="com.team3.prj.vo.RoomMstVO">
 		SELECT id, region, title, zip_code, addr, tel, info,
 		pic1_org, pic1_uuid, pic2_org, pic2_uuid, pic3_org, pic3_uuid
@@ -12,7 +12,7 @@
 		room_mst
 	</select>
 
-	<select id = "roomMstOneSelect" resultType='com.team3.prj.vo.RoomMstVO'>
+	<select id = "selectOne" resultType='com.team3.prj.vo.RoomMstVO'>
 		SELECT *
 		FROM room_mst
 		WHERE id = #{id}
@@ -21,7 +21,7 @@
 	</select>
 
 	<!-- search기능 sql문 -->
-	<select id="roomMstSearch"
+	<select id="search"
 		resultType="com.team3.prj.vo.RoomMstVO">
 		SELECT id, region, type_of_acco
 		FROM room_mst
@@ -40,7 +40,7 @@
 	</select>
 
 	<!-- 숙소등록기능 sql문 -->
-	<insert id="roomMstInsert"> <!-- </insert> resultType="java.lang.String"> -->
+	<insert id="insert"> <!-- </insert> resultType="java.lang.String"> -->
 
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
 			SELECT
@@ -75,7 +75,7 @@
 	</insert>
 	
 	<!-- 등록된 숙소 수정기능 sql문 -->
-	<update id="roomMstUpdate">
+	<update id="update">
 		UPDATE room_mst
 		SET title = #{title},
 		zip_code =
@@ -96,7 +96,7 @@
 	</update>
 
 	<!-- 숙소삭제 기능 sql문 -->
-	<delete id="roomMstDelete">
+	<delete id="delete">
 		DELETE room_mst
 		where id=#{id}
 	</delete>

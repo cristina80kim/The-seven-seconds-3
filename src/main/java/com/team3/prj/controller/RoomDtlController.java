@@ -44,8 +44,8 @@ public class RoomDtlController {
 //						  weekendPrice, pic1Org, pic1Uuid, pic2Org, pic2Uuid,
 //						  pic3Org, pic3Uuid, cUser
 	// http://localhost:8081/roomDtl/manager_RoomRegist
-	@GetMapping("/manager_RoomRegist")
-	public String manager_RoomRegist() {
+	@GetMapping("/roomInsert")
+	public String roomInsert() {
 		return "manager_RoomRegist";
 	}
 
@@ -94,8 +94,8 @@ public class RoomDtlController {
 	
 	
 	// http://localhost:8081/roomDtl/manager_RoomRegist_update
-	@GetMapping("/manager_RoomRegist_update")
-	public String manager_RoomRegist_update() {
+	@GetMapping("/roomUpdate")
+	public String roomUpdate() {
 		return "manager_RoomRegist_update";
 	}
 

@@ -4,14 +4,14 @@
 
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 	<!-- 전체 출력 sql문 -->
-	<select id="qnaSelectAll" resultType="com.team3.prj.vo.QnaVO">
+	<select id="selecaAll" resultType="com.team3.prj.vo.QnaVO">
 		SELECT nickname, no,
 		cate_id, is_pub, title, q, a
 		FROM qna
 	</select>
 
 	<!-- 1개 출력 sql문 -->
-	<select id = "qnaOneSelect" resultType="com.team3.prj.vo.QnaVO">
+	<select id = "selectOne" resultType="com.team3.prj.vo.QnaVO">
 		SELECT *
 		FROM qna
 		WHERE id = #{id}
@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 검색기능 sql문 -->
-	<select id="qnaSearch" resultType="com.team3.prj.vo.QnaVO">
+	<select id="search" resultType="com.team3.prj.vo.QnaVO">
 		SELECT *
 		FROM qna
 		<where>
@@ -39,7 +39,7 @@
 	</select>
 
 	<!-- 게시글 등록 sql문 -->
-	<insert id="qnaInsert">
+	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
 		 <!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
 			SELECT seq_qna.NEXTVAL FROM DUAL
@@ -62,7 +62,7 @@
 	</insert>
 
 	<!-- 등록된 게시글 수정 sql문 -->
-	<update id="qUpdate">
+	<update id="updateQ">
 		UPDATE qna
 		SET title=#{title}, q=#{q},
 		cate_id=#{cateId}, is_pub=#{isPub}
@@ -70,7 +70,7 @@
 	</update>
 
 	<!-- 답변달기 sql문 -->
-	<update id="aUpdate">
+	<update id="updateA">
 		UPDATE qna
 		SET a=#{a}
 		WHERE id=#{id}
@@ -78,7 +78,7 @@
 	
 	
 	<!-- 게시글 삭제 sql문 -->
-	<delete id="qnaDelete">
+	<delete id="delete">
 		DELETE qna
 		where id=#{id}
 	</delete>

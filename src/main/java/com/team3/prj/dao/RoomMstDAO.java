@@ -9,16 +9,16 @@ import com.team3.prj.vo.RoomMstVO;
 
 @Mapper
 public interface RoomMstDAO {
-	public List<RoomMstVO> roomMstSelectAll();
+	public List<RoomMstVO> selectAll();
 
-	public Long roomMstInsert(RoomMstVO vo);
+	public Long insert(RoomMstVO vo);
 	
-	public Long roomMstUpdate(RoomMstVO vo);
+	public Long update(RoomMstVO vo);
 	
-	public Long roomMstDelete(RoomMstVO vo);
+	public Long delete(RoomMstVO vo);
 
-	public List<RoomMstVO> roomMstSearch(RoomMstSearchVO svo);
+	public List<RoomMstVO> search(RoomMstSearchVO svo);
 
-	public List<RoomMstVO> roomMstOneSelect(RoomMstVO vo);
+	public List<RoomMstVO> selectOne(RoomMstVO vo);
 	
 }

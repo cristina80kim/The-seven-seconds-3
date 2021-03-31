@@ -18,22 +18,22 @@ public class RoomDtlServiceImpl implements RoomDtlService {
 
 	@Override
 	public List<RoomDtlVO> selectAll() {
-		return dao.roomDtlSelectAll();
+		return dao.selectAll();
 	}
 
 	@Override
 	public Long insert(RoomDtlVO vo) {
-		return dao.roomDtlInsert(vo);
+		return dao.insert(vo);
 	}
 
 	@Override
 	public Long update(RoomDtlVO vo) {
-		return dao.roomDtlUpdate(vo);
+		return dao.update(vo);
 	}
 
 	@Override
 	public Long delete(RoomDtlVO vo) {
-		return dao.roomDtlDelete(vo);
+		return dao.delete(vo);
 	}
 
 }

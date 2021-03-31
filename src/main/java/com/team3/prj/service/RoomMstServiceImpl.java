@@ -17,33 +17,33 @@ public class RoomMstServiceImpl implements RoomMstService {
 
 	@Override
 	public List<RoomMstVO> selectAll() {
-		return dao.roomMstSelectAll();
+		return dao.selectAll();
 	}
 
 	@Override
 	public Long insert(RoomMstVO vo) {
-		return dao.roomMstInsert(vo) == 1 ? vo.getId() : 0;
+		return dao.insert(vo) == 1 ? vo.getId() : 0;
 	}
 
 	@Override
 	public Long update(RoomMstVO vo) {
-		return dao.roomMstUpdate(vo);
+		return dao.update(vo);
 	}
 
 	@Override
 	public Long delete(RoomMstVO vo) {
-		return dao.roomMstDelete(vo);
+		return dao.delete(vo);
 	}
 
 	@Override
-	public List<RoomMstVO> roomMstSearch(RoomMstSearchVO svo) {
-		return dao.roomMstSearch(svo);
+	public List<RoomMstVO> search(RoomMstSearchVO svo) {
+		return dao.search(svo);
 	}
 
 	@Override
-	public List<RoomMstVO> oneSelect(RoomMstVO vo) {
+	public List<RoomMstVO> selectOne(RoomMstVO vo) {
 		
-		return dao.roomMstOneSelect(vo);
+		return dao.selectOne(vo);
 	}
 
 }
