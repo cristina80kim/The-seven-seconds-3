@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.service.PaymentService;
@@ -36,7 +37,7 @@ public class PaymentController {
 	//http://localhost:8081/post
 	@PostMapping("/post")
 	//public @ResponseBody void dbinsert(Long amount,Long name,Long buyer_email,Long buyer_name) {
-	public @ResponseBody void dbinsert(PaymentVO vo) {
+	public @ResponseBody void dbinsert(@RequestBody PaymentVO vo) {
 	   // System.out.println(amount+name+buyer_email+buyer_name);
 	    System.out.println(vo);
 	    //paymentService.dbinsert(new PaymentVO(amount,name,buyer_email,buyer_name),0);

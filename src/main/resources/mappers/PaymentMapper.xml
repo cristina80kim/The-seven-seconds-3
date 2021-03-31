@@ -4,36 +4,26 @@
 
 <mapper namespace="com.team3.prj.dao.PaymentDAO"> 
 
-<!--   <select id="selectAllPayment" resultType="com.team3.prj.vo.PaymentVO">
-      SELECT Rsrv_stay,Rsrv_room,Rsrv_info
-           price,Rsrv_name 
-      FROM   rsrv
-  </select>
-   -->
 
-<!-- 
   <insert id = "dbinsert">
-    <selectKey keyProperty="id" resultType="Long" order="BEFORE">
-  
-    SELECT seq_pay.NEXTVAL FROM DUAL
-    </selectKey>
-    
-    INSERT INTO pay
-    (
-    id,title,room_name,date_used,pirce,
-    C_USER,M_USER,C_DATE,M_DATE
-    )
-    VALUES
-    (
-    #{id}, 시퀀스 ID값이 들어감.
-    #{name},
-    #{amount},
-    #{buyer_email},
-    #{buyer_name},
-    (SELECT NVL(MAX(no),0) + 1 FROM pay), #{no},
-    #{},  #{}
-    )
+  	<selectKey keyProperty="id" resultType="Long" order="BEFORE">
+ 
+  	SELECT seq_rsrv.NEXTVAL FROM DUAL
+  	</selectKey>
+  	INSERT INTO rsrv
+		(
+		id, Rsrv_stay, price,
+		buyer_email, buyer_name
+		)
+		VALUES
+		(
+		#{id},  
+		#{name}, <!-- 숙소이름 -->
+		#{amount}, <!-- 가격 : price -->
+		#{buyer_email}, <!-- 구매자 이메일 -->
+		#{buyer_name} <!-- 구매자 이름 -->
+		
+		)
   </insert>
- -->    
   
 </mapper>

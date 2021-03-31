@@ -8,7 +8,7 @@ public interface PaymentService {
 
 	public List<PaymentVO> selectAllPayment();
 
-    public Long dbinsert(PaymentVO vo);
+    public String dbinsert(PaymentVO vo);
 	
 	
 	
