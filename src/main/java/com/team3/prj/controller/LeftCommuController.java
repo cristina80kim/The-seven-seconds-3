@@ -9,10 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller 
 public class LeftCommuController {
-	// http://localhost:8081/leftCommu
-	  
-	  @RequestMapping("/leftCommu")
-	  public String test(){
-	      return "leftCommu";
-	  }
+
 }

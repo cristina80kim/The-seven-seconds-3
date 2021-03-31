@@ -11,11 +11,11 @@ public interface UserService {
 	
 	public UserVO login(UserVO vo);
 	
-	public int join(UserVO vo);
+	public String join(UserVO vo);
 	
 	public UserVO mypage(UserVO vo);
 	
-	public Long update(UserVO vo);
+	public String update(UserVO vo);
 	
 	public Long delete(UserVO vo);
 

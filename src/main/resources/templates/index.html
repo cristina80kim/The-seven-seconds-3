@@ -12,6 +12,26 @@ var index = {
     main.ajaxGetHtml("/User/frmLogin", "contents");
   },
   
+  onJoinClick: function() {
+  	console.log("onJoingClick()");
+  	main.ajaxGetHtml("/User/frmJoin", "contents");
+  },
+  
+  onLeftSearchClick: function() {
+  	console.log("onLeftSearchClick()");
+  	main.ajaxGetHtml("/main/leftSearch", "leftMenu");
+  },
+  
+  onMypageClick: function() {
+  	console.log("onMypageClick()");
+  	main.ajaxGetHtml("/main/leftMypage", "leftMenu");
+  },
+  
+  onCommuClick: function() {
+  	console.log("onCommuClick()");
+  	main.ajaxGetHtml("/main/leftCommu", "leftMenu");
+  },
+  
   log: function(msg) {
     console.log(">>> " + msg);
   }
@@ -22,7 +42,7 @@ var index = {
 </head>
 <body>
 	<div th:include="header.html"></div>
-	<div th:include="leftSearch.html"></div>
+	<div th:include="leftSearch.html" id="leftMenu"></div>
 	<div id="contents"></div>
 	<div th:include="footer.html"></div>
 </body>

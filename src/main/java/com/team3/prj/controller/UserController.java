@@ -55,7 +55,7 @@ public class UserController {
 	public @ResponseBody String join(@RequestBody UserVO vo) {
 		System.out.println(className + ".join()");
 		System.out.println(vo);
-		return String.valueOf(userService.join(vo));
+		return userService.join(vo);
 	}
 	
 	//http://localhost:8081/User/frmMypage
@@ -74,7 +74,7 @@ public class UserController {
 	
 	//http://localhost:8081/User/Update?pwd=&nickname=&tel=&email=&id=
 	@GetMapping("Update")
-	public @ResponseBody Long update(UserVO vo) {
+	public @ResponseBody String update(UserVO vo) {
 		System.out.println(className + ".update()");
 		System.out.println(vo);
 		return userService.update(vo);

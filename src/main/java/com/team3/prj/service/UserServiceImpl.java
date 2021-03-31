@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		@Override
-		public int join(UserVO vo) {
-			return userDAO.userJoin(vo);
+		public String join(UserVO vo) {
+			return userDAO.userJoin(vo) >= 1 ? vo.getId() : "";
 		}
 
 		@Override
@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
 		}
 
 		@Override
-		public Long update(UserVO vo) {
-			return userDAO.userUpdate(vo);
+		public String update(UserVO vo) {
+			return userDAO.userUpdate(vo) >=1 ? vo.getId() : "";
 		}
 
 		@Override
