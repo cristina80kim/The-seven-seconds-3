@@ -12,5 +12,6 @@ public Long qupdate(QnaVO vo);
 public Long aupdate(QnaVO vo);
 public Long delete(QnaVO vo);
 public List<QnaVO> qnaSearch(QnaSearchVO svo);
+public List<QnaVO> qnaOneSelect(QnaVO vo);
 
 }

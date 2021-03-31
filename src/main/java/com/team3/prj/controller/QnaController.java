@@ -34,6 +34,12 @@ public class QnaController {
 		return service.selectAll();
 	}
 
+//	http://localhost:8081/qna/oneSelect?id=1000000001
+	@GetMapping("/oneSelect")
+	public @ResponseBody List<QnaVO> qnaOneSelect(QnaVO vo){
+		System.out.println(className + "qnaOneSelect()");
+		return service.qnaOneSelect(vo);
+	}
 	// 기능 : Qna 목록 검색
 	// param : QnaSearchVO중 - cateIdValue(카테고리 값),searchType(제목,닉네임),keyWord(검색어)
 	// http://localhost:8081/qna/qnaSearch?cateIdValue=&searchType=&keyWord=

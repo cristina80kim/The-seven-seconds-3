@@ -20,6 +20,8 @@ public interface QnaDAO {
 	public Long qnaDelete(QnaVO vo);
 	
 	public List<QnaVO> qnaSearch(QnaSearchVO svo);
+
+	public List<QnaVO> qnaOneSelect(QnaVO vo);
 	
 	
 }

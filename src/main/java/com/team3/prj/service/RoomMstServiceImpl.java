@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.RoomMstDAO;
+import com.team3.prj.vo.RoomMstSearchVO;
 import com.team3.prj.vo.RoomMstVO;
 
 @Service
@@ -32,6 +33,17 @@ public class RoomMstServiceImpl implements RoomMstService {
 	@Override
 	public Long delete(RoomMstVO vo) {
 		return dao.roomMstDelete(vo);
+	}
+
+	@Override
+	public List<RoomMstVO> roomMstSearch(RoomMstSearchVO svo) {
+		return dao.roomMstSearch(svo);
+	}
+
+	@Override
+	public List<RoomMstVO> oneSelect(RoomMstVO vo) {
+		
+		return dao.roomMstOneSelect(vo);
 	}
 
 }

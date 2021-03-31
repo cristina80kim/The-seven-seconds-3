@@ -47,4 +47,9 @@ public class QnaServiceImpl implements QnaService {
 	public List<QnaVO> qnaSearch(QnaSearchVO svo) {
 		return dao.qnaSearch(svo);
 	}
+
+	@Override
+	public List<QnaVO> qnaOneSelect(QnaVO vo) {
+		return dao.qnaOneSelect(vo);
+	}
 }
