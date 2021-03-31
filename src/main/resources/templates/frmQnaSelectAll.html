@@ -26,6 +26,15 @@
     showGridDatas("/qna/selectAll", "GET"); // ajaxGetJson("/qna/selectAll", showDatas);
   });
   
+  var qna = {
+		  onQnaWriteClick: function() {
+			    console.log("onQnaWriteClick()");
+			    main.ajaxGetHtml("/qna/qWriter", "contents");
+			  },
+		  
+  }
+  
+  
   //-------------------------------------------------------
   // 기능: param이 빈 값인지 검사한다.      
   //-------------------------------------------------------      
@@ -128,7 +137,23 @@
 </head>
 <body>
   <h1>Q & A 목록</h1>
+  <div id="QnASrch">
+			  <h1>Q&A</h1>
+		      <form id="QnASrchFrm">
+		        <select name="QnAcate" id="">
+		          <option value="">카테고리</option>
+		        </select>
+    		    <select name="QnATitleSrch" id="">
+		          <option value="">제목</option>
+		        </select>
+		        <input type="text">
+		        <input type="submit" value="검색">
+		      </form>
+	</div>
   <table id="gridData"></table>
   <div id="gridPager"></div>
+	<div id="writeBtn">
+		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기">
+	</div>
 </body>
 </html>
