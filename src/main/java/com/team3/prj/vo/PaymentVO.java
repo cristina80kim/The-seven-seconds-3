@@ -4,10 +4,19 @@ import lombok.Data;
 
 @Data
 public class PaymentVO {
-	private String rsrvStay; //¼÷¼Ò¸í
-	private String rsrvRoom; // ·ë
-	private String rsrvInfo; // °áÁ¦¼ö´Ü
-	private int price; // °¡°İ
-	private String rsrvName; // ¿¹¾àÀÚ
+	
+    private String rsrvStay; //ì˜ˆì•½ìˆ™ì†Œ
+	private String rsrvRoom; //ì˜ˆì•½ë°©
+	private String rsrvInfo; //ì˜ˆì•½ì •ë³´
+	private int price;  //ê°€ê²©
+	private String rsrvName; //ì˜ˆì•½ì ì´ë¦„
+	
+	
+	private Long id;   // ID
+	private Long name; // ìˆ™ì†Œì´ë¦„
+	private Long amount; //ê²°ì œê°€ê²©
+	private Long buyer_email; //êµ¬ë§¤ìì´ë©”ì¼
+	private Long buyer_name; //êµ¬ë§¤ìì´ë¦„
+	
 	
 }

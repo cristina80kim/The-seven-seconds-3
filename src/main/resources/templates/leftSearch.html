@@ -37,9 +37,13 @@ input{
 </style>
 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
-<script src="/js/main.js?ver=1.1"></script>
+<script src="/js/main.js?ver=1.01"></script>
 
 <script>
+$(function() {
+  main.ajaxCommonCodeToSelectBox("testSelectBox");
+});
+
 var leftSearch = {
     changeCheckBoxes: function(chk, arrIds) {
         console.log("changeCheckBoxes(): 1");
@@ -52,26 +56,18 @@ var leftSearch = {
         }
         console.log("changeCheckBoxes(): 2"); 
     },
+    
     search: function(){
         console.log("search(): 1");
-        console.log($('input:checkbox[id="isHotel"]').val());
-        var loc = "/staylist/userRoomList";
-        var param = {
-        		isHotel:$('input:checkbox[id="isHotel"]').val(),
-        		isMotel:$('input:checkbox[id="isMotel"]').val(),
-        		isPension:$('input:checkbox[id="isPension"]').val(),
-        		isGlamping:$('input:checkbox[id="isGlamping"]').val(),
-        		isGuestHouse:$('input:checkbox[id="isGuestHouse"]').val(),
-        		isResort:$('input:checkbox[id="isResort"]').val()
-        };
+        var loc = "/staylist/leftSearch";
+        var param = "";
         
-        main.ajaxPostJson(loc,param,leftSearch.callBackSearchResult);
+        main.ajaxGetJson2(loc,param,callBackSearchResult);
     },
    
-    callBackSearchResult: function(json){
+    callBackSearchResult: function(jsonData){
       console.log("callBackSearchResult(): 1");
-      console.log(json);
-      
+      console.log(jsonData);
     },
     
     log: function(msg) {
@@ -85,6 +81,9 @@ var leftSearch = {
   <div id="wrap">
     <aside>
       <section id="topSearch">
+        Test SelectBox: <select name="testSelectBox" id="testSelectBox">
+        </select> <br /><br />
+        
         <form action="post">
           <fieldset>
             <input type="text" name="searchText" placeholder="지역명 또는 호텔명 검색" />

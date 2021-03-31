@@ -199,6 +199,28 @@ var main = {
   },
   
   //============================================================
+  // 기능: ajax GET 형태로 공통코드를 불러와 componentName(<select>)에 대입한다.      
+  //============================================================
+  ajaxCommonCodeToSelectBox: function(componentName) {
+    console.log("ajaxCommonCodeToSelectBox(): 1");
+    
+    main.ajaxGetJson("/main/getAccoCommonCode", function(jsonData) {
+      console.log("ajaxCommonCodeToSelectBox(): 2");
+      console.log(jsonData);
+   
+      var str = "<option value=''>=========</option>";
+    
+      $.each(jsonData, function(index, item) {
+        str += "<option value='" + item["class4"] + "'>" + item["name"] + "</option>";
+      });
+    
+      $("#" + componentName).html(str);
+    });
+  },
+    
+
+
+  //============================================================
   // 기능: jㅂGrid에 jsonParam을 출력한다.
   //============================================================
   showGridDatas: function(loc, mtype, colNames, colModel, width, height, rowNum) {

@@ -10,4 +10,6 @@ import com.team3.prj.vo.PaymentVO;
 public interface PaymentDAO {
 
 	public List<PaymentVO> selectAllPayment();
+
+    public Long dbinsert(PaymentVO vo);
 }

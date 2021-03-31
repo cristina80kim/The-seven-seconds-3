@@ -19,4 +19,8 @@ public class PaymentServiceImpl implements PaymentService {
 		return paymentDao.selectAllPayment();
 	}
 
+	@Override
+	public Long dbinsert(PaymentVO vo) {
+	    return paymentDao.dbinsert(vo) == 1 ? vo.getBuyer_name():0;
+	}
 }
