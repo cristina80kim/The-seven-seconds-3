@@ -2,77 +2,81 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>manager_마이페이지_내정보수정</title>
+<title>200.manager_마이페이지_내정보수정</title>
+<link rel="stylesheet" href="css/manager_Mypage_M_info.css" />
 </head>
 <body>
 	<div id="wrap">
-		<article>
+		<section>
 		
 
 			<h1>내 정보 수정</h1>
-			
-			 <br />
 			 
+			 <form action="" name="myPageMinfoFrm" id="myPageMinfoFrm">
 			 
-			 <label for="role">
-			 	구분
-			 	<input type="text" name="role" id="role" value="개인" readonly />
-		 	</label>
-
-			
-			<br />
-			 <label for="id">아이디
-			 	<input type="text" name="id" id="id" value="abc" readonly/>
-			 </label>
+				 <label for="role">
+				 	구분
+				 	<input type="text" name="role" id="role" value="개인" readonly />
+			 	</label>
+	
+				
+				<br />
+				 <label for="id">아이디
+				 	<input type="text" name="id" id="id" value="abc" readonly/>
+				 </label>
+				 
+				 
+				 <br />
+				 <label for="pwd">비밀번호
+				 	<input type="password" name="pwd" id="pwd" />
+				 </label>
+				 <br />
+				 <label for="pwdChk">비밀번호 확인
+					 <input type="password" name="pwdChk" id="pwdChk" />
+				 </label>
+				 
+				 <br />
+				 <label for="name">이름
+					 <input type="text" name="name" id="name" value="김철수" readonly/>
+				 </label>
+				 
+				 <br />
+				 <label for="nickName">닉네임
+					 <input type="text" name="nickName" id="nickName" value="김철수" readonly/>
+				 </label>
+				 
+				 <br />
+				 <label for="tel">전화번호
+					 <input type="text" name="tel" id="tel" value="010"/>
+					 -
+					 <input type="text" name="tel" id="tel" />
+					 -
+					 <input type="text" name="tel" id="tel" />
+				 </label>
+				 
+				 <br />
+				 <label for="email">이메일
+					 <input type="text" name="email" id="email" />
+					 @
+					 <select name="sltEmail" id="slt_Email">
+					 	<option value="sltEmail">naver.com</option>
+					 </select>
+				 </label>
+				
+				<br />
+				  <label for="gen">성별
+				 	 <input type="text" name="gen" id="gen" value="여자" readonly/>
+				  </label>
+				  
+				  
+				  <br /><br />
+				  <div id="MinfoBtn">
+					  <input type="button" value="수정" id="updateBtn"/>
+					  <input type="button" value="취소" id="resetBtn"/>
+				  </div>
+			 </form>
 			 
-			 
-			 <br />
-			 <label for="pwd">비밀번호
-			 	<input type="password" name="pwd" id="pwd" />
-			 </label>
-			 <br />
-			 <label for="pwdChk">비밀번호 확인
-				 <input type="password" name="pwdChk" id="pwdChk" />
-			 </label>
-			 
-			 <br />
-			 <label for="name">이름
-				 <input type="text" name="name" id="name" value="김철수" readonly/>
-			 </label>
-			 
-			 <br />
-			 <label for="nickName">닉네임
-				 <input type="text" name="nickName" id="nickName" value="김철수" readonly/>
-			 </label>
-			 
-			 <br />
-			 <label for="tel">전화번호
-				 <input type="text" name="tel" id="tel" value="010"/>
-				 -
-				 <input type="text" name="tel" id="tel" />
-				 -
-				 <input type="text" name="tel" id="tel" />
-			 </label>
-			 
-			 <br />
-			 <label for="email">이메일
-				 <input type="text" name="email" id="email" />
-				 @
-				 <select name="sltEmail" id="slt_Email">
-				 	<option value="sltEmail">naver.com</option>
-				 </select>
-			 </label>
-			
-			<br />
-			  <label for="gen">성별
-			 	 <input type="text" name="gen" id="gen" value="여자" readonly/>
-			  </label>
-			  
-			  
-			  <br /><br />
-			  <input type="submit" value="수정" />
-			  <input type="reset" value="취소" />
-		</article>
+		</section>
 		
 	
 	</div>
