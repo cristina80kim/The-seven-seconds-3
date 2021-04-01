@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>user_커뮤니티_QnA_목록</title>
+
+<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
+<script src="/js/main.js?ver=1.0"></script>
+<script>
+$(function() {
+  main.ajaxCodeQnaToSelectBox("cateId");
+  
+/*
+  var qna = {
+  }; 
+*/
+});
+</script>
 </head>
 <body>
 
@@ -15,8 +28,7 @@
 			  <h1>Q&A</h1>
 		      <form id="QnASrchFrm">
 		      	<input type="submit" value="글쓰기">
-		        <select name="QnAcate" id="">
-		          <option value="">카테고리</option>
+		        <select name="cateId" id="cateId">
 		        </select>
     		    <select name="QnATitleSrch" id="">
 		          <option value="">제목</option>

@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>user_커뮤니티_QnA_글쓰기</title>
+
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
 <script>
 $(function() {
-	main.ajaxCommonCodeToSelectBox(cateId);
+  main.ajaxCodeQnaToSelectBox("cateId");
 	
- /*  var qna = {
-		  
-		  
-  } */
+/*
+  var qna = {
+  }; 
+*/
 });
 </script>
 
@@ -30,7 +31,7 @@ $(function() {
 		      <form id="QnASrchFrm">
 		      	
 				<label for="">카테고리</label>
-		        <select name="cateId" id="">
+		        <select name="cateId" id="cateId">
 		          
 		        </select>
 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
