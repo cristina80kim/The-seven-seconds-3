@@ -4,26 +4,38 @@
 
 <mapper namespace="com.team3.prj.dao.PaymentDAO"> 
 
+<select id="selectPaymentend" resultType="com.team3.prj.vo.PaymentVO">
+		SELECT 
+				id,Rsrv_stay,Rsrv_room,Rsrv_info,
+				pirce,Rsrv_name				
+		FROM rsrv
+	</select>
 
   <insert id = "dbinsert">
   	<selectKey keyProperty="id" resultType="Long" order="BEFORE">
- 
   	SELECT seq_rsrv.NEXTVAL FROM DUAL
   	</selectKey>
+  	
   	INSERT INTO rsrv
 		(
-		id, Rsrv_stay, price,
-		buyer_email, buyer_name
+			id, rsrv_stay, price,
+			rsrv_room,buyer_email, buyer_name
 		)
 		VALUES
 		(
-		#{id},  
-		#{name}, <!-- 숙소이름 -->
-		#{amount}, <!-- 가격 : price -->
-		#{buyer_email}, <!-- 구매자 이메일 -->
-		#{buyer_name} <!-- 구매자 이름 -->
-		
+			#{id},  
+			#{name}, <!-- 숙소이름 -->
+			#{amount},<!-- 가격 : price -->
+			#{rsrvRoom}, <!-- 룸명 --> 
+			#{buyerEmail}, <!-- 구매자 이메일 -->
+			#{buyerName} <!-- 구매자 이름 -->		
 		)
   </insert>
+  
+  <delete id="delete">
+		DELETE rsrv
+		where id=#{id}
+	</delete>
+  
   
 </mapper>

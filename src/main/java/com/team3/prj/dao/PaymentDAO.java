@@ -12,4 +12,8 @@ public interface PaymentDAO {
 	public List<PaymentVO> selectAllPayment();
 
     public Long dbinsert(PaymentVO vo);
+    
+    public Long delete(PaymentVO vo);
+    
+    public List<PaymentVO> selectPaymentend();
 }
