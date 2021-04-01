@@ -40,9 +40,6 @@ input{
 <script src="/js/main.js?ver=1.01"></script>
 
 <script>
-$(function() {
-  main.ajaxCommonCodeToSelectBox("testSelectBox");
-});
 
 var leftSearch = {
     changeCheckBoxes: function(chk, arrIds) {
@@ -81,9 +78,6 @@ var leftSearch = {
   <div id="wrap">
     <aside>
       <section id="topSearch">
-        Test SelectBox: <select name="testSelectBox" id="testSelectBox">
-        </select> <br /><br />
-        
         <form action="post">
           <fieldset>
             <input type="text" name="searchText" placeholder="지역명 또는 호텔명 검색" />

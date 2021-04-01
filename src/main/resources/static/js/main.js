@@ -201,10 +201,10 @@ var main = {
   //============================================================
   // 기능: ajax GET 형태로 공통코드를 불러와 componentName(<select>)에 대입한다.      
   //============================================================
-  ajaxCommonCodeToSelectBox: function(componentName) {
+  ajaxCommonCodeToSelectBox: function(loc, componentName) {
     console.log("ajaxCommonCodeToSelectBox(): 1");
     
-    main.ajaxGetJson("/main/getAccoCommonCode", function(jsonData) {
+    main.ajaxGetJson(loc, function(jsonData) {
       console.log("ajaxCommonCodeToSelectBox(): 2");
       console.log(jsonData);
    
@@ -218,7 +218,21 @@ var main = {
     });
   },
     
-
+  // 기능: 숙박시설유형 공통코드를 불러와 componentName(<select>)에 대입한다.      
+  ajaxCodeAccoToSelectBox: function(componentName) {
+	main.ajaxCommonCodeToSelectBox("/main/getAccoCommonCode", componentName);
+  },
+    
+  // 기능: 룸 유형 공통코드를 불러와 componentName(<select>)에 대입한다.      
+  ajaxCodeRoomToSelectBox: function(componentName) {
+	main.ajaxCommonCodeToSelectBox("/main/getRoomCommonCode", componentName);
+  },
+    
+  // 기능: Q&A 유형 공통코드를 불러와 componentName(<select>)에 대입한다.      
+  ajaxCodeQnaToSelectBox: function(componentName) {
+	main.ajaxCommonCodeToSelectBox("/main/getQnaCommonCode", componentName);
+  },
+    
 
   //============================================================
   // 기능: jㅂGrid에 jsonParam을 출력한다.
