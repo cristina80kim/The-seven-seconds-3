@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>user_커뮤니티_QnA_목록</title>
+<title>190.user_커뮤니티_QnA_목록</title>
+<link rel="stylesheet" href="css/user_ComuQnAList.css" />
 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
@@ -22,31 +23,32 @@ $(function() {
 
 	<div id="wrap">
 	
-		<article>
+		<section>
 		
 			<div id="QnASrch">
-			  <h1>Q&A</h1>
-		      <form id="QnASrchFrm">
-		      	<input type="submit" value="글쓰기">
-		        <select name="cateId" id="cateId">
-		        </select>
-    		    <select name="QnATitleSrch" id="">
-		          <option value="">제목</option>
-		        </select>
-		        <input type="text">
-		        <input type="submit" value="검색">
-		      </form>
+				  <h1>Q&A</h1>
+			      <form id="QnASrchFrm">
+			      	<input type="submit" value="글쓰기" id="writeBtn">
+			        <select name="cateId" id="cateId">
+			        	<option value="">카테고리</option>
+			        </select>
+	    		    <select name="QnATitleSrch" id="QnATitleSrch">
+			          <option value="">제목</option>
+			        </select>
+			        <input type="text" id="QnASearch">
+			        <input type="submit" value="검색" id="QnASearchBtn">
+			      </form>
 		    </div>
-		
+			<hr />
 	
 		
 		    <div id="QnAbbs">
 		      <table>
 		        <tr>
-		          <th>번호</th>
-		          <th>제목</th>
-		          <th>글쓴이</th>
-		          <th>등록일</th>
+		          <th id="noth">번호</th>
+		          <th id="titleth">제목</th>
+		          <th id="nickNameth">글쓴이</th>
+		          <th id="C_DATEth">등록일</th>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -54,10 +56,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[취소/환불]</a></td>
-		          <td><a href="">환불이 안된것같아요</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[취소/환불]</a></td>
+		          <td id="title"><a href="">환불이 안된것같아요</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATE"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -65,10 +67,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[포인트]</a></td>
-		          <td><a href="">포인트 적립 오류 문의</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[포인트]</a></td>
+		          <td id="title"><a href="">포인트 적립 오류 문의</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATEth"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -76,10 +78,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[회원/개인정보]</a></td>
-		          <td><a href="">회원 정보 수정이 안됩니다</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[회원/개인정보]</a></td>
+		          <td id="title"><a href="">회원 정보 수정이 안됩니다</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATEth"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -87,10 +89,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[예약/결제]</a></td>
-		          <td><a href="">결제 오류라고 떴는데 결제가 되었음ㅡㅡ</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[예약/결제]</a></td>
+		          <td id="title"><a href="">결제 오류라고 떴는데 결제가 되었음ㅡㅡ</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATEth"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -98,10 +100,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[기타]</a></td>
-		          <td><a href="">왜 세븐 세컨즈만 이렇게 싼가요?</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[기타]</a></td>
+		          <td id="title"><a href="">왜 세븐 세컨즈만 이렇게 싼가요?</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATEth"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -109,10 +111,10 @@ $(function() {
 		          </td>
 		        </tr>
 		        <tr>
-		          <td><a href="">[서비스 이용]</a></td>
-		          <td><a href="">즐겨찾기가 사라졌어용</a></td>
-		          <td><a href="">닉네임1</a></td>
-		          <td><a href="">21.03.16</a></td>
+		          <td id="no"><a href="">[서비스 이용]</a></td>
+		          <td id="title"><a href="">즐겨찾기가 사라졌어용</a></td>
+		          <td id="nickName"><a href="">닉네임1</a></td>
+		          <td id="C_DATEth"><a href="">21.03.16</a></td>
 		        </tr>
 		        <tr>
 		          <td colspan="4">
@@ -140,7 +142,7 @@ $(function() {
 		        <span class="block">》</span>
 		      </div>
 		      
-		</article>
+		</section>
 		
 	</div>
 
