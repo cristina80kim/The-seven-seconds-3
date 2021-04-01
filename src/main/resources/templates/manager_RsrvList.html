@@ -3,14 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>230. manager_예약관리_예약리스트</title>
-<style>
-input[type=text]:focus { outline: none; }
-#roomDtlSearch {
-border:1px solid black;}
-input[type=text] ,input[type=tel]{
-border:none;
-}
-</style>
+<link rel="stylesheet" href="css/manager_RsrvList.css" />
 </head>
 <body>
 	<div id="wrap">
@@ -27,8 +20,10 @@ border:none;
 			   <label for="roomDtlSearch">통합 검색
 					<input type="text" name="roomDtlSearch" id="roomDtlSearch"/>
 		      	</label><br />
-		        <input type="button" value="조회하기">
-		        <input type="button" value="취소">
+		      	<div id="srchBtn_">
+			        <input type="button" value="조회하기" id="roomDtlSearchBtn">
+			        <input type="button" value="취소" id="cancleBtn">
+		      	</div>
 		      </form>
 		    </div>
 		    
@@ -66,10 +61,10 @@ border:none;
 					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
 					  		<input type="text" value="70000" name="price" id="price" />		
 					  </td>
-					  <td><input type="text" value="예약 완료"/></td>
+					  <td><input type="text" value="예약 완료" id="Rsrv_state"/></td>
 					  <td>
-						  <input type="button" value="수정"/>
-						  <input type="button" value="삭제" />
+						  <input type="button" value="수정" id="updateBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn"/>
 					  </td>
 			        </tr>
 			        <tr>
@@ -93,10 +88,10 @@ border:none;
 					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
 					  		<input type="text" value="70000" name="price" id="price" />		
 					  </td>
-					  <td><input type="text" value="예약 완료"/></td>
+					  <td><input type="text" value="예약 완료"id="Rsrv_state"/></td>
 					  <td>
-						  <input type="button" value="수정"/>
-						  <input type="button" value="삭제" />
+						  <input type="button" value="수정" id="updateBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn"/>
 					  </td>
 			        </tr>
 			        <tr>
@@ -120,10 +115,10 @@ border:none;
 					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
 					  		<input type="text" value="70000" name="price" id="price" />		
 					  </td>
-					  <td><input type="text" value="예약 완료"/></td>
+					  <td><input type="text" value="예약 완료"id="Rsrv_state"/></td>
 					  <td>
-						  <input type="button" value="수정"/>
-						  <input type="button" value="삭제" />
+						  <input type="button" value="수정" id="updateBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn"/>
 					  </td>
 			        </tr>
 			        <tr>
@@ -147,10 +142,10 @@ border:none;
 					  		<input type="text" value="토스" name="Rsrv_state" id="Rsrv_state" />
 					  		<input type="text" value="70000" name="price" id="price" />		
 					  </td>
-					  <td><input type="text" value="예약 완료"/></td>
+					  <td><input type="text" value="예약 완료"id="Rsrv_state"/></td>
 					  <td>
-						  <input type="button" value="수정"/>
-						  <input type="button" value="삭제" />
+						  <input type="button" value="수정" id="updateBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn"/>
 					  </td>
 			        </tr>
 			        <tr>
