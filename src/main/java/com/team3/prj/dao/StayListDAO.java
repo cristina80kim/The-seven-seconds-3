@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
 import com.team3.prj.vo.StayListVO;
 
@@ -12,5 +13,7 @@ public interface StayListDAO { //수정
 	public List<StayListVO> StayListAll();
 	
 	public List<StayListSearchVO> SearchAll();
+
+    public List<StayListSearchResultVO> search(StayListSearchVO vo);
 
 }

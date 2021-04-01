@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.StayListDAO;
+import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
 import com.team3.prj.vo.StayListVO;
 
@@ -25,4 +26,9 @@ public class StayListServiceImpl implements StayListService {
 	public List<StayListSearchVO> SearchAll(){ //수정
 		return staylistDao.SearchAll();
 	}
+
+    @Override
+    public List<StayListSearchResultVO> search(StayListSearchVO vo) {
+        return staylistDao.search(vo);
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.service.StayListService;
+import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
 import com.team3.prj.vo.StayListVO;
 
@@ -33,8 +34,10 @@ private final String className="StayListController";
 	public String userRoomList (@RequestBody StayListSearchVO vo) {
 		System.out.println(className+".userRoomList()");
 		System.out.println(vo);
+		
+		List<StayListSearchResultVO> resilt = stayService.search(vo);
 		return "user_RoomList";
-	}
+}
 	
 	
 }
