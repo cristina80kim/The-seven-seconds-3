@@ -4,13 +4,13 @@ import lombok.Data;
 
 @Data
 public class NoticeVO {
-	 private String nickname;      	//nickname
-	 private String no;             //±Û¹øÈ£    
-	 private String title;          //Á¦¸ñ
-	 private String content;		//³»¿ë
-	 private String cUser;          //»ı¼ºÀÚ ID
-	 private String mUser;          //¼öÁ¤ÀÚ ID
-	 private String cDate;          //»ı¼º ³¯Â¥/½Ã°£
-	 private String mDate;          //¼ö¼º ³¯Â¥/½Ã°£
+	 private String nickname;      	//ë‹‰ë„¤ì„
+	 private String no;             //ê¸€ë²ˆí˜¸  
+	 private String title;          //ê³µì§€ì‚¬í•­ ì œëª©
+	 private String content;		//ê³µì§€ì‚¬í•­ ë‚´ìš©
+	 private String cUser;          //ìƒì„±ì ID
+	 private String mUser;          //ìˆ˜ì •ì ID
+	 private String cDate;          //ìƒì„± ë‚ ì§œ/ì‹œê°„
+	 private String mDate;          //ìˆ˜ì • ë‚ ì§œ/ì‹œê°„
 	
 }

@@ -237,27 +237,32 @@
     );
 
     -- 05. 예약(Rsrv; Reservation)
-    CREATE SEQUENCE seq_rsrv START WITH 1000000000 INCREMENT BY 1 CACHE 10;
+        -- alter TABLE rsrv add(buyer_email varchar2(100), buyer_name varchar2(30));
+        alter table rsrv modify(Rsrv_name      VARCHAR2(200));
+        CREATE SEQUENCE seq_rsrv START WITH 1000000000 INCREMENT BY 1 CACHE 10;
     CREATE TABLE rsrv(
-      id             NUMBER(10) NOT NULL,        -- ID
-      Rsrv_date      DATE NOT NULL,              -- 예약날짜
+          id             NUMBER(10) NOT NULL,        -- ID
+    --  Rsrv_date      DATE NOT NULL,              -- 예약날짜
+    --  check_in       DATE NOT NULL,              -- 체크인
+    --  check_out      DATE NOT NULL,              -- 체크아웃
       Rsrv_stay      VARCHAR2(200) NOT NULL,     -- 숙소명
-      Rsrv_room      VARCHAR2(200) NOT NULL,     -- 룸 명
-      room_dtl_id    NUMBER(10) NOT NULL,        -- 룸(객실) id(fk)
-      Rsrv_id        VARCHAR2(20) NOT NULL,      -- 예약자 ID.
-      Rsrv_name      VARCHAR2(30) NOT NULL,      -- 예약자 이름
-      Rsrv_gen       VARCHAR2(1) NOT NULL,       -- 예약자 성별
-      Rsrv_tel       VARCHAR2(20) NOT NULL,      -- 예약자 전화번호
+    --  Rsrv_room      VARCHAR2(200) NOT NULL,     -- 룸 명
+    --  room_dtl_id    NUMBER(10) NOT NULL,        -- 룸(객실) id(fk)
+    --  Rsrv_id        VARCHAR2(20) NOT NULL,      -- 예약자 ID.
+    --  Rsrv_name      VARCHAR2(200) NOT NULL,      -- 예약자 이름
+    --  Rsrv_gen       VARCHAR2(1) NOT NULL,       -- 예약자 성별
+    --  Rsrv_tel       VARCHAR2(20) NOT NULL,      -- 예약자 전화번호
       price          NUMBER(10) NOT NULL,        -- 가격
-      Rsrv_info      VARCHAR2(20) NOT NULL,      -- 결제 정보(결재수단: 토스/네이페이)
-      appr_no        VARCHAR2(30) NOT NULL,      -- 승인번호
-      Rsrv_state     VARCHAR2(1) NOT NULL,       -- 예약 상태('1': 예약완료(=결제완료), '2': 예약취소(=환불요청), '3': 환불완료, '9': 처리종료)
-      C_USER         VARCHAR2(20) NOT NULL,      -- 생성자 ID.
-      M_USER         VARCHAR2(20) NULL,          -- 수정자 ID.
-      C_DATE         TIMESTAMP DEFAULT SYSDATE NOT NULL, -- 생성 날짜/시간
-      M_DATE         TIMESTAMP NULL              -- 수성 날짜/시간
+    --  Rsrv_info      VARCHAR2(20) NOT NULL,      -- 결제 정보(결재수단: 토스/네이페이)
+    --  appr_no        VARCHAR2(30) NOT NULL,      -- 승인번호
+--      Rsrv_state     VARCHAR2(1) NOT NULL,       -- 예약 상태('1': 예약완료(=결제완료), '2': 예약취소(=환불요청), '3': 환불완료, '9': 처리종료)
+--      C_USER         VARCHAR2(20) NOT NULL,      -- 생성자 ID.
+--      M_USER         VARCHAR2(20) NULL,          -- 수정자 ID.
+--      C_DATE         TIMESTAMP DEFAULT SYSDATE NOT NULL, -- 생성 날짜/시간
+--      M_DATE         TIMESTAMP NULL              -- 수성 날짜/시간
+      buyer_email    varchar2(100),            -- 구매자 이메일
+      buyer_name     varchar2(30)                -- 구매자 이름
     );
-    
     -- 06. 결제(Pay; Payment) - 사용 안 함
     CREATE SEQUENCE seq_pay START WITH 1000000000 INCREMENT BY 1 CACHE 10;
     -- CREATE TABLE pay(

@@ -17,34 +17,39 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	public List<QnaVO> selectAll() {
-		return dao.qnaSelectAll();
+		return dao.selectAll();
 	}
 
 	@Override
 	public Long insert(QnaVO vo) {
-		return dao.qnaInsert(vo) == 1 ? vo.getId() : 0;
+		return dao.insert(vo) == 1 ? vo.getId() : 0;
 	}
 
 	@Override
-	public Long qupdate(QnaVO vo) {
-		return dao.qUpdate(vo)== 1 ? vo.getId() : 0;
+	public Long updateQ(QnaVO vo) {
+		return dao.updateQ(vo)== 1 ? vo.getId() : 0;
 
 	}
 
 	@Override
-	public Long aupdate(QnaVO vo) {
-		return dao.qUpdate(vo)== 1 ? vo.getId() : 0;
+	public Long updateA(QnaVO vo) {
+		return dao.updateA(vo)== 1 ? vo.getId() : 0;
 
 	}
 
 	@Override
 	public Long delete(QnaVO vo) {
-		return dao.qnaDelete(vo);
+		return dao.delete(vo);
 	}
 
 
 	@Override
-	public List<QnaVO> qnaSearch(QnaSearchVO svo) {
-		return dao.qnaSearch(svo);
+	public List<QnaVO> search(QnaSearchVO svo) {
+		return dao.search(svo);
+	}
+
+	@Override
+	public List<QnaVO>selectOne(QnaVO vo) {
+		return dao.selectOne(vo);
 	}
 }

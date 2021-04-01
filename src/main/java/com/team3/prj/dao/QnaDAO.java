@@ -9,17 +9,19 @@ import com.team3.prj.vo.QnaVO;
 
 @Mapper
 public interface QnaDAO {
-	public List<QnaVO> qnaSelectAll();
+	public List<QnaVO> selectAll();
 
-	public Long qnaInsert(QnaVO vo);
+	public Long insert(QnaVO vo);
 
-	public Long qUpdate(QnaVO vo);
+	public Long updateQ(QnaVO vo);
 		
-	public Long aUdate(QnaVO vo);
+	public Long updateA(QnaVO vo);
 	
-	public Long qnaDelete(QnaVO vo);
+	public Long delete(QnaVO vo);
 	
-	public List<QnaVO> qnaSearch(QnaSearchVO svo);
+	public List<QnaVO> search(QnaSearchVO svo);
+
+	public List<QnaVO> selectOne(QnaVO vo);
 	
 	
 }

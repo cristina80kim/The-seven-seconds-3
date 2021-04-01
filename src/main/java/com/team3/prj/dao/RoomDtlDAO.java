@@ -8,7 +8,11 @@ import com.team3.prj.vo.RoomDtlVO;
 
 @Mapper
 public interface RoomDtlDAO {
-	public List<RoomDtlVO> roomDtlSelectAll();
+	public List<RoomDtlVO> selectAll();
 
-	public Long roomDtlInsert(RoomDtlVO vo);
+	public Long insert(RoomDtlVO vo);
+
+	public Long update(RoomDtlVO vo);
+
+	public Long delete(RoomDtlVO vo);
 }

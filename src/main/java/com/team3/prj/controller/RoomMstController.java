@@ -2,15 +2,12 @@ package com.team3.prj.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.RoomMstService;
+import com.team3.prj.vo.RoomMstSearchVO;
 import com.team3.prj.vo.RoomMstVO;
 
 @Controller
@@ -30,30 +28,47 @@ public class RoomMstController {
 	@Autowired
 	RoomMstService service;
 
-
-
-	// http://localhost:8081/roomMst/selectAll
+//	전체 출력
+//	http://localhost:8081/roomMst/selectAll
 	@GetMapping("/selectAll")
 	public @ResponseBody List<RoomMstVO> selectAll() {
 		System.out.println(className + ".selectAll()");
 		return service.selectAll();
 	}
 
+//	1개 출력(숙소수정 누를시 저장되어있는 숙소 정보 불러오기)
+//	http://localhost:8081/roomMst/oneSelect?id=1000000006
+	@GetMapping("/selectOne")
+	public @ResponseBody List<RoomMstVO> selectOne(RoomMstVO vo) {
+		System.out.println(className + ".selectOne()");
+		return service.selectOne(vo);
+	}
+
+//	검색기능
+//	http://localhost:8081/roomMst/roomMstSearch?keyWord=서울
+	@GetMapping("/search")
+	public @ResponseBody List<RoomMstVO> search(RoomMstSearchVO svo) {
+		System.out.println(className + ".search()");
+		return service.search(svo);
+
+	}
+
 	@Value("${file.upload.directory}")
 	String uploadDir;
 
-	// 기능 : 숙소등록 
-	// param : roomMstVO 중 - id(자동대입), region(mainAddr의데이터 substring), title,
-	// 						 zipCode(api사용), addr(mainAddr+dtlAddr), tel, info,
-	//						 pic1Org(파일업로드1),pic1Uuid(파일업로드1의 uuid.확장자),
-	//						 pic2Org(파일업로드2),pic2Uuid(파일업로드2의 uuid.확장자),
-	//						 pic3Org(파일업로드3),pic3Uuid(파일업로드3의 uuid.확장자),
-	//						 cUser(로그인된 ID/자동대입), typeOfAcco(공통코드)
-	// http://localhost:8081/roomMst/manager_RoomMstRegist
-	@GetMapping("/manager_RoomMstRegist")
-	public String manager_RoomMstRegist() {
+//	 기능 : 숙소등록
+//	 param : roomMstVO 중 - id(자동대입), region(mainAddr의데이터 substring), title,
+//	 zipCode(api사용), addr(mainAddr+dtlAddr), tel, info,
+//	 pic1Org(파일업로드1),pic1Uuid(파일업로드1의 uuid.확장자),
+//	 pic2Org(파일업로드2),pic2Uuid(파일업로드2의 uuid.확장자),
+//	 pic3Org(파일업로드3),pic3Uuid(파일업로드3의 uuid.확장자),
+//	 cUser(로그인된 ID/자동대입), typeOfAcco(공통코드)
+//	 http://localhost:8081/roomMst/manager_RoomMstRegist
+	@GetMapping("/roomInsert")
+	public String roonInsert() {
 		return "manager_RoomMstRegist";
 	}
+
 	@PostMapping(value = "/insert")
 	public @ResponseBody String insert(RoomMstVO vo, @RequestParam("files") List<MultipartFile> files)
 			throws IllegalStateException, IOException {
@@ -96,15 +111,21 @@ public class RoomMstController {
 				}
 			}
 		}
-		String regeion = vo.getMainAddr().substring(0,2); 
+		String regeion = vo.getMainAddr().substring(0, 2);
 		vo.setRegion(regeion);
 		String addr = vo.getMainAddr() + " , " + vo.getDtlAddr();
 		vo.setAddr(addr);
 		System.out.println(className + ".insert(): " + vo.toString());
 		return service.insert(vo).toString();
 	}
+
 	
-	//http://localhost:8081/roomMst/manager_RoomMstRegist_update
+//	http://localhost:8081/roomMst/manager_RoomMstRegist_update
+	@GetMapping("/roomUpdate")
+	public String roomUpdate() {
+		return "manager_RoomMstRegist_update";
+	}
+
 	@PostMapping(value = "/update")
 	public @ResponseBody String update(RoomMstVO vo, @RequestParam("files") List<MultipartFile> files)
 			throws IllegalStateException, IOException {
@@ -145,21 +166,19 @@ public class RoomMstController {
 				}
 			}
 		}
-		String regeion = vo.getMainAddr().substring(0,2); 
+		String regeion = vo.getMainAddr().substring(0, 2);
 		vo.setRegion(regeion);
 		String addr = vo.getMainAddr() + " , " + vo.getDtlAddr();
 		vo.setAddr(addr);
 		System.out.println(className + ".insert(): " + vo.toString());
 		return service.update(vo).toString();
 	}
-	
-	//http://localhost:8081/roomMst/delete?id=
+
+//	http://localhost:8081/roomMst/delete?id=
 	@GetMapping("/delete")
 	public @ResponseBody String delete(RoomMstVO vo) {
 		return service.delete(vo).toString();
-		
+
 	}
-	
-	
 
 }
