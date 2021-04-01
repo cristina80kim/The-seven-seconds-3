@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>user_커뮤니티_QnA_글쓰기</title>
-
+<title>191. user_커뮤니티_QnA_글쓰기</title>
+<link rel="stylesheet" href="css/user_ComuQnAwrite.css" />
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
 <script>
@@ -23,7 +23,7 @@ $(function() {
 <div id="wrap">
 	
 
-		<article>
+		<section>
 		
 			<div id="QnAwrite">
 			  <h1>Q&A 글쓰기</h1>
@@ -32,36 +32,38 @@ $(function() {
 		      	
 				<label for="">카테고리</label>
 		        <select name="cateId" id="cateId">
-		          
+		          	<option value="">카테고리</option>
 		        </select>
+<!-- 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		         -->
 		        
-		        
-		        
-		        <label for=""is_pubChk">
-		      		<input type="checkbox" name="is_pubChk" id=""is_pubChk" />비밀글
+		        <label for="is_pubChk">
+		      		<input type="checkbox" name="is_pubChk" id="is_pubChk" />비밀글
       			</label> 
 		       <br /> 
 		       
 		        <label for="UserQnAtitle">제목</label>
-		        <input type="text" name="" id="" autofocus="autofocus"/>
+		        <input type="text" name="title" id="title" autofocus="autofocus"/>
 				
 				<br />
 				
 				<label for="UserQnAq">내용</label>
-		        <textarea name="" id="" cols="30" rows="10" autofocus="autofocus"></textarea>
+		        <textarea name="content" id="content" cols="50" rows="15" autofocus="autofocus"></textarea>
 		        
 				<br />
-		        <input type="submit" value="등록">
-		        <input type="reset" value="취소">
+					<div id="submitBtn_">
+				        <input type="button" value="등록" id="submitBtn">
+				        <input type="button" value="취소" id="cancleBtn">
+			        </div>
 		      </form>
 		    </div>
 		
 	
 
 		      
-		</article>
+		</section>
 		
 	</div>
 

@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+
+input:focus,textarea:focus,select:focus,option:focus {
+	outline:none;
+}
+
+
+textarea {
+	resize: none;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 500px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+
+#FAQWriteFrm span {
+	color:#785aef;
+	font-size:1.0em;
+	font-weight:bolder;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	display: inline-block;
+/* 	border:1px solid black; */
+	clear:left;
+	float:left;
+}
+
+#cateId, #title, #content {
+	border: 2px solid #9881f3;
+	display:inline-block;
+	padding: 3px;
+	clear:left;
+	color:#9881f3;
+	vertical-align: top;
+	margin-right:10px;
+	
+}
+
+input[type=text], textarea,select{
+	border: 2px solid #9881f3;
+	padding: 3px 5px;
+	margin: 2px;
+}
+
+#title {
+	width: 390px;
+	margin-left: 41px;
+}
+
+#content {
+	margin-top:5px;
+	margin-left:41px;
+	resize: none;
+	width: 390px;
+}
+
+/*submitBtn////////////////////////////////////  */
+
+#submitBtn_ {
+	width: 500px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top:15px;
+}
+
+
+#submitBtn_ input[type=button]{
+	width: 150px;
+	height: 40px;
+	margin-top:10px;
+	font-size:1.0em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+}
+
+#submitBtn_ input[type=button]:hover {
+	cursor:pointer;
+	color: white;
+	border:2px solid #9881f3;
+    font-size:1.0em;
+	background-color:#9881f3;
+}
+
+
