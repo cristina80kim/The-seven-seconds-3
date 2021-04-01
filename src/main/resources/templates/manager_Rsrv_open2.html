@@ -3,23 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>232. manager_예약관리_예약열기2</title>
-<style>
-input:focus{
-outline:none;}
-input[type=text]{
-border:none;}
-.month {
-    border: 1px solid #444444;
-    border-collapse: collapse;
-}
-.month th td {border:1px solid black;}
-</style>
+<link rel="stylesheet" href="css/manager_Rsrv_open2.css" />
+
 </head>
 <body>
 	<div id="wrap">
 		<section>
-			<h1>예약 열기/닫기</h1>
-			<span>예약 열고자 하는 방이나 예약 닫고자 하는 방을 체크해주세요</span>
+			<div id="text">
+				<h1>예약 열기/닫기</h1>
+				<span>예약 열고자 하는 방이나 예약 닫고자 하는 방을 체크해주세요</span>
+			</div>
 			<hr />
 			
 			<div class="head">
@@ -31,16 +24,16 @@ border:none;}
 	            </div>
 	        </div>
 			
-			<table class="month" name="month">
+			<table class="month" id="month">
 				
 				<tr>
-					<th>월</th>
-					<th>화</th>
-					<th>수</th>
-					<th>목</th>
-					<th>금</th>
-					<th>토</th>
-					<th>일</th>
+					<th>월요일</th>
+					<th>화요일</th>
+					<th>수요일</th>
+					<th>목요일</th>
+					<th>금요일</th>
+					<th>토요일</th>
+					<th>일요일</th>
 				</tr>
 				<tr>
 					<td colspan="7">
