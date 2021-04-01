@@ -3,7 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>manager_숙소등록</title>
+<title>211. manager_숙소등록</title>
+<link rel="stylesheet" href="css/manager_RoomMstRegist.css" />
 </head>
 <body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -67,15 +68,13 @@
 			<input type="text" name="title" id="title" />
 			<br />
 			
-			<label for="zipCode1">주소
-			<input type="text" name= "zipCode" id="zipCode" placeholder="우편번호" readonly="readonly">
-			<input type="button" onclick="findZipCode()" value="우편번호 찾기"><br>
-			<input type="text" name="mainAddr"id="mainAddr" placeholder="주소"readonly="readonly"><br>
-			<input type="text" name="dtlAddr"id="dtlAddr" placeholder="상세주소">
-			<input type="text" name="exrtaAddr"id="extraAddr" placeholder="참고항목"readonly="readonly">
-			
-
-			</label>
+			<label for="zipCode1">주소</label>
+				<input type="text" name= "zipCode" id="zipCode" placeholder="우편번호" readonly="readonly">
+				<input type="button" onclick="findZipCode()" id="findZipCodeBtn" value="우편번호 찾기"><br>
+				<input type="text" name="mainAddr"id="mainAddr" placeholder="주소"readonly="readonly"><br>
+				<input type="text" name="dtlAddr"id="dtlAddr" placeholder="상세주소">
+				<input type="text" name="exrtaAddr"id="extraAddr" placeholder="참고항목"readonly="readonly">
+				
 			 <br />
 			 
 			<label for="tel">전화번호</label>
@@ -83,14 +82,14 @@
 			<br />
 			
 			<label for="info">설명</label>
-			<textarea name="info" id="info" cols="30" rows="10"></textarea>
+			<textarea name="info" id="info" cols="59" rows="10"></textarea>
 			
 			<br />
 			
 			<label for="fileUpload">사진 첨부</label>
 			<input type="file" name="files" id="fileUpload"  multiple/>
 			
-			
+			<br />
 			<label>업종</label>
 			<select id="typeOfAcco" name="typeOfAcco">
 				<option value="hotel">hotel</option>
@@ -99,9 +98,11 @@
 				<option value="capping">capping</option>
 			</select>
 			<hr />
-			<input type="hidden" name="cUser" value="jho">
-			<input type="hidden" name="region" value="">
-			<input type="submit" value="등록" />
+			<div id="submitBtn_">
+				<input type="hidden" name="cUser" value="jho">
+				<input type="hidden" name="region" value="">
+				<input type="submit" value="등록" id="submitBtn"/>
+			</div>
 			
 		</form>
 	</section>

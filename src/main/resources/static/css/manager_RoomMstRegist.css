@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+}
+
+input:focus {
+	outline:none;
+}
+
+textarea:focus{
+	outline:none;
+}
+
+select:focus,option:focus{
+	ouline:none;
+}
+
+section {
+	width: 500px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+}
+
+
+
+label {
+	color:#785aef;
+	font-size:1.0em;
+	font-weight:bolder;
+	float: left;
+	margin-right:10px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+
+#tel, #info, #title, #zipCode, #mainAddr, #dtlAddr, #extraAddr, #content {
+	border: 2px solid #9881f3;
+	padding: 5px;
+	color:#9881f3;
+	margin: 3px;
+}
+
+#title {
+	width: 360px;
+	
+}
+
+#mainAddr, #dtlAddr, #extraAddr {
+	width: 433px;
+	display: inline-block;
+	margin-left: 48px;
+	float: clear;
+	
+}
+
+#info {
+ 	/* width: 450px; */
+	/* margin-left:20px; */
+	resize: none;
+	margin-top:5px; 
+	display:inline-block;
+	float: left;
+}
+
+textarea {
+	resize: none;
+}
+
+#tel {
+	width: 390px;
+}
+
+
+
+
+#typeOfAcco {
+	margin: 3px;
+	border:2px solid #9881f3;	
+	padding: 1px;
+	color:#9881f3;	
+	font-size:0.9em;
+	vertical-align: middle;
+}
+
+#findZipCodeBtn, #fileUpload {
+	border:none;
+	vertical-align: middle;
+}
+
+#findZipCodeBtn:hover{
+	cursor:pointer;
+	color: white;
+	background-color:#9881f3;	
+	opacity:0.5;
+}
+
+
+#submitBtn_ {
+	width: 500px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top:15px;
+}
+
+
+#submitBtn{
+	width: 150px;
+	height: 40px;
+	margin-top:10px;
+	font-size:1.0em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+}
+
+#submitBtn:hover {
+	cursor:pointer;
+	color: white;
+	border:2px solid #9881f3;
+    font-size:1.0em;
+	background-color:#9881f3;
+}
+
+
