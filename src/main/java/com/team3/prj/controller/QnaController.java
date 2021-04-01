@@ -20,7 +20,7 @@ public class QnaController {
 	@Autowired
 	QnaService service;
 
-	// http://localhost:8081/qna/frmSelectAll
+	// http://localhost:8081/qna/frmSelectAll 
 	@GetMapping("/frmSelectAll")
 	public String frmSelectAll() {
 		System.out.println(className + ".frmSelectAll()");
@@ -42,13 +42,13 @@ public class QnaController {
 	}
 	// 기능 : Qna 목록 검색
 	// param : QnaSearchVO중 - cateIdValue(카테고리 값),searchType(제목,닉네임),keyWord(검색어)
-	// http://localhost:8081/qna/qnaSearch?cateIdValue=&searchType=&keyWord=
+	// http://localhost:8081/qna/search?cateId=&keyWord=
 	@GetMapping("/search")
 	public @ResponseBody List<QnaVO> qnaSearch(QnaSearchVO svo) {
 		System.out.println(className + ".search()");
 		return service.search(svo);
 	}
-	
+//	http://localhost:8081/qna/qWriter
 	@GetMapping("/qWriter")
 	public String qWriter() {
 		return "user_ComuQnAwrite"; //.html

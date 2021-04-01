@@ -6,33 +6,39 @@
 	<!-- 전체 출력 sql문 -->
 	<select id="selecaAll" resultType="com.team3.prj.vo.QnaVO">
 		SELECT nickname, no,
-		cate_id, is_pub, title, q, a
+		cate_id,
+		is_pub, title, q, a
 		FROM qna
-	</select>
-
-	<!-- 1개 출력 sql문 -->
-	<select id = "selectOne" resultType="com.team3.prj.vo.QnaVO">
-		SELECT *
-		FROM qna
-		WHERE id = #{id}
 		ORDER BY id
 	</select>
-	
-	<!-- 검색기능 sql문 -->
+
+	<!-- 1개 출력 sql 문 -->
+	<select id="selectOne" resultType="com.team3.prj.vo.QnaVO">
+		SELECT *
+		FROM qna
+		WHERE id =
+		#{id}
+		ORDER BY id
+	</select>
+
+	<!-- 검색기능 sql문 // 통합 검색으로 -->
 	<select id="search" resultType="com.team3.prj.vo.QnaVO">
 		SELECT *
 		FROM qna
 		<where>
-		<if test='cateIdValue!= null and !"".equals(cateIdValue)'>
-		AND	cate_id = #{cateIdValue}
-		</if>
-		<if test='keyWord!= null and !"".equals(keyWord)'>
-			<if test='searchType == "title"'>
-				AND title LIKE '%'||#{keyWord}||'%'
-				</if>
-			<if test='searchType == "nickname"'>
-				AND nickname LIKE '%'||#{keyWord}||'%'
-				</if>
+			<if test='cateId!= null and !"".equals(cateId)'>
+				AND cate_id = #{cateId}
+			</if>
+			<if test='keyWord!= null and !"".equals(keyWord)'>
+
+				AND
+				(title LIKE '%'||#{keyWord}||'%'
+				OR nickname LIKE '%'||#{keyWord}||'%'
+				OR q
+				LIKE '%'||#{keyWord}||'%'
+				OR a LIKE '%'||#{keyWord}||'%'
+				)
+
 			</if>
 		</where>
 		ORDER BY id
@@ -41,7 +47,7 @@
 	<!-- 게시글 등록 sql문 -->
 	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
-		 <!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
+			<!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
 			SELECT seq_qna.NEXTVAL FROM DUAL
 		</selectKey>
 
@@ -75,12 +81,12 @@
 		SET a=#{a}
 		WHERE id=#{id}
 	</update>
-	
-	
+
+
 	<!-- 게시글 삭제 sql문 -->
 	<delete id="delete">
 		DELETE qna
 		where id=#{id}
 	</delete>
-	
+
 </mapper>

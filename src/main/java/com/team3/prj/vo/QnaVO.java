@@ -13,7 +13,7 @@ public class QnaVO {
 	private String q; //질문 내용
 	private String a; //답변 내용
 	private String cUser; // 생성자
-	private String mDate; // 수정날짜
+	private String mDate; // 수정날짜 
 
 	 
 	/*

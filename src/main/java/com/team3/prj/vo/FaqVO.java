@@ -4,9 +4,11 @@ import lombok.Data;
 
 @Data
 public class FaqVO {
-	private String no; //±Û¹øÈ£
-	private String cateId; //°øÅëÄÚµå
-	private String title; //Á¦¸ñ
-	private String content; //³»¿ë
-	private String cUser; //»ı¼ºÀÚid
+	private Long id; 		// ê³ ìœ id
+	private String no; 		// ê¸€ë²ˆí˜¸
+	private String cateId; 	// ì¹´í…Œê³ ë¦¬
+	private String title; 	// ì œëª©
+	private String content; // ë‚´ìš©
+	private String cUser; 	// ê¸€ì“´ì´
+	private String cDate;	// ìƒì„± ì¼ì,ì‹œê°„
 }

@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.team3.prj.dao.FaqDAO"> 
+<mapper namespace="com.team3.prj.dao.FaqDAO">
 
-  <select id="selectAllFaq" resultType="com.team3.prj.vo.FaqVO">
-      SELECT no, cate_id, title, content       
-      		 C_USER     
-      FROM   faq
-  </select>
-  
-  
-  
+	<!-- 전체출력 sql문 -->
+	<select id="selectAll" resultType="com.team3.prj.vo.FaqVO">
+		SELECT *
+		FROM faq
+		ORDER BY id
+	</select>
+
+	<!-- 단일출력 sql문 -->
+	<select id="selectOne" resultType="com.team3.prj.vo.FaqVO">
+		SELECT *
+		FROM faq
+		WHERE id = #{id}
+		ORDER BY id
+	</select>
+
+	<!-- 검색기능 -->
+	<select id="search" resultType="com.team3.prj.vo.FaqVO">
+		SELECT *
+		FROM faq
+		<where>
+			<if test='cateId!= null and !"".equals(cateId)'>
+				AND cate_id = #{cateId}
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				AND(
+				title LIKE '%'||#{keyWord}||'%'
+				OR content LIKE '%'||#{keyWord}||'%'
+				)
+			</if>
+		</where>
+
+	</select>
+
+	<!-- Faq 등록 -->
+	<insert id="insert">
+		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
+			SELECT
+			seq_faq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO faq
+		(
+		id, no, cate_id, title, content, c_user
+		)
+		VALUES
+		(
+		#{id},
+		(SELECT NVL(MAX(no),0) + 1 FROM faq),
+		#{cateId}, #{title}, #{content}, #{cUser}
+		)
+	</insert>
+
+	<!-- faq 수정 sql -->
+	<update id="update">
+		UPDATE faq
+		SET title = #{title}, content = #{content}
+		WHERE id = #{id}
+	</update>
+
+	<!-- faq 삭제 sql -->
+	<delete id="delete">
+		DELETE faq
+		WHERE id = #{id}
+	</delete>
+
 </mapper>
