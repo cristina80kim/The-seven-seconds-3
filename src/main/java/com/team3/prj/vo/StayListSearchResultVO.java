@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StayListSearchResultVO {
     
-    private String region;          // 지역
+    private String region;          // 지역구분
     private String title;           // 숙소명
     private String addr;            // 주소
     private String pic1Uuid;        // 수속 이미지 #1
