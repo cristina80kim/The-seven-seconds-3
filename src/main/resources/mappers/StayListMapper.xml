@@ -8,26 +8,11 @@
 
   <select id ="search" resultType="com.team3.prj.vo.StayListSearchResultVO">
   
-    private String region;          // 지역
-    private String title;           // 숙소명
-    private String addr;            // 주소
-    private String pic1_uuid;       // 수속 이미지 #1
-    private String typeOfAcco;      // 숙박시설 유형
-    private String typeOfAccoName;  // 숙박시설 유형
-    private int weekdayPrice;  typeOfAccoName     // 주중가격
-    private int weekendPrice;       // 주말가격
-    private int star;               // 별점
-      
-    SELECT m.*, d.*, c.name as type_of_accoName
-    FROM ( SELECT region, title, addr, pic1_uuid, type_of_acco   
+    SELECT m.*, d.*, c.name as type_of_acco_name
+    FROM ( SELECT id, region, title, addr, pic1_uuid, type_of_acco   
            FROM   room_mst
             <where>
-              <if test='(isHotel != null and !"".equals(isHotel))\
-                or (isMotel != null and !"".equals(isMotel))\
-                or isPension != null and !"".equals(isPension))\
-                or isGlamping != null and !"".equals(isGlamping))\
-                or isGuestHouse != null and !"".equals(isGuestHouse))\
-                or (isMotel != null and !"".equals(isResort))'>
+              <if test='(isHotel != null and !"".equals(isHotel)) or (isMotel != null and !"".equals(isMotel)) or (isPension != null and !"".equals(isPension)) or (isGlamping != null and !"".equals(isGlamping)) or (isGuestHouse != null and !"".equals(isGuestHouse)) or (isResort != null and !"".equals(isResort))'>
                 (
               </if>
               
@@ -50,12 +35,7 @@
                 OR type_of_acco = #{isResort} <!-- 공통코드 class3 참조 -->
               </if>
             
-              <if test='(isHotel != null and !"".equals(isHotel))\
-                or (isMotel != null and !"".equals(isMotel))\
-                or isPension != null and !"".equals(isPension))\
-                or isGlamping != null and !"".equals(isGlamping))\
-                or isGuestHouse != null and !"".equals(isGuestHouse))\
-                or (isMotel != null and !"".equals(isResort))'>
+              <if test='(isHotel != null and !"".equals(isHotel)) or (isMotel != null and !"".equals(isMotel)) or (isPension != null and !"".equals(isPension)) or (isGlamping != null and !"".equals(isGlamping)) or (isGuestHouse != null and !"".equals(isGuestHouse)) or (isResort != null and !"".equals(isResort))'>
                 )
               </if>
             
@@ -72,10 +52,10 @@
     AND   c.class2 = 'TYPE_OF_ACCO'
     AND   c.class3 = m.type_of_acco
     INNER JOIN (
-      SELECT * 
+      SELECT id, mst_id, weekday_price, weekend_price
       FROM   room_dtl
-      WHERE (weekday_price BETWEEN #{minweekdayPrice} AND #{maxweekdayPrice}
-      OR     weekend_price BETWEEN #{minweekendPrice} AND #{maxweekendPrice})
+      WHERE (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
+      OR     weekend_price BETWEEN #{minPrice} AND #{maxPrice})
       AND    num_of_guests = #{numOfGuests}
       ) d
     ON    m.id = d.mst_id

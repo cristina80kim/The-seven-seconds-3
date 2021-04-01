@@ -42,24 +42,41 @@ input{
 <script>
 
 var leftSearch = {
-    changeCheckBoxes: function(chk, arrIds) {
-        console.log("changeCheckBoxes(): 1");
+
+    idCheckBoxes: ["isHotel", "isMotel", "isPension", "isGlamping", "isGuestHouse", "isResort"],
+    
+    onAccoCheckAllClick: function(chk, arrIds) {
+        console.log("onAccoCheckAllClick(): 1");
         var setVal = chk.checked;
         console.log(arrIds);
         
         for(var i in arrIds) {
             var id = "#" + arrIds[i]; 
             $(id).prop("checked", setVal);
+            $(id).change(); // change event 발생
         }
-        console.log("changeCheckBoxes(): 2"); 
+        console.log("onAccoCheckAllClick(): 2"); 
     },
     
     search: function(){
         console.log("search(): 1");
-        var loc = "/staylist/leftSearch";
-        var param = "";
+        var loc = "/staylist/userRoomList";
+        var param = {
+              keyword:      $("#keyword").val(),
+              checkIn:      $("#checkIn").val(),
+              checkOut:     $("#checkOut").val(),
+              numOfGuests:  $("#numOfGuests").val(),  
+              minPrice:     $("#minPrice").val(),
+              maxPrice:     $("#maxPrice").val(),
+              isHotel:      $("#isHotel").val(),
+              isMotel:      $("#isMotel").val(),
+              isPension:    $("#isPension").val(),
+              isGlamping:   $("#isGlamping").val(), 
+              isGuestHouse: $("#isGuestHouse").val(),   
+              isResort:     $("#isResort").val(),
+        };
         
-        main.ajaxGetJson2(loc,param,callBackSearchResult);
+        main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult);
     },
    
     callBackSearchResult: function(jsonData){
@@ -80,12 +97,12 @@ var leftSearch = {
       <section id="topSearch">
         <form action="post">
           <fieldset>
-            <input type="text" name="searchText" placeholder="지역명 또는 호텔명 검색" />
+            <input type="text" name="keyword" id="keyword" placeholder="지역명 또는 호텔명 검색" />
             <div class="dateArea">
-              <input type="date" name="userChkIn" /> ~ <input type="date" name="userChkOut" />
+              <input type="date" name="checkIn" id="checkIn" /> ~ <input type="date" name="checkOut" id="checkOut"/>
             </div>
-            <input type="text" name="num_of_guests" placeholder="인원수" />
-                        <input type="button" value="검색" onclick="leftSearch.search();"/> 
+            <input type="text" name="numOfGuests" id="numOfGuests" placeholder="인원수" />
+            <input type="button" value="검색" onclick="leftSearch.search();"/> 
           </fieldset>
         </form>
       </section>
@@ -93,16 +110,16 @@ var leftSearch = {
         <form action="post">
           <fieldset>
             <legend>가격</legend>
-            <input type="text" name="minPrice" class="priceBox" placeholder="최저가격" /> ~ <input type="text" name="maxPrice" class="priceBox" placeholder="최대가격" />
+            <input type="number" name="minPrice" id="minPrice" class="priceBox" placeholder="최저가격" /> ~ <input type="number" name="maxPrice" id="maxPrice" class="priceBox" placeholder="최대가격" />
             <legend>숙박 유형</legend>
                     <input type="checkbox" name="onAccoCheckAll" id="hangeCheckBoxes" value="" 
-                               onchange="leftSearch.changeCheckBoxes(this, ['isHotel', 'isMotel', 'isPension', 'isGlamping', 'isGuestHouse', 'isResort']);"/>전체
-                    <input type="checkbox" name="isHotel" id="isHotel" value="" onchange="main.onHotelChanged(this);"/>호텔
-                    <input type="checkbox" name="isMotel" id="isMotel" value="" onchange="main.onMotelChanged(this);"/>모텔
-                    <input type="checkbox" name="isPension" id="isPension" value="" onchange="main.onPensionChanged(this);"/>펜션/풀빌라
-                    <input type="checkbox" name="isGlamping" id="isGlamping" value="" onchange="main.onGlampingChanged(this);"/>글램핑/캠핑
-                    <input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);"/>게하/한옥
-                    <input type="checkbox" name="isResort" id="isResort" value="" onchange="main.onResortChanged(this);"/>리조트/콘도
+                           onchange="leftSearch.onAccoCheckAllClick(this, leftSearch.idCheckBoxes);"/>전체
+                    <input type="checkbox" name="isHotel"      id="isHotel"      value="" onchange="main.onHotelChanged(this);"      />호텔
+                    <input type="checkbox" name="isMotel"      id="isMotel"      value="" onchange="main.onMotelChanged(this);"      />모텔
+                    <input type="checkbox" name="isPension"    id="isPension"    value="" onchange="main.onPensionChanged(this);"    />펜션/풀빌라
+                    <input type="checkbox" name="isGlamping"   id="isGlamping"   value="" onchange="main.onGlampingChanged(this);"   />글램핑/캠핑
+                    <input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);" />게하/한옥
+                    <input type="checkbox" name="isResort"     id="isResort"     value="" onchange="main.onResortChanged(this);"     />리조트/콘도
           </fieldset>
         </form>
       </section>
