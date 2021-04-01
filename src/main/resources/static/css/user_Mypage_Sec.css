@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+input:focus{
+outline:none;
+}
+
+input[type=text]{
+border:none;
+}
+
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	
+}
+
+section {
+	width: 700px;
+	text-align:center;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+	color:#474646;
+}
+
+section h1 {
+	text-align: center;
+	color:#474646;
+}
+
+section p {
+	text-align: center;
+	color:#474646;
+	margin: 0 auto;
+	padding: 10px 30px;
+	font-size:1.2em;
+	padding-bottom:20px;
+}
+
+section label {
+	text-align:center;
+	padding: 10px 20px;
+	vertical-align: middle;
+}
+
+
+#userSecFrm {
+	width: 550px;
+	text-align: right;
+	margin: 0 auto;
+
+}
+
+input[type=text]{
+	width: 230px;
+	padding: 10px 10px;
+	text-align:left;
+	margin-right:180px;
+	padding-right: 10px;
+
+}
+
+input[type=password]{
+	width: 230px;
+	border:2px solid #6F6F6F;
+	padding: 10px 10px;
+	text-align:left;
+	margin-right:112px;
+}
+
+
+#secBtn_ {
+	width: 550px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#submitBtn, #cancleBtn {
+	width: 140px;
+	height:40px;
+	font-weight:bolder;
+	background-color: #fff;
+	border:2px solid #6F6F6F;
+	color:#474646;
+	font-size:0.8em;
+}
+
+#submitBtn:hover, #cancleBtn:hover {
+	cursor:pointer;
+	color: white;
+	border:2px solid #6F6F6F;
+	background-color:#6F6F6F;
+}
+
+
