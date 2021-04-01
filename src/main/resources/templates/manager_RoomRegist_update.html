@@ -2,46 +2,60 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>manager_룸등록</title>
+<title>221.manager_룸등록_수정(update)</title>
+<link rel="stylesheet" href="css/manager_RoomRegist_update.css" />
 </head>
 <body>
 
 <div id="wrap">
 
 	<section>
+			<h1>룸 수정</h1>
+			<hr />
 		<form method="post" action="/roomDtl/update" id="RoomMstRegistFrm" name="RoomMstRegistFrm" enctype="multipart/form-data">
-		<h1>룸 수정</h1>
-		<hr />
-		<label for="roomName">룸명</label>
-		<input type="text" name="roomName" id="roomName" />
-		<br />
-		<label for="guestNum">인원수</label>
-		<input type="number" name="numOfGuests" id="numOfGuests" />
-		
-		<label for="checkInTime">입실 시간</label>
-		<input type="time" name="checkInTime" id="checkInTime" />
-		
-		<label for="checkOutTime">퇴실 시간</label>
-		<input type="time" name="checkOutTime" id="checkOutTime" />
-		<br />
-		
-		<label for="">기간별 가격</label>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<label for="weekdayPrice">평일</label>
-		<input type="text" name="weekdayPrice" id="weekdayPrice" />원
-		
-		<label for="weekendPrice">주말/공휴일</label>
-		<input type="text" name="weekendPrice" id="weekendPrice" />원
-		<br />
-		<label for="fileUpload">사진</label>
-		<input type="file" name="files" id="files"  multiple/>
-		
-		<hr />
-		<input type="hidden" name="id" id="id" value="1000000005" />
-		<input type="hidden" name="mstId" id="mstId" value="1000000000" />		
-		<input type="hidden" name="cUser" id="cUser" value="hyunwoong" />
-		<input type="hidden" name="typeOfRoom" id="typeOfRoom" value="디럭스" />
-		<input type="submit" value="수정" />
+			
+			<label for="roomName">룸명
+				<input type="text" name="roomName" id="roomName" />
+			</label>
+			<br />
+			<span>인원수</span>
+				<input type="number" name="numOfGuests" id="numOfGuests" />
+			
+			
+			<p>입실 시간</p>
+				<input type="time" name="checkInTime" id="checkInTime" />
+			
+			
+			<p>퇴실 시간</p>
+				<input type="time" name="checkOutTime" id="checkOutTime" />
+			
+			<br />
+			
+			<span>기간별 가격</span>
+			
+			<p>평일</p>
+				<input type="text" name="weekdayPrice" id="weekdayPrice" />
+			<p>원</p>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p>주말/공휴일</p>
+				<input type="text" name="weekendPrice" id="weekendPrice" />
+			<p>원</p>
+			
+			<br />
+			<span>사진</span>
+				<input type="file" name="files" id="files"  multiple/>
+	
+			<br />
+			<hr />	
+			
+				<div id="updateBtn_">
+					<input type="hidden" name="id" id="id" value="1000000005" />
+					<input type="hidden" name="mstId" id="mstId" value="1000000000" />		
+					<input type="hidden" name="cUser" id="cUser" value="hyunwoong" />
+					<input type="hidden" name="typeOfRoom" id="typeOfRoom" value="디럭스" />
+					<input type="submit" value="수정" id="updateBtn" />
+				</div>
 		</form>
 	
 	</section>
