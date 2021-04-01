@@ -2,34 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>user_커뮤니티_FAQ</title>
+<title>181. user_커뮤니티_FAQ</title>
+<link rel="stylesheet" href="css/user_ComuFAQ.css" />
 </head>
 <body>
 
 <div id="wrap">
 
-	<article>
+	<section>
 		<div id="FAQSrch">
 		  <h1>FAQ</h1>
 	      <form id="FAQsrchFrm">
-	        <select name="FAQcate" id="">
-	          <option value="">카테고리</option>
-	        </select>
-	        <select name="FAQAllCate" id="">
-	          <option value="">전체</option>
-	        </select>
-	        <input type="text">
-	        <input type="submit" value="검색">
+		        <select name="FAQcate" id="FAQcate">
+		          <option value="">카테고리</option>
+		        </select>
+		        <select name="FAQAllCate" id="FAQAllCate">
+		          <option value="">전체</option>
+		        </select>
+		        <input type="text" id="FAQsearch">
+		        <input type="submit" value="검색" id="FAQSrchBtn">
 	      </form>
 	    </div>
+	  <hr />
 	
 
 	
 	    <div id="FAQbbs">
 	      <table>
 	        <tr>
-	          <th>카테고리</th>
-	          <th>제목</th>
+	          <th id="cateth">카테고리</th>
+	          <th id="titleth">제목</th>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -37,8 +39,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[취소/환불]</a></td>
-	          <td><a href="">환불은 언제 되나요</a></td>
+	          <td id="cate"><a href="">[취소/환불]</a></td>
+	          <td id="title"><a href="">환불은 언제 되나요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -46,8 +48,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[포인트]</a></td>
-	          <td><a href="">포인트 적립은 언제 되나요</a></td>
+	          <td id="cate"><a href="">[포인트]</a></td>
+	          <td id="title"><a href="">포인트 적립은 언제 되나요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -55,8 +57,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[회원/개인정보]</a></td>
-	          <td><a href="">탈퇴하고 싶어요</a></td>
+	          <td id="cate"><a href="">[회원/개인정보]</a></td>
+	          <td id="title"><a href="">탈퇴하고 싶어요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -64,8 +66,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[회원/개인정보]</a></td>
-	          <td><a href="">회원정보 수정은 어떻게 하나요</a></td>
+	          <td id="cate"><a href="">[회원/개인정보]</a></td>
+	          <td id="title"><a href="">회원정보 수정은 어떻게 하나요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -73,8 +75,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[예약/결제]</a></td>
-	          <td><a href="">예약 후 금액이 달라졌어요</a></td>
+	          <td id="cate"><a href="">[예약/결제]</a></td>
+	          <td id="title"><a href="">예약 후 금액이 달라졌어요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -82,8 +84,8 @@
 	          </td>
 	        </tr>
 	        <tr>
-	          <td><a href="">[서비스 이용]</a></td>
-	          <td><a href="">방을 2개 예약하려면 어떻게 해야하나요</a></td>
+	          <td id="cate"><a href="">[서비스 이용]</a></td>
+	          <td id="title"><a href="">방을 2개 예약하려면 어떻게 해야하나요</a></td>
 	        </tr>
 	        <tr>
 	          <td colspan="2">
@@ -111,7 +113,7 @@
 	        <span class="block">》</span>
 	      </div>
 	      
-	</article>
+	</section>
 	
 </div>
 
