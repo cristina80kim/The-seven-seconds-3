@@ -12,8 +12,13 @@
     FROM ( SELECT id, region, title, addr, pic1_uuid, type_of_acco   
            FROM   room_mst
             <where>
-              <if test='(isHotel != null and !"".equals(isHotel)) or (isMotel != null and !"".equals(isMotel)) or (isPension != null and !"".equals(isPension)) or (isGlamping != null and !"".equals(isGlamping)) or (isGuestHouse != null and !"".equals(isGuestHouse)) or (isResort != null and !"".equals(isResort))'>
-                (
+              <if test='(isHotel != null and !"".equals(isHotel)) 
+                or (isMotel != null and !"".equals(isMotel)) 
+                or (isPension != null and !"".equals(isPension)) 
+                or (isGlamping != null and !"".equals(isGlamping)) 
+                or (isGuestHouse != null and !"".equals(isGuestHouse)) 
+                or (isResort != null and !"".equals(isResort))'>
+                (1 = 1
               </if>
               
               <if test='isHotel != null and !"".equals(isHotel)'>
@@ -35,7 +40,12 @@
                 OR type_of_acco = #{isResort} <!-- 공통코드 class3 참조 -->
               </if>
             
-              <if test='(isHotel != null and !"".equals(isHotel)) or (isMotel != null and !"".equals(isMotel)) or (isPension != null and !"".equals(isPension)) or (isGlamping != null and !"".equals(isGlamping)) or (isGuestHouse != null and !"".equals(isGuestHouse)) or (isResort != null and !"".equals(isResort))'>
+              <if test='(isHotel != null and !"".equals(isHotel)) 
+                or (isMotel != null and !"".equals(isMotel)) 
+                or (isPension != null and !"".equals(isPension)) 
+                or (isGlamping != null and !"".equals(isGlamping)) 
+                or (isGuestHouse != null and !"".equals(isGuestHouse)) 
+                or (isResort != null and !"".equals(isResort))'>              
                 )
               </if>
             
