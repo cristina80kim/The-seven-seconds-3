@@ -237,10 +237,10 @@ var main = {
   //============================================================
   // 기능: jㅂGrid에 jsonParam을 출력한다.
   //============================================================
-  showGridDatas: function(loc, mtype, colNames, colModel, width, height, rowNum) {
+  showGridDatas: function(loc, mtype, componentName, colNames, colModel, width, height, rowNum) {
     console.log(">>> showGridDatas(): 1");
 
-    $("#gridData").jqGrid({ 
+    $("#" + componentName).jqGrid({ 
       url:          loc,                // 서버 호출 주소
       mtype:        mtype,              // "POST" 또는 "GET"   
       datatype:     "json",             // 데이터 타입("json", "xml", "array", "local", ...)

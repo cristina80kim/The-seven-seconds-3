@@ -26,7 +26,7 @@
   $(function() {
     console.log(">>> $(): 1");
     main.ajaxCodeQnaToSelectBox("cateId");
-    main.showGridDatas("/qna/selectAll", "GET", colNames, colModel);
+    main.showGridDatas("/qna/selectAll", "GET", "gridData", colNames, colModel);
   });
   
   var qna = {
@@ -34,6 +34,12 @@
       console.log("onQnaWriteClick()");
       main.ajaxGetHtml("/qna/qWriter", "contents");
     },
+    
+    onSearchBtnClick: function() {
+      console.log("onSearchBtnClick()");
+      main.showGridDatas("/qna/search", "GET", "gridData", colNames, colModel);
+    },
+    
   }
 
   var colNames =                         // 그리드 헤더의 제목(배열 형태임)  
@@ -64,11 +70,8 @@
 		      <form id="QnASrchFrm">
 		        <select name="cateId" id="cateId">
 		        </select>
-    		    <select name="QnATitleSrch" id="">
-		          <option value="">제목</option>
-		        </select>
-		        <input type="text">
-		        <input type="submit" value="검색">
+		        <input type="text" name="keyword" id="keyword">
+		        <input type="button" value="검색" id="searchBtn" onclick="qna.onSearchBtnClick();">
 		      </form>
 	</div>
   <table id="gridData"></table>
