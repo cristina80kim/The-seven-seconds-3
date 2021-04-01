@@ -22,6 +22,16 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public String dbinsert(PaymentVO vo) {
 	    System.out.println();
-	    return paymentDao.dbinsert(vo) == 1 ? vo.getBuyer_name(): "";
+	    return paymentDao.dbinsert(vo) == 1 ? vo.getBuyerName(): "";
+	}
+	
+	@Override
+	public List<PaymentVO> selectPaymentend(){
+	    return paymentDao.selectPaymentend();
+	}
+	
+	@Override
+	public Long delete(PaymentVO vo) {
+	    return paymentDao.delete(vo);
 	}
 }
