@@ -33,26 +33,29 @@ var index = {
   },
   
   onNoticeClick: function() {
-	    console.log("onNoticeClick()");
-	    // TODO : (임의정) 매핑주소 넣어야 함 
-	    main.ajaxGetHtml("", "contents");
- },
- onFaqClick: function() {
-	    console.log("onFaqClick()");
-	    // TODO : (임의정) 매핑주소 넣어야 함 
-	    main.ajaxGetHtml("", "contents");
-},
-onQnaClick: function() {
+    console.log("onNoticeClick()");
+    // TODO : (임의정) 매핑주소 넣어야 함 
+    main.ajaxGetHtml("", "contents");
+  },
+  
+  onFaqClick: function() {
+    console.log("onFaqClick()");
+    // TODO : (임의정) 매핑주소 넣어야 함 
+    main.ajaxGetHtml("", "contents");
+  },
+  
+  onQnaClick: function() {
     console.log("onQnaClick()");
     main.ajaxGetHtml("/qna/frmSelectAll", "contents");
-},
+  },
 
   
   log: function(msg) {
     console.log(">>> " + msg);
   }
 };
-</script> 
+</script>
+
 <title>index</title>
 <link rel="stylesheet" href="css/header.css" />
 </head>
