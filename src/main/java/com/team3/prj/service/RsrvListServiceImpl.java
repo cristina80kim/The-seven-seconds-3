@@ -18,4 +18,9 @@ public class RsrvListServiceImpl implements RsrvListService {
 	public List<RsrvListVO> selectAllRsrvList(){
 		return rsrvlistDao.selectAllRsrvList();
 	}
+	
+	@Override
+	public List<RsrvListVO> managerRsrvList(){
+	    return rsrvlistDao.managerRsrvList();
+	}
 }
