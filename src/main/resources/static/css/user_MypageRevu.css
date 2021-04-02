@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+
+#PointBbs input[type=text]:focus { outline: none; }
+
+input[type=text], input[type=date],input[type=number]{
+border:none;
+}
+
+input:focus{
+outline:none;
+}
+
+a {
+	color:inherit;
+	text-decoration: none;
+}
+
+hr {
+	opacity:0.5;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section {
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	font-size:1.0em;
+	color:#785aef;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+	font-weight:bolder;
+	vertical-align: middle;
+}
+
+
+table {
+	table-layout: fixed;
+	color:#785aef;
+	width: 700px;
+	width: 100%;
+	border-collapse: collapse;
+	
+}
+
+th {
+	font-weight:bolder;
+	font-size:1.2em;
+}
+
+th td {
+	white-space: nowrap;
+	border: 1px solid #444444;
+	padding: 10px;
+}
+
+/*/////////////////////////////////////////////////// */
+
+
+#RevuBbs{
+	color:#785aef;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+
+
+#RevuBbs input[type=text]{
+	padding:5px;
+	font-size:0.7em;
+	vertical-align :middle;
+
+}
+
+
+/* //////////////////////// */
+
+#noth{
+	width: 10%;
+	width: 80px;
+	text-align: center;
+}
+#revuth{
+	width: 50%;
+}
+#C_DATEth{
+	width: 20%;
+
+}
+
+#deleteBtnth{
+	width: 20%;
+	width: 80px;
+}
+
+/* ///////////////////////////////////////// */
+
+#no{
+	width: 10%;
+	width: 80px;
+	text-align: center;
+}
+#revu{
+	width: 50%;
+	text-align: left;
+}
+#C_DATE{
+	width: 20%;
+}
+
+#deleteBtn{
+	width: 20%;
+	width: 60px;
+	text-align: center;
+
+}
+
+
+/*//////////////  */
+
+
+#deleteBtn>input:hover{
+	cursor:pointer;
+	color: white;
+	background-color:#9881f3;	
+	opacity:0.5;
+}
+
+
+#deleteBtn>input {
+	border:none;
+	
+}
+
+
+#paging{
+	margin: 0 auto;
+	text-align: center;
+	padding-top:10px;
+}
+

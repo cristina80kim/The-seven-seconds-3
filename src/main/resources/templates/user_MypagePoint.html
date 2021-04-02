@@ -3,15 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>150.user_마이페이지_포인트관리</title>
-<style>
-#PointBbs input[type=text]:focus { outline: none; }
-input[type=text], input[type=date],input[type=number]{
-border:none;
-}
-</style>
+<link rel="stylesheet" href="css/user_MypagePoint.css" />
 </head>
 <body>
-
+<!--css 수정완료  -->
 <div id="wrap">
 
 	<section>
@@ -19,7 +14,7 @@ border:none;
 	    <div id="PointBbs">
 	    
 			<h1>포인트 관리</h1>
-			<p>포인트는 결제 금액의 2%가 적립되며 1000 포인트 이상 사용 가능합니다</p>
+			<h5>포인트는 결제 금액의 2%가 적립되며 1000 포인트 이상 사용 가능합니다</h5>
 			<hr />
 			
 			<p><input type="text" name="userID" id="userID" value="아이디" readonly/>			
@@ -29,86 +24,89 @@ border:none;
 			</p>
 			<hr />
 		    
-	      <table>
-	        <tr>
-	          <th>적립/사용</th>
-	          <th>내역</th>
-	          <th>일시</th>
-	          <th>포인트</th>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="적립"/></td>
-	          <td><input type="text" name="title" id="title" value="강남역 YAM"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number" name="kind" id="kind" value="2000"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="사용"/></td>
-	          <td><input type="text" name="title" id="title" value="강남역 굿호텔"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number" name="kind" id="kind" value="-1500"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="적립"/></td>
-	          <td><input type="text" name="title" id="title" value="영종도 굿호텔"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number" name="kind" id="kind" value="3000"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="사용"/></td>
-	          <td><input type="text" name="title" id="title" value="전주 한옥 호텔"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number"name="kind" id="kind" value="-1000"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="적립"/></td>
-	          <td><input type="text" name="title" id="title" value="여수 무인 호텔"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number" name="kind" id="kind" value="1000"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td><input type="text" name="point" id="point" value="적립"/></td>
-	          <td><input type="text" name="title" id="title" value="제주 G 호텔"/></td>
-	          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
-	          <td><input type="number" name="kind" id="kind" value="4000"/></td>
-	        </tr>
-	        <tr>
-	          <td colspan="4">
-	            <hr>
-	          </td>
-	        </tr>
-	        
-	      </table>
+			<form action="" id="PointFrm">
+		      	<table>
+			        <tr>
+			          <th id="pointh">적립/사용</th>
+			          <th id="titleth">내역</th>
+			          <th id="date_usedth">일시</th>
+			          <th id="kindth">포인트</th>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="적립"/></td>
+			          <td><input type="text" name="title" id="title" value="강남역 YAM"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number" name="kind" id="kind" value="2000"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="사용"/></td>
+			          <td><input type="text" name="title" id="title" value="강남역 굿호텔"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number" name="kind" id="kind" value="-1500"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="적립"/></td>
+			          <td><input type="text" name="title" id="title" value="영종도 굿호텔"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number" name="kind" id="kind" value="3000"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="사용"/></td>
+			          <td><input type="text" name="title" id="title" value="전주 한옥 호텔"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number"name="kind" id="kind" value="-1000"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="적립"/></td>
+			          <td><input type="text" name="title" id="title" value="여수 무인 호텔"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number" name="kind" id="kind" value="1000"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td><input type="text" name="point" id="point" value="적립"/></td>
+			          <td><input type="text" name="title" id="title" value="제주 G 호텔"/></td>
+			          <td><input type="date" name="date_used" id="date_used" value="2021-03-15"/></td>
+			          <td><input type="number" name="kind" id="kind" value="4000"/></td>
+			        </tr>
+			        <tr>
+			          <td colspan="4">
+			            <hr>
+			          </td>
+			        </tr>
+			        
+			      </table>
+			</form>
+			
 	    </div>
 	
 	
