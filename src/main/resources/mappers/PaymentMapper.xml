@@ -18,17 +18,17 @@
   	
   	INSERT INTO rsrv
 		(
-			id, rsrv_stay, price,
-			rsrv_room,buyer_email, buyer_name
+			 id, check_in, check_out, Rsrv_stay, Rsrv_room, 
+			 room_dtl_id, Rsrv_id, Rsrv_name, Rsrv_gen, Rsrv_tel, 
+			 price, Rsrv_info, appr_no, Rsrv_state, C_USER, 
+			 M_USER, C_DATE, M_DATE, buyer_email, buyer_name     
 		)
 		VALUES
 		(
-			#{id},  
-			#{name}, <!-- 숙소이름 -->
-			#{amount},<!-- 가격 : price -->
-			#{rsrvRoom}, <!-- 룸명 --> 
-			#{buyerEmail}, <!-- 구매자 이메일 -->
-			#{buyerName} <!-- 구매자 이름 -->		
+			#{id}, #{checkIn}, #{checkOut}, #{name}, #{rsrvRoom}, 
+			101, #{rsrvId}, #{rsrvName}, #{rsrvGen}, #{rsrvTel},
+			#{amount}, '카카오페이' , '205154' , '1' , #{cUser}, 
+			#{mUser}, #{cDate}, #{mDate}, #{buyerEmail}, #{buyerName} 		
 		)
   </insert>
   
