@@ -4,17 +4,20 @@
 
 <mapper namespace="com.team3.prj.dao.UserDAO">
 
-	<select id="selectAll" resultType="com.team3.prj.vo.UserVO">
+	<!-- admin 회원리스트 -->
+	<select id="userSelectAll" resultType="com.team3.prj.vo.UserVO">
 		SELECT *
 		FROM users
 	</select>
-
+	
+	<!-- 유저 로그인 -->
 	<select id="userLogin" resultType="com.team3.prj.vo.UserVO">
 		SELECT role, name, nickname
 		FROM users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 
+	<!-- 유저 회원가입 -->
 	<insert id="userJoin">
 		INSERT INTO users
 		(
@@ -28,6 +31,7 @@
 		)
 	</insert>
 	
+	<!-- 유저 내정보수정 -->
 	<update id="userUpdate">
 		UPDATE users
 		SET pwd=#{pwd}, nickname=#{nickname},
@@ -35,6 +39,7 @@
 		WHERE id=#{id}
 	</update>
 	
+	<!-- 유저 회원탈퇴 -->
 	<delete id="userDelete">
 		DELETE users
 		WHERE id=#{id} AND pwd=#{pwd}
@@ -55,6 +60,7 @@
 		ORDER BY c_date, id
 	</select>
 	
+	<!-- 리뷰삭제 -->
 	<delete id="revuDelete">
 		DELETE FROM revu
 		WHERE id=#{id}

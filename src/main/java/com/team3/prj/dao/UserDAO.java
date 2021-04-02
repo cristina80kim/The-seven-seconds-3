@@ -9,6 +9,8 @@ import com.team3.prj.vo.UserVO;
 
 @Mapper
 public interface UserDAO {
+	
+	//admin 회원리스트
 	public List<UserVO> userSelectAll();
 	
 	public UserVO userLogin(UserVO vo);
