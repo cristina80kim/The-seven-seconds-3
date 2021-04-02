@@ -2,6 +2,8 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.team3.prj.service.UserService;
 import com.team3.prj.vo.RevuVO;
@@ -52,8 +56,19 @@ public class UserController {
 		return userService.join(vo);
 	}
 	
-	//http://localhost:8081/user/mypage
+	//http://localhost:8081/user/frmMypage
 	//마이페이지 메인
+	@GetMapping("frmMypage")
+	public String frmMypage() {
+		System.out.println(className + ".frmMypage");
+		ServletRequestAttributes servletRequestAttribute = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+		UserVO curvo = new UserVO();
+		curvo.setId("shseong"); // 로그인manager에서 불러옴
+		httpSession.setAttribute("userId", curvo.getId());
+		return "user_MypageMain"; //user_MypageMain.html
+	}
+	
 	@GetMapping("mypage")
 	public @ResponseBody UserVO mypage(UserVO vo) {
 		System.out.println(className + ".mypage");
