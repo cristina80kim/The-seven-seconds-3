@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+/* 	background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+
+input {
+	/* border:none; */
+	
+}
+
+a {
+	text-decoration: none;
+	color:inherit;
+	underline:none;
+	font-size:0.8em;
+	font-weight:normal;
+}
+
+h4 {
+	font-size:0.7em;
+	font-weight:normal;
+}
+
+input:focus{
+	outline:none;
+}
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+	color:#785aef;
+}
+
+section{
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.1em;
+	color:#785aef;
+}
+
+section>h1{
+	text-align: center;
+}
+
+
+label>span {
+	text-allign:left;
+	display: inlint-block;
+}
+
+
+
+
+
+
+p {
+	display:block;
+	width: 130px;
+	height:20px;
+	font-size:1.1em;
+	font-weight:bolder;
+	text-align: left;
+	
+}
+#RoomPayFrm input {
+	text-align: left;
+	border:2px solid #785aef;
+}
+
+table {
+	table-layout: fixed;
+	color:#785aef;
+	width: 700px;
+	width: 100%;
+	border-collapse: collapse;
+	font-size:1.0em;
+	text-align: center;
+	border:none;
+	margin-bottom:17px;
+}
+
+
+td {
+	white-space: nowrap;
+	padding: 8px 10px;
+}
+#content1 table {
+	display:inline-block;
+	float: left;
+	
+}
+
+#content1 table td input{
+	width: 100px;
+	display:inline-block;
+	float: left;
+}
+
+#content1 table td #title,#content1 table td #rsrvRoom {
+	border:none;
+}
+#content1 table td #checkIn, #content1 table td #checkOut {
+	width: 100px;
+}
+#content1 table td #userName{
+	width: 50px;
+	padding: 7px;
+}
+#content1 table td #numOfGuests{
+	width: 40px;
+	padding: 7px;
+}
+
+#content1 table td #userEmail{
+	width: 100px;
+	padding: 7px;
+}
+#content1{
+	width: 700px;
+	display:inline-block;
+	margin: 0 auto;
+	color:#785aef;
+	float: left;
+	
+}
+
+#content1 input {
+	padding:5px;
+	border: 2px solid #785aef;
+	
+}
+
+#content2 {
+	width: 700px;
+	display:inline-block;
+	margin: 0 auto;
+	color:#785aef;
+	padding: 10px;
+	vertical-align: middle;
+}
+#content2 label{
+	vertical-align: middle;
+}
+#content2 label input {
+	vertical-align: middle;
+}
+#content2>label>input{
+	width: 100px;
+	vertical-align: middle;
+	text-align: center;
+	color:#785aef;
+	font-size:1.0em;
+	font-weight:bold;
+	
+}
+
+
+
+#payBtn {
+	width: 900px;
+	margin: 0 auto;
+}
+
+#PayBtn input{
+	background: #8ec5fc;
+	color:white;
+	width: 150px;
+	height:50px;
+	border: none;
+	
+}
+
+
+
+#payment span {
+	font-weight:bolder;
+	font-size:1.1em;
+}
+
+#payment input {
+	font-size:0.9em;
+}
+
+
+#content3 input[type=button]{
+	border:none;
+	display:inline-block;
+	float: right;
+}
+
+#content3 input[type=button]:hover{
+	color:white;
+	background-color: #785aef;
+	opacity:0.5;
+}
+
+#PayBtn .Pay_Btn {
+	border: none;
+	width: 180px;
+	height: 60px;
+	color:white;
+	font-size:1.0em;
+	font-weight:bold;
+	border:2px solid #785aef;
+	background-color:#785aef;
+}
+
+#PayBtn .Pay_Btn:hover{
+	cursor:pointer;
+	border:2px solid #785aef;
+	background-color:white;
+	color:#785aef;
+	font-size:1.0em;
+	font-weight:bold;
+    }
+
+#payBtn {
+	width: 700px;
+	text-align: center;
+	margin-top: 10px;
+	margin: 0 auto;
+}
+
+#payment, #cancleBtn{
+	width: 150px;
+	height: 40px;
+	font-size:1.0em;
+	border:2px solid #9881f3;
+	color:#785aef;
+	background-color:white;
+	text-align: center;
+	font-weight:bolder;
+}
+
+#payment:hover, #cancleBtn:hover{
+	cursor:pointer;
+	color: white;
+	font-weight:bolder;
+	border:2px solid #9881f3;
+	font-size:1.0em;
+	background-color:#9881f3;	
+}
+
+
