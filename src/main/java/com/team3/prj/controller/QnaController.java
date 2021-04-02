@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,6 +50,8 @@ public class QnaController {
 		System.out.println(className + ".search()");
 		return service.search(svo);
 	}
+	
+	
 //	http://localhost:8081/qna/qWriter
 	@GetMapping("/qWriter")
 	public String qWriter() {
@@ -59,9 +63,10 @@ public class QnaController {
 	// param : QnaVO중 - ID(자동대입), nickname(로그인사용자 닉네임 자동 대입),
 	// no(자동대입), cate_Id, isPub(공개(Y)/비공개(N)), title, q
 	// http://localhost:8081/qna/insert?nickname=yskim&no=1&cateId=aaaa&isPub=Y&title=title&q=question&cUser=yskim
-	@GetMapping("/insert")
-	public @ResponseBody String insert(QnaVO vo) {
+	@PostMapping("/insert")
+	public @ResponseBody String insert(@RequestBody QnaVO vo) {
 		System.out.println(className + ".insert() : " + vo.toString());
+		vo.setCUser("user");
 		return service.insert(vo).toString();
 	}
 
