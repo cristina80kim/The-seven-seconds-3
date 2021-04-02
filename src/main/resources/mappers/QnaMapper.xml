@@ -4,7 +4,7 @@
 
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 	<!-- 전체 출력 sql문 -->
-	<select id="selecaAll" resultType="com.team3.prj.vo.QnaVO">
+	<select id="selectAll" resultType="com.team3.prj.vo.QnaVO">
 		SELECT nickname, no,
 		cate_id,
 		is_pub, title, q, a
