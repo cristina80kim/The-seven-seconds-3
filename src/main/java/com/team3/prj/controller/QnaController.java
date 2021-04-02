@@ -27,12 +27,12 @@ public class QnaController {
 		return "frmQnaSelectAll"; // .html
 	}
 
-//	// http://localhost:8081/qna/selectAll
-//	@GetMapping("/selectAll")
-//	public @ResponseBody List<QnaVO> selectAll() {
-//		System.out.println(className + ".selectAll()");
-//		return service.selectAll();
-//	}
+	// http://localhost:8081/qna/selectAll
+	@GetMapping("/selectAll")
+	public @ResponseBody List<QnaVO> selectAll() {
+		System.out.println(className + ".selectAll()");
+		return service.selectAll();
+	}
 
 //	http://localhost:8081/qna/oneSelect?id=1000000001
 	@GetMapping("/oneSelect")

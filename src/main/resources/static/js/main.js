@@ -211,7 +211,7 @@ var main = {
       var str = "<option value=''>=========</option>";
     
       $.each(jsonData, function(index, item) {
-        str += "<option value='" + item["class4"] + "'>" + item["name"] + "</option>";
+        str += "<option value='" + item["class3"] + "'>" + item["name"] + "</option>";
       });
     
       $("#" + componentName).html(str);

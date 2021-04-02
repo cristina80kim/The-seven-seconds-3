@@ -19,10 +19,10 @@
 		<input type="text" value="스탠다드 트윈" readonly name="" id="rsrvRoom" /><br />
 		
 		<label for="">체크인</label>
-		<input type="date" name="" id="checkin" />
+		<input type="date" name="" id="checkIn" />
 		
 		<label for="">체크아웃</label>
-		<input type="date" name="" id="checkout" />
+		<input type="date" name="" id="checkOut" />
 		
 		<label for="">인원수</label>
 		<input type="text" readonly name=""  id="numOfGuests" value="2명" />
@@ -75,19 +75,37 @@
         // getter
         var IMP = window.IMP;
         IMP.init('imp44221020');
-        var totalPrice = $('#totalPrice').val();
+        
+		var checkIn = $('#checkIn').val();
+        var checkOut = $('#checkOut').val();        
         var title = $('#title').val();
         var rsrvRoom = $('#rsrvRoom').val();
-        var checkin = $('#checkin').val();
-        var checkout = $('#checkout').val();
+        var rsrvId = $('#rsrvId').val();
+        var rsrvName = $('#rsrvName').val();
+        var rsrvGen = $('#rsrvGen').val();
+        var rsrvTel = $('#rsrvTel').val();
+        var totalPrice = $('#totalPrice').val();
+  		var cUser = $('#cUser').val();
+  		var mUser = $('#mUser').val();
+  		var cDate = $('#cDate').val();
+  		var mDate = $('#mDate').val();
         var numOfGuests = $('#numOfGuests').val();
         var userEmail = $('#userEmail').val();
         var userName = $('#userName').val();
-        console.log(totalPrice);
+        
+        console.log(checkIn);
+        console.log(checkOut);
         console.log(title);
         console.log(rsrvRoom);
-        console.log(checkin);
-        console.log(checkout);
+        console.log(rsrvId);
+        console.log(rsrvName);
+        console.log(rsrvGen);
+        console.log(rsrvTel);
+        console.log(totalPrice);
+        console.log(cUser);
+        console.log(mUser);
+        console.log(cDate);
+        console.log(mDate);
         console.log(numOfGuests);
         console.log(userEmail);
         console.log(userName);

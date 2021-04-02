@@ -14,6 +14,11 @@ $(function() {
   var qna = {
   }; 
 */
+
+  var callbackAjaxResult = function(jsonStr) {
+    console.log("callbackAjaxResult()");
+    console.log(jsonStr);
+  }
 });
 </script>
 
@@ -28,10 +33,10 @@ $(function() {
 			<div id="QnAwrite">
 			  <h1>Q&A 글쓰기</h1>
 			  <hr />
-		      <form id="QnASrchFrm">
+		      <form id="QnASrchFrm" action="qna/insert">
 		      	
 				<label for="">카테고리</label>
-		        <select name="cateId" id="cateId">
+		        <select name="cateId" id="cateId"> 
 		          	<option value="">카테고리</option>
 		        </select>
 <!-- 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,7 +45,7 @@ $(function() {
 		         -->
 		        
 		        <label for="is_pubChk">
-		      		<input type="checkbox" name="is_pubChk" id="is_pubChk" />비밀글
+		      		<input type="checkbox" name="isPub" id="isPub" value="N" onchange="main.onIsPubChanged(this);" />비밀글
       			</label> 
 		       <br /> 
 		       
@@ -50,13 +55,15 @@ $(function() {
 				<br />
 				
 				<label for="UserQnAq">내용</label>
-		        <textarea name="content" id="content" cols="50" rows="15" autofocus="autofocus"></textarea>
+		        <textarea name="q" id="q" cols="50" rows="15" autofocus="autofocus"></textarea>
 		        
 				<br />
 					<div id="submitBtn_">
-				        <input type="button" value="등록" id="submitBtn">
+				        <input type="submit" value="등록" id="submitBtn">
 				        <input type="button" value="취소" id="cancleBtn">
 			        </div>
+			        <input type="hidden" name="nickname" value="jho" />
+			        <input type="hidden" name="cUser" value="user" />
 		      </form>
 		    </div>
 		

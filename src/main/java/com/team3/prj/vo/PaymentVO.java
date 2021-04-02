@@ -10,7 +10,6 @@ public class PaymentVO {
     
     
     private Long id;   // ID
-    private String rsrvDate; // 예약날자
     private String checkIn; //체크인
     private String checkOut; //체크아웃
     private String name; // 숙소이름
