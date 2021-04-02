@@ -130,9 +130,30 @@ th, tr, td, td input {
 	text-align: center;
 }
 
+#no {
+	width:10px;
+	display:inline-block;
+	padding:0px;
+	margin-left:-20px;
+	text-align:left;
+}
+
+#priceinfo {
+	width: 120px;
+	text-align: center;
+}
+
+
 #Rsrv_stay{
 	width: 73px;
 	text-align: center;
+	
+}
+
+#Rsrv_date{
+	text-align: center;
+	width: 122px;
+	margin-left:-20px;
 }
 
 #Rsrv_room{
@@ -166,7 +187,6 @@ th, tr, td, td input {
 #paging{
 	margin: 0 auto;
 	text-align: center;
-
 	padding-top:10px;
 }
 
