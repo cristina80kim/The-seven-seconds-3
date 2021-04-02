@@ -7,4 +7,7 @@ import com.team3.prj.vo.RsrvListVO;
 public interface RsrvListService {
 
 	public List<RsrvListVO> selectAllRsrvList();
+	
+	
+	public List<RsrvListVO> managerRsrvList();
 }

@@ -23,4 +23,12 @@ public class RsrvListController {
 		List<RsrvListVO> lstRsrvList = rsrvlistService.selectAllRsrvList();
 		return lstRsrvList;
 	}
+	
+	// 230번 예약관리 예약리스트
+	//http://localhost:8081/managerRsrvList
+	@GetMapping("/managerRsrvList")
+	public String managerRsrvList() {
+	    return "manager_RsrvList";
+	}
+	
 }
