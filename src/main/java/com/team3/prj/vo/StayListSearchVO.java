@@ -21,4 +21,5 @@ public class StayListSearchVO {
     private String isGlamping;  //숙소유형(글램핑/캠핑)
     private String isGuestHouse;//숙소유형(게하/한옥)
     private String isResort;    //숙소유형(리조트/콘도)
+    private String sortMethod;  //"star": 별점순, "revu": 후기순, "price": 가격순 
 }
