@@ -2,186 +2,308 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>    
-<script src="/js/main.js?ver=1.1"></script>
-<style>
-.OdrTabMenu input[type=text]{
- border: none;
-}
-
-.OdrTabMenu input[type=text]:focus {
-outline:none;
-}
-
-</style>
-<script>
-
-var userRoomList = {
-    changeCheckBoxes: function(chk, arrIds) {
-        console.log("changeCheckBoxes(): 1");
-        var setVal = chk.checked;
-        console.log(arrIds);
-        
-        for(var i in arrIds) {
-            var id = "#" + arrIds[i]; 
-            $(id).prop("checked", setVal);
-        }
-        console.log("changeCheckBoxes(): 2"); 
-    },
-    search: function(){
-        console.log("search(): 1");
-        var loc = "/staylist/userRoomList";
-        var param = "";
-        
-        main.ajaxGetJson2(loc,param,callBackSearchResult);
-    },
-   
-    callBackSearchResult: function(json){
-    	console.log("callBackSearchResult(): 1");
-    	console.log(json);
-    	
-    },
-    
-    log: function(msg) {
-        console.log(">>> " + msg);
-    }
-};
-
-</script>
+<title>131. user_숙박시설목록</title>
+<link rel="stylesheet" href="css/user_RoomList.css" />
 </head>
 <body>
 
 <div id="wrap">
 
-	<section id="userMainSrch">
+			<section id="userRoomDtl_left">
+			
+					<input type="text" name="MainSrch" id="MainSrch" placeholder="검색창" /><br />
+			
+					<div class="chkTime">
+							
+							<label for="userChkIn">
+								<input type="month" name="userChkIn" id="userChkIn" />
+								체크인
+							</label>
+							<label for="userChkOut">
+								<input type="month" name="userChkOut" id="userChkOut" />
+								체크아웃
+							</label><br />
+					</div>
+					
+					
+					<div class="numG">
+						<label for="numGuests">인원수
+							<select name="numGuests" id="numGuests">
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+					   		    <option value="5">5</option>
+							    <option value="6">6</option>
+							    <option value="7">7</option>
+							    <option value="8">8</option>
+					   		    <option value="9">9</option>
+							    <option value="10">10</option>
+							    <option value="11">11</option>
+							</select>
+						</label>
+					</div>
+					<br />
+					<div id="SrchBtn">					
+						<input type="submit" value="검색" id="MainSrchBtn"/>
+					</div>
+					<hr />
+					
+					<span class="userSubTitle"><label for="price">가격</label><br /></span><br />
+					<input type="text" name="price" id="priceMin" placeholder="최저가"/>
+					<span class="userSubTitle">~</span>
+					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
+					<br /><br />
+					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
+					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="room_name" id="room_name1" />전체</label></span>
+					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="room_name" id="room_name2" />호텔</label></span>
+					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="room_name" id="room_name3" />모텔</label></span>
+					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="room_name" id="room_name4" />펜션/풀빌라</label></span>
+					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="room_name" id="room_name5" />글램핑/캠핑</label></span><br />
+					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="room_name" id="room_name6" />게하/한옥</label></span>
+					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="room_name" id="room_name7" />리조트/콘도</label></span>
+					
+				
+		</section>
 	
-		<input type="text" name="userMainSrch" id="userMainSrch" /><br />
-		<label for="userChkIn">
-			<input type="date" name="userChkIn" id="userChkIn" />
-			체크인
-		</label>
-		<label for="userChkOut">
-			<input type="date" name="userChkOut" id="userChkOut" />
-			체크아웃
-		</label><br />
-		<label for="numGuests">인원수</label>
-		<select name="numGuests" id="numGuests" >
-		    <option value="1">1</option>
-		    <option value="2">2</option>
-		    <option value="3">3</option>
-		    <option value="4">4</option>
-   		    <option value="5">5</option>
-		    <option value="6">6</option>
-		    <option value="7">7</option>
-		    <option value="8">8</option>
-   		    <option value="9">9</option>
-		    <option value="10">10</option>
-		    <option value="11">11</option>
-		</select>
-		<br />
-		<input type="button" value="검색" onclick="userRoomList.search();"/>
-	</section>
-	<hr />
-	
-	
-	<section id="userSubSrch">
-		<label for="price">가격</label><br />
-		<input type="text" name="price" id="priceMin" placeholder="최저가"/>
-		~
-		<input type="text" name="price" id="priceMax" placeholder="최고가"/>
-		<br />	
-		<label for="">숙박 유형</label><br />	
-		<input type="checkbox" name="onAccoCheckAll" id="hangeCheckBoxes" value="" 
-               onchange="userRoomList.changeCheckBoxes(this, ['isHotel', 'isMotel', 'isPension', 'isGlamping', 'isGuestHouse', 'isResort']);"/>전체
-		<input type="checkbox" name="isHotel" id="isHotel" value="" onchange="main.onHotelChanged(this);"/>호텔
-		<input type="checkbox" name="isMotel" id="isMotel" value="" onchange="main.onMotelChanged(this);"/>모텔
-		<input type="checkbox" name="isPension" id="isPension" value="" onchange="main.onPensionChanged(this);"/>펜션/풀빌라
-		<input type="checkbox" name="isGlamping" id="isGlamping" value="" onchange="main.onGlampingChanged(this);"/>글램핑/캠핑
-		<input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);"/>게하/한옥
-		<input type="checkbox" name="isResort" id="isResort" value="" onchange="main.onResortChanged(this);"/>리조트/콘도
-	
-		
-	</section>
-	
-	<hr />
-	
-	<article>
-	
-		
-		<input type="button" value="서울" />
-		<input type="button" value="경기도" />
-		<input type="button" value="경상도" />
-		<input type="button" value="전라도" />
-		<input type="button" value="충청도" />
-		<input type="button" value="강원도" />
-		<input type="button" value="제주도" />
-		<input type="button" value="국외" />
-		
-		<div id="banner">
-			banner 배너칸~
+	<!-- section 시작 -->
+	<section id="userRoomDtl_right">
+		<div class="areaBtn">
+			<input type="button" value="서울" />
+			<input type="button" value="경기도" />
+			<input type="button" value="경상도" />
+			<input type="button" value="전라도" />
+			<input type="button" value="충청도" />
+			<input type="button" value="강원도" />
+			<input type="button" value="제주도" />
+			<input type="button" value="국외" />
 		</div>
 		
-		<div class="OdrTabMenu"><!--인기순/후기순/가격순 탭메뉴  -->
+		<!--banner  -->
+		<div id="slide">
+			<div id="slideShow">
+				<img src="images/440X280_USE.jpg" width="440" height="280" alt="배너배너배너배너배너배너배너" />
+<!--				<img src="images/440X280_USE2.jpg.png" alt="" />
+					<img src="images/jet-kim-utxoRRvZOkI-unsplash.jpg.jpg" alt="" /> -->
+			</div>
+		</div>
+		
+			<!--bannerBtn Start  -->
+		<div id="moveBtn">
+	         <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+     		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
+		</div>
+		
+		
+		<div class="main">
+			<input type="radio" class="btnCon" id="PopulOdrBtn" checked/><!--///  -->
+			<label for="PopulOdrBtn">인기순</label>
 			
-			<ul>
+			<input type="radio" class="btnCon" id="RevuOdrBtn" />
+			<label for="RevuOdrBtn">후기순</label>			
 			
-				<li id="PopulOdr" class="btnCon"><!--인기순 -->
-					<input type="button" value="인기순" cheked name ="tabmenu" id="tabmenu1" />
-					<div id="tabCon">
-						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
+			<input type="radio" class="btnCon" id="PriceOdrBtn" />
+			<label for="PriceOdrBtn">가격순</label>
+			
+			
+			
+			
+			
+			
+			<section id="popularOdr" class="tabCon"><!--인기순 -->
+			
+					
+						
 						<ul>
-							<li><input type="text" name="" id="" value="강남역 xxx 호텔" readonly/></li>
-							<li><input type="text" name="" id="" value="300,000원" readonly/></li>
-							<li><input type="text" name="" id="" value="강남역 N번 출구에서 50M 직진" readonly/></li>
-							<li><input type="text" name="" id="" value="호텔" readonly/></li>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
 							<li>
-								<input type="text" name="" id="" value="★ 4.5" readonly/>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
 							</li>
 						</ul>
-					</div><!-- tabcon 끝-->
-				</li>
-				
-				<hr>
-				
-				<li id="RevuOdr" class="btnCon"><!--후기순-->
-					<input type="button"  value="후기순" name ="tabmenu" id="tabmenu2" />
-					<div id="tabCon">
-						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
+						<hr />
 						<ul>
-							<li><input type="text" name="" id="" value="강남역 xxx 호텔" readonly/></li>
-							<li><input type="text" name="" id="" value="300,000원" readonly/></li>
-							<li><input type="text" name="" id="" value="강남역 N번 출구에서 50M 직진" readonly/></li>
-							<li><input type="text" name="" id="" value="호텔" readonly/></li>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
 							<li>
-								 <input type="text" name="" id="" value="★ 4.5" readonly/>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
 							</li>
-						</ul>	
-					</div><!--tabConEnd  -->
-				</li>
-				<hr>
-		 		<li id="PriceOdr" class="btnCon"><!--가격순 -->
-					<input type="button"  value="가격순" name ="tabmenu" id="tabmenu3" />
-					<div id="tabCon">
-						<span class="imgTag"><img src="imges/" alt="이미지1" /></span>
-						<ul>
-							<li><input type="text" name="" id="" value="강남역 xxx 호텔" readonly/></li>
-							<li><input type="text" name="" id="" value="300,000원" readonly/></li>
-							<li><input type="text" name="" id="" value="강남역 N번 출구에서 50M 직진" readonly/></li>
-							<li><input type="text" name="" id="" value="호텔"readonly/></li>
-							<li>
-								  <input type="text" name="" id="" value="★ 4.5"readonly />
-							</li>
-							<!--con  -->
 						</ul>
-					</div>
-				</li>
-				<hr>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+					
+			</section>
+			
+			
+			<section id="revuOdr" class="tabCon">
+				
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+				
+			</section>
+			
+			<section id="priceOdr" class="tabCon">		
+		 	
+			
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+						<hr />
+						<ul>
+							<li><span class="imgTag"><img src="images/200x150knht.jpg"width="150" height="100" alt="이미지1" /></span></li>
+							<li><input type="text" name="title" id="title" value="강남역 xxx 호텔" readonly/></li>
+							<li><input type="text" name="price" id="price" value="300,000원" readonly/></li>
+							<li><input type="text" name="addr" id="addr" value="강남역 N번 출구에서 50M 직진" readonly/></li>
+							<li><input type="text" name="room_name" id="room_name" value="호텔" readonly/></li>
+							<li>
+								<input type="text" name="star" id="star" value="★ 4.5" readonly/>
+							</li>
+						</ul>
+				 
+			</section>
+			
+		</div>
+		
+		
+
+				
+				
+				
+
 
 			
-		</div><!--인기순/후기순/가격순 탭메뉴  끝-->
-		
-		
+
+
+		<br />
 		 <div id="paging">
 	        <span class="block">《</span>
 	        <span class="block">〈</span>
@@ -198,7 +320,8 @@ var userRoomList = {
 	      </div>
 	
 	
-	</article>
+	</section>
+	<!-- section 끝-->
 </div><!--wrap 끝  -->
 
 
@@ -209,11 +332,7 @@ var userRoomList = {
 
 
 
-
-
-
-
-
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 
 </body>

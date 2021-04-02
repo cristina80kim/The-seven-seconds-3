@@ -3,72 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <title>133.user_숙박시설상세</title>
-<style>
-input[type=text]{
-border:none;
-}
-
-input:focus {outline:none;}
-
-</style>
+<link rel="stylesheet" href="css/user_RoomDtl.css" />
 </head>
 <body>
 
 	<div id="wrap">
-		<section>
+	
+			<section id="userRoomDtl_left">
 			
-			<span><input type="button" value="즐겨찾기" /></span>
-			<span><input type="text" name="roomDtl" id="" value="강남역 XXX 호텔" readonly/></span>
-			<span><input type="text" name="roomDtl" id="" value="800,000원"readonly/></span>
-			<span><input type="text" name="roomDtl" id="" value="주소"readonly></span>
-			<span><input type="text" name="roomDtl" id="" value="800,000원"readonly/></span>
-			<hr />
+					<input type="text" name="MainSrch" id="MainSrch" placeholder="검색창" /><br />
+			
+					<div class="chkTime">
+							
+							<label for="userChkIn">
+								<input type="month" name="userChkIn" id="userChkIn" />
+								체크인
+							</label>
+							<label for="userChkOut">
+								<input type="month" name="userChkOut" id="userChkOut" />
+								체크아웃
+							</label><br />
+					</div>
+					
+					<div class="numG">
+						<label for="numGuests">인원수
+							<select name="numGuests" id="numGuests">
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+					   		    <option value="5">5</option>
+							    <option value="6">6</option>
+							    <option value="7">7</option>
+							    <option value="8">8</option>
+					   		    <option value="9">9</option>
+							    <option value="10">10</option>
+							    <option value="11">11</option>
+							</select>
+						</label>
+					</div>
+					<br />
+					<div id="SrchBtn">					
+						<input type="submit" value="검색" id="MainSrchBtn"/>
+					</div>
+					<hr />
+					
+					<span class="userSubTitle"><label for="price">가격</label><br /></span><br />
+					<input type="text" name="price" id="priceMin" placeholder="최저가"/>
+					<span class="userSubTitle">~</span>
+					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
+					<br /><br />
+					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
+					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="room_name" id="room_name1" />전체</label></span>
+					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="room_name" id="room_name2" />호텔</label></span>
+					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="room_name" id="room_name3" />모텔</label></span>
+					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="room_name" id="room_name4" />펜션/풀빌라</label></span>
+					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="room_name" id="room_name5" />글램핑/캠핑</label></span><br />
+					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="room_name" id="room_name6" />게하/한옥</label></span>
+					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="room_name" id="room_name7" />리조트/콘도</label></span>
+					
+				
+		</section>
+	
+		<section id="userRoomDtl_right">
+			<div id="userRoomDtlShow">
+				<span><input type="button" value="즐겨찾기" id="shortcutBtn"/></span>
+				<span><input type="text" name="roomDtl" id="title" value="강남역 XXX 호텔" readonly/></span>
+				<span><input type="text" name="roomDtl" id="price" value="300,000원"readonly/></span>
+				<span><input type="text" name="roomDtl" id="addr" value="주소"readonly></span>
+				<span><input type="text" name="roomDtl" id="tel" value="02-xxxx-xxxx"readonly/></span>
+			</div>
+			
 			
 			<!--banner  -->
-			<div id="slideShow">
-				<div id="slide">
-					<img src="images/" alt="방사진방사진방사빈배너배너배너배너배너배너배너" />
+			<div id="slide">
+				<div id="slideShow">
+					<img src="images/440x280.jpg" width="440" height="280" alt="방사진방사진방사빈배너배너배너배너배너배너배너" />
+<!--				<img src="images/450x299_2.png" alt="방사진방사진방사빈배너배너배너배너배너배너배너" />
+					<img src="images/450x299_3.jpg" alt="방사진방사진방사빈배너배너배너배너배너배너배너" /> -->
 				</div>
 			</div>
 			
-	    	<div class="prev btnmove"><!--bannerBtn  START-->
-		        <a href="#" title="이전"><i class="fas fa-chevron-left"></i></a>
-		    </div>
-		    <div class="next btnmove">
-		        <a href="#" title="다음"><i class="fas fa-chevron-right"></i></a>
-		    </div> <!--bannerBtn END -->
+				<!--bannerBtn Start  -->
+			<div id="moveBtn">
+		         <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+	     		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
+			</div>
+
+	
+		   		 <!--bannerBtn END -->
 			<!--banner  -->
 			
-			<label for="checkInTime">체크인</label>
-			<input type="datetime-local" name="checkInTime" id="checkInTime" />
+			<div id="chk">
+				<label for="checkInTime">
+					<input type="datetime-local" name="checkInTime" id="checkInTime" />
+				체크인
+				</label>
+				
+				<label for="checkOutTime">
+					<input type="datetime-local" name="checkOutTime" id="checkOutTime" />
+				체크아웃
+				</label><br />
+				
+				<label for="guestsNum">인원수
+					<input type="number" name="guestsNum" id="guestsNum" />
+				</label>
+				<br />
+			</div>
 			
-			<label for="checkOutTime">체크아웃</label>
-			<input type="datetime-local" name="checkOutTime" id="checkOutTime" />
 			
-			<label for="">인원수</label>
-			<input type="number" name="guestsNum" id="guestsNum" />
-			<br />
-			
-			
-			<p><label for="dtl">설명</label></p>
-			<textarea name="dtl" id="dtl" cols="30" rows="10">
-				설명어쩌구~
+			<p><label for="info">설명</label></p>
+			<textarea name="info" id="info" cols="40" rows="10">
+				
 			</textarea>
 			<br />
 			
 			<p><label for="">객실</label></p>
 			<table class="roomTbl">
 				<tr>
-					<td><img alt="이미지" src="images/"></td>
-					<td><input type="text" name="" id="" value="스탠다드"/></td>
-					<td><input type="text" name="" id="" value="100,000원" /></td>
-					<td><input type="button" value="예약하기" /></td>
+					<td><img alt="이미지" src="images/120x80_1.jpg"></td>
+					<td><input type="text" name="room_name" id="room_name" value="스탠다드"/><br />
+							<input type="text" name="price_" id="price_" value="100,000원" />
+					</td>
+					<td><input type="button" value="예약하기" id="RsrvBtn"/></td>
 				</tr>
 				<tr>
-					<td><img alt="이미지" src="images/"></td>
-					<td><input type="text" name="" id="" value="스탠다드"/></td>
-					<td><input type="text" name="" id="" value="100,000원" /></td>
-					<td><input type="button" value="예약하기" /></td>
+					<td><img alt="이미지" src="images/120x80_2.jpg"></td>
+					<td><input type="text" name="room_name" id="room_name" value="스탠다드 트윈"/><br />
+							<input type="text" name="price_" id="price_" value="100,000원" /></td>
+					<td><input type="button" value="예약하기" id="RsrvBtn" /></td>
 				</tr>
 			
 			</table>
@@ -77,25 +140,27 @@ input:focus {outline:none;}
 			
 			<table class="revuTbl_title">
 				<tr>
-					<td><input type="text" value="리뷰(100)" name="revuTitle" id="revuTitle" readonly/></td>
-					<td><input type="text" value="★★★★☆" name="RevuStar" id="RevuStar" readonly/></td>
-					<td><input type="text" value="4.5" name="revuGrade" id="revuGrade" readonly/></td>
+					<td><input type="text" value="리뷰(100)" name="revuTitleth" id="revuTitleth" readonly/></td>
+					<td><input type="text" value="★★★★☆" name="RevuStarth" id="RevuStarth" readonly/></td>
+					<td><input type="text" value="4.5" name="revuGradeth" id="revuGradeth" readonly/></td>
 				</tr>
 			</table>
 			
 			<table class="revuTbl">
 				<tr>
 					<td><input type="text" value="스위트한 감성과 친절한 직원들, 모든게 만족" name="revuTitle" id="revuTitle" /></td>
-					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/></td>
-					<td><input type="text" name="C_USER" id="C_USER" value="ㅇㅇㅇ님"/></td>
+					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/><br />
+							<input type="text" name="C_USER" id="C_USER" value="ㅇㅇㅇ님"/>
+					</td>
 					<td><input type="text" name="RevuStar" id="RevuStar" value="★★★★☆"/></td>
 					<td><input type="number" min="1" max="5" value="4"name="revuGrade" id="revuGrade"/></td>
 				</tr>
 				
 				<tr>
 					<td><input type="text" value="너무 좋았네요~ 재방문 의사 100%!" name="revuTitle" id="revuTitle" /></td>
-					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/></td>
-					<td><input type="text" name="C_USER" id="C_USER" value="xxx님"/></td>
+					<td><input type="date" name="C_DATE" id="C_DATE" value="2021-03-05"/><br />
+							<input type="text" name="C_USER" id="C_USER" value="xxx님"/>
+					</td>
 					<td><input type="text" name="RevuStar" id="RevuStar" value="★★★★☆"/></td>
 					<td><input type="number" min="1" max="5" value="4"name="revuGrade" id="revuGrade"/></td>
 				</tr>

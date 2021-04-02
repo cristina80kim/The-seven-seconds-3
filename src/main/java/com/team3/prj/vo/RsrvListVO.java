@@ -1,18 +1,21 @@
 package com.team3.prj.vo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class RsrvListVO {
 	
-	private String rsrvDate;//¿¹¾à³¯ÀÚ
-	private String rsrvStay;//¼÷¼Ò
-	private String rsrvRoom;//·ë
-	private String rsrvName;//¿¹¾àÀÚ
-	private String rsrvGen;//¼ºº°
-	private String rsrvTel;//¿¬¶ôÃ³
-	private String rsrvInfo;//°áÁ¦Á¤º¸
-	private int price;//°¡°İ
-	private String rsrvState;//¿¹¾à»óÅÂ
-	
+    private Long id;   // ID
+    private String checkIn; //ì²´í¬ì¸
+    private String checkOut; //ì²´í¬ì•„ì›ƒ
+    private String name; // ìˆ™ì†Œì´ë¦„
+    private String rsrvRoom; // ë£¸ëª…
+    private String rsrvId; //ì˜ˆì•½ì id
+    private String rsrvGen; //ì˜ˆì•½ì ì„±ë³„
+    private String rsrvTel; //ì˜ˆì•½ì ì „í™”ë²ˆí˜¸
+    private int amount; //ê²°ì œê°€ê²©
+    private String rsrvInfo; //ê²°ì œ ì •ë³´(ë„¤ì´ë²„í˜ì´ ì¹´ì¹´ì˜¤í˜ì´)
+    private String rsrvState; // ì˜ˆì•½ ìƒíƒœ('1': ì˜ˆì•½ì™„ë£Œ(=ê²°ì œì™„ë£Œ), '2': ì˜ˆì•½ì·¨ì†Œ(=í™˜ë¶ˆìš”ì²­), '3': í™˜ë¶ˆì™„ë£Œ, '9': ì²˜ë¦¬ì¢…ë£Œ)
 }
