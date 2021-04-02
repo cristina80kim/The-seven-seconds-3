@@ -41,7 +41,9 @@ public class UserController {
 	public @ResponseBody UserVO login(UserVO vo) {
 		System.out.println(className + ".login()");
 		System.out.println(vo);
-		return userService.login(vo);
+		UserVO result = userService.login(vo);
+		System.out.println(result);
+		return result;
 	}
 	
 	//http://localhost:8081/user/frmJoin

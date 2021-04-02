@@ -39,5 +39,25 @@
 		DELETE users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</delete>
+	
+	<!-- manager 정보수정 -->
+	<update id="managerUpdate">
+		UPDATE users
+		SET pwd=#{pwd}, nickname=#{nickname},
+			tel=#{tel}, email=#{email}
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 리뷰 -->
+	<select id="userRevu" resultType="com.team3.prj.vo.RevuVO">
+		SELECT *
+		FROM revu
+		ORDER BY c_date, id
+	</select>
+	
+	<delete id="revuDelete">
+		DELETE FROM revu
+		WHERE id=#{id}
+	</delete>
 
 </mapper>

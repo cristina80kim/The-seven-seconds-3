@@ -16,17 +16,23 @@ var userLogin = {
 		console.log("onLoginClicked()");
 		var id=$("#id").val();
 		var pwd=$("#pwd").val();
-        var loc = "/User/login?id=" + id + "&pwd=" + pwd;
+        var loc = "/user/login?id=" + id + "&pwd=" + pwd;
 		main.ajaxGetJson(loc, userLogin.loginCallback);
 	},
 	
 	loginCallback: function(jsonStr) {
 		console.log(jsonStr);
+		/* if(jsonStr == "") {
+			document.alert("로그인 실패");
+		}  else {
+			document.alert("로그인 성공");
+		} */
+		window.alert(jsonStr == "" || jsonStr == null ? "로그인 실패" : "로그인 성공"); 
 	},
 	
 	onJoinClicked: function() {
 		console.log("onJoinClicked()");
-		main.ajaxGetHtml("/User/frmJoin", "contents");
+		main.ajaxGetHtml("/user/frmJoin", "contents");
 	},
   
     log: function(msg) {
