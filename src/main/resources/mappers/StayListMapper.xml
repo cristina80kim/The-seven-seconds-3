@@ -66,7 +66,7 @@
       FROM   room_dtl
       WHERE (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
       OR     weekend_price BETWEEN #{minPrice} AND #{maxPrice})
-      AND    num_of_guests = #{numOfGuests}
+      AND    num_of_guests = #S{numOfGuests}
       ) d
     ON    m.id = d.mst_id
   </select>
