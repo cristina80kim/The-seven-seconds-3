@@ -7,6 +7,7 @@ import com.team3.prj.vo.UserVO;
 
 public interface UserService {
 	
+	//admin 회원리스트
 	public List<UserVO> selectAll();
 	
 	public UserVO login(UserVO vo);
@@ -24,8 +25,8 @@ public interface UserService {
 
 	//user Review
 	public List<RevuVO> revu();
-
-	public Long revuDelete(RevuVO vo);
 	
+	//리뷰 삭제
+	public Long revuDelete(RevuVO vo);
 
 }

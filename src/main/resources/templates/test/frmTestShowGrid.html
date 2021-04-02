@@ -8,7 +8,7 @@
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script> 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery.jqGrid.min.js"></script> 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/i18n/grid.locale-kr.js"></script> 
-<script src="/js/main.js?ver=1.1"></script>
+<script src="/js/main.js?ver=1.10"></script>
 
 <!-- jQGrid 관련 css파일들 임포트 -->
 <link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap-ui.css" />
@@ -25,9 +25,9 @@
   $(function() {
     console.log(">>> $(): 1");
     
-    var loc = "/qna/selectAll";
+    var loc = "/qna/search";
     main.ajaxGetJson(loc, showResult);
-    main.showGridDatas(loc, "GET", colNames, colModel);
+    main.showGridDatas(loc, "GET", colNames, colModel, 1900, 800, 5);
   });
   
   var showResult = function(jsonData) {

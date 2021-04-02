@@ -49,7 +49,7 @@
                 )
               </if>
             
-              <if test='keyword!= null and !"".equals(keyword)'>
+              <if test='keyword != null and !"".equals(keyword)'>
                 AND (region LIKE '%'|| #{keyword} ||'%'
                   OR title  LIKE '%'|| #{keyword} ||'%'
                   OR addr   LIKE '%'|| #{keyword} ||'%'
@@ -62,12 +62,54 @@
     AND   c.class2 = 'TYPE_OF_ACCO'
     AND   c.class3 = m.type_of_acco
     INNER JOIN (
-      SELECT id, mst_id, weekday_price, weekend_price
+      SELECT id, mst_id, weekday_price, weekend_price, 
+             CASE num_of_revu WHEN 0 THEN 0
+                              ELSE sum_of_stars / num_of_revu END as star
       FROM   room_dtl
       WHERE (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
       OR     weekend_price BETWEEN #{minPrice} AND #{maxPrice})
-      AND    num_of_guests = #S{numOfGuests}
+      AND    num_of_guests = #{numOfGuests}
       ) d
     ON    m.id = d.mst_id
+    
+    <choose>
+    <when test='checkIn != null and !"".equals(checkIn) and checkOut != null and !"".equals(checkOut)'>
+      <![CDATA[
+      INNER JOIN rsrv r
+      ON    (
+              (#{checkIn} < check_in  AND #{checkOut} < check_in)  
+          OR  (#{checkIn} > check_out AND #{checkOut} > check_out)
+      )  
+      AND   r.room_dtl_id = d.id
+      ]]>
+    </when>
+    <when test='checkIn != null and !"".equals(checkIn)'>
+      <![CDATA[
+      INNER JOIN rsrv r
+      ON    #{checkIn} < check_in AND #{checkIn} > check_out
+      AND   r.room_dtl_id = d.id
+      ]]>
+    </when>
+    <when test='checkOut != null and !"".equals(checkOut)'>
+      <![CDATA[
+      INNER JOIN rsrv r
+      ON    #{checkOut} < check_in AND #{checkOut} > check_out
+      AND   r.room_dtl_id = d.id
+      ]]>
+    </when>
+    </choose>
+    
+    ORDER BY 
+    <if test='sortMethod != null and !"".equals(sortMethod)'>
+      <choose>
+      <when test='sortMethod eq "star"'> star, num_of_revu, weekday_price, weekend_price</when>
+      <when test='sortMethod eq "revu"'> num_of_revu, star, weekday_price, weekend_price</when>
+      <when test='sortMethod eq "price"'> weekday_price, weekend_price, num_of_revu, star</when>
+      <otherwise> weekday_price, weekend_price, star</otherwise>
+      </choose>
+    </if>
+    <if test='sortMethod == null or "".equals(sortMethod)'>
+      weekday_price, weekend_price, star
+    </if>
   </select>
 </mapper>

@@ -22,14 +22,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	//http://localhost:8081/user/userAll
-	@GetMapping("/userAll")
-	public @ResponseBody List<UserVO> selectAll() {
-		System.out.println("selectAll()");
-		List<UserVO> lstUser = userService.selectAll();
-		return lstUser;
-	}
-	
 	//http://localhost:8081/user/frmLogin
 	@GetMapping("/frmLogin")
 	public String frmLogin() {
@@ -60,7 +52,7 @@ public class UserController {
 		return userService.join(vo);
 	}
 	
-	//http://localhost:8081/user/frmMypage
+	//http://localhost:8081/user/mypage
 	//마이페이지 메인
 	@GetMapping("mypage")
 	public @ResponseBody UserVO mypage(UserVO vo) {
@@ -116,5 +108,21 @@ public class UserController {
 		return userService.revuDelete(vo);
 	}
 	
+	//admin 회원리스트
+		//http://localhost:8081/user/userAll
+		@GetMapping("/userAll")
+		public @ResponseBody List<UserVO> selectAll() {
+			System.out.println("selectAll()");
+			List<UserVO> lstUser = userService.selectAll();
+			return lstUser;
+		}
+	
 }
+
+
+
+
+
+
+
 

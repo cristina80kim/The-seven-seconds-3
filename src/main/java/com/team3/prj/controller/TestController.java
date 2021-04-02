@@ -33,14 +33,14 @@ public class TestController {
     @GetMapping("/frmShowGrid")
     public String frmShowGrid() {
         System.out.println(className + ".frmShowGrid()");
-        return "test/frmTestShowGrid";  // .html
+        return "/test/frmTestShowGrid";  // .html
     }
     
     // http://localhost:8081/test/frmToggleCheckBox
     @GetMapping("/frmToggleCheckBox")
     public String frmToggleCheckBox() {
         System.out.println(className + ".frmToggleCheckBox()");
-        return "test/frmToggleCheckBox";  // .html
+        return "/test/frmToggleCheckBox";  // .html
     }
     
     
