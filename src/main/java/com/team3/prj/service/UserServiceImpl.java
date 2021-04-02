@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.UserDAO;
+import com.team3.prj.vo.RevuVO;
 import com.team3.prj.vo.UserVO;
 
 @Service
@@ -42,6 +43,22 @@ public class UserServiceImpl implements UserService {
 		@Override
 		public Long delete(UserVO vo) {
 			return userDAO.userDelete(vo);
+		}
+
+		//manager
+		@Override
+		public String mUpdate(UserVO vo) {
+			return userDAO.managerUpdate(vo) >=1 ? vo.getId() : "";
+		}
+
+		@Override
+		public List<RevuVO> revu() {
+			return userDAO.userRevu();
+		}
+
+		@Override
+		public Long revuDelete(RevuVO vo) {
+			return userDAO.revuDelete(vo);
 		}
 		
 }
