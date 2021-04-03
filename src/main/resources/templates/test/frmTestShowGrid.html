@@ -8,7 +8,7 @@
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script> 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery.jqGrid.min.js"></script> 
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/i18n/grid.locale-kr.js"></script> 
-<script src="/js/main.js?ver=1.10"></script>
+<script src="/js/main.js?ver=1.03"></script>
 
 <!-- jQGrid 관련 css파일들 임포트 -->
 <link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap-ui.css" />
@@ -23,11 +23,136 @@
 
 <script>
   $(function() {
+  
+var mmmm = {
+  //============================================================
+  // 기능: jqGrid에 ajax를 통해 수신된 JSON Data를 출력한다.
+  //============================================================
+  showGridDatas: function(param) {
+    console.log(">>> showGridDatas(): 1");
+    
+    var loc = param.loc;
+    var mtype = param.mtype;
+    var componentName = main.isNotEmpty(param.componentName) ? "#" + param.componentName : "#gridData";
+    var pagerName = main.isNotEmpty(param.pagerName) ? "#" + param.pagerName : "#gridPager";
+    var colNames = param.colNames;
+    var colModel = param.colModel;
+    var width = main.isNotEmpty(param.width) ? param.width : 800;
+    var height = main.isNotEmpty(param.height) ? param.height : 300; 
+    var rowNum = main.isNotEmpty(param.rowNum) ? param.rowNum : 5;
+    var onSelectRow = main.isNotEmpty(param.onSelectRow) ? param.onSelectRow : function(rowid, status, e) {
+        // 참조:    http://1004lucifer.blogspot.com/2019/04/jqgrid-row-cell.html  
+        // rowid:  row의 id, status
+        // status: 선택상태 (multiselect옵션 true인경우 사용, 행이 선택된경우 true, 선택되지 않은경우 false)
+        // r:      이벤트객체
+        console.log("onRowSelect >>> rowid: " + rowid + ", status: " + status + ", e: " + e);
+    };
+    var onPaging = main.isNotEmpty(param.onPaging) ? param.onPaging : function(pgButton) {
+        var gridPage = $(componentName).getGridParam("page");
+        var totalPage = $(componentName).getGridParam("total");
+ 
+        if(pgButton == "next") {            // 다음 페이지
+            if(gridPage < totalPage) {
+                gridPage++;
+            } else{
+                gridPage = page;
+            }
+        } else if (pgButton == "prev") {    // 이전 페이지
+            if(gridPage > 1) {
+                gridPage--;
+            } else{
+                gridPage = page;
+            }
+        } else if (pgButton == "first") {    // 첫 페이지
+            gridPage = 1;
+        } else if (pgButton == "last") {    // 마지막 페이지
+            gridPage = totalPage;
+        } else if (pgButton == "user") {    // 사용자 입력 페이징 처리
+            var nowPage = Number($("#pager .ui-pg-input").val());
+            // 입력한 값이 총 페이지수보다 크다면 수행
+            if (totalPage >= nowPage && nowPage > 0) {
+                gridPage = nowPage;
+            }else{
+                $(pagerName + " .ui-pg-input").val(page);
+                gridPage = page;
+            }
+        } else if(pgButton == "records"){
+            gridPage = 1;
+        }
+ 
+        $(componentName).setGridParam("page", gridPage);
+ 
+        $(componentName).setGridParam({
+            postData    : jqGridForm.setParam()
+        });
+    };
+
+    console.log(">>> componentName: " + componentName 
+      + ", pagerName: " + pagerName
+      + ", width: " + width
+      + ", height: " + height
+      + ", rowNum: " + rowNum
+    );
+
+    $(componentName).jqGrid({ 
+      url:          loc,                // 서버 호출 주소
+      mtype:        mtype,              // "POST" 또는 "GET"   
+      datatype:     "json",             // 데이터 타입("json", "xml", "array", "local", ...)
+   // data:         data1,              // 출력 데이터
+      width:        width,              // 그리드 넓이(폭)
+      height:       height,             // 그리드 높이
+   // caption:      ">>> Q & A <<<",    // Caption에 출력할 메시지
+      colNames:     colNames,           // 그리드 헤더의 제목(배열 형태임)  
+      colModel:     colModel,           // 그리드 행 데이터 정의(colNames의 갯수 = colModel 갯수) 
+      pager:        pagerName,          // Paging 정보를 표시할 Tag의 ID명
+     //pagination:   true,
+      rowNum:       rowNum,             // 보여줄 행의 개수 설정
+      pgbuttons:    true,
+      loadtext:     "데이터 로딩 중...",   // 데이터를 불려 올 때 보여줄 메시지
+      emptyrecode:  "자료가 없습니다.",     // 출력가 자료가 없는 경우 보여줄 메시지
+
+      //repeatitems:  true,
+      onSelectRow:  onSelectRow,        // row 선택시 발생하는 이벤트
+      onPaging:     onPaging,
+   // scroll:       true,               // 스크로 바 보이기(페이징 기능 X)/안 보이기 
+   // rownumbers:   true, 
+   // viewrecords:  true, 
+   // pgbuttons:    true, 
+   // pginput:      true, 
+   // shrinkToFit:  true, 
+   // sortable:     false, 
+   // loadonce:     false, 
+   // hidegrid:     true,
+   // loadComplete: function(data) { }
+    });
+    
+    console.log(">>> showGridDatas(): 2");
+  },  
+};  
+  
     console.log(">>> $(): 1");
     
     var loc = "/qna/search";
     main.ajaxGetJson(loc, showResult);
-    main.showGridDatas(loc, "GET", colNames, colModel, 1900, 800, 5);
+    mmmm.showGridDatas({
+      loc:           loc,       
+      mtype:         "GET",     
+      componentName: "gridData",
+      pagerName:     "gridPager",
+      colNames:      colNames,  
+      colModel:      colModel,  
+      width:         800,      
+      height:        400,       
+      rowNum:        4,      
+      
+      onSelectRow:   function(rowid, status, e) {
+        // 참조:    http://1004lucifer.blogspot.com/2019/04/jqgrid-row-cell.html  
+        // rowid:  row의 id, status
+        // status: 선택상태 (multiselect옵션 true인경우 사용, 행이 선택된경우 true, 선택되지 않은경우 false)
+        // r:      이벤트객체
+        console.log("onRowSelect >>> rowid: " + rowid + ", status: " + status + ", e: " + e);
+      },   
+    });
   });
   
   var showResult = function(jsonData) {
@@ -103,15 +228,15 @@ var colModel = [  // 그리드 행 데이터 정의(colNames의 갯수 = colMode
       ]; 
  
 var data1 = [
-    {"nickname":"yskim","no":"7","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"7","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"1","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null},
-    {"nickname":"yskim","no":"6","cateId":null,"isPub":null,"title":"title","q":"question","a":null,"cuser":null}
+    { "nickname":"yskim1", "no":"1", "cateId":null, "isPub":null, "title":"title1", "q":"question1", "a":null, "cuser":null} ,
+    { "nickname":"yskim2", "no":"2", "cateId":null, "isPub":null, "title":"title2", "q":"question2", "a":null, "cuser":null} ,
+    { "nickname":"yskim3", "no":"3", "cateId":null, "isPub":null, "title":"title3", "q":"question3", "a":null, "cuser":null} ,
+    { "nickname":"yskim4", "no":"4", "cateId":null, "isPub":null, "title":"title4", "q":"question4", "a":null, "cuser":null} ,
+    { "nickname":"yskim5", "no":"5", "cateId":null, "isPub":null, "title":"title5", "q":"question5", "a":null, "cuser":null} ,
+    { "nickname":"yskim6", "no":"6", "cateId":null, "isPub":null, "title":"title6", "q":"question6", "a":null, "cuser":null} ,
+    { "nickname":"yskim7", "no":"7", "cateId":null, "isPub":null, "title":"title7", "q":"question7", "a":null, "cuser":null} ,
+    { "nickname":"yskim8", "no":"8", "cateId":null, "isPub":null, "title":"title8", "q":"question8", "a":null, "cuser":null} ,
+    { "nickname":"yskim9", "no":"9", "cateId":null, "isPub":null, "title":"title9", "q":"question9", "a":null, "cuser":null} 
 ];
 
      
@@ -119,18 +244,20 @@ var data1 = [
 
 </head>
 <body>
-  <h3>ajax에서 받아온 결과</h3>
-  <div id="ajaxResult"></div>
-  <hr>
-  <h3>ajax에서 받아온 결과 테이블로 출력</h3>
-  <div id="ajaxResult2"></div>
-  <hr>
-  
-  
-  <h1>Q & A 목록</h1>
+  <h1>Q & A 목록</h1>with jqGrid
   
   <table id="gridData"></table>
   <div id="gridPager"></div>
+  
+  <hr>
+  
+  <h3>ajax에서 받아온 결과</h3>
+  <div id="ajaxResult"></div>
+
+  <hr>
+
+  <h3>ajax에서 받아온 결과 테이블로 출력</h3>
+  <div id="ajaxResult2"></div>
   
 </body>
 </html>
