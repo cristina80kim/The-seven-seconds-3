@@ -1,5 +1,6 @@
 package com.team3.prj.controller;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +12,6 @@ import com.team3.prj.etc.Libs;
 import com.team3.prj.vo.AjaxTestVO;
 import com.team3.prj.vo.EmpVO;
 
-import lombok.NoArgsConstructor;
-
 // 1st committing
 
 @Controller
@@ -23,10 +22,64 @@ public class TestController {
 
     // http://localhost:8081/test/json
     @GetMapping("/jsonTest")
-    @ResponseBody()
+    @ResponseBody
     public EmpVO jsonTest() {
         System.out.println(className + ".jsonTest()");
         return new EmpVO();
+    }
+
+    // http://localhost:8081/test/getData4Toast
+    @GetMapping("/getData4Toast")
+    public @ResponseBody String getData4Toast() {
+        System.out.println(className + ".getData4Toast()");
+
+        String jsonData = "{"
+                + "    \"result\": true,\r\n"
+                + "    \"data\": {\r\n"
+                + "        \"contents\": [\r\n"
+                + "            {\r\n"
+                + "                \"name\": \"yskim\",\r\n"
+                + "                \"value\": \"99세\"\r\n"
+                + "            },\r\n"
+                + "            {\r\n"
+                + "                \"name\": \"한가인\",\r\n"
+                + "                \"value\": \"20세\"\r\n"
+                + "            }\r\n"
+                + "        ]\r\n"
+                + "    }"
+                + "}";
+
+        return jsonData;
+    }
+    
+    // http://localhost:8081/test/getData4Toast2
+    @GetMapping("/getData4Toast2")
+    public @ResponseBody Object getData4Toast2() {
+        System.out.println(className + ".getData4Toast2()");
+        
+        // String[][] str = new String[][] {{"111", "112", "113"}, {"121", "122", "123"}};
+        
+        // [결과]
+        // {"result": true, "data": { "contents": [ { "name": "yskim", "value": "99세" }, { "name": "한가인", "value": "20세" } ] }}
+        // {"result": true, "data": { "contents": [ { "name": "yskim", "value": "10세" }, { "name": "한가인2", "value": "20세" } ] }}
+        
+        JSONObject jsonData = new JSONObject();
+        
+        jsonData.put("result", true);
+        jsonData.put("data",
+                Libs.makeJosnValue("contents",
+                        new Object[] { Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", "10세" } }),
+                                Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } }) }));
+        
+//                Libs.makeJosnValue(Libs.makeJosnValue("result", true),
+//                        Libs.makeJosnValue("data",
+//                                Libs.makeJosnValue("contents", new Object[] {
+//                                        Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", "10세" } }),
+//                                        Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } })
+//
+//                                })));
+
+        return jsonData;
     }
     
     // http://localhost:8081/test/frmShowGrid

@@ -5,8 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.json.simple.JSONObject;
+
 public class Libs {
-    
+
     //================================================
     // 1. DB 관련 
     //================================================
@@ -206,6 +208,32 @@ public class Libs {
     // 기능: 문자열이 null이면 ""를 그렇지 않으면 str를 응답한다. 
     public static String toString(String str) {
        return str == null ? "" : str;
+    }
+
+    
+    
+    //================================================
+    // 6. JSON 관련 
+    //================================================
+    
+    public static JSONObject makeJosnValue(Object key, Object value) {
+        JSONObject result = new JSONObject();
+        result.put(key, value);
+        return result;
+    }
+
+    public static JSONObject makeJosnValue(Object[][]arr) {
+        JSONObject result = new JSONObject();
+        
+        if(arr != null) {
+            for(Object[] objs : arr) {
+                if(objs != null && objs[0] != null) {
+                    result.put(objs[0], objs[1]);
+                }
+            }
+        }
+        
+        return result;
     }
     
 }
