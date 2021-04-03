@@ -39,6 +39,7 @@
           {header: "cuser",    name: "cuser",    width: 20},
           {header: "작성일",     name: "mdate",    width: 20}   
       ],
+      rowHeaders: ['rowNum'],
       data: {
         contentType: "application/json",
         api: {
@@ -52,7 +53,29 @@
   
     // GRID 를 생성.
     var grid = new tui.Grid(options);
+    
+    // grid 클릭시 row 선택
+    grid.on('click', function(ev) {
+      var record = {
+           start : [ev.rowKey,0],
+           end : [ev.rowKey,grid.getColumns().length]
+       }
+       grid.setSelectionRange(record);
+    });
   };
+
+  /*
+  var selectedRowKey = null;
+  
+  // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
+  grid.on("focusChange", ev => {
+    if (selectedRowKey) {
+      grid.removeRowClassName(selectedRowKey, "someClassName");
+    }
+    selectedRowKey = ev.rowKey;
+    grid.addRowClassName(selectedRowKey, "someClassName");
+  });
+  */
   
   var showTestGrid = function() {
     var url = "/test/getData4Toast2";
