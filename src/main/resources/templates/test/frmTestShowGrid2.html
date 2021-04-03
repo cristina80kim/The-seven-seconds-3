@@ -1,35 +1,96 @@
 <html>
+
 <head lang="en">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
-	<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+  
+<script>
+    
+  // 기능: 문서의 모든 콘텐츠(images, script, css, etc)가 로드된 후 발생하는 이벤트
+  window.onload = function() {
+    // ...
+      showQnaGrid();
+      showTestGrid();
+  };
+
+  // 기능: addEventListener를 사용하여 DOMContentLoaded 이벤트 발생시 showGrid() 실행.
+  document.addEventListener("DOMContentLoaded", function() {
+    // ...
+  });   
+
+  var showQnaGrid = function() {
+    // 웹서버에서 GRID 데이터를 가져오는 방법 설정
+    var url = "/test/getData4Toast3";  // http://localhost:8081/test/getData4Toast3
+    
+    var clsData = {
+      api: {
+        readData: { 
+          url: url, 
+          method: "GET" 
+        }
+      }
+    };
+    
+    console.log(clsData);
+  
+    // GRID 를 생성.
+    var grid = new tui.Grid({
+      el: document.getElementById("gridQNA"),
+      columns: [
+          {header: "아이디",      name: "id"       },
+          {header: "닉네임",      name: "nickname" }, 
+          {header: "번호",        name: "no"       }, 
+          {header: "카테고리ID.", name: "cateId"   }, 
+       // {header: "카테고리",    name: "cate"     },
+          {header: "공개여부",    name: "isPub"    }, 
+          {header: "제목",        name: "title"    },
+          {header: "질문내용",    name: "q"        },
+          {header: "답변내용",    name: "a"        },
+       // {header: "작성자ID",    name: "cUser"    },
+          {header: "aaUser",      name: "aaUser"   },
+          {header: "cuser",       name: "cuser"    },
+          {header: "작성일",      name: "mdate"    }        
+      ],
+      data: clsData
+    });
+  };
+  
+  var showTestGrid = function() {
+    var url = "/test/getData4Toast2";
+
+    var clsData = {
+      api: {
+        readData: { 
+          url: url, 
+          method: "GET" 
+        }
+      }
+    };
+
+    // GRID 를 생성한다.
+    var grid = new tui.Grid({
+      el: document.getElementById('gridTest'),
+      columns: [
+        {
+          header: '이름',
+          name: 'name'
+        },
+        {
+          header: '나이',
+          name: 'value',
+          editor: 'text'
+        }
+      ],
+      data: clsData
+    });
+  }
+  
+</script>
+  
 </head>
 <body>
-	<div id="grid"></div>
-	<script>
-        // 웹서버에서 GRID 데이터를 가져오는 방법을 설정한다.
-		var clsData = {
-			api: {
-				readData: { url: '/test/getData4Toast2', method: 'GET' }
-			}
-		};
-
-        // GRID 를 생성한다.
-		var grid = new tui.Grid( {
-			el: document.getElementById('grid'),
-			columns: [
-				{
-					header: '이름',
-					name: 'name'
-				},
-				{
-					header: '나이',
-					name: 'value',
-					editor: 'text'
-				}
-			],
-			data: clsData
-		} );
-	</script>
+	<div id="gridQNA"></div> <br />
+    <div id="gridTest"></div> <br />
 </body>
 </html>

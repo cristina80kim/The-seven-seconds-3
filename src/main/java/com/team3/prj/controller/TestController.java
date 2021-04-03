@@ -1,6 +1,9 @@
 package com.team3.prj.controller;
 
+import java.util.List;
+
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.etc.Libs;
+import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.AjaxTestVO;
 import com.team3.prj.vo.EmpVO;
+import com.team3.prj.vo.QnaSearchVO;
+import com.team3.prj.vo.QnaVO;
 
 // 1st committing
 
@@ -19,6 +25,9 @@ import com.team3.prj.vo.EmpVO;
 public class TestController {
     
     private final String className = "TestController";
+    
+    @Autowired
+    QnaService qnaSrvice;
 
     // http://localhost:8081/test/json
     @GetMapping("/jsonTest")
@@ -68,8 +77,12 @@ public class TestController {
         jsonData.put("result", true);
         jsonData.put("data",
                 Libs.makeJosnValue("contents",
-                        new Object[] { Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", "10세" } }),
-                                Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } }) }));
+                        new Object[] { 
+                                Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", null } }),
+                                Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } }), 
+                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", null } }), 
+                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", "99세" } }) 
+                                }));
         
 //                Libs.makeJosnValue(Libs.makeJosnValue("result", true),
 //                        Libs.makeJosnValue("data",
@@ -82,7 +95,20 @@ public class TestController {
         return jsonData;
     }
     
-    // http://localhost:8081/test/frmShowGrid
+    // http://localhost:8081/test/getData4Toast3
+    @GetMapping("/getData4Toast3")
+    public @ResponseBody Object getData4Toast3(QnaSearchVO vo) {
+        System.out.println(className + ".getData4Toast3()");
+        JSONObject jsonResult = new JSONObject();
+        List<QnaVO> qnaResult = qnaSrvice.search(vo);
+                
+        jsonResult.put("result", qnaResult != null);
+        jsonResult.put("data", qnaResult);
+
+        return jsonResult;
+    }
+    
+    //  
     @GetMapping("/frmShowGrid")
     public String frmShowGrid() {
         System.out.println(className + ".frmShowGrid()");
