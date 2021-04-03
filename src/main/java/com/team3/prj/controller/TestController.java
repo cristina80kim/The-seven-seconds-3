@@ -99,11 +99,13 @@ public class TestController {
     @GetMapping("/getData4Toast3")
     public @ResponseBody Object getData4Toast3(QnaSearchVO vo) {
         System.out.println(className + ".getData4Toast3()");
-        JSONObject jsonResult = new JSONObject();
-        List<QnaVO> qnaResult = qnaSrvice.search(vo);
+        
+        List<QnaVO> lstQnaResult = qnaSrvice.search(vo);
+        JSONObject contents = Libs.makeJosnValue("contents", lstQnaResult);
                 
-        jsonResult.put("result", qnaResult != null);
-        jsonResult.put("data", qnaResult);
+        JSONObject jsonResult = new JSONObject();
+        jsonResult.put("result", lstQnaResult != null);
+        jsonResult.put("data", contents);
 
         return jsonResult;
     }
