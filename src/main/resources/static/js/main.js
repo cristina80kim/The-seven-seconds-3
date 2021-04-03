@@ -95,7 +95,7 @@ var main = {
   // 기능: param이 빈 값인지 검사한다.      
   //============================================================
   isEmpty: function(param) {
-    return (typeof str == "undefined" || str == null || str == "") ? true : false;
+    return (typeof param == "undefined" || param == null || param == "") ? true : false;
   },
 
   //============================================================
@@ -235,25 +235,91 @@ var main = {
     
 
   //============================================================
-  // 기능: jㅂGrid에 jsonParam을 출력한다.
+  // 기능: jqGrid에 ajax를 통해 수신된 JSON Data를 출력한다.
   //============================================================
-  showGridDatas: function(loc, mtype, componentName, colNames, colModel, width, height, rowNum) {
+  showGridDatas: function(param) {
     console.log(">>> showGridDatas(): 1");
+    
+    var loc = param.loc;
+    var mtype = param.mtype;
+    var componentName = main.isEmpty(param.componentName) ? "#gridData" : "#" + param.componentName;
+    var pagerName = main.isEmpty(param.pagerName) ? "#gridPager" : "#" + param.pagerName;
+    var colNames = param.colNames;
+    var colModel = param.colModel;
+    var width = main.isEmpty(param.width) ? 800 : param.width;
+    var height = main.isEmpty(param.height) ? 300 : param.height; 
+    var rowNum = main.isEmpty(param.rowNum) ? 5 : param.rowNum;
+    var onSelectRow = param.onSelectRow;
+    
+    console.log(">>> componentName: " + componentName 
+      + ", pagerName: " + pagerName
+      + ", width: " + width
+      + ", height: " + height
+      + ", rowNum: " + rowNum
+    );
 
-    $("#" + componentName).jqGrid({ 
+    $(componentName).jqGrid({ 
       url:          loc,                // 서버 호출 주소
       mtype:        mtype,              // "POST" 또는 "GET"   
       datatype:     "json",             // 데이터 타입("json", "xml", "array", "local", ...)
    // data:         data1,              // 출력 데이터
-      width:        main.isEmpty(width) ? 800 : width,   // 그리드 넓이(폭)
-      height:       main.isEmpty(height) ? 300 : height, // 그리드 높이
+      width:        width,              // 그리드 넓이(폭)
+      height:       height,             // 그리드 높이
    // caption:      ">>> Q & A <<<",    // Caption에 출력할 메시지
       colNames:     colNames,           // 그리드 헤더의 제목(배열 형태임)  
       colModel:     colModel,           // 그리드 행 데이터 정의(colNames의 갯수 = colModel 갯수) 
-      pager:        "#gridPager",       // Pagin 정보를 표시할 Tag의 ID명
-      rowNum:       main.isEmpty(rowNum) ? 5 : rowNum, // 보여줄 행의 개수 설정
+      pager:        pagerName,          // Paging 정보를 표시할 Tag의 ID명
+     //pagination:   true,
+      rowNum:       rowNum,             // 보여줄 행의 개수 설정
+      pgbuttons:    true,
       loadtext:     "데이터 로딩 중...",   // 데이터를 불려 올 때 보여줄 메시지
-      emptyrecode : "자료가 없습니다.",     // 출력가 자료가 없는 경우 보여줄 메시지
+      emptyrecode:  "자료가 없습니다.",     // 출력가 자료가 없는 경우 보여줄 메시지
+
+      //repeatitems:  true,
+      onSelectRow:  onSelectRow,        // row 선택시 발생하는 이벤트
+
+      //----------------------      
+      onPaging:     function(pgButton) {
+        var gridPage = $(componentName).getGridParam("page");
+        var totalPage = $(componentName).getGridParam("total");
+ 
+        if(pgButton == "next"){            // 다음 페이지
+            if(gridPage < totalPage){
+                gridPage++;
+            }else{
+                gridPage = page;
+            }
+        } else if (pgButton == "prev") {    // 이전 페이지
+            if(gridPage > 1){
+                gridPage--;
+            }else{
+                gridPage = page;
+            }
+        } else if (pgButton == "first") {    // 첫 페이지
+            gridPage = 1;
+        } else if (pgButton == "last") {    // 마지막 페이지
+            gridPage = totalPage;
+        } else if (pgButton == "user") {    // 사용자 입력 페이징 처리
+            var nowPage = Number($("#pager .ui-pg-input").val());
+            // 입력한 값이 총 페이지수보다 크다면 수행
+            if (totalPage >= nowPage && nowPage > 0) {
+                gridPage = nowPage;
+            }else{
+                $(pagerName + " .ui-pg-input").val(page);
+                gridPage = page;
+            }
+        } else if(pgButton == "records"){
+            gridPage = 1;
+        }
+ 
+        $(componentName).setGridParam("page", gridPage);
+ 
+        $(componentName).setGridParam({
+            postData    : jqGridForm.setParam()
+        });
+      },
+      //----------------------      
+    
    // scroll:       true,               // 스크로 바 보이기(페이징 기능 X)/안 보이기 
    // rownumbers:   true, 
    // viewrecords:  true, 
@@ -262,12 +328,12 @@ var main = {
    // shrinkToFit:  true, 
    // sortable:     false, 
    // loadonce:     false, 
-   // hidegrid:     true 
+   // hidegrid:     true,
    // loadComplete: function(data) { }
     });
     
     console.log(">>> showGridDatas(): 2");
-  },  
+  },
   
   //============================================================
   // 기능: console에 log 출력. 
