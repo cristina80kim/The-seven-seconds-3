@@ -8,9 +8,19 @@
 <script>
 var etc = {
   btnReadNoteClicked: function() {
+    console.log("btnReadNoteClicked(): 1");
+    
     var url = "/etc/select";
-    var param = {id:, title: $("#title").val(), content:}
+    var param = {
+      id:null, 
+      title: $("#title").val(), 
+      content:null
+    };
+    
     main.ajaxPostJson(url, param, function(jsonStr) {
+      console.log("btnReadNoteClicked(): 2");
+      console.log(jsonStr);
+      
       $.each(jsonData, function(index, item) {
         $("#content").val(item["content"]);
       });
@@ -24,7 +34,7 @@ var etc = {
 <body>
   <h1>노트 CRUD</h1>
   
-  <form action="" method="POST">
+  <form name="etcNote" id="etcNote" action="#" method="POST">
   제목: <select name="title" id="title">
     <option value="Term Of Serrvice" selected="selected">이용약관</option>
     <option value="Privacy Policy">개인정보처리방침</option>

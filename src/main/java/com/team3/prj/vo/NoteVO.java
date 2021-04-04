@@ -3,7 +3,7 @@ package com.team3.prj.vo;
 import lombok.Data;
 
 @Data
-public class EtcVO {
+public class NoteVO {
     private Long id;            // ID.
     private String title;       // 제목
     private String content;     // 내용

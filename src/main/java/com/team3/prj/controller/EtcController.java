@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.service.EtcService;
-import com.team3.prj.vo.EtcVO;
+import com.team3.prj.vo.NoteVO;
 
 @Controller
 @RequestMapping("/etc")
@@ -29,15 +29,14 @@ public class EtcController {
     
     // http://localhost:8081/etc/select
     @PostMapping("/select")
-    public @ResponseBody String select(@RequestBody EtcVO vo) {
+    public @ResponseBody NoteVO select(@RequestBody NoteVO vo) {
         System.out.println(className + ".select()");
-        String result = service.select(vo);
-        return result;
+        return service.select(vo);
     }
     
     // http://localhost:8081/etc/insert
     @PostMapping("/insert")
-    public @ResponseBody String insert(@RequestBody EtcVO vo) {
+    public @ResponseBody String insert(@RequestBody NoteVO vo) {
         System.out.println(className + ".insert()");
         System.out.println(vo);
         String result = service.insert(vo);
@@ -46,7 +45,7 @@ public class EtcController {
 
     // http://localhost:8081/etc/update
     @PostMapping("/update")
-    public @ResponseBody int update(@RequestBody EtcVO vo) {
+    public @ResponseBody int update(@RequestBody NoteVO vo) {
         System.out.println(className + ".update()");
         System.out.println(vo);
         return service.update(vo);
@@ -54,7 +53,7 @@ public class EtcController {
     
     // http://localhost:8081/etc/delete
     @PostMapping("/delete")
-    public @ResponseBody int delete(@RequestBody EtcVO vo) {
+    public @ResponseBody int delete(@RequestBody NoteVO vo) {
         System.out.println(className + ".delete()");
         System.out.println(vo);
         return service.delete(vo);

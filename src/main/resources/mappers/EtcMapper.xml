@@ -4,7 +4,7 @@
 
 <mapper namespace="com.team3.prj.dao.EtcDAO"> 
 
-  <select id="select" resultType="com.team3.prj.vo.EtcVO">
+  <select id="select" resultType="com.team3.prj.vo.NoteVO">
       SELECT    id, title, content
       FROM      note
       WHERE     title = #{title}
