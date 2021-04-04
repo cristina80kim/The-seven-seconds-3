@@ -25,6 +25,18 @@ public class MainController {
 		return "index";
 	}
 
+    // http://localhost:8081/header
+    @RequestMapping("/header")
+    public String header() {
+        return "header";
+    }
+
+    // http://localhost:8081/header
+    @RequestMapping("/footer")
+    public String footer() {
+        return "footer";
+    }
+
 	// 기능: 공통코드 읽기
 	// http://localhost:8081//main/selectCommonCodes
 	// http://localhost:8081//main/selectCommonCodes?class1=ROOM&class2=TYPE_OF_ACCO
