@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.0"></script>
+
+<script>
+var etc = {
+  btnReadNoteClicked: function() {
+    var url = "/etc/select";
+    var param = {id:, title: $("#title").val(), content:}
+    main.ajaxPostJson(url, param, function(jsonStr) {
+      $.each(jsonData, function(index, item) {
+        $("#content").val(item["content"]);
+      });
+    });
+  },
+};
+
+</script>
+
+<title>index</title>
+<body>
+  <h1>노트 CRUD</h1>
+  
+  <form action="" method="POST">
+  제목: <select name="title" id="title">
+    <option value="Term Of Serrvice" selected="selected">이용약관</option>
+    <option value="Privacy Policy">개인정보처리방침</option>
+  </select><br />
+  내용: <textarea name="content" id="content" rows="10" cols="80"></textarea> <br />
+  <button name="btnReadNote"   id="btnReadNote"   onclick="etc.btnReadNoteClicked();">불러오기</button>
+  <button name="btnInsertNote" id="btnInsertNote" onclick="etc.btnInsertNoteClicked();">추가</button>
+  <button name="btnUpdateNote" id="btnReadNote"   onclick="etc.btnUpdateNoteClicked();">수정</button>
+  <button name="btnDeleteNote" id="btnReadNote"   onclick="etc.btnDeleteNoteClicked();">삭제</button>
+  </form>
+</body>
+</html>

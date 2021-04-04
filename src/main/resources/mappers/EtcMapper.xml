@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+
+<mapper namespace="com.team3.prj.dao.EtcDAO"> 
+
+  <select id="select" resultType="com.team3.prj.vo.EtcVO">
+      SELECT    id, title, content
+      FROM      note
+      WHERE     title = #{title}
+  </select>
+
+  <insert id="insert">
+    <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+      SELECT seq_note.NEXTVAL FROM DUAL
+    </selectKey>
+    
+    INSERT INTO note (id, title, content)
+    VALUES (#{id}, #{title}, #{content})
+  </insert>  
+  
+  <update id="update">
+    UPDATE note 
+    SET    title   = #{title},
+           content = #{content}
+    WHERE  id      = #{id}
+  </update>  
+  
+  <update id="delete">
+    DELETE FROM note 
+    WHERE  id      = #{id}
+    AND    title   = #{title}
+  </update>  
+  
+</mapper>
