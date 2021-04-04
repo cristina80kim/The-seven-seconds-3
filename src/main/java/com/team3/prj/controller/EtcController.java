@@ -31,8 +31,7 @@ public class EtcController {
     @PostMapping("/select")
     public @ResponseBody NoteVO select(@RequestBody NoteVO vo) {
         System.out.println(className + ".select()");
-        //return service.select(vo);
-        return vo;
+        return service.select(vo);
     }
     
     // http://localhost:8081/etc/insert

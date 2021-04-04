@@ -123,8 +123,7 @@ public class TestController {
         System.out.println(className + ".frmToggleCheckBox()");
         return "/test/frmToggleCheckBox";  // .html
     }
-    
-    
+        
     @PostMapping("/toggleCheckBox")
     public @ResponseBody AjaxTestVO toggleCheckBox(
             // @RequestParam(value="isPub", required=false, defaultValue="N") // isPub이 전달 안 된 경우 "N"을 가짐.
