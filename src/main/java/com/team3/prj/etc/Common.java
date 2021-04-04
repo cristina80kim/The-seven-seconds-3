@@ -15,4 +15,10 @@ public class Common {
     public static final String strRoleUser = "U";      // 일반 사용자
     public static final String strRoleAnonymous = "N"; // 로긴 안 한 익명 사용자
     
+    //----------
+    // Note 테이블 title 정보
+    //----------
+    public static final String strNoteTermOfService = "Term Of Serrvice";   // 이용약관
+    public static final String strNotePrivacyPolicy = "Privacy Policy";     // 개인정보처리방침
+    
 }
