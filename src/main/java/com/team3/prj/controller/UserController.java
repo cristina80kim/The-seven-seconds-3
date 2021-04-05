@@ -112,11 +112,13 @@ public class UserController {
 	}
 
 	// http://localhost:8081/user/delete?id=&pwd=
-	@GetMapping("delete")
-	public @ResponseBody Long delete(UserVO vo) {
+	@RequestMapping("delete")
+	public @ResponseBody ExecResultVO delete(@RequestBody UserVO vo) {
 		System.out.println(className + ".delete()");
 		System.out.println(vo);
-		return userService.delete(vo);
+		int result = (int)userService.delete(vo);
+		System.out.println(result);
+		return new ExecResultVO(result);
 	}
 
 	// Manage 내정보수정
@@ -151,6 +153,13 @@ public class UserController {
 		System.out.println("selectAll()");
 		List<UserVO> lstUser = userService.selectAll();
 		return lstUser;
+	}
+	
+	// http://localhost:8081/user/uDelete
+	@RequestMapping("/uDelete")
+	public String uDelete() {
+		System.out.println(className + ".uDelete()");
+		return "user_Mypage_Sec";
 	}
 
 }

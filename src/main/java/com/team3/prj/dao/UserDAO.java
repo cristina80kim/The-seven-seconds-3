@@ -23,7 +23,7 @@ public interface UserDAO {
 	
 	public Long userUpdate(UserVO vo);
 	
-	public Long userDelete(UserVO vo);
+	public int userDelete(UserVO vo);
 	
 	//manager
 	public Long managerUpdate(UserVO vo);

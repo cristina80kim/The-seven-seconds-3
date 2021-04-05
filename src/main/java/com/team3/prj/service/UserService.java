@@ -20,7 +20,7 @@ public interface UserService {
 	
 	public String update(UserVO vo);
 	
-	public Long delete(UserVO vo);
+	public int delete(UserVO vo);
 
 	//manager
 	public String mUpdate(UserVO vo);

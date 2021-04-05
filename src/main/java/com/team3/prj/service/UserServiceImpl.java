@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		@Override
-		public Long delete(UserVO vo) {
+		public int delete(UserVO vo) {
 			return userDAO.userDelete(vo);
 		}
 

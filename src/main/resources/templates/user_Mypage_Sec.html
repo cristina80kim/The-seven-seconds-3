@@ -4,7 +4,38 @@
 <meta charset="UTF-8">
 <title>170.user_마이페이지_회원탈퇴</title>
 <link rel="stylesheet" href="css/user_Mypage_Sec.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 </head>
+<script>
+	var mypageSec = {
+			onDeleteClicked: function() {
+				console.log("onDeleteClicked()");
+				var param = {
+						id: $("#id").val(),
+						pwd: $("#pwd").val()
+				}
+
+		        var loc = "/user/delete";
+
+				main.ajaxPostJson(loc, param, mypageSec.deleteCallback);
+			},
+			
+			deleteCallback: function(jsonStr) {
+				console.log(jsonStr);
+				if(jsonStr["numResult"] == 1){
+					window.alert("회원 탈퇴 성공");
+					main.ajaxGetHtml("/user/frmLogin", "contents");
+				}else {
+					window.alert("회원 탈퇴 실패");
+				}
+			},
+		  
+		    log: function(msg) {
+		      console.log(">>> " + msg);
+		    }
+		}	
+</script>
 <body>
 
 	<div id="wrap">
@@ -14,18 +45,18 @@
 				<hr />
 				<p>비밀번호 확인</p>
 				<label for="userID">아이디
-					<input type="text" name="userID" id="userID"
-					 placeholder="아이디" readonly />
+					<input type="text" name="id" id="id"
+					 placeholder="아이디" readonly value="limuj"/>
 				</label>
 				<br />
 				<label for="userPW">비밀번호 확인
-					<input type="password" name="userPW" id="userPW" />
+					<input type="password" name="pwd" id="pwd" />
 				</label>
 				<br />
 		
 				<br />
 				<div id="secBtn_">
-					<input type="submit" value="확인" id="submitBtn" />
+					<input type="button" value="확인" id="submitBtn" onclick="mypageSec.onDeleteClicked();" />
 					<input type="reset" value="취소" id="cancleBtn"/>
 				</div>
 			</form>
