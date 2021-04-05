@@ -104,7 +104,7 @@ public class TestController {
         return Libs.makeToastJsonResult(lstQnaResult);
     }
     
-    //  
+    // http://localhost:8081/test/frmShowGrid
     @GetMapping("/frmShowGrid")
     public String frmShowGrid() {
         System.out.println(className + ".frmShowGrid()");

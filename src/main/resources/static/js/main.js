@@ -379,6 +379,62 @@ var main = {
   },
   
   //============================================================
+  // 기능: TOAST Grid 그리기 
+  //============================================================
+  showToastGrid: function(url, componentId, columns) {
+    var result = null;
+    var url = url;  // http://localhost:8081/test/getData4Toast3
+    
+    var options = {
+      el: document.getElementById(componentId),
+      columns: columns,
+      bodyHeight: 'auto',
+      rowHeight:  'auto', // 자동 높이   
+      rowHeaders: ['rowNum'],
+      //pageOptions: { perPage: 5 },
+      data: {
+        contentType: "application/json",
+        api: {
+          readData: { 
+            url: url, 
+            method: "GET" 
+          }
+        }
+      }
+    };
+  
+    // GRID 를 생성.
+    result = new tui.Grid(options);
+    
+    // grid 클릭시 row 선택
+    result.on('click', function(ev) {
+      var record = {
+           start : [ev.rowKey, 0],
+           end : [ev.rowKey, result.getColumns().length]
+       }
+       result.setSelectionRange(record);
+       
+       console.log("현재 선택된 Row 번호: " + ev.rowKey);
+    });
+
+    //----------------------------------------    
+    /*
+    var selectedRowKey = null;
+    
+    // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
+    result.on("focusChange", ev => {
+      if (selectedRowKey) {
+        result.removeRowClassName(selectedRowKey, "someClassName");
+      }
+      selectedRowKey = ev.rowKey;
+      result.addRowClassName(selectedRowKey, "someClassName");
+    });
+    */
+    
+    return result;
+  },
+  
+  //============================================================
   // 기능: console에 log 출력. 
   //============================================================
   log: function(msg) {
