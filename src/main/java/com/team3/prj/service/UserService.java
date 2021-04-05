@@ -14,6 +14,8 @@ public interface UserService {
 	
 	public String join(UserVO vo);
 	
+	public int idCheck(String id);
+	
 	public UserVO mypage(UserVO vo);
 	
 	public String update(UserVO vo);
@@ -28,5 +30,9 @@ public interface UserService {
 	
 	//리뷰 삭제
 	public Long revuDelete(RevuVO vo);
+
+	
+
+	
 
 }

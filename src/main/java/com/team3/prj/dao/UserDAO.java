@@ -17,6 +17,8 @@ public interface UserDAO {
 	
 	public int userJoin(UserVO vo);
 	
+	public int checkId(String id);
+	
 	public UserVO userMypage(UserVO vo);
 	
 	public Long userUpdate(UserVO vo);
