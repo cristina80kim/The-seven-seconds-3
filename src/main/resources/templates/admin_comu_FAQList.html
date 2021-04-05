@@ -3,98 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <title>350. admin_커뮤니티관리_FAQ목록</title>
-<link rel="stylesheet" href="css/admin_comu_FAQList.css" />
+<!-- <link rel="stylesheet" href="css/admin_comu_FAQList.css" /> -->
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 </head>
+<script>
+$(function() {
+    console.log(">>> $(): 1");
+    faq.showFaqOnGrid("/faq/searchData", "gridData");
+  });
+
+var gridFaq = null;
+
+var faq = {
+		
+		onSearchBtnClick: function() {
+		      console.log("onSearchBtnClick()");
+		      faq.showFaqOnGrid("/faq/toastSearch", "gridData");
+		    },
+		    
+		    onQnaWriteClick: function() {
+		        console.log("onQnaWriteClick()");
+		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
+		      },
+		      
+		      
+		      showFaqOnGrid: function(url, componentName) {
+		          var kind = "FAQ";
+		          var actionInsert = "INSERT";
+		          var actionDelete = "DELETE";
+		    
+		          
+		          var columns = [
+		              {header: "아이디",     name: "id",       width: 50,  height: 100                    },
+// 		              {header: "닉네임",     name: "nickname", width: 100                   },
+		              {header: "번호",      name: "no",       width: 100, align: "center"   },
+		            
+		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+		              }},
+		              
+		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
+		            //{header: "카테고리",    name: "cate",     width: 0                     },
+// 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
+		              {header: "제목",      name: "title",    width: 100                   },
+		              {header: "내용",    	name: "content",  width: 300                   },
+// 		              {header: "답변내용",    name: "a",        width: 300                   },
+		            //{header: "작성자ID",   name: "cUser",    width: 20                    },
+// 		              {header: "aaUser",   name: "aaUser",   width: 20                    },
+		              {header: "cuser",    name: "cUser",    width: 20                    },
+		              {header: "작성일",     name: "mDate",    width: 20                    },
+		              
+		              {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
+		                // this.index, this.item, this.list 에 모두 접근 가능
+		                // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
+		                
+		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
+		                + kind + "\", \"" + actionInsert + "\", \"" 
+		                + this.index + "\");'>수정</button>"; 
+		              }},
+		              
+		              {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
+		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
+		                + kind + "\", \"" + actionDelete + "\", \"" 
+		                + this.index + "\");'>삭제</button>"; 
+		              }}
+		            ];
+		            
+		            gridQna = main.showToastGrid(url, componentName, columns);
+		          },
+		          
+		          callbackButtonClicked: function(kind, action, index) {
+		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+		            console.log("id: " + gridQna.getValue(index, "id")); 
+		          },
+		          
+		        }
+
+
+</script>
 <body>
 
-<div id="wrap">
-	
-	<section>
-		
+	<div id="wrap">
+
+		<section>
+
 			<h1>FAQ 관리</h1>
 			<form action="post" id="FAQSrchFrm" name="FAQSrchFrm">
 				<hr />
 				<input type="button" value="글 쓰기" name="writeBtn" id="writeBtn" />
-				<label for="FAQSrch">
-					<span>통합 검색</span>
-					<input type="text" name="FAQSrch" id="FAQSrch" />
-				</label>
-					<input type="button" value="조회하기" name="FAQSrchBtn" id="FAQSrchBtn" />
+				<label for="FAQSrch"> <span>통합 검색</span> <input type="text"
+					name="FAQSrch" id="FAQSrch" />
+				</label> <input type="button" value="조회하기" name="FAQSrchBtn" id="FAQSrchBtn" />
 			</form>
-		
-		<hr />
-		
-		      <table>
-		        <tr>
-		          <th id="faq_cateth">카테고리</th>
-		          <th id="titleth">제목</th>
-		          <th id="deleteBtnth">삭제</th>
-		        </tr>
-		        <tr>
-		          <td colspan="3">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
-		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제" id="deleteBtn"/></td>
-		        </tr>
-		        <tr>
-		          <td colspan="3">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
-		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
-		        </tr>
-		        <tr>
-		          <td colspan="3">
-		            <hr>
-		          </td>
-		        </tr>
-		       <tr>
-		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
-		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
-		        </tr>
-		        <tr>
-		          <td colspan="3">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="취소/환불" name="faq_cate" id="faq_cate" /></td>
-		          <td><input type="text" value="환불은 언제 되나요" name="title" id="title" /></td>
-		          <td><input type="button" value="삭제"id="deleteBtn"/></td>
-		        </tr>
-		        <tr>
-		          <td colspan="3">
-		            <hr>
-		          </td>
-		        </tr>
-		        
-		      </table>
-			
-			   <div id="paging">
-		        <span class="block">《</span>
-		        <span class="block">〈</span>
-		        <span class="pageNo" id="nowPage">1</span>
-		        <span class="pageNo">2</span>
-		        <span class="pageNo">3</span>
-		        <span class="pageNo">4</span>
-		        <span class="pageNo">5</span>
-		        <span class="pageNo">6</span>
-		        <span class="pageNo">7</span>
-		        <span class="pageNo">8</span>  
-		        <span class="block">〉</span>
-		        <span class="block">》</span>
-		      </div>
-		
-	</section>
-</div>
+  <table id="gridData"></table>
+  <div id="gridData"></div>
+			<hr />
+
+			<table>
+				<tr>
+					<th id="faq_cateth">카테고리</th>
+					<th id="titleth">제목</th>
+					<th id="deleteBtnth">삭제</th>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" value="취소/환불" name="faq_cate"
+						id="faq_cate" /></td>
+					<td><input type="text" value="환불은 언제 되나요" name="title"
+						id="title" /></td>
+					<td><input type="button" value="삭제" id="deleteBtn" /></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" value="취소/환불" name="faq_cate"
+						id="faq_cate" /></td>
+					<td><input type="text" value="환불은 언제 되나요" name="title"
+						id="title" /></td>
+					<td><input type="button" value="삭제" id="deleteBtn" /></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" value="취소/환불" name="faq_cate"
+						id="faq_cate" /></td>
+					<td><input type="text" value="환불은 언제 되나요" name="title"
+						id="title" /></td>
+					<td><input type="button" value="삭제" id="deleteBtn" /></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" value="취소/환불" name="faq_cate"
+						id="faq_cate" /></td>
+					<td><input type="text" value="환불은 언제 되나요" name="title"
+						id="title" /></td>
+					<td><input type="button" value="삭제" id="deleteBtn" /></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<hr>
+					</td>
+				</tr>
+
+			</table>
+
+			<div id="paging">
+				<span class="block">《</span> <span class="block">〈</span> <span
+					class="pageNo" id="nowPage">1</span> <span class="pageNo">2</span>
+				<span class="pageNo">3</span> <span class="pageNo">4</span> <span
+					class="pageNo">5</span> <span class="pageNo">6</span> <span
+					class="pageNo">7</span> <span class="pageNo">8</span> <span
+					class="block">〉</span> <span class="block">》</span>
+			</div>
+
+		</section>
+	</div>
 
 </body>
 </html>

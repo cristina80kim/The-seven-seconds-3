@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.team3.prj.service.FaqSearchVO;
+import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
 
 @Mapper

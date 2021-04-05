@@ -25,7 +25,7 @@
 		FROM faq
 		<where>
 			<if test='cateId!= null and !"".equals(cateId)'>
-				AND cate_id = #{cateId}
+				AND cate_id = '%' ||#{cateId}|| '%'
 			</if>
 			<if test='keyWord != null and !"".equals(keyWord)'>
 				AND(

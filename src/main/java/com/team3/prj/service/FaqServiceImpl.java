@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.FaqDAO;
+import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
 
 

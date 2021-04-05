@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>351. admin_커뮤니티관리_FAQ목록_글쓰기</title>
+<link rel="stylesheet" href="css/admin_comu_FAQList_Write.css" />
+</head>
+<body>
+<div id="wrap">
+	<section>
+	
+		<h1>FAQ 글 쓰기</h1>
+		<form action="/faq/update" name="FAQWriteFrm" id="FAQWriteFrm">
+			<span>카테고리</span>
+				<select name="faq_cate" id="faq_cate">
+					<option value="">문의</option>
+				</select>
+			
+			<br />
+			<span>제목</span><input type="text" name="title" id="title" /><br />
+			<span>내용</span><textarea name="content" id="content" 
+			placeholder="내용을 입력하세요"  cols="55" rows="20"></textarea>
+			
+			<br />
+			<div id="FAQwriteBtn">
+				<input type="button" value="완료" />
+				<input type="button" value="취소" />
+			</div>
+			
+		</form>	
+	
+	</section>
+</div>
+</body>
+</html>
