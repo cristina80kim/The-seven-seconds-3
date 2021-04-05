@@ -18,7 +18,7 @@ public class Common {
     //----------
     // Note 테이블 title 정보
     //----------
-    public static final String strNoteTermOfService = "Term Of Serrvice";   // 이용약관
+    public static final String strNoteTermsOfService = "Terms Of Service"; // 이용약관
     public static final String strNotePrivacyPolicy = "Privacy Policy";     // 개인정보처리방침
     
 }

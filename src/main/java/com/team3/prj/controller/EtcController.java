@@ -27,6 +27,26 @@ public class EtcController {
         System.out.println(className + ".frmNote()");
         return "frmNote";   // frmNote.html
     }
+
+    // 기능: "이용약관" 조회
+    // http://localhost:8081/etc/getTermsOfService
+    @RequestMapping("/getTermsOfService")
+    public @ResponseBody NoteVO getTermsOfService() {
+        System.out.println(className + ".getTermsOfService()");
+        NoteVO result = service.select(NoteVO.createTermsOfService());
+        System.out.println("출력: " + result);
+        return result;
+    }
+
+    // 기능: "개인정보보호정책" 조회
+    // http://localhost:8081/etc/getPrivacyPolicy
+    @RequestMapping("/getPrivacyPolicy")
+    public @ResponseBody NoteVO getPrivacyPolicy() {
+        System.out.println(className + ".getPrivacyPolicy()");
+        NoteVO result = service.select(NoteVO.createPrivacyPolicy());
+        System.out.println("출력: " + result);
+        return result;
+    }
     
     // http://localhost:8081/etc/select
     @RequestMapping("/select")
