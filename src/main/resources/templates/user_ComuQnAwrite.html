@@ -7,97 +7,92 @@
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
 <script>
-function login(){
-    var QnASrchFrm = this.QnASrchFrm;
-    var param = {
-    	nickname: $("#nickname").val(),
-    	cateId: $("select[id='cateId']").val(),
-    	isPub: $("#isPub").val(),
-    	title: $("#title").val(),
-    	q: $("#q").val(),
-    	cUser: $("#cUser").val(),
-   
-    	/* , isPub, cUser, title, q, nickname */
-    };
-    console.log(param);
-    main.ajaxPostJson("/qna/insert",param,function(jsonStr){
-    	if(jsonStr != null && jsonStr != ""){
-    		window.alert("질문이 등록되었습니다");
-    		index.onQnaClick();
-    	}else{
-    		window.alert("질문이 등록되지 않았습니다");
-    	}
-    });
-	  /* QnASrchFrm.submit(); */
-	  //ajax 통신으로 바꿈
-	  
-	  
-}
-/* 
-function loginTwo(){
-	index.onQnaWriteClick();
-} */
+	function login() {
+		var QnASrchFrm = this.QnASrchFrm;
+		var param = {
+			nickname : $("#nickname").val(),
+			cateId : $("select[id='cateId']").val(),
+			isPub : $("#isPub").val(),
+			title : $("#title").val(),
+			q : $("#q").val(),
+			cUser : $("#cUser").val(),
 
-$(function() {
-  main.ajaxCodeQnaToSelectBox("cateId");
-  
-  var callbackAjaxResult = function(jsonStr) {
-    console.log("callbackAjaxResult()");
-    console.log(jsonStr);
-  }
-});
+		/* , isPub, cUser, title, q, nickname */
+		};
+		console.log(param);
+		main.ajaxPostJson("/qna/insert", param, function(jsonStr) {
+			if (jsonStr != null && jsonStr != "") {
+				window.alert("질문이 등록되었습니다");
+				index.onQnaClick();
+			} else {
+				window.alert("질문이 등록되지 않았습니다");
+			}
+		});
+		/* QnASrchFrm.submit(); */
+		//ajax 통신으로 바꿈
+
+	}
+	/* 
+	 function loginTwo(){
+	 index.onQnaWriteClick();
+	 } */
+
+	$(function() {
+		main.ajaxCodeQnaToSelectBox("cateId");
+
+		var callbackAjaxResult = function(jsonStr) {
+			console.log("callbackAjaxResult()");
+			console.log(jsonStr);
+		}
+	});
 </script>
 
 </head>
 <body>
 
-<div id="wrap">
-	
+	<div id="wrap">
+
 
 		<section>
-		
+
 			<div id="QnAwrite">
-			  <h1>Q&A 글쓰기</h1>
-			  <hr />
-		      <form id="QnASrchFrm" action="qna/insert" name="QnASrchFrm" method="post">
-		      	
-				<label for="">카테고리</label>
-		        <select name="cateId" id="cateId"> 
-		          	<option value="">카테고리</option>
-		        </select>
-<!-- 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<h1>Q&A 글쓰기</h1>
+				<hr />
+				<form id="QnASrchFrm" action="qna/insert" name="QnASrchFrm"
+					method="post">
+
+					<label for="">카테고리</label> <select name="cateId" id="cateId">
+						<option value="">카테고리</option>
+					</select>
+					<!-- 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		         -->
-		        
-		        <label for="is_pubChk">
-		      		<input type="checkbox" name="isPub" id="isPub" value="N" onchange="main.onIsPubChanged(this);" />비밀글
-      			</label> 
-		       <br /> 
-		       
-		        <label for="UserQnAtitle">제목</label>
-		        <input type="text" name="title" id="title" autofocus="autofocus" required />
-				
-				<br />
-				
-				<label for="UserQnAq">내용</label>
-		        <textarea name="q" id="q" cols="50" rows="15" autofocus="autofocus"></textarea>
-		        
-				<br />
-					<div id="submitBtn_">
-				       <input type="button"  onclick="login()" value="등록" id="submitBtn">
-				        <input type="button" value="취소" id="cancleBtn">
-			        </div>
-			        <input type="hidden" name="nickname" id="nickname"  value="jho" />
-			        <input type="hidden" name="cUser"  id="cUser" value="user" />
-		      </form>
-		    </div>
-		
-	
 
-		      
+					<label for="isPub"  id="isPubLabel"> <input type="checkbox" name="isPub"
+						id="isPub" value="N" onchange="main.onIsPubChanged(this);"/>비밀글
+					</label> <br /> 
+					<label for="UserQnAtitle">제목</label> <input type="text"
+						name="title" id="title" autofocus="autofocus" required /> <br />
+
+					<label for="q" id="qLabel">내용</label>
+					<textarea name="q" id="q" cols="50" rows="15" autofocus="autofocus"></textarea>
+
+					<br />
+					<div id="submitBtn_">
+						<input type="button" onclick="login()" value="등록" id="submitBtn">
+						<input type="button" value="취소" id="cancleBtn">
+					</div>
+					<input type="hidden" name="nickname" id="nickname" value="jho" />
+					<input type="hidden" name="cUser" id="cUser" value="user" />
+				</form>
+			</div>
+
+
+
+
 		</section>
-		
+
 	</div>
 
 

@@ -64,11 +64,26 @@ input[type=text], textarea,select{
 	margin-left: 41px;
 }
 
-#content {
+#q {
 	margin-top:5px;
-	margin-left:41px;
-	resize: none;
-	width: 390px;
+	margin-left:47px;
+	resize: none;	
+	width: 386px;
+}
+
+#qLabel{
+	width: 40px;
+	display: inline-block;	
+	float: left;
+	margin-top:5px;
+	margin-left:-2px;
+}
+
+#QnASrchFrm #isPubLabel{
+	display: inline-block;
+	float: right;
+	width: 100px;
+
 }
 
 /*submitBtn////////////////////////////////////  */
