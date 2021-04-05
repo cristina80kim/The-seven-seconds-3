@@ -7,67 +7,51 @@
 
 <script>
 var etc = {
+
+  //--------------------------------------------
   btnReadNoteClicked: function() {
     console.log("btnReadNoteClicked(): 1");
     
     var url = "/etc/select";
     var param = {
-      id:     0, 
-      title:  $("#title").val(), 
-      content:""
+      id:      0, 
+      title:   $("#title").val(), 
+      content: ""
     };
     
-    etc.ajaxPostJson(url, param, function(jsonStr) {
+    main.ajaxPostJson(url, param, function(jsonStr) {
       console.log("btnReadNoteClicked(): 2");
       console.log(jsonStr);
+      alert(11111);
       
       $.each(jsonData, function(index, item) {
+        console.log(item);
+        alert(22222);
+        alert(item["content"]);
         $("#content").val(item["content"]);
       });
     });
   },
-  
-  //============================================================
-  // 기능: ajax POST 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
-  //============================================================
-  ajaxPostJson: function(loc, param, callbackSuccess, callbackFail) {
-     // window.open(loc);
-     // window.location.href = loc; 
-    console.log(">>> ajaxPostJson(): 1---");
-    console.log(">>> ajaxPostJson(): loc=" + loc);
-    console.log(param);
+
+  //--------------------------------------------
+  btnInsertNoteClicked: function() {
+    console.log("btnInsertNoteClicked(): 1");
     
-    alert("1");      
-    $.ajax({ 
-      type : "POST",
-      url : loc,
-      dataType : "json", 
-      data : JSON.stringify(param),   // (X) encodeURIComponent(JSON.stringify(param)), 
-      contentType: "application/json; charset=UTF-8",
-      success : function(jsonParam) {
-        console.log(">>> ajaxPostJson(): success 1");
-        console.log(jsonParam);
-        
-        if(main.isNotEmpty(callbackSuccess)) {
-          console.log(">>> ajaxPostJson(): success 2");
-          callbackSuccess(jsonParam);
-        }
-        
-        console.log(">>> ajaxPostJson(): success 3");
-      },
-//       fial: function(jsonParam) {
-//        console.log(">>> ajaxPostJson(): fail 1");
-//        console.log(jsonParam);
-//        
-//        if(main.isNotEmpty(callbackFail)) {
-//          console.log(">>> ajaxGetJson(): fail 2");
-//          callbackFail(jsonParam);
-//        }
-//        
-//        console.log(">>> ajaxPostJson(): fail 3");
-//       },
-    }); 
-  },  
+    var url = "/etc/insert";
+    var param = {
+      id:      0, 
+      title:   $("#title").val(), 
+      content: $("#content").val() 
+    };
+    
+    main.ajaxPostJson(url, param, function(jsonStr) {
+      console.log("btnInsertNoteClicked(): 2");
+      console.log(jsonStr);
+      
+      alert(jsonStr + "로 저장됐습니다.");
+    });
+  },
+  
 };
 
 </script>

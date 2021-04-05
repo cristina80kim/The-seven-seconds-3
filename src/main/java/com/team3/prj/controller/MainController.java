@@ -41,7 +41,7 @@ public class MainController {
 	// http://localhost:8081//main/selectCommonCodes
 	// http://localhost:8081//main/selectCommonCodes?class1=ROOM&class2=TYPE_OF_ACCO
 	// http://localhost:8081//main/selectCommonCodes?class1=ROOM&class2=TYPE_OF_ACCO&class3=resort
-	@GetMapping("/main/selectCommonCodes")
+    @RequestMapping("/main/selectCommonCodes")
 	public @ResponseBody List<CommonCodeVO> selectCommonCodes(CommonCodeVO vo) {
 		System.out.println(className + ".selectCommonCodes()");
 		return service.selectCommonCodes(vo);
@@ -49,7 +49,7 @@ public class MainController {
 
 	// 기능: 숙박시설 유형 공통코드 읽기
 	// http://localhost:8081/main/getAccoCommonCode
-	@GetMapping("/main/getAccoCommonCode")
+    @RequestMapping("/main/getAccoCommonCode")
 	public @ResponseBody List<CommonCodeVO> getAccoCommonCode() {
 		System.out.println(className + ".getAccoCommonCode()");
 		return service.selectCommonCodes(CommonCodeVO.createCommonCode("ROOM", "TYPE_OF_ACCO"));
@@ -57,7 +57,7 @@ public class MainController {
 
 	// 기능: 룸 유형 공통코드 읽기
 	// http://localhost:8081/main/getRoomCommonCode
-	@GetMapping("/main/getRoomCommonCode")
+    @RequestMapping("/main/getRoomCommonCode")
 	public @ResponseBody List<CommonCodeVO> getRoomCommonCode() {
 		System.out.println(className + ".getRoomCommonCode()");
 		return service.selectCommonCodes(CommonCodeVO.createCommonCode("ROOM", "TYPE_OF_ROOM"));
@@ -65,7 +65,7 @@ public class MainController {
 
 	// 기능: 질문유형(Q&A, FAQ) 유형 공통코드 읽기
 	// http://localhost:8081/main/getQnaCommonCode
-	@GetMapping("/main/getQnaCommonCode")
+    @RequestMapping("/main/getQnaCommonCode")
 	public @ResponseBody List<CommonCodeVO> getQnaCommonCode() {
 		System.out.println(className + ".getQnaCommonCode()");
 		return service.selectCommonCodes(CommonCodeVO.createCommonCode("QNA", "TYPE_OF_QNA"));

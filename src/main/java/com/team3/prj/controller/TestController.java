@@ -15,6 +15,7 @@ import com.team3.prj.etc.Libs;
 import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.AjaxTestVO;
 import com.team3.prj.vo.EmpVO;
+import com.team3.prj.vo.NoteVO;
 import com.team3.prj.vo.QnaSearchVO;
 import com.team3.prj.vo.QnaVO;
 
