@@ -2,6 +2,8 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Libs;
 import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.QnaSearchVO;
 import com.team3.prj.vo.QnaVO;
@@ -42,17 +45,27 @@ public class QnaController {
 		System.out.println(className + "selectOne()");
 		return service.selectOne(vo);
 	}
+	
 	// 기능 : Qna 목록 검색
 	// param : QnaSearchVO중 - cateIdValue(카테고리 값),searchType(제목,닉네임),keyWord(검색어)
 	// http://localhost:8081/qna/search?cateId=&keyWord=
 	@GetMapping("/search")
 	public @ResponseBody List<QnaVO> qnaSearch(QnaSearchVO svo) {
 		System.out.println(className + ".search()");
+        System.out.println(svo);
 		return service.search(svo);
 	}
 	
-	
-//	http://localhost:8081/qna/qWriter
+	// 기능 TOAST grid를 위한 검색 및 결과 작성	
+    // http://localhost:8081/qna/toastSearch?cateId=&keyWord=
+    @GetMapping("/toastSearch")
+    public @ResponseBody JSONObject qnaToastSearch(QnaSearchVO svo) {
+        System.out.println(className + ".qnaToastSearch()");
+        System.out.println(svo);
+        return Libs.makeToastJsonResult(service.search(svo));   
+    }
+    
+    //http://localhost:8081/qna/qWriter
 	@GetMapping("/qWriter")
 	public String qWriter() {
 		return "user_ComuQnAwrite"; //.html
