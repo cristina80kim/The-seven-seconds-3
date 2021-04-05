@@ -430,10 +430,12 @@
     VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'etc', null, '기타', 'etc', 'admin');                          -- 기타
 
 
-    -- 15. 공통노트(Note; Common Notes); 이용약관, 개인정보처리방침 등
-    CREATE SEQUENCE seq_note START WITH 1000000000 INCREMENT BY 1 CACHE 10;
-    CREATE TABLE note(
-      id             NUMBER(10) NOT NULL,        -- ID
-      title          VARCHAR2(200) NOT NULL,     -- 제목
-      content        BLOB NULL                   -- 내용
-    );
+-- 15. 공통노트(Note; Common Notes); 이용약관, 개인정보처리방침 등
+CREATE SEQUENCE seq_note START WITH 1000000000 INCREMENT BY 1 CACHE 10;
+CREATE TABLE note(
+id NUMBER(10) NOT NULL, -- ID
+title VARCHAR2(200) NOT NULL, -- 제목
+content CLOB NULL -- 내용
+);
+ALTER TABLE note ADD PRIMARY KEY(id);
+ALTER TABLE note ADD UNIQUE(title);
