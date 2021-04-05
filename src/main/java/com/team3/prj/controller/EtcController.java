@@ -42,8 +42,9 @@ public class EtcController {
     @RequestMapping("/insert")
     public @ResponseBody String insert(@RequestBody NoteVO vo) {
         System.out.println(className + ".insert()");
-        System.out.println(vo);
+        System.out.println("엽력: " + vo);
         String result = service.insert(vo);
+        System.out.println("출력: " + result);
         return result;
     }
 
@@ -51,15 +52,19 @@ public class EtcController {
     @RequestMapping("/update")
     public @ResponseBody int update(@RequestBody NoteVO vo) {
         System.out.println(className + ".update()");
-        System.out.println(vo);
-        return service.update(vo);
+        System.out.println("엽력: " + vo);
+        int result = service.update(vo);
+        System.out.println("출력: " + result);
+        return result;
     }
     
     // http://localhost:8081/etc/delete
     @RequestMapping("/delete")
     public @ResponseBody int delete(@RequestBody NoteVO vo) {
         System.out.println(className + ".delete()");
-        System.out.println(vo);
-        return service.delete(vo);
+        System.out.println("엽력: " + vo);
+        int result = service.delete(vo);
+        System.out.println("출력: " + result);
+        return result;
     }
 }

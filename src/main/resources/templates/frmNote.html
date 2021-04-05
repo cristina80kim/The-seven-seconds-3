@@ -6,11 +6,34 @@
 <script src="/js/main.js?ver=1.0"></script>
 
 <script>
+
 var etc = {
 
   //--------------------------------------------
-  btnReadNoteClicked: function() {
-    console.log("btnReadNoteClicked(): 1");
+  // 기능: 현재 note.id
+  //--------------------------------------------
+  noteId : "",
+  
+  //--------------------------------------------
+  // 기능: 값을 초기화한다.
+  //--------------------------------------------
+  clear: function() {
+    etc.noteId = "";
+    $("#content").val("");
+  },
+
+  //--------------------------------------------
+  // 기능: Title 변경됐을 경우 값을 초기화한다.
+  //--------------------------------------------
+  onTitleChanged: function() {
+    etc.clear();
+  },
+
+  //--------------------------------------------
+  // 기능: 블러오기
+  //--------------------------------------------
+  onReadNoteClicked: function() {
+    console.log("onReadNoteClicked(): 1");
     
     var url = "/etc/select";
     var param = {
@@ -20,22 +43,22 @@ var etc = {
     };
     
     main.ajaxPostJson(url, param, function(jsonStr) {
-      console.log("btnReadNoteClicked(): 2");
+      console.log("onReadNoteClicked(): 2");
       console.log(jsonStr);
-      alert(11111);
       
-      $.each(jsonData, function(index, item) {
-        console.log(item);
-        alert(22222);
-        alert(item["content"]);
-        $("#content").val(item["content"]);
-      });
+      var content = jsonStr["content"];
+      console.log("content: " + content);
+      $("#content").val(content);
+      
+      etc.noteId = jsonStr["id"];
     });
   },
 
   //--------------------------------------------
-  btnInsertNoteClicked: function() {
-    console.log("btnInsertNoteClicked(): 1");
+  // 기능: 추가
+  //--------------------------------------------
+  onInsertNoteClicked: function() {
+    console.log("onInsertNoteClicked(): 1");
     
     var url = "/etc/insert";
     var param = {
@@ -45,10 +68,61 @@ var etc = {
     };
     
     main.ajaxPostJson(url, param, function(jsonStr) {
-      console.log("btnInsertNoteClicked(): 2");
+      console.log("onInsertNoteClicked(): 2");
       console.log(jsonStr);
       
       alert(jsonStr + "로 저장됐습니다.");
+      
+      etc.noteId = jsonStr;
+    });
+  },
+  
+  //--------------------------------------------
+  // 기능: 수정
+  //--------------------------------------------
+  onUpdateNoteClicked: function() {
+    console.log("onUpdateNoteClicked(): 1");
+    
+    var url = "/etc/update";
+    var param = {
+      id:      etc.noteId, 
+      title:   $("#title").val(), 
+      content: $("#content").val() 
+    };
+    
+    main.ajaxPostJson(url, param, function(jsonStr) {
+      console.log("onUpdateNoteClicked(): 2");
+      console.log(jsonStr);
+      
+      alert(jsonStr == 0 ? "오류가 발생했습니다." : "수정됐습니다.");
+    });
+  },
+  
+  
+  //--------------------------------------------
+  // 기능: 삭제
+  //--------------------------------------------
+  onDeleteNoteClicked: function() {
+    console.log("onDeleteNoteClicked(): 1");
+    
+    var url = "/etc/delete";
+    var param = {
+      id:      etc.noteId, 
+      title:   $("#title").val(), 
+      content: "" 
+    };
+    
+    main.ajaxPostJson(url, param, function(jsonStr) {
+      console.log("onDeleteNoteClicked(): 2");
+      console.log(jsonStr);
+      
+      if(jsonStr == 0) { 
+        alert("키가 일치하지 않거나 삭제 처리 중 오류가 발생했습니다.");
+      }
+      else {
+        alert("삭제됐습니다.");
+        etc.clear();
+      }
     });
   },
   
@@ -61,15 +135,15 @@ var etc = {
   <h1>노트 CRUD</h1>
   
   <form name="etcNote" id="etcNote" action="#" method="POST">
-  제목: <select name="title" id="title">
-    <option value="Term Of Serrvice" selected="selected">이용약관</option>
-    <option value="Privacy Policy">개인정보처리방침</option>
-  </select><br />
-  내용: <textarea name="content" id="content" rows="10" cols="80"></textarea> <br />
-  <button name="btnReadNote"   id="btnReadNote"   onclick="etc.btnReadNoteClicked();">불러오기</button>
-  <button name="btnInsertNote" id="btnInsertNote" onclick="etc.btnInsertNoteClicked();">추가</button>
-  <button name="btnUpdateNote" id="btnReadNote"   onclick="etc.btnUpdateNoteClicked();">수정</button>
-  <button name="btnDeleteNote" id="btnReadNote"   onclick="etc.btnDeleteNoteClicked();">삭제</button>
+    제목: <select name="title" id="title" onchange="etc.onTitleChanged();">
+      <option value="Term Of Serrvice" selected="selected">이용약관</option>
+      <option value="Privacy Policy">개인정보처리방침</option>
+    </select><br />
+    내용: <textarea name="content" id="content" rows="10" cols="80"></textarea> <br />
+    <input type="button" name="btnReadNote"   id="btnReadNote"   value="불러오기" onclick="etc.onReadNoteClicked();">
+    <input type="button" name="btnInsertNote" id="btnInsertNote" value="추가"    onclick="etc.onInsertNoteClicked();">
+    <input type="button" name="btnUpdateNote" id="btnUpdateNote" value="수정"    onclick="etc.onUpdateNoteClicked();">
+    <input type="button" name="btnDeleteNote" id="btnDeleteNote" value="삭제"    onclick="etc.onDeleteNoteClicked();">
   </form>
 </body>
 </html>
