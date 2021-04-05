@@ -1,81 +1,109 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- jQGrid 관련 js파일들 임포트 -->
-<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script> 
-<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery.jqGrid.min.js"></script> 
-<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/i18n/grid.locale-kr.js"></script> 
+<!-- TOAST grid를 위한 CDN -->
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 
-<script src="/js/main.js?ver=1.0"></script>
+<!-- TOAST pagenation 시 필요 -->
+<!-- <link rel="stylesheet" href="https://uicdn.toast.com/tui-pagination/dist/tui-pagination.css" /> -->
+<!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script> -->
 
-<!-- jQGrid 관련 css파일들 임포트 -->
-<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap-ui.css" />
-<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap.css" />
-<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid-bootstrap4.css" />
-<link rel="stylesheet" href="/js/Guriddo_jqGrid_JS_5.5.4-Trial/css/ui.jqgrid.css" />
-
-<!-- jQuery UI 관련 css파일들 임포트 -->
-<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.css" />
-<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.structure.css" />
-<link rel="stylesheet" href="/js/jquery-ui-1.12.1/jquery-ui.theme.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 
 <script>
   $(function() {
     console.log(">>> $(): 1");
     main.ajaxCodeQnaToSelectBox("cateId");
-    main.showGridDatas("/qna/selectAll", "GET", "gridData", colNames, colModel);
+    qna.showQnaOnGrid("/test/getData4Toast3", "gridData");
   });
   
+  var gridQna = null;
+  
   var qna = {
+
+    onSearchBtnClick: function() {
+      console.log("onSearchBtnClick()");
+      qna.showQnaOnGrid("/qna/toastSearch", "gridData");
+    },
+    
     onQnaWriteClick: function() {
       console.log("onQnaWriteClick()");
       main.ajaxGetHtml("/qna/qWriter", "contents");
     },
     
-    onSearchBtnClick: function() {
-      console.log("onSearchBtnClick()");
-      main.showGridDatas("/qna/search", "GET", "gridData", colNames, colModel);
+    //-----------------------------------
+    showQnaOnGrid: function(url, componentName) {
+      var kind = "QNA";
+      var actionInsert = "INSERT";
+      var actionDelete = "DELETE";
+      
+      var columns = [
+        {header: "아이디",     name: "id",       width: 50,  height: 100                    },
+        {header: "닉네임",     name: "nickname", width: 100                   },
+        {header: "번호",      name: "no",       width: 100, align: "center"   },
+      
+        {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+          return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+        }},
+        
+        {header: "카테고리ID.", name: "cateId",   width: 100                   },
+      //{header: "카테고리",    name: "cate",     width: 0                     },
+        {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
+        {header: "제목",      name: "title",    width: 100                   },
+        {header: "질문내용",    name: "q",        width: 300                   },
+        {header: "답변내용",    name: "a",        width: 300                   },
+      //{header: "작성자ID",   name: "cUser",    width: 20                    },
+        {header: "aaUser",   name: "aaUser",   width: 20                    },
+        {header: "cuser",    name: "cuser",    width: 20                    },
+        {header: "작성일",     name: "mdate",    width: 20                    },
+        
+        {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
+          // this.index, this.item, this.list 에 모두 접근 가능
+          // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
+          
+          return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
+          + kind + "\", \"" + actionInsert + "\", \"" 
+          + this.index + "\");'>수정</button>"; 
+        }},
+        
+        {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
+          return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
+          + kind + "\", \"" + actionDelete + "\", \"" 
+          + this.index + "\");'>삭제</button>"; 
+        }}
+      ];
+      
+      gridQna = main.showToastGrid(url, componentName, columns);
+    },
+    
+    callbackButtonClicked: function(kind, action, index) {
+      console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+      console.log("id: " + gridQna.getValue(index, "id")); 
     },
     
   }
 
-  var colNames =                         // 그리드 헤더의 제목(배열 형태임)  
-        ["닉네임", "글번호", "카테고리ID", "공개여부", "제목", "질문", "작성자"]; 
-     // ["ID", "글번호", "카테고리ID", "카테고리", "제목", "질문", "답변", "닉네임", "공개여부", "등록일"];
-      
-  var colModel = [                       // 그리드 행 데이터 정의(colNames의 갯수 = colModel 갯수) 
-   //   {name: "id",       index: "id",       width: 5,  resizable: false, align: "center", hidden: true},
-        {name: "nickname", index: "nickname", width: 5,  resizable: false, align: "center", hidden: true}, 
-        {name: "no",       index: "no",       width: 5,   resizable: false, align: "right",  hidden: false}, 
-        {name: "cateId",   index: "cateId",   width: 10,  resizable: true,  align: "left",   hidden: true}, 
-   //   {name: "cate",     index: "cate",     width: 10,  resizable: true,  align: "left",   hidden: false},
-        {name: "isPub",    index: "isPub",    width: 5,   resizable: false, align: "center", hidden: true}, 
-        {name: "title",    index: "title",    width: 20,  resizable: true,  align: "left",   hidden: false},
-        {name: "q",        index: "q",        width: 50,  resizable: true,  align: "left",   hidden: false},
-   //   {name: "a",        index: "a",        width: 50,  resizable: true,  align: "left",   hidden: false},
-   //   {name: "cDate",    index: "cDate",    width: 10,  resizable: false, align: "center", hidden: true},
-        {name: "cUser",    index: "cUser",    width: 10,  resizable: false, align: "center", hidden: true}
-  ]; 
-  
+
 </script>
 
 </head>
 <body>
   <h1>Q & A 목록</h1>
-  <div id="QnASrch">
-			  <h1>Q&A</h1>
-		      <form id="QnASrchFrm">
-		        <select name="cateId" id="cateId">
-		        </select>
-		        <input type="text" name="keyword" id="keyword">
-		        <input type="button" value="검색" id="searchBtn" onclick="qna.onSeachBtnClick();">
-		      </form>
+  <div id="QnaSrch">
+    <h1>Q&A</h1>
+      <form id="QnaSrchFrm">
+        <select name="cateId" id="cateId">
+        </select>
+        <input type="text" name="keyword" id="keyword">
+        <input type="button" value="검색" id="searchBtn" onclick="qna.onSearchBtnClick();">
+      </form>
 	</div>
   <table id="gridData"></table>
-  <div id="gridPager"></div>
+  <div id="gridData"></div>
 	<div id="writeBtn">
 		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기">
 	</div>

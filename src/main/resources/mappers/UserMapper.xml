@@ -31,6 +31,12 @@
 		)
 	</insert>
 	
+	<!-- id 체크 -->
+	<select id="checkId" resultType="com.team3.prj.vo.UserVO">
+  	SELECT COUNT(*) FROM users
+  	WHERE id = #{id}
+  </select>
+	
 	<!-- 유저 내정보수정 -->
 	<update id="userUpdate">
 		UPDATE users

@@ -2,8 +2,17 @@
 
 <head lang="en">
 <meta charset="UTF-8">
+
+<!-- TOAST grid를 위한 CDN -->
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+
+<!-- TOAST pagenation 시 필요 -->
+<!-- <link rel="stylesheet" href="https://uicdn.toast.com/tui-pagination/dist/tui-pagination.css" /> -->
+<!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
   
 <script>
     
@@ -12,99 +21,61 @@
     // ...
   };
 
+  var gridQna = null;
+  
   // 기능: addEventListener를 사용하여 DOMContentLoaded 이벤트 발생시 showGrid() 실행.
   document.addEventListener("DOMContentLoaded", function() {
     // ...
-    _tGrid.showGrid();
-    showTestGrid();
-  });   
+    
+    var kind = "QNA";
+    var actionInsert = "INSERT";
+    var actionDelete = "DELETE";
+    
+    var columns = [
+      {header: "아이디",     name: "id",       width: 50,  height: 100                    },
+      {header: "닉네임",     name: "nickname", width: 100                   },
+      {header: "번호",      name: "no",       width: 100, align: "center"   },
 
-var _tGrid = {
-
-  //----------------------------------------
-  grid: null,
+      {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+        return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+      }},
       
-  showGrid: function() {
-    var url = "/test/getData4Toast3";  // http://localhost:8081/test/getData4Toast3
+      {header: "카테고리ID.", name: "cateId",   width: 100                   },
+    //{header: "카테고리",    name: "cate",     width: 0                     },
+      {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
+      {header: "제목",      name: "title",    width: 100                   },
+      {header: "질문내용",    name: "q",        width: 300                   },
+      {header: "답변내용",    name: "a",        width: 300                   },
+    //{header: "작성자ID",   name: "cUser",    width: 20                    },
+      {header: "aaUser",   name: "aaUser",   width: 20                    },
+      {header: "cuser",    name: "cuser",    width: 20                    },
+      {header: "작성일",     name: "mdate",    width: 20                    },
+      
+      {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
+        // this.index, this.item, this.list 에 모두 접근 가능
+        // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
+        
+        return "<button class='AXButton' onclick='callbackButtonClicked(\"" 
+        + kind + "\", \"" + actionInsert + "\", \"" 
+        + this.index + "\");'>수정</button>"; 
+      }},
+      
+      {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
+        return "<button class='AXButton' onclick='callbackButtonClicked(\"" 
+        + kind + "\", \"" + actionDelete + "\", \"" 
+        + this.index + "\");'>삭제</button>"; 
+      }}
+    ];
     
-    var options = {
-      el: document.getElementById("gridQNA"),
-      columns: [
-          {header: "아이디",     name: "id",       width: 50                    },
-          {header: "닉네임",     name: "nickname", width: 100                   },
-          {header: "번호",      name: "no",       width: 100, align: "center"   },
-          {header: "카테고리ID.", name: "cateId",   width: 100                   },
-       // {header: "카테고리",    name: "cate",     width: 0                     },
-          {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
-          {header: "제목",      name: "title",    width: 100                   },
-          {header: "질문내용",    name: "q",        width: 300                   },
-          {header: "답변내용",    name: "a",        width: 300                   },
-       // {header: "작성자ID",   name: "cUser",    width: 20                    },
-          {header: "aaUser",   name: "aaUser",   width: 20                    },
-          {header: "cuser",    name: "cuser",    width: 20                    },
-          {header: "작성일",     name: "mdate",    width: 20                    },
-          {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
-            // this.index, this.item, this.list 에 모두 접근 가능
-            return '<buton class="AXButton" onclick="_tGrid.resButton(\'' + this.index + '\');">수정</buton>';
-            //return "<buton class='AXButton' onclick='_tGrid.resButton(\"" + this.index + "\", 'update');'>수정</buton>";
-          }},
-          {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
-            return '<buton class="AXButton" onclick="_tGrid.resButton(\'' + this.index + '\', "delete");">삭제</buton>';
-            //return "<buton class='AXButton' onclick='_tGrid.resButton(\"" + this.index + "\", 'delete');'>삭제</buton>";
-          }}
-        ],
-      rowHeaders: ['rowNum'],
-      data: {
-        contentType: "application/json",
-        api: {
-          readData: { 
-            url: url, 
-            method: "GET" 
-          }
-        }
-      }
-    };
+    gridQna = main.showToastGrid("/test/getData4Toast3", "gridQNA", columns);
+    showTestGrid();
+  });
   
-    // GRID 를 생성.
-    _tGrid.grid = new tui.Grid(options);
-    
-    // grid 클릭시 row 선택
-    _tGrid.grid.on('click', function(ev) {
-      var record = {
-           start : [ev.rowKey, 0],
-           end : [ev.rowKey, _tGrid.grid.getColumns().length]
-       }
-       _tGrid.grid.setSelectionRange(record);
-       
-       console.log("현재 선택된 Row 번호: " + ev.rowKey);
-    });
-
-    //----------------------------------------    
-    /*
-    var selectedRowKey = null;
-    
-    // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
-    _tGrid.grid.on("focusChange", ev => {
-      if (selectedRowKey) {
-        _tGrid.grid.removeRowClassName(selectedRowKey, "someClassName");
-      }
-      selectedRowKey = ev.rowKey;
-      _tGrid.grid.addRowClassName(selectedRowKey, "someClassName");
-    });
-    */
-  },
+  callbackButtonClicked = function(kind, action, index) {
+    console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+    console.log("id: " + gridQna.getValue(index, "id")); 
+  };
   
-  resButton: function(index, action) {
-    console.log("index: " + index + ", action: " + action);
-  },
-  
-  //============================================================
-  // 기능: console에 log 출력. 
-  //============================================================
-  log: function(msg) {
-    console.log(">>> " + msg);
-  }
-};  
 
   // --------------------------------
   var showTestGrid = function() {

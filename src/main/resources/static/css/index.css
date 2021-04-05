@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@import url(reset.css);
+
+#inWarp{
+	width:1080px;
+	margin:0 auto;
+}
+#leftMenu {
+		float:left;
+	}
+#contents {
+		float:right;
+	}

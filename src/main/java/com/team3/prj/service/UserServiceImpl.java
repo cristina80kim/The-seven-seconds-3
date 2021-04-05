@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
 		public String join(UserVO vo){
 			return userDAO.userJoin(vo) >= 1 ? vo.getId() : "";
 		}
+		
+		@Override
+		public int idCheck(String id) {
+			return userDAO.checkId(id);
+		}
 
 		@Override
 		public UserVO mypage(UserVO vo) {
@@ -62,4 +67,6 @@ public class UserServiceImpl implements UserService {
 			return userDAO.revuDelete(vo);
 		}
 
+		
+		
 }

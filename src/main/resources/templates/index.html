@@ -10,47 +10,57 @@ var index = {
   onLoginClick: function() {
     console.log("onLoginClick()");
     main.ajaxGetHtml("/user/frmLogin", "contents");
+    $("#leftMenu").hide();
   },
   
   onJoinClick: function() {
   	console.log("onJoingClick()");
   	main.ajaxGetHtml("/user/frmJoin", "contents");
+  	$("#leftMenu").hide();
   },
   
   onLeftSearchClick: function() {
+	  $("#leftMenu").show();
   	console.log("onLeftSearchClick()");
   	main.ajaxGetHtml("/main/leftSearch", "leftMenu");
   },
   
   onMypageClick: function() {
+	  $("#leftMenu").hide();
   	console.log("onMypageClick()");
   	main.ajaxGetHtml("/user/frmMypage", "contents");
   	// main.ajaxGetHtml("/main/leftMypage", "leftMenu");
+  	
   },
   
   onCommuClick: function() {
+	  $("#leftMenu").show();
   	console.log("onCommuClick()");
   	main.ajaxGetHtml("/main/leftCommu", "leftMenu");
+  	main.ajaxGetHtml("/notice/searchList", "contents");
   },
   
   onNoticeClick: function() {
+	  $("#leftMenu").show();
     console.log("onNoticeClick()");
-    // TODO : (임의정) 매핑주소 넣어야 함 
-    main.ajaxGetHtml("", "contents");
+    main.ajaxGetHtml("notice/searchList", "contents");
+    
   },
   
   onFaqClick: function() {
+	  $("#leftMenu").show();
     console.log("onFaqClick()");
-    // TODO : (임의정) 매핑주소 넣어야 함 
-    main.ajaxGetHtml("", "contents");
+    main.ajaxGetHtml("faq/searchList", "contents");
   },
   
   onQnaClick: function() {
+	  $("#leftMenu").show();
     console.log("onQnaClick()");
     main.ajaxGetHtml("/qna/frmSelectAll", "contents");
   },
   
   onQnaWriteClick: function() {
+	  $("#leftMenu").show();
 	    console.log("onQnaWriteClick()");
 	    main.ajaxGetHtml("/qna/frmSelectAll", "contents");
 	  },
@@ -64,18 +74,14 @@ var index = {
 
 <title>index</title>
 <link rel="stylesheet" href="css/header.css" />
-<style>
-	#contents {
-		position: relative;
-		top:0;
-		right:0;
-	}
-</style>
+<link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
 	<div th:include="header.html"></div>
-	<div th:include="leftSearch.html" id="leftMenu"></div>
-	<div id="contents"></div>
+	<div id="inWarp">
+		<div th:include="leftSearch.html" id="leftMenu"></div>
+		<div id="contents"></div>
+	</div>
 	<div th:include="footer.html"></div>
 </body>
 </html>
