@@ -23,4 +23,15 @@ public class RsrvListServiceImpl implements RsrvListService {
 	public List<RsrvListVO> managerRsrvList(){
 	    return rsrvlistDao.managerRsrvList();
 	}
+	
+	@Override
+	public Long delete(RsrvListVO vo) {
+	    return rsrvlistDao.delete(vo);
+	}
+	
+	@Override
+	public Long update(RsrvListVO vo) {
+	    return rsrvlistDao.update(vo)== 1? vo.getId() : 0;
+	}
+	
 }

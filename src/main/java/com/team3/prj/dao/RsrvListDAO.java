@@ -12,4 +12,8 @@ public interface RsrvListDAO {
 	public List<RsrvListVO> selectAllRsrvList();
 	
 	public List<RsrvListVO> managerRsrvList();
+	
+	public Long update(RsrvListVO vo);
+	
+	public Long delete(RsrvListVO vo);
 }

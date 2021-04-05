@@ -12,7 +12,7 @@ import com.team3.prj.vo.RsrvListVO;
 
 @Controller
 public class RsrvListController {
-
+    private final String className = "RsrvListController";
 	@Autowired
 	RsrvListService rsrvlistService;
 	
@@ -24,11 +24,27 @@ public class RsrvListController {
 		return lstRsrvList;
 	}
 	
-	// 230번 예약관리 예약리스트
+	// 230번 예약관리 예약리스트 (manager_RsrvList.html)
 	//http://localhost:8081/managerRsrvList
 	@GetMapping("/managerRsrvList")
 	public String managerRsrvList() {
 	    return "manager_RsrvList";
+	}
+	
+	// 230번 예약관리 삭제 (manager_RsrvList.html)
+	// http://localhost:8081/managerRsrvList/delete?id=
+	@GetMapping("/managerRsrvList/delete")
+	public @ResponseBody String delete(RsrvListVO vo) {
+	    System.out.println(className + ".delete():" + vo.toString());
+	    return rsrvlistService.delete(vo).toString();
+	}
+	
+	//230번 예약관리 수정 (체크인,체크아웃,룸)
+	// http://localhost:8081/managerRsrvList/update?checkIn=2021/04/05&checkOut=2021/04/10&rsrvRoom=아무거나&id=
+	@GetMapping("/managerRsrvList/update")
+	public @ResponseBody String update(RsrvListVO vo) {
+	    System.out.println(className + ".update():" + vo.toString());
+	    return rsrvlistService.update(vo).toString();
 	}
 	
 }

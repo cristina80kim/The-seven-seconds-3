@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+
+<mapper namespace="com.team3.prj.dao.RsrvListDAO"> 
+
+	<select id="selectAllRsrvList" resultType="com.team3.prj.vo.RsrvListVO">
+		SELECT 
+				id, check_in, check_out, Rsrv_stay, Rsrv_room,
+				Rsrv_info, price, Rsrv_state, Rsrv_name	, Rsrv_gen,
+			    Rsrv_tel		
+		FROM rsrv
+		ORDER BY id
+	</select>
+
+	<select id="managerRsrvList" resultType="com.team3.prj.vo.RsrvListVO">
+		SELECT 
+				id, check_in, check_out, Rsrv_stay, Rsrv_room,
+				Rsrv_info, price, Rsrv_state, Rsrv_name	, Rsrv_gen,
+			    Rsrv_tel		
+		FROM rsrv
+		ORDER BY id
+	</select>
+	
+	<update id="update">
+		UPDATE rsrv
+		SET check_in=#{checkIn}, check_out={checkOut},
+			Rsrv_room =#{rsrvRoom}
+		WHERE id=#{id}
+	</update>
+  
+  <delete id="delete">
+		DELETE rsrv
+		where id=#{id}
+	</delete>
+	
+  	<select id="roomDtlSearch" resultType="com.team3.prj.vo.RsrvListVO">
+		SELECT *
+		FROM rsrv
+		<where>
+			<if test='checkIn != null and !"".equals(checkIn)'>
+				AND check_in = #{checkIn}
+			</if>
+			<if test='checkOut != null and !"".equals(checkOut)'>
+				AND check_out = #{checkOut}
+			</if>
+			
+			<if test='keyWord!= null and !"".equals(keyWord)'>
+
+				AND
+				(
+					title LIKE '%'||#{keyWord}||'%'
+					OR nickname LIKE '%'||#{keyWord}||'%'
+					OR q
+					LIKE '%'||#{keyWord}||'%'
+					OR a LIKE '%'||#{keyWord}||'%'
+				)
+
+			</if>
+		</where>
+		ORDER BY id
+	</select>
+  
+</mapper>
