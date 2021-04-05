@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/main.js?ver=1.0"></script>
+<script src="/js/main.js?ver=1.01"></script>
 
 <script>
 
@@ -28,7 +28,7 @@ var etc = {
   onTitleChanged: function() {
     etc.clear();
   },
-
+  
   //--------------------------------------------
   // 기능: 블러오기
   //--------------------------------------------
@@ -51,6 +51,8 @@ var etc = {
       $("#content").val(content);
       
       etc.noteId = jsonStr["id"];
+    }, function(request, status, error) {  // error가 발생한 경우
+      alert("자료가 없거나 자료 찾기 중  오류가 발생했습니다.");ㄴㄴ
     });
   },
 

@@ -112,20 +112,53 @@ var main = {
     return (typeof param == "undefined" || param == null || param == "") ? defVal : param;
   },
 
-  ajaxGetHtml: function(loc, componentName) {
+  //============================================================
+  // 기능: ajax GET 형태로 loc를 호출하여 성공한 경우 HTML을 받으며, callbackFunc를 호출한다.      
+  //============================================================
+  ajaxGetHtml: function(loc, componentName, callbackSuccess, callbackError) {
     // window.open(loc);
     // window.location.href =
     console.log(">>> ajaxGetHtml(): 1");
     console.log(">>> ajaxGetHtml(): " + loc);
 
     $.ajax({ 
-        type : "GET", 
-        url : loc, 
-        dataType : "html", 
-        success : function(msg) {
-            console.log(msg); 
-            $("#" + componentName).html(msg); 
-        } 
+      type : "GET", 
+      url : loc, 
+      dataType : "html", 
+      
+      success : function(htmlParam) {
+        console.log(">>> ajaxGetHtml(): success 1");
+        console.log(htmlParam);
+        $("#" + componentName).html(htmlParam); 
+        
+        if(main.isNotEmpty(callbackSuccess)) {
+          console.log(">>> ajaxGetHtml(): success 2");
+          callbackSuccess(htmlParam);
+        }
+        
+        console.log(">>> ajaxGetHtml(): success 3");
+      },
+      
+      error: function(request, status, error) {
+        // JSON 결과값이 null로 등답될 경우 아래와 같이 응답한다.
+        //   - request: {readyState: 4, getResponseHeader: ƒ, getAllResponseHeaders: ƒ, setRequestHeader: ƒ, overrideMimeType: ƒ, …}
+        //   - status: parsererror
+        //   - error: SyntaxError: Unexpected end of JSON input
+        console.log("[ERROR]: request: " + request + ", status: " + status + ", error: " + error);
+        console.log(request);
+        
+        if(main.isNotEmpty(callbackError)) {
+          console.log(">>> ajaxGetHtml(): success 4");
+          callbackError(request, status, error);
+        }
+      },
+      
+      complete(xhr, status) {
+        // JSON 결과값이 null로 등답될 경우 아래와 같이 응답한다.
+        //  -  status: parsererror
+        console.log("[COMPLETE] status: " + status);
+      },
+         
     });
  
     console.log(">>> ajaxGetHtml(): 2");
@@ -161,7 +194,7 @@ var main = {
   //============================================================
   // 기능: ajax POST 형태로 loc를 호출하여 성공한 경우 callbackFunc를 호출한다.      
   //============================================================
-  ajaxPostJson: function(loc, param, callbackSuccess, callbackFail) {
+  ajaxPostJson: function(loc, param, callbackSuccess, callbackError) {
      // window.open(loc);
      // window.location.href = loc; 
     console.log(">>> ajaxPostJson(): 1---");
@@ -184,20 +217,30 @@ var main = {
         
         console.log(">>> ajaxPostJson(): success 3");
       },
-//       fial: function(jsonParam) {
-//        console.log(">>> ajaxPostJson(): fail 1");
-//        console.log(jsonParam);
-//        
-//        if(main.isNotEmpty(callbackFail)) {
-//          console.log(">>> ajaxGetJson(): fail 2");
-//          callbackFail(jsonParam);
-//        }
-//        
-//        console.log(">>> ajaxPostJson(): fail 3");
-//       },
+      
+      error: function(request, status, error) {
+        // JSON 결과값이 null로 등답될 경우 아래와 같이 응답한다.
+        //   - request: {readyState: 4, getResponseHeader: ƒ, getAllResponseHeaders: ƒ, setRequestHeader: ƒ, overrideMimeType: ƒ, …}
+        //   - status: parsererror
+        //   - error: SyntaxError: Unexpected end of JSON input
+        console.log("[ERROR]: request: " + request + ", status: " + status + ", error: " + error);
+        console.log(request);
+        
+        if(main.isNotEmpty(callbackError)) {
+          console.log(">>> ajaxPostJson(): success 4");
+          callbackError(request, status, error);
+        }
+      },
+      
+      complete(xhr, status) {
+        // JSON 결과값이 null로 등답될 경우 아래와 같이 응답한다.
+        //  -  status: parsererror
+        console.log("[COMPLETE] status: " + status);
+      },
+
     }); 
   },
-  
+
   //============================================================
   // 기능: ajax GET 형태로 공통코드를 불러와 componentName(<select>)에 대입한다.      
   //============================================================
