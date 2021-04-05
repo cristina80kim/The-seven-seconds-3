@@ -12,7 +12,8 @@ import com.team3.prj.service.EtcService;
 import com.team3.prj.vo.NoteVO;
 
 @Controller
-@RequestMapping("/etc")
+//@RequestMapping(value="/etc", method={RequestMethod.GET, RequestMethod.POST})
+@RequestMapping(value="/etc")
 public class EtcController {
 
     private final String className = "EtcController";
@@ -21,21 +22,24 @@ public class EtcController {
     EtcService service;
 
     // http://localhost:8081/etc/frmNote
-    @GetMapping("/frmNote")
+    @RequestMapping("/frmNote")
     public String frmNote() {
         System.out.println(className + ".frmNote()");
         return "frmNote";   // frmNote.html
     }
     
     // http://localhost:8081/etc/select
-    @PostMapping("/select")
+    @RequestMapping("/select")
     public @ResponseBody NoteVO select(@RequestBody NoteVO vo) {
         System.out.println(className + ".select()");
-        return service.select(vo);
+        System.out.println("입력: " + vo);
+        NoteVO result = service.select(vo);
+        System.out.println("출력: " + result);
+        return result;
     }
     
     // http://localhost:8081/etc/insert
-    @PostMapping("/insert")
+    @RequestMapping("/insert")
     public @ResponseBody String insert(@RequestBody NoteVO vo) {
         System.out.println(className + ".insert()");
         System.out.println(vo);
@@ -44,7 +48,7 @@ public class EtcController {
     }
 
     // http://localhost:8081/etc/update
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public @ResponseBody int update(@RequestBody NoteVO vo) {
         System.out.println(className + ".update()");
         System.out.println(vo);
@@ -52,7 +56,7 @@ public class EtcController {
     }
     
     // http://localhost:8081/etc/delete
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public @ResponseBody int delete(@RequestBody NoteVO vo) {
         System.out.println(className + ".delete()");
         System.out.println(vo);

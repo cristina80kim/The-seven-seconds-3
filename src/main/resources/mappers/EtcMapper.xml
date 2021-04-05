@@ -16,13 +16,13 @@
     </selectKey>
     
     INSERT INTO note (id, title, content)
-    VALUES (#{id}, #{title}, #{content})
+    VALUES (#{id}, #{title}, #{content, jdbcType=CLOB})
   </insert>  
   
   <update id="update">
     UPDATE note 
     SET    title   = #{title},
-           content = #{content}
+           content = #{content, jdbcType=CLOB}
     WHERE  id      = #{id}
   </update>  
   
