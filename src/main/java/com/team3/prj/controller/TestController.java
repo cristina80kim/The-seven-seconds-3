@@ -101,13 +101,7 @@ public class TestController {
         System.out.println(className + ".getData4Toast3()");
         
         List<QnaVO> lstQnaResult = qnaSrvice.search(vo);
-        JSONObject contents = Libs.makeJosnValue("contents", lstQnaResult);
-                
-        JSONObject jsonResult = new JSONObject();
-        jsonResult.put("result", lstQnaResult != null);
-        jsonResult.put("data", contents);
-
-        return jsonResult;
+        return Libs.makeToastJsonResult(lstQnaResult);
     }
     
     //  

@@ -235,5 +235,14 @@ public class Libs {
         
         return result;
     }
+
+    // 기능: 결과를 TOAST grid에서 사용할 수 있도록 JSON 결과 형태로 변환하여 응답한다.
+    public static JSONObject makeToastJsonResult(Object param) {
+        JSONObject contents = Libs.makeJosnValue("contents", param);
+        JSONObject jsonResult = new JSONObject();
+        jsonResult.put("result", param != null);
+        jsonResult.put("data", contents);
+        return jsonResult;
+    }
     
 }
