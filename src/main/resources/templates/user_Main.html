@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>user_메인</title>
+<link rel="stylesheet" href="css/user_Main.css" />
 <style>
 #banner {
 width:400px;
@@ -15,65 +16,107 @@ background-color: #eee;
 
 <div id="wrap">
 
-	<section id="userMainSrch">
+	<section id="userRoomDtl_left">
+			
+					<input type="text" name="MainSrch" id="MainSrch" placeholder="검색창" /><br />
+			
+					<div class="chkTime">
+							
+							<label for="userChkIn">
+								<input type="month" name="userChkIn" id="userChkIn" />
+								체크인
+							</label>
+							<label for="userChkOut">
+								<input type="month" name="userChkOut" id="userChkOut" />
+								체크아웃
+							</label><br />
+					</div>
+					
+					<div class="numG">
+						<label for="numGuests">인원수
+							<select name="numGuests" id="numGuests">
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+					   		    <option value="5">5</option>
+							    <option value="6">6</option>
+							    <option value="7">7</option>
+							    <option value="8">8</option>
+					   		    <option value="9">9</option>
+							    <option value="10">10</option>
+							    <option value="11">11</option>
+							</select>
+						</label>
+					</div>
+					<br />
+					<div id="SrchBtn">					
+						<input type="submit" value="검색" id="MainSrchBtn"/>
+					</div>
+					<hr />
+					
+					<span class="userSubTitle"><label for="price">가격</label><br /></span><br />
+					<input type="text" name="price" id="priceMin" placeholder="최저가"/>
+					<span class="userSubTitle">~</span>
+					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
+					<br /><br />
+					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
+					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="room_name" id="room_name1" />전체</label></span>
+					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="room_name" id="room_name2" />호텔</label></span>
+					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="room_name" id="room_name3" />모텔</label></span>
+					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="room_name" id="room_name4" />펜션/풀빌라</label></span>
+					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="room_name" id="room_name5" />글램핑/캠핑</label></span><br />
+					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="room_name" id="room_name6" />게하/한옥</label></span>
+					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="room_name" id="room_name7" />리조트/콘도</label></span>
+					
+				
+					<!-- <hr /> -->
+		</section>
 	
-		<input type="text" name="userMainSrch" id="userMainSrch" /><br />
-		<label for="userChkIn">
-			<input type="checkbox" name="userChkIn" id="userChkIn" />
-			체크인
-		</label>
-		<label for="userChkOut">
-			<input type="checkbox" name="userChkOut" id="userChkOut" />
-			체크아웃
-		</label><br />
-		
-		<input type="text" name="numGuests" id="numGuests" placeholder="인원수"/><br />
-		<input type="submit" value="검색" />
-	</section>
-	<hr />
 	
+	<section id="userRoomDtl_right">
 	
-	<section id="userSubSrch">
-		<label for="price">가격</label><br />
-		<input type="text" name="price" id="priceMin" />
-		~
-		<input type="text" name="price" id="priceMax" />
-		<br />	
-		<label for="">숙박 유형</label><br />	
-		<input type="checkbox" name="room_name" id="room_name" />전체
-		<input type="checkbox" name="room_name" id="room_name" />호텔
-		<input type="checkbox" name="room_name" id="room_name" />모텔
-		<input type="checkbox" name="room_name" id="room_name" />펜션/풀빌라
-		<input type="checkbox" name="room_name" id="room_name" />글램핑/캠핑
-		<input type="checkbox" name="room_name" id="room_name" />게하/한옥
-		<input type="checkbox" name="room_name" id="room_name" />리조트/콘도
-		
-	</section>
-	
-	<hr />
-	
-	<article>
-	
-		<input type="submit" value="서울" />
-		<input type="submit" value="경기도" />
-		<input type="submit" value="경상도" />
-		<input type="submit" value="전라도" />
-		<input type="submit" value="충청도" />
-		<input type="submit" value="강원도" />
-		<input type="submit" value="제주도" />
-		<input type="submit" value="국외" />
-		
-		<div id="banner">
-			banner 배너칸~
+		<div class="areaBtn">
+			<input type="button" value="서울" />
+			<input type="button" value="경기도" />
+			<input type="button" value="경상도" />
+			<input type="button" value="전라도" />
+			<input type="button" value="충청도" />
+			<input type="button" value="강원도" />
+			<input type="button" value="제주도" />
+			<input type="button" value="국외" />
 		</div>
 		
-		<a href=""><img src="images/" alt="여행지1_img" /></a>
-		<a href=""><img src="images/" alt="여행지2_img" /></a>
-		<a href=""><img src="images/" alt="여행지3_img" /></a>
-		<a href=""><img src="images/" alt="여행지4_img" /></a>
-	
+<!--banner  -->
+		<div id="slide">
+			<div id="slideShow">
+				<img src="images/hokang_3.png" width="440" height="140" alt="배너1" />
+				 <img src="images/lovekorea.png" width="440" height="140"  alt="배너2" />
+				 <img src="images/pakage.png" width="440" height="140" alt="배너3" /> 
+			</div>
+		</div>
 		
-	</article>
+<!--bannerBtn Start  -->
+		<div id="moveBtn">
+	         <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+     		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
+		</div>
+<!--bannerBtn END  -->		
+
+		
+		<table id="travelImg">
+			<tr>
+				<td><a href="#"><img src="images/travel_1.jpg" alt="여행지1_img" id="tr1"/></a></td>
+				<td><a href="#"><img src="images/travel_2.jpg" alt="여행지2_img" id="tr2"/></a></td>
+			</tr>
+			<tr>
+				<td><a href="#"><img src="images/travel_3.jpg" alt="여행지3_img" id="tr3"/></a></td>
+				<td><a href="#"><img src="images/travel_4.jpg" alt="여행지4_img" id="tr4" /></a></td>
+			</tr>
+		
+		</table>
+		
+	</section>
 
 
 

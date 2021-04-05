@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+/* input[type=text]{
+border:none;
+} */
+
+input:focus,textarea:focus,select:focus,option:focus,
+ {outline:none;
+ border:none;}
+
+
+input[type=button],input[type=number]{
+	border:none;
+	outline:none;
+}
+
+
+textarea {
+	resize:none;
+}
+
+
+/* reset///////////////////////// */
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+}
+
+section {
+	width: 450px;
+	display:inline-block;
+	float:left;
+}
+
+label {
+	font-weight:bolder;
+	font-size:1.1em;
+	color:#9881f3;
+	vertical-align: middle;
+}
+
+#userRoomDtl_left {
+	float:left;
+}
+
+#userRoomDtl_left>#MainSrch{
+	width: 400px;
+	border: 2px solid #9881f3;
+	padding: 10px;
+	margin: 2px;
+	color:#9881f3;
+}
+
+#userRoomDtl_left input[type=number], select,option{
+	width: 100px;
+	border: 2px solid #9881f3;
+	color:#9881f3;
+	margin:3px;
+}
+
+#userChkIn, #userChkOut{ /* 체크인 체크아웃 */
+	width: 130px;
+	border: 2px solid #9881f3;
+	color:#9881f3;
+	margin:3px;
+	padding:4px 1px;
+}
+
+input[type=number], select,option {
+	padding: 2px;
+	margin: 3px;
+}
+#numGuests{
+	width: 363px;
+	padding: 4px 7px;
+}
+
+#SrchBtn {
+	width: 350px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#MainSrchBtn{
+	width: 140px;
+	height: 39px;
+	text-align: center;
+	margin: 0 auto;
+	border: 2px solid #9881f3;
+	color:#9881f3;
+	padding: 2px;
+	margin: 3px;
+	background-color: #fff;
+}
+
+
+#MainSrchBtn:hover{
+	cursor:pointer;
+	color: white;
+	border: 2px solid #9881f3;
+	background-color:#9881f3;	
+	outline:none;
+}
+
+
+#userSubTitle label {
+	color:#9881f3;
+	display:inline-block;
+	padding-top:3px;
+	padding-bottom:3px;
+	vertical-align: middle;
+}	
+
+
+#priceMin, #priceMax {
+	border: 2px solid #9881f3;
+	background-color:#fff;	
+	width: 100px;
+	padding: 10px;
+	margin: 2px;
+	color:#9881f3;
+}
+
+/* section right start */
+/* userRoomDtl_right ////////////////////////////*/
+
+#shortcutBtn {
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	margin: 0 auto;
+	color:white;
+	background-color: #9881f3;
+	padding: 2px;
+	margin: 5px;
+	font-weight:bolder;
+	font-size:0.8em;
+}
+
+#shortcutBtn:hover{
+	cursor:pointer;
+	color: #9881f3;
+	border: 2px solid #9881f3;
+	background-color:white;
+	outline:none;
+}
+
+#userRoomDtlShow{
+	border-bottom: 1px solid 828282;
+	
+}
+
+#title,#price,#addr,#tel {
+	border:none;
+	margin-top: 2px;
+	padding:6px 4px;
+	vertical-align: middle;
+	font-weight:bolder;
+	font-size:0.8em;
+	color: #6F6F6F;
+}
+
+
+
+#title,#addr {
+	width: 130px;
+}
+
+#price,#tel{
+	width: 160px;
+	text-align: right;
+}
+
+#userRoomDtlShow span {
+	display: inline-block;
+	float: left;
+}
+
+
+#slide {
+    width: 440px;
+    height: 140px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border:1px solid black;
+}
+
+#slideShow{
+    width: 440px;
+    height: 140px;
+    margin: 0 auto;
+    position: absolute;
+}
+
+#slideShow>img {
+    position: absolute;
+}
+
+#slideShow>img:not(:first-child) {
+    margin-left: -440px; 
+}
+
+.areaBtn{
+	width: 100%;
+	margin-bottom: 8px;
+	text-align: center;
+
+}
+.areaBtn>input{
+	border:2px solid #9881f3;
+	/* width: 65px; */
+	width: 12.5%;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	background-color: #fff;
+	color:#9881f3;
+}
+.areaBtn>input:hover{
+	border:2px solid #9881f3;
+	width: 12.5%;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	background-color:#9881f3;
+	color:white;
+}
+
+
+#moveBtn {
+	width: 450px;
+	height:60px;
+	margin: 0 auto;
+	text-align: center;
+	display:inline-block;
+	position: relative;
+	top:-50px;
+	color:#9881f3;
+}
+
+.prev, .next {
+	display:inline-block;
+	font-size:2.0em;
+}
+
+.prev {
+	display:inline-block;
+	position: relative;
+	left:-180px;
+}
+
+.next{
+	display:inline-block;
+	position: relative;
+	right:-180px;
+}
+
+.prev:hover, .next:hover{
+	color:white;
+	cursor:pointer;
+}
+
+#travelImg {
+	display: inline-block;
+	float: left;
+	width: 223px;
+	height: 140px;
+	margin-top:-60px;
+}
+
+#tr1, #tr3 {
+	display: inline-block;
+	float: left;
+	width: 223px;
+	height: 170px;
+}
+
+#tr2, #tr4 {
+	display: inline-block;
+	float: right;
+	width: 223px;
+	height: 170px;
+}
