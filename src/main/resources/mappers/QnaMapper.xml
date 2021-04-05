@@ -27,15 +27,14 @@
 		FROM qna
 		<where>
 			<if test='cateId!= null and !"".equals(cateId)'>
-				AND cate_id = #{cateId}
+				AND cate_id = #{cateId} 
 			</if>
 			<if test='keyWord!= null and !"".equals(keyWord)'>
 
 				AND
 				(title LIKE '%'||#{keyWord}||'%'
 				OR nickname LIKE '%'||#{keyWord}||'%'
-				OR q
-				LIKE '%'||#{keyWord}||'%'
+				OR q LIKE '%'||#{keyWord}||'%'
 				OR a LIKE '%'||#{keyWord}||'%'
 				)
 

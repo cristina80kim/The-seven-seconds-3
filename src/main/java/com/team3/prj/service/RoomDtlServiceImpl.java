@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.RoomDtlDAO;
+import com.team3.prj.vo.RoomDtlSerchVO;
 import com.team3.prj.vo.RoomDtlVO;
 
 
@@ -34,6 +35,11 @@ public class RoomDtlServiceImpl implements RoomDtlService {
 	@Override
 	public Long delete(RoomDtlVO vo) {
 		return dao.delete(vo);
+	}
+
+	@Override
+	public List<RoomDtlVO> search(RoomDtlSerchVO svo) {
+		return dao.search(svo);
 	}
 
 }

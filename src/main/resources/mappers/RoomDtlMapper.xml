@@ -4,12 +4,42 @@
 
 <mapper namespace="com.team3.prj.dao.RoomDtlDAO">
 	<select id="selectAll" resultType="com.team3.prj.vo.RoomDtlVO">
-		SELECT id, mst_id, room_name, num_of_guests, check_in_time,
-		check_out_time, weekday_price, weekend_price,
+		SELECT id, mst_id, room_name,
+		num_of_guests, check_in_time,
+		check_out_time, weekday_price,
+		weekend_price,
 		pic1_org, pic1_uuid,
-		pic2_org, pic2_uuid, pic3_org, pic3_uuid
+		pic2_org, pic2_uuid, pic3_org,
+		pic3_uuid
 		FROM room_dtl
 	</select>
+
+
+	<select id="search" resultType="com.team3.prj.vo.RoomDtlVO">
+		SELECT *
+		FROM room_dtl
+		<where>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR region LIKE'%' || #{keyWord} ||'%'
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR title LIKE'%' || #{keyWord} ||'%'
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR room_name LIKE'%' || #{keyWord} ||'%'
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR weekday_price LIKE'%' || #{keyWord} ||'%'
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR weekend_price LIKE'%' || #{keyWord} ||'%'
+			</if>
+			<if test='keyWord != null and !"".equals(keyWord)'>
+				OR rsrv_state LIKE'%' || #{keyWord} ||'%'
+			</if>
+		</where>
+	</select>
+
 
 	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
@@ -44,20 +74,20 @@
 	<update id="update">
 		UPDATE room_dtl
 		SET room_name = #{roomName},
-			num_of_guests =	#{numOfGuests},
-			check_in_time = #{checkInTime},
-			check_out_time = #{checkOutTime},
-			weekday_price = #{weekdayPrice},
-			weekend_price = #{weekendPrice},
-			pic1_org = #{pic1Org},
-			pic1_uuid =	#{pic1Uuid},
-			pic2_org = #{pic2Org},
-			pic2_uuid = #{pic2Uuid},
-			pic3_org = #{pic3Org}, 
-			pic3_uuid = #{pic3Uuid},
-			c_user = #{cUser}, 
-			type_of_room = #{typeOfRoom}
-		WHERE mst_id = #{mstId} AND id = #{id} 
+		num_of_guests = #{numOfGuests},
+		check_in_time = #{checkInTime},
+		check_out_time = #{checkOutTime},
+		weekday_price = #{weekdayPrice},
+		weekend_price = #{weekendPrice},
+		pic1_org = #{pic1Org},
+		pic1_uuid = #{pic1Uuid},
+		pic2_org = #{pic2Org},
+		pic2_uuid = #{pic2Uuid},
+		pic3_org = #{pic3Org},
+		pic3_uuid = #{pic3Uuid},
+		c_user = #{cUser},
+		type_of_room = #{typeOfRoom}
+		WHERE mst_id = #{mstId} AND id = #{id}
 
 	</update>
 

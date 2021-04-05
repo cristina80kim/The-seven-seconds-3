@@ -62,7 +62,9 @@ public class QnaController {
     public @ResponseBody JSONObject qnaToastSearch(QnaSearchVO svo) {
         System.out.println(className + ".qnaToastSearch()");
         System.out.println(svo);
-        return Libs.makeToastJsonResult(service.search(svo));   
+        List<QnaVO> result = service.search(svo);
+        System.out.println(result);
+        return Libs.makeToastJsonResult(result);   
     }
     
     //http://localhost:8081/qna/qWriter
@@ -102,6 +104,8 @@ public class QnaController {
 	}
 	// 기능 : Qna_admin 답변쓰기
 	// param : QnaVO 중 - id(insert된 ID/자동대입), a, title(DB저장된 title 자동 대입)
+	
+//	http://localhost:8081/qna/updateA?id=&a=
 	@GetMapping("/updateA")
 	public @ResponseBody String aupdate(QnaVO vo) {
 		System.out.println(className + "updateA():" + vo.toString());

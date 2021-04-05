@@ -49,8 +49,10 @@ var faq = {
 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
 		            //{header: "카테고리",    name: "cate",     width: 0                     },
 // 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
-		              {header: "제목",      name: "title",    width: 100                   },
-		              {header: "내용",    	name: "content",  width: 300                   },
+		              {header: "제목",      name: "title",    width: 100 ,formatter:function(){
+		                     var url = '#';
+		                     return '<a href="' + url + '" target="_blank">' +  + '</a>';}},
+// 		              {header: "내용",    	name: "content",  width: 300                   },
 // 		              {header: "답변내용",    name: "a",        width: 300                   },
 		            //{header: "작성자ID",   name: "cUser",    width: 20                    },
 // 		              {header: "aaUser",   name: "aaUser",   width: 20                    },
@@ -73,12 +75,12 @@ var faq = {
 // 		              }}
 		            ];
 		            
-		            gridQna = main.showToastGrid(url, componentName, columns);
+		            gridFaq = main.showToastGrid(url, componentName, columns);
 		          },
 		          
 		          callbackButtonClicked: function(kind, action, index) {
 		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-		            console.log("id: " + gridQna.getValue(index, "id")); 
+		            console.log("id: " + gridFaq.getValue(index, "id")); 
 		          },
 		          
 		        }
@@ -89,20 +91,20 @@ var faq = {
 </head>
 <body>
 
-<div id="wrap">
-<table id="gridData"></table>
-  <div id="gridData"></div>
-<!-- 	<section>
+	<div id="wrap">
+		<table id="gridData"></table>
+		<div id="gridData"></div>
+		 	<section>
 		<div id="FAQSrch">
 		  <h1>FAQ</h1>
-	      <form id="FAQsrchFrm">
-		        <select name="FAQcate" id="FAQcate">
+	      <form id="FAQsrchFrm" action ="/faq/search">
+		        <select name="cateId" id="cateId">
 		          <option value="">카테고리</option>
 		        </select>
-		        <select name="FAQAllCate" id="FAQAllCate">
-		          <option value="">전체</option>
-		        </select>
-		        <input type="text" id="FAQsearch">
+<!-- 		        <select name="FAQAllCate" id="FAQAllCate"> -->
+<!-- 		          <option value="">전체</option> -->
+<!-- 		        </select> -->
+		        <input type="text" id="keyWord" name="keyword">
 		        <input type="submit" value="검색" id="FAQSrchBtn">
 	      </form>
 	    </div>
@@ -110,96 +112,94 @@ var faq = {
 	
 
 	
-	    <div id="FAQbbs">
-	      <table>
-	        <tr>
-	          <th id="cateth">카테고리</th>
-	          <th id="titleth">제목</th>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[취소/환불]</a></td>
-	          <td id="title"><a href="">환불은 언제 되나요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[포인트]</a></td>
-	          <td id="title"><a href="">포인트 적립은 언제 되나요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[회원/개인정보]</a></td>
-	          <td id="title"><a href="">탈퇴하고 싶어요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[회원/개인정보]</a></td>
-	          <td id="title"><a href="">회원정보 수정은 어떻게 하나요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[예약/결제]</a></td>
-	          <td id="title"><a href="">예약 후 금액이 달라졌어요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="cate"><a href="">[서비스 이용]</a></td>
-	          <td id="title"><a href="">방을 2개 예약하려면 어떻게 해야하나요</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="2">
-	            <hr>
-	          </td>
-	        </tr>
+<!-- 	    <div id="FAQbbs"> -->
+<!-- 	      <table> -->
+<!-- 	        <tr> -->
+<!-- 	          <th id="cateth">카테고리</th> -->
+<!-- 	          <th id="titleth">제목</th> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[취소/환불]</a></td> -->
+<!-- 	          <td id="title"><a href="">환불은 언제 되나요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[포인트]</a></td> -->
+<!-- 	          <td id="title"><a href="">포인트 적립은 언제 되나요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[회원/개인정보]</a></td> -->
+<!-- 	          <td id="title"><a href="">탈퇴하고 싶어요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[회원/개인정보]</a></td> -->
+<!-- 	          <td id="title"><a href="">회원정보 수정은 어떻게 하나요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[예약/결제]</a></td> -->
+<!-- 	          <td id="title"><a href="">예약 후 금액이 달라졌어요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="cate"><a href="">[서비스 이용]</a></td> -->
+<!-- 	          <td id="title"><a href="">방을 2개 예약하려면 어떻게 해야하나요</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="2"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
 	        
-	      </table>
-	    </div>
+<!-- 	      </table> -->
+<!-- 	    </div> -->
 	
 	
 	
-	    <div id="paging">
-	        <span class="block">《</span>
-	        <span class="block">〈</span>
-	        <span class="pageNo" id="nowPage">1</span>
-	        <span class="pageNo">2</span>
-	        <span class="pageNo">3</span>
-	        <span class="pageNo">4</span>
-	        <span class="pageNo">5</span>
-	        <span class="pageNo">6</span>
-	        <span class="pageNo">7</span>
-	        <span class="pageNo">8</span>  
-	        <span class="block">〉</span>
-	        <span class="block">》</span>
-	      </div>
+<!-- 	    <div id="paging"> -->
+<!-- 	        <span class="block">《</span> -->
+<!-- 	        <span class="block">〈</span> -->
+<!-- 	        <span class="pageNo" id="nowPage">1</span> -->
+<!-- 	        <span class="pageNo">2</span> -->
+<!-- 	        <span class="pageNo">3</span> -->
+<!-- 	        <span class="pageNo">4</span> -->
+<!-- 	        <span class="pageNo">5</span> -->
+<!-- 	        <span class="pageNo">6</span> -->
+<!-- 	        <span class="pageNo">7</span> -->
+<!-- 	        <span class="pageNo">8</span>   -->
+<!-- 	        <span class="block">〉</span> -->
+<!-- 	        <span class="block">》</span> -->
+<!-- 	      </div> -->
 	      
 	</section>
 	
 </div>
- -->
-
 </body>
 </html>

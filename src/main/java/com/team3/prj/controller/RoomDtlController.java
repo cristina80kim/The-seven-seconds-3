@@ -17,8 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.RoomDtlService;
+import com.team3.prj.vo.RoomDtlSerchVO;
 import com.team3.prj.vo.RoomDtlVO;
-import com.team3.prj.vo.RoomMstVO;
 
 @Controller
 @RequestMapping("/roomDtl")
@@ -35,6 +35,15 @@ public class RoomDtlController {
 		return service.selectAll();
 	}
 
+	
+	
+	@GetMapping("/search")
+	public @ResponseBody List<RoomDtlVO> search(RoomDtlSerchVO svo){
+		System.out.println(className + ".search()");
+		return service.search(svo);
+	}
+	
+	
 	@Value("${file.upload.directory}")
 	String uploadDir;
 
