@@ -10,10 +10,29 @@
 <script>
 
 	var userJoin = {
+	onCheckDuplClicked: function() {
+		console.log("onCheckDuplClicked()");
+		var loc="/user/checkDuplId";
+		var param={
+			id:$("#id").val()
+		};
+		main.ajaxPostJson(loc, param, userJoin.checkDuplCallback);
+	},
+	
+	checkDuplCallback: function(jsonStr) {
+		console.log(jsonStr);
+		if (jsonStr == 0) {
+			alert("사용가능한 아이디입니다.");
+		} else {
+			alert("아이디가 존재합니다.");
+		}
+	},	
+	
 	onJoinClicked: function() {
 		console.log("onJoinClickded()");
 		var id=$("#id").val();
 		var pwd=$("#pwd").val();
+		var pwd2=$("#pwd2").val();
 		var name=$("#name").val();
 		var nickname=$("#nickname").val();
 		var tel=$("#tel").val();
@@ -23,22 +42,42 @@
 		//var loc = "/user/join?id=" + id + "&pwd=" + pwd + "&name=" + name + "&nickname=" + nickname + "&tel=" + tel + "&email=" + email + "&gen=" + gen + "&role=" + role;
 		var loc = "/user/join?id=";
 		console.log(loc);
-		var param={
-			id: id,
-			pwd: pwd,
-			name: name,
-			nickname: nickname,
-			tel: tel,
-			email: email,
-			gen: gen,
-			role: role
-		};
-		//id=, pwd=, name=성승현, nickname=ㄴ닉, tel=12341234, email=sshyun90@naver.com, gen=undefined, role=null, point=null, cUser=null
-		//main.ajaxGetJson(loc, userJoin.joinCallback);
-		main.ajaxPostJson(loc, param, userJoin.joinCallback);
+			
+		if (pwd != pwd2) {
+			alert("비밀번호가 일치하지 않습니다.");
+		} else {
+			var param={
+				id: id,
+				pwd: pwd,
+				name: name,
+				nickname: nickname,
+				tel: tel,
+				email: email,
+				gen: gen,
+				role: role
+			};
+			main.ajaxPostJson(loc, param, userJoin.joinCallback, userJoin.joinError); 
+		}
 	},
+	
 	joinCallback: function(jsonStr){
-		console.log(jsonStr);
+		console.log(jsonStr["strResult"]);
+		
+		if (jsonStr["strResult"] != ""){
+			alert("회원가입이 완료되었습니다.");
+			main.ajaxGetHtml("/user/frmLogin", "contents");
+		} else {
+			alert("회원가입에 실패했습니다.");
+		}
+	},
+	
+	joinError: function() {
+		alert("회원가입에 실패했습니다.");
+	},
+	
+	onCancleClicked: function() {
+		console.log("onCancleClicked()");
+		main.ajaxGetHtml("/user/frmLogin", "contents");
 	},
 	
 	log: function(msg) {
@@ -86,7 +125,7 @@
 				 <br />
 				 <label>구분</label>
 				 	<label for="roleU" id="roleArea">
-				 		<input type="radio" name="role" id="roleU" value="U" />개인
+				 		<input type="radio" name="role" id="roleU" value="U" checked/>개인
 				 	</label>
 			 		<label for="roleM" id="roleArea">
 			 			<input type="radio" name="role" id="roleM" value="M" />사장
@@ -95,7 +134,7 @@
 				<br />
 				 <label for="id">아이디
 					 <input type="text" class="id" name="id" id="id" value="ssh"/>
-					 <input type="button" value="중복 확인" id="doubleChk"/>
+					 <input type="button" value="중복 확인" id="checkDupl" onclick="userJoin.onCheckDuplClicked();"/>
 				 </label>
 				 
 				 <br />
@@ -103,8 +142,8 @@
 					 <input type="password" class="pwd" name="pwd" id="pwd" value="1234" />
 				 </label>
 				 <br />
-				 <label for="userPwChk">비밀번호 확인
-					 <input type="password" name="userPwChk" id="userPwChk" />
+				 <label for="pwd2">비밀번호 확인
+					 <input type="password" name="pwd2" id="pwd2" />
 				 </label>
 				 
 				 <br />
@@ -138,7 +177,7 @@
 				  <br /><br />
 				  <div id="joinBtn">
 				  	<input type="button" value="회원가입" id="joinBtn" onclick="userJoin.onJoinClicked();"/>
-				  	<input type="button" value="취소" id="cancleBtn" />
+				  	<input type="button" value="취소" id="cancleBtn" onclick="userJoin.onCancleClicked();"/>
 				  </div>
 			</form>
 		</section>

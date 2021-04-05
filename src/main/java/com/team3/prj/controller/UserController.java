@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team3.prj.service.UserService;
+import com.team3.prj.vo.ExecResultVO;
 import com.team3.prj.vo.RevuVO;
 import com.team3.prj.vo.UserVO;
 
@@ -60,98 +60,21 @@ public class UserController {
 	}
 	
 	@PostMapping("/join")
-	public @ResponseBody String join(UserVO vo) throws Exception {
+	public @ResponseBody ExecResultVO join(@RequestBody UserVO vo) {
 		System.out.println(className + ".join()");
-		 int count = userService.idCheck(vo.getId());
-	        
-	        try {
-	            if(count == 1) userService.join(vo); 
-	            System.out.println("확인용");
-	            System.out.println(vo);
-	        } catch (Exception e) {
-	                System.out.println("아이디가 존재합니다.");
-	        }
-	        return userService.join(vo);
+		System.out.println(vo);
+		String result = userService.join(vo);
+		System.out.println(result);
+		//#####json으로 리턴할때는 String이 아닌 VO클래스를 하나 만들어서 결과를 응답해야만 한다.
+		return new ExecResultVO(result);
 	}
-	
-    @PostMapping
-    public @ResponseBody int IdCheck(String id) throws Exception {
-        
-    	System.out.println(className + ".idCheck");
-		if (userService.idCheck(id) == 1) {
-			return 1;
-		} else {
-			return 0;
-		}  
-    }
-	
-//	@PostMapping("/join")
-//	public @ResponseBody String join(UserVO vo, HttpServletRequest request, HttpServletResponse response) throws IOException {
-//		System.out.println(className + ".join()");
-//        String role = request.getParameter("role");
-//        String id = request.getParameter("id");
-//        String pwd = request.getParameter("pwd");
-//        String pwdChk = request.getParameter("pwdChk");
-//        String name = request.getParameter("name");
-//        String tel = request.getParameter("tel");
-//        String email = request.getParameter("email");
-//        String gen = request.getParameter("gen");
-//        
-//        System.out.println(vo);
-//        System.out.println("확인용");
-//        
-//        if (pwd.equals(pwdChk)) {
-//        	vo.setNickname(" ");
-//        	vo.setCUser(" ");
-//        	
-//        	if(role.equals("개인"))
-//        		vo.setRole("U");
-//        	else if(role.equals("사장"))
-//        		vo.setRole("M");
-//        	
-//        	if(gen.equals("남"))
-//        		vo.setGen("M");
-//        	if(gen.equals("여"))
-//        		vo.setGen("F");
-//        	
-//        	vo.setId(id);
-//        	vo.setPwd(pwd);
-//        	vo.setName(name);
-//        	vo.setTel(tel);
-//        	vo.setEmail(email);
-//        	
-//        } else {
-//        	PrintWriter prt = response.getWriter();
-//        	prt.println("<script>alert('패스워드를 다시 확인해주세요');history.go(-1);</script>");
-//        	prt.flush();
-//        }
-//        
-//        if(userService.checkId(id) == 1) {
-//        	PrintWriter out = response.getWriter();
-//        	out.println("<script>alert('사용중인 아이디입니다.'); history.go(-1);</script>");
-//        	out.flush();
-//        }
-//        
-//		return userService.join(vo);
-//	}
-	
-//	@ResponseBody
-//	@PostMapping("/checkId")
-//	public int checkId(String id) throws Exception{
-//		System.out.println(className + ".checkId");
-//		if (userService.checkId(id) == 1) {
-//			return 1;
-//		} else {
-//			return 0;
-//		}
-//	}
 
-//	@PostMapping("/join")
-//	public @ResponseBody String join(@RequestBody UserVO vo) {
-//		System.out.println(className + ".join()");
-//		System.out.println(vo);
-//		return userService.join(vo);
-//	}
+	@RequestMapping("/checkDuplId")
+	public @ResponseBody int checkDuplId(@RequestBody UserVO vo) throws Exception {
+		System.out.println(className + ".checkDuplId");
+		return userService.checkDuplId(vo.getId());
+	}
+
 
 	// http://localhost:8081/user/frmMypage
 	// 마이페이지 메인

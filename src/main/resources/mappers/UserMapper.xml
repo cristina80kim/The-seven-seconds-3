@@ -32,8 +32,8 @@
 	</insert>
 	
 	<!-- id 체크 -->
-	<select id="checkId" resultType="com.team3.prj.vo.UserVO">
-  	SELECT COUNT(*) FROM users
+	<select id="checkDuplId" resultType="int">
+  	SELECT COUNT(*) AS id_cnt FROM users
   	WHERE id = #{id}
   </select>
 	

@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		@Override
-		public int idCheck(String id) {
-			return userDAO.checkId(id);
+		public int checkDuplId(String id) {
+			return userDAO.checkDuplId(id);
 		}
 
 		@Override

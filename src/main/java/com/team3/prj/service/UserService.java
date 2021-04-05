@@ -14,7 +14,7 @@ public interface UserService {
 	
 	public String join(UserVO vo);
 	
-	public int idCheck(String id);
+	public int checkDuplId(String id);
 	
 	public UserVO mypage(UserVO vo);
 	

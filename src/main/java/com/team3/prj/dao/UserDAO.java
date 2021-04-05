@@ -17,7 +17,7 @@ public interface UserDAO {
 	
 	public int userJoin(UserVO vo);
 	
-	public int checkId(String id);
+	public int checkDuplId(String id);
 	
 	public UserVO userMypage(UserVO vo);
 	
