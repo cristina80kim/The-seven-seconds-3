@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		@Override
-		public String join(UserVO vo) {
+		public String join(UserVO vo){
 			return userDAO.userJoin(vo) >= 1 ? vo.getId() : "";
 		}
 
@@ -61,5 +61,5 @@ public class UserServiceImpl implements UserService {
 		public Long revuDelete(RevuVO vo) {
 			return userDAO.revuDelete(vo);
 		}
-		
+
 }
