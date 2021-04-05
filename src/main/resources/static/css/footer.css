@@ -1,6 +1,11 @@
 @charset "UTF-8";
 @import url(reset.css);
 
+
+hr{
+	clear: both;
+}
+
 footer {
 	clear: both;
 	width: 1080px;

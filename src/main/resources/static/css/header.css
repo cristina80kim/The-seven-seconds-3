@@ -5,56 +5,58 @@
 	display: none;
 }
 
-header {
+#hWrap{
+		width: 1080px;
+	height:150px;  
+	margin: 0 auto;
+	padding-top: 20px;
+	
+}
+
+#hWrap header {
+	clear: both;
 	width: 1080px;
 	height:105px;  
 	margin: 0 auto;
 	padding-top: 20px;
 }
 
-#hWrap{
-		width: 1080px;
-	height:105px;  
-	margin: 0 auto;
-	padding-top: 20px;
-	
-}
-header a {
+#hWrap header a {
 	color: black;
 }
 
-#logo {
+#hWrap #logo {
 	width: 400px;
 	float: left;
 }
 
-#logo img {
+#hWrap #logo img {
 	width: 100%;
 }
 
-#logo a {
+#hWrap #logo a {
 	display: block;
 }
 
-#logoTopMenu{
+#hWrap #logoTopMenu{
 	height: 75px;
 }
-#topMenu {
+#hWrap #topMenu {
 	float: right;
 }
 
-#topMenu>li {
+#hWrap #topMenu>li {
 	float: left;
 	margin-right:15px;
 }
 
-#topMenu #inComm {
+#hWrap #topMenu #inComm {
 	display: none;
 	padding-top:10px;
 	line-height:2em;
 }
 
-.gnb>li {
+#hWrap .gnb>li {
 	float: left;
 	margin-left:20px;
 }
