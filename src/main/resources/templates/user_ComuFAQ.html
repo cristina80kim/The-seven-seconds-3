@@ -25,7 +25,7 @@ var faq = {
 		      faq.showFaqOnGrid("/faq/toastSearch", "gridData");
 		    },
 		    
-		    onQnaWriteClick: function() {
+		    onFaqWriteClick: function() {
 		        console.log("onQnaWriteClick()");
 		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
 		      },
@@ -49,10 +49,7 @@ var faq = {
 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
 		            //{header: "카테고리",    name: "cate",     width: 0                     },
 // 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
-		              {header: "제목",      name: "title",    width: 100 ,formatter:function(){
-
-		            	  	var url = '#';
-		                     return '<a href="' + url + '" target="">' + this.getvalue() + '</a>';}},
+		              {header: "제목",      name: "title",    width: 100 		              },
 // 		              {header: "내용",    	name: "content",  width: 300                   },
 // 		              {header: "답변내용",    name: "a",        width: 300                   },
 		            //{header: "작성자ID",   name: "cUser",    width: 20                    },

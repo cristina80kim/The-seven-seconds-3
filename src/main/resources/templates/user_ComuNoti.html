@@ -21,6 +21,7 @@ var gridNotice = null;
  $("#NotiSearch").keypress(function (e) {
      if (e.which == 13){
      	notice.onSearchBtnClick();  
+     	event.preventDefault();
      }
  });
 
