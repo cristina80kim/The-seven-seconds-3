@@ -4,21 +4,104 @@
 <meta charset="UTF-8">
 <title>180. user_커뮤니티_공지사항_목록</title>
 <link rel="stylesheet" href="css/user_ComuNoti.css" />
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 </head>
 <body>
+<script>
+$(function() {
+    console.log(">>> $(): 1");
+    notice.showNoticeOnGrid("/notice/searchData", "gridData");
+  });
 
+var gridNotice = null;
+
+var notice = {
+		
+		onSearchBtnClick: function(NotiSearch) {
+		      console.log("onSearchBtnClick()");
+		      notice.showNoticeOnGrid("/notice/toastSearch", "gridData");
+		    },
+		    
+// 		    onQnaWriteClick: function() {
+// 		        console.log("onQnaWriteClick()");
+// 		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
+// 		      },
+		      
+		      
+		      showNoticeOnGrid: function(url, componentName) {
+		          var kind = "NOTICE";
+		          var actionInsert = "INSERT";
+		          var actionDelete = "DELETE";
+		    
+		          
+		          var columns = [
+// 		              {header: "아이디",     name: "id",       width: 50,  height: 100                    },
+// 		              {header: "닉네임",     name: "nickname", width: 100                   },
+		              {header: "번호",      name: "no",       width: 100, align: "center"   },
+		            
+// 		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+// 		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+// 		              }},
+		              
+// 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
+		            //{header: "카테고리",    name: "cate",     width: 0                     },
+// 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
+		              {header: "제목",      name: "title",    width: 100 
+// 				,formatter:function(){
+// 		            	  	var url = '#';
+// 		                     return '<a href="' + url + '" target="">' + this.getvalue() + '</a>';}
+		                     },
+// 		              {header: "내용",    	name: "content",  width: 300                   },
+// 		              {header: "답변내용",    name: "a",        width: 300                   },
+// 		              {header: "작성자ID",   name: "cUser",    width: 20                    },
+// 		              {header: "aaUser",   name: "aaUser",   width: 20                    },
+// 		              {header: "cuser",    name: "cUser",    width: 20                    },
+		              {header: "작성일",     name: "cDate",    width: 20                    },
+		              
+// 		              {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
+// 		                // this.index, this.item, this.list 에 모두 접근 가능
+// 		                // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
+		                
+// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
+// 		                + kind + "\", \"" + actionInsert + "\", \"" 
+// 		                + this.index + "\");'>수정</button>"; 
+// 		              }},
+		              
+// 		              {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
+// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
+// 		                + kind + "\", \"" + actionDelete + "\", \"" 
+// 		                + this.index + "\");'>삭제</button>"; 
+// 		              }}
+		            ];
+		            
+		            gridNotice = main.showToastGrid(url, componentName, columns);
+		          },
+		          
+		          callbackButtonClicked: function(kind, action, index) {
+		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+		            console.log("id: " + gridNoice.getValue(index, "id")); 
+		          },
+		          
+		        }
+
+
+</script>
 <div id="wrap">
 
 	<article>
-	
+	<table id="gridData"></table>
+		<div id="gridData"></div>
 		<div id="NotiSrch">
 		  <h1>공지사항</h1>
 	      <form id="NotisrchFrm">
 	        <select name="Noticate" id="Noticate">
 	          <option value="">전체</option>
 	        </select>
-	        <input type="text" id="NotiSearch">
-	        <input type="submit" value="검색" id="NotiSrchBtn">
+	        <input type="text" id="NotiSearch" name="">
+	        <input type="button" onclick="onSearchBtnClick(NotiSearch)" value="검색" id="NotiSrchBtn">
 	      </form>
 	    </div>
 		<hr />
