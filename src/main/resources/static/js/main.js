@@ -120,6 +120,8 @@ var main = {
     // window.location.href =
     console.log(">>> ajaxGetHtml(): 1");
     console.log(">>> ajaxGetHtml(): " + loc);
+    
+    var componentName2 = "#" + componentName;
 
     $.ajax({ 
       type : "GET", 
@@ -129,7 +131,13 @@ var main = {
       success : function(htmlParam) {
         console.log(">>> ajaxGetHtml(): success 1");
         console.log(htmlParam);
-        $("#" + componentName).html(htmlParam); 
+        
+        if($(componentName2).length >= 1) {
+          $(componentName2).html(htmlParam);
+        }
+        else {
+          console.log(">>> 수신된 html을 적용할 '" + componentName + "' 이름의 html tag가 없습니다.");
+        } 
         
         if(main.isNotEmpty(callbackSuccess)) {
           console.log(">>> ajaxGetHtml(): success 2");
@@ -256,8 +264,15 @@ var main = {
       $.each(jsonData, function(index, item) {
         str += "<option value='" + item["class3"] + "'>" + item["name"] + "</option>";
       });
-    
-      $("#" + componentName).html(str);
+
+      var componentName2 = "#" + componentName;
+           
+      if($(componentName2).length >= 1) {
+        $(componentName2).html(str);
+      }
+      else {
+        console.log(">>> 수신된 html을 적용할 '" + componentName + "' 이름의 html tag가 없습니다.");
+      } 
     });
   },
     

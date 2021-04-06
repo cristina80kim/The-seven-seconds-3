@@ -12,7 +12,7 @@
 <!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/main.js?ver=1.00"></script>
+<script src="/js/main.js?ver=1.01"></script>
   
 <script>
     
@@ -68,6 +68,12 @@
     ];
     
     gridQna = main.showToastGrid("/test/getData4Toast3", "gridQNA", columns);
+
+    gridQna.on('mousedown', function(ev) {
+      console.log(gridQna.getRow(ev.rowKey));
+    });
+    
+    
     showTestGrid();
   });
   
