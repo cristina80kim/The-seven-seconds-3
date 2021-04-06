@@ -32,7 +32,7 @@
     var actionDelete = "DELETE";
     
     var columns = [
-      {header: "아이디",     name: "id",       width: 50,  height: 100                    },
+      {header: "아이디",     name: "id",       width: 100,  height: 100                    },
       {header: "닉네임",     name: "nickname", width: 100                   },
       {header: "번호",      name: "no",       width: 100, align: "center"   },
 
@@ -40,7 +40,7 @@
         return "<img src='/images/11_html_m4956639b.jpg' width=100>";
       }},
       
-      {header: "카테고리ID.", name: "cateId",   width: 100                   },
+      {header: "카테고리ID.", name: "cateId",   width: 110                   },
     //{header: "카테고리",    name: "cate",     width: 0                     },
       {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
       {header: "제목",      name: "title",    width: 100                   },
@@ -66,13 +66,16 @@
         + this.index + "\");'>삭제</button>"; 
       }}
     ];
-    
+
+    // TOAST Grid 생성    
     gridQna = main.showToastGrid("/test/getData4Toast3", "gridQNA", columns);
 
+    // mousedown Event
     gridQna.on('mousedown', function(ev) {
-      console.log(gridQna.getRow(ev.rowKey));
-    });
-    
+       // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+       var rowInfo = gridQna.getRow(ev.rowKey); 
+      console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+    });    
     
     showTestGrid();
   });
