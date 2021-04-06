@@ -4,6 +4,12 @@
 
 hr{
 	clear: both;
+	opacity:0.3;
+}
+ul li a {
+	list-style:none;
+	text-decoration: none;
+	list-style:none;
 }
 
 footer {
@@ -15,9 +21,10 @@ footer {
 }
   
 footer a {
-	color: black;
+	color:#6F6F6F;
 	font-size:10.5pt;
 }
+
 
 
 footer .fLogo{
@@ -31,4 +38,4 @@ footer .fLogo img{
 
 footer ul{margin-right:20px;}
 
-footer li{float:left;margin-right:25px;line-height:2em;}
+footer li{float:left;margin-right:25px;line-height:2em;color:#6F6F6F;}
