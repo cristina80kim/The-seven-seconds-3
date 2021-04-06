@@ -12,13 +12,13 @@
 <!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/main.js?ver=1.00"></script>
+<script src="/js/main.js?ver=1.01"></script>
 
 <script>
   $(function() {
     console.log(">>> $(): 1");
     main.ajaxCodeQnaToSelectBox("cateId");
-    qna.showQnaOnGrid("/test/getData4Toast3", "gridData");
+    qna.showQnaOnGrid("/qna/toastSearch", "gridData");
   });
   
   var gridQna = null;
@@ -67,7 +67,7 @@
           
           return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
           + kind + "\", \"" + actionInsert + "\", \"" 
-          + this.index + "\");'>수정</button>"; 
+          + this.index + "\");'></button>"; 
         }},
         
         {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
