@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team3.prj.etc.Libs;
 import com.team3.prj.service.UserService;
 import com.team3.prj.vo.ExecResultVO;
 import com.team3.prj.vo.RevuVO;
@@ -119,7 +120,7 @@ public class UserController {
 		return new ExecResultVO(result);
 	}
 	
-	//회원탈퇴
+	// 회원탈퇴
 	// http://localhost:8081/user/uDelete
 	@RequestMapping("/uDelete")
 	public String uDelete() {
@@ -146,13 +147,19 @@ public class UserController {
 		return userService.mUpdate(vo);
 	}
 
-	// User 후기
-	// http://localhost:8081/user/revu
+	//  후기 관리
+	//  http://localhost:8081/user/uRevu
+	@GetMapping("/uRevu")
+	public String userRevu() {
+		System.out.println(className + ".uRevu()");
+		return "user_MypageRevu"; //.html
+	}
+	
 	@GetMapping("revu")
-	public @ResponseBody List<RevuVO> revu() {
+	public @ResponseBody Object revu(RevuVO vo) {
 		System.out.println(className + ".revu()");
 		List<RevuVO> lstRevu = userService.revu();
-		return lstRevu;
+		return Libs.makeToastJsonResult(lstRevu);
 	}
 
 	// User 후기 삭제
@@ -170,15 +177,7 @@ public class UserController {
 		List<UserVO> lstUser = userService.selectAll();
 		return lstUser;
 	}
-	
-
-//  후기 관리
-//  http://localhost:8081/user/uRevu
-	@GetMapping("/uRevu")
-	public String userRevu() {
-		return "user_MypageRevu";
-
-	}
+// 후기관리 152번줄로 옮겨놨어요~
 	
 //  포인트 관리
 //  http://localhost:8081/user/userPoint

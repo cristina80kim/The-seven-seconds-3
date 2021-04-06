@@ -73,7 +73,7 @@
 		SELECT *
 		FROM revu
 		ORDER BY
-		c_date, id
+		c_date
 	</select>
 
 	<!-- 리뷰삭제 -->
