@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+
+#wrap {
+	width: 900px;
+	margin: 0 auto;
+}
+
+input:focus {
+	outline:none;
+}
+
+textarea:focus{
+	outline:none;
+}
+
+textarea {
+	resize: none;
+}
+
+hr {
+	opacity:0.5;
+}
+
+section {
+	width: 500px;
+	text-align:left;
+	margin: 0 auto;
+	font-weight:bolder;
+	font-size:1.2em;
+}
+
+section h1 {
+	text-align: center;
+	color:#9881f3;
+}
+#FAQFrm{
+	width: 500px;
+}
+#no, #title, #nickName, #C_DATE, #content{
+	padding: 3px;
+	vertical-align: middle;
+	color:#9881f3;
+}
+
+#no {
+	width: 30px;
+	border:none;
+	vertical-align: middle;
+
+}
+
+#line {
+	opacity:0.2;
+	vertical-align: middle;
+}
+
+#title {
+	width: 300px;
+	border:none;
+	vertical-align: middle;
+	font-size:0.8em;
+	
+}
+
+#nickName {
+	width: 100px;
+	border:none;
+	float: left;
+	vertical-align: middle;
+}
+
+#C_DATE {
+	width: 60px;
+	border:none;
+	float:right;
+	vertical-align: middle;
+}
+
+#content {
+	width: 450px;
+	margin-top:10px;
+	border:none;
+}
+
+
+
+input[type=button]{
+	width: 80px;
+	height: 30px;
+	border:2px solid #9881f3;
+	background-color: #9881f3;
+	color:white;
+
+}
+input[type=button]:hover{
+	width: 80px;
+	height: 30px;
+	border:2px solid #9881f3;
+	background-color: #fff;
+	color:#9881f3;
+
+}
+
+
+#returnBtn{
+	float: left;
+}
+
+#updateBtn, #deleteBtn{
+	float: right;
+	margin-left:8px;
+}
+
+
+#nickDate{
+	width: 500px;
+	height: 30px;
+	vertical-align: middle;
+	
+}
+
