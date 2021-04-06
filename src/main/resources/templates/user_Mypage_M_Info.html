@@ -4,6 +4,55 @@
 <meta charset="UTF-8">
 <title>160. user_마이페이지_내정보수정</title>
 <link rel="stylesheet" href="css/user_Mypage_M_Info.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
+
+<script>
+	var mypageInfo = {
+		onUpdateClicked: function() {
+			console.log("onUpdateClicked()");
+			var id=$("#id").val();
+			var pwd=$("#pwd").val();
+			var pwd2=$("#pwd2").val();
+			var nickname=$("#nickname").val();
+			var tel=$("#tel").val();
+			var email=$("#email").val();
+			var loc = "/user/update?id=";
+			console.log(loc);
+			if (pwd != pwd2) {
+				alert("비밀번호가 일치하지 않습니다.");
+			} else {
+				var param = {
+					id: id,
+					pwd: pwd,
+					nickname: nickname,
+					tel: tel,
+					email: email,
+			};
+			main.ajaxPostJson(loc, param, mypageInfo.updateCallback, mypageInfo.updateError);
+		}
+	},
+	updateCallback: function(jsonStr) {
+		console.log(jsonStr);
+		if(jsonStr["strResult"] != ""){
+			window.alert("회원수정 완료");
+			main.ajaxGetHtml("/user/frmMypage", "contents");
+		} else {
+			window.alert("회원수정 실패");
+		}
+	},
+	
+	updateError: function() {
+		alert("회원수정에 실패했습니다.");
+	},
+	
+	log: function(msg) {
+      console.log(">>> " + msg);
+    }
+	
+}
+</script>
+
 </head>
 <body>
 
@@ -16,50 +65,46 @@
 				<h1>내 정보 수정</h1>
 							 
 				 <label>구분</label>
-				 <label for="userJoin">
-				 	<input type="text" name="userJoin" id="userJoin" value="개인" readonly />
+				 <label for="role">
+				 	<input type="text" name="role" id="role" value="개인" readonly />
 			 	</label>
 	
 				
 				<br />
-				 <label for="userId">아이디</label>
-				 <input type="text" name="userId" id="userId" value="abc" readonly/>
+				 <label for="id">아이디</label>
+				 <input type="text" name="id" id="id" value="ssh" readonly/>
 				 
 				 
 				 <br />
-				 <label for="userPw">비밀번호</label>
-				 <input type="password" name="userPw" id="userPw" />
+				 <label for="pwd">비밀번호</label>
+				 <input type="password" name="pwd" id="pwd" />
 				 <br />
-				 <label for="userPwChk">비밀번호 확인</label>
-				 <input type="password" name="userPwChk" id="userPwChk" />
+				 <label for="pwd2">비밀번호 확인</label>
+				 <input type="password" name="pwd2" id="pwd2" />
 				 
 				 <br />
-				 <label for="userName">이름</label>
-				 <input type="text" name="userName" id="userName" value="김철수" readonly/>
+				 <label for="name">이름</label>
+				 <input type="text" name="name" id="name" value="김철수" readonly/>
 				 
 				 <br />
-				 <label for="userTel1">전화번호</label>
-				 <input type="text" name="userTel1" id="tel" value="010"/>
-				 -
-				 <input type="text" name="userTel2" id="tel" />
-				 -
-				 <input type="text" name="userTel3" id="tel" />
+				 <label for="nickname">닉네임</label>
+				 <input type="text" name="nickname" id="nickname"/>
 				 
 				 <br />
-				 <label for="userEmail">이메일</label>
-				 <input type="text" name="userEmail" id="userEmail" />
-				 @
-				 <select name="sltEmail" id="slt_Email">
-				 	<option value="sltEmail1">naver.com</option>
-				 </select>
+				 <label for="tel">전화번호</label>
+				 <input type="text" name="tel" id="tel" value="010"/>
+				 
+				 <br />
+				 <label for="email">이메일</label>
+				 <input type="text" name="email" id="email" />
 				
 				<br />
 				  <label for="userGen">성별</label>
-				  <label for="genF"><input type="text" name="userGen" id="genF" value="여자" readonly/></label>
+				  <label for="gen"><input type="text" name="gen" id="gen" value="F" readonly/></label>
 				  
 				  
 				  <div id="submitBtn_">
-					  <input type="submit" value="수정" id="updateBtn"/>
+					  <input type="button" value="수정" id="submitBtn" onclick="mypageInfo.onUpdateClicked();"/>
 					  <input type="reset" value="취소" id="cancleBtn"/>
 				  </div>
 			</form>

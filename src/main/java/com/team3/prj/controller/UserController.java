@@ -28,7 +28,8 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-
+	
+	// 로그인
 	// http://localhost:8081/user/frmLogin
 	@GetMapping("/frmLogin")
 	public String frmLogin() {
@@ -37,7 +38,7 @@ public class UserController {
 	}
 
 	@GetMapping("/login")
-	public @ResponseBody UserVO login(UserVO vo, HttpServletRequest req, RedirectAttributes rttr) {
+	public @ResponseBody UserVO login(UserVO vo, HttpServletRequest req) {
 		System.out.println(className + ".frmLogin");
 		HttpSession session = req.getSession();
 		UserVO result = userService.login(vo);
@@ -51,7 +52,8 @@ public class UserController {
 		System.out.println(result);
 		return result;
 	}
-
+	
+	// 회원가입
 	// http://localhost:8081/user/frmJoin
 	@GetMapping("/frmJoin")
 	public String frmJoin() {
@@ -68,13 +70,13 @@ public class UserController {
 		//#####json으로 리턴할때는 String이 아닌 VO클래스를 하나 만들어서 결과를 응답해야만 한다.
 		return new ExecResultVO(result);
 	}
-
+	
+	// 아이디 중복확인
 	@RequestMapping("/checkDuplId")
 	public @ResponseBody int checkDuplId(@RequestBody UserVO vo) throws Exception {
 		System.out.println(className + ".checkDuplId");
 		return userService.checkDuplId(vo.getId());
 	}
-
 
 	// http://localhost:8081/user/frmMypage
 	// 마이페이지 메인
@@ -91,24 +93,37 @@ public class UserController {
 	}
 
 	@GetMapping("mypage")
-	public @ResponseBody UserVO mypage(UserVO vo) {
-		System.out.println(className + ".mypage");
-		return userService.login(vo);
+	public @ResponseBody UserVO mypage(UserVO vo, HttpServletRequest req) {
+		System.out.println(className + ".frmLogin");
+		HttpSession session = req.getSession();
+		UserVO result = userService.login(vo);
+		System.out.println(result);
+		return result;
 	}
-
+	
+	// 마이페이지 수정
 	// http://localhost:8081/user/frmUpdate
-	@GetMapping("frmUpdate")
+	@RequestMapping("frmUpdate")
 	public String frmUpdate() {
 		System.out.println(className + ".frmUpdate");
-		return "user_Mypage_M_Info";
+		return "user_Mypage_M_Info"; // .html
 	}
 
 	// http://localhost:8081/user/update?pwd=&nickname=&tel=&email=&id=
-	@GetMapping("update")
-	public @ResponseBody String update(UserVO vo) {
-		System.out.println(className + ".update()");
+	@RequestMapping("update")
+	public @ResponseBody ExecResultVO update(@RequestBody UserVO vo) {
+		System.out.println(className + ".udpate()");
 		System.out.println(vo);
-		return userService.update(vo);
+		String result = userService.update(vo);
+		System.out.println(result);
+		return new ExecResultVO(result);
+	}
+	
+	// http://localhost:8081/user/uDelete
+	@RequestMapping("/uDelete")
+	public String uDelete() {
+		System.out.println(className + ".uDelete()");
+		return "user_Mypage_Sec"; // .html
 	}
 
 	// http://localhost:8081/user/delete?id=&pwd=
@@ -155,11 +170,6 @@ public class UserController {
 		return lstUser;
 	}
 	
-	// http://localhost:8081/user/uDelete
-	@RequestMapping("/uDelete")
-	public String uDelete() {
-		System.out.println(className + ".uDelete()");
-		return "user_Mypage_Sec";
-	}
+
 
 }

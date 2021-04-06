@@ -9,7 +9,7 @@
 		SELECT *
 		FROM users
 	</select>
-	
+
 	<!-- 유저 로그인 -->
 	<select id="userLogin" resultType="com.team3.prj.vo.UserVO">
 		SELECT role, name, nickname
@@ -22,50 +22,60 @@
 		INSERT INTO users
 		(
 		id, pwd, name, nickname,
-		tel, email, gen, role, c_user
+		tel, email,
+		gen, role, c_user
 		)
 		VALUES
 		(
 		#{id}, #{pwd}, #{name}, #{nickname},
-		#{tel}, #{email}, #{gen}, 'U', #{id}
+		#{tel},
+		#{email}, #{gen}, 'U', #{id}
 		)
 	</insert>
-	
+
 	<!-- id 체크 -->
 	<select id="checkDuplId" resultType="int">
-  	SELECT COUNT(*) AS id_cnt FROM users
-  	WHERE id = #{id}
-  </select>
+		SELECT COUNT(*) AS id_cnt FROM users
+		WHERE id = #{id}
+	</select>
+
+	<!-- 마이페이지 메인 비밀번호 확인 -->
+	<select id="userMypage" resultType="com.team3.prj.vo.UserVO">
+		SELECT role, name, nickname
+		FROM users
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
 	
 	<!-- 유저 내정보수정 -->
 	<update id="userUpdate">
 		UPDATE users
 		SET pwd=#{pwd}, nickname=#{nickname},
-			tel=#{tel}, email=#{email}
+		tel=#{tel}, email=#{email}
 		WHERE id=#{id}
 	</update>
-	
+
 	<!-- 유저 회원탈퇴 -->
 	<delete id="userDelete">
 		DELETE users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</delete>
-	
+
 	<!-- manager 정보수정 -->
 	<update id="managerUpdate">
 		UPDATE users
 		SET pwd=#{pwd}, nickname=#{nickname},
-			tel=#{tel}, email=#{email}
+		tel=#{tel}, email=#{email}
 		WHERE id=#{id}
 	</update>
-	
+
 	<!-- 리뷰 -->
 	<select id="userRevu" resultType="com.team3.prj.vo.RevuVO">
 		SELECT *
 		FROM revu
-		ORDER BY c_date, id
+		ORDER BY
+		c_date, id
 	</select>
-	
+
 	<!-- 리뷰삭제 -->
 	<delete id="revuDelete">
 		DELETE FROM revu

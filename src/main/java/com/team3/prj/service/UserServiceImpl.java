@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
 		@Override
 		public String update(UserVO vo) {
-			return userDAO.userUpdate(vo) >=1 ? vo.getId() : "";
+			return userDAO.userUpdate(vo) >= 1 ? vo.getId() : "";
 		}
 
 		@Override

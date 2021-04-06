@@ -21,7 +21,7 @@ public interface UserDAO {
 	
 	public UserVO userMypage(UserVO vo);
 	
-	public Long userUpdate(UserVO vo);
+	public int userUpdate(UserVO vo);
 	
 	public int userDelete(UserVO vo);
 	
