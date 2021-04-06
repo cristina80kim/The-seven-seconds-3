@@ -20,12 +20,13 @@ public class MypageRsrvController {
 	MypageRsrvService mypagersrvService;
 	
 	//http://localhost:8081/mypage/allmypagersrv
+	//출력
 	@GetMapping("/allmypagersrv")
 	public @ResponseBody List<MypageRsrvVO> selectAllMypage(){
-	System.out.println("selectAllMypage()");
-	List<MypageRsrvVO> lstMypage = mypagersrvService.selectAllMypage();
-	return lstMypage;
+	    System.out.println(className + ".selectAllMypage()");
+	    return mypagersrvService.selectAllMypage();
 	}
+	
 	//예약 삭제
 	//http://localhost:8081/mypage/delete?id=
 	@GetMapping("/delete")

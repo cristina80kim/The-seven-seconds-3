@@ -5,11 +5,12 @@
 <mapper namespace="com.team3.prj.dao.MypageRsrvDAO"> 
 
   <select id="selectAllMypage" resultType="com.team3.prj.vo.MypageRsrvVO">
-      SELECT id,Rsrv_room,C_User
+      SELECT id, Rsrv_room, C_User, check_in
       FROM   rsrv
   </select>
   <delete id="MypageRsrvDelete">
-  DELETE rsrvwhere id=#{id} 
+  DELETE rsrv 
+  where id=#{id} 
   </delete>
   
   

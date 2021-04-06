@@ -50,8 +50,8 @@
 				AND
 				(
 					title LIKE '%'||#{keyWord}||'%'
-					OR nickname LIKE '%'||#{keyWord}||'%'
-					OR q
+					OR Rsrv_stay LIKE '%'||#{keyWord}||'%'
+					OR Rsrv_name
 					LIKE '%'||#{keyWord}||'%'
 					OR a LIKE '%'||#{keyWord}||'%'
 				)
