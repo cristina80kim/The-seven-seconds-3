@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>230. manager_예약관리_예약리스트</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
+<script type="text/javascript">
+var rsrv = {
+	onDeleteClicked: function() {
+		console.log("onDeleteClicked()");
+		main.ajaxGetHtml("/managerRsrvList/rsrvCancel", "contents");
+	},
+}
+
+
+
+</script>
+
+
 <link rel="stylesheet" href="css/manager_RsrvList.css" />
 </head>
 <body>
@@ -67,7 +82,7 @@
 					  <td><input type="text" value="예약 완료" id="Rsrv_state"/></td>
 					  <td>
 						  <input type="button" value="수정" id="updateBtn"/>
-						  <input type="button" value="삭제" id="deleteBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn" onclick="rsrv.onDeleteClicked();"/>
 					  </td>
 			        </tr>
 			        <tr>
@@ -95,7 +110,7 @@
 					  <td><input type="text" value="예약 완료"id="Rsrv_state"/></td>
 					  <td>
 						  <input type="button" value="수정" id="updateBtn"/>
-						  <input type="button" value="삭제" id="deleteBtn"/>
+						  <input type="button" value="삭제" id="deleteBtn" onclick="rsrv.onDeleteClicked();"/>
 					  </td>
 			        </tr>
 			        <tr>

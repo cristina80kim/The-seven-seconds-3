@@ -47,4 +47,11 @@ public class RsrvListController {
 	    return rsrvlistService.update(vo).toString();
 	}
 	
+	// 233번
+	// http://localhost:8081/managerRsrvList/rsrvCancel
+	@GetMapping("/managerRsrvList/rsrvCancel")
+	public String rsrvCancel() {
+	    return "user_Login";
+	   // return "manager_Rsrv_cancel";
+	}
 }
