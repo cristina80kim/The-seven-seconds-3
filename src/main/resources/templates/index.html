@@ -6,6 +6,9 @@
 <script src="/js/main.js?ver=1.0"></script>
 
 <script>
+window.onload = function(){
+	 main.ajaxGetHtml("/main/iContents", "contents");
+}
 var index = {
   onLoginClick: function() {
     console.log("onLoginClick()");
@@ -116,7 +119,11 @@ var index = {
 <body>
 	<div th:include="header.html"></div>
 	<div id="inWarp">
-		<div th:include="leftSearch.html" id="leftMenu"></div>
+		<div id="leftMenu"></div>
+		<!-- 
+		검색 기능 구현 시 122번 라인 수정
+		<div  th:include="leftSearch.html" id="leftMenu"></div>
+		  --> 
 		<div id="contents"></div>
 	</div>
 	<div th:include="footer.html"></div>
