@@ -286,6 +286,7 @@
     -- 08. 후기(Revu; Reviews)
     CREATE SEQUENCE seq_revu START WITH 1000000000 INCREMENT BY 1 CACHE 10;
     CREATE TABLE revu(
+      no	          NUMBER(10) NOT NULL, -- 글번호
       id             NUMBER(10) NOT NULL,        -- ID
       nickname       VARCHAR2(30) NOT NULL,      -- 닉네임
       content        VARCHAR2(500) NULL,         -- 내용
