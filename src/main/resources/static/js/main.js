@@ -406,6 +406,7 @@ var main = {
     // GRID 를 생성.
     result = new tui.Grid(options);
     
+    /*
     // grid 클릭시 row 선택
     result.on('click', function(ev) {
       var record = {
@@ -416,9 +417,10 @@ var main = {
        
        console.log("현재 선택된 Row 번호: " + ev.rowKey);
     });
+    */
 
-    //----------------------------------------    
     /*
+    //----------------------------------------    
     var selectedRowKey = null;
     
     // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
