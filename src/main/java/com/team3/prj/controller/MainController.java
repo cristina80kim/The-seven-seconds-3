@@ -91,5 +91,12 @@ public class MainController {
 	public String leftComu() {
 		return "leftCommu";
 	}
-
+	
+	
+	//기능: 메인 contents 출력
+	// http://localhost:8081/main/iContents
+	@RequestMapping("/main/iContents")
+	public String iContents() {
+		return "user_Main";
+	}
 }
