@@ -119,6 +119,7 @@ public class UserController {
 		return new ExecResultVO(result);
 	}
 	
+	//회원탈퇴
 	// http://localhost:8081/user/uDelete
 	@RequestMapping("/uDelete")
 	public String uDelete() {
@@ -171,5 +172,28 @@ public class UserController {
 	}
 	
 
+//  후기 관리
+//  http://localhost:8081/user/uRevu
+	@GetMapping("/uRevu")
+	public String userRevu() {
+		return "user_MypageRevu";
+
+	}
+	
+//  포인트 관리
+//  http://localhost:8081/user/userPoint
+	@GetMapping("/userPoint")
+	public String userPoint() {
+		return "user_MypagePoint";
+
+	}
+	
+//  즐겨찾기
+//  http://localhost:8081/user/userBookmark
+	@GetMapping("/userBookmark")
+	public String userBookmark() {
+		return "user_MypageBookMark";
+
+	}
 
 }

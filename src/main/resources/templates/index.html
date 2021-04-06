@@ -26,9 +26,10 @@ var index = {
   },
   
   onMypageClick: function() {
-	  $("#leftMenu").hide();
+	  $("#leftMenu").show();
   	console.log("onMypageClick()");
-  	main.ajaxGetHtml("/user/frmMypage", "contents");
+  	main.ajaxGetHtml("/main/leftMypage", "leftMenu");
+  	main.ajaxGetHtml("/user/frmUpdate", "contents");
   	// main.ajaxGetHtml("/main/leftMypage", "leftMenu");
   	
   },
@@ -43,14 +44,14 @@ var index = {
   onNoticeClick: function() {
 	  $("#leftMenu").show();
     console.log("onNoticeClick()");
-    main.ajaxGetHtml("notice/searchList", "contents");
+    main.ajaxGetHtml("/notice/searchList", "contents");
     
   },
   
   onFaqClick: function() {
 	  $("#leftMenu").show();
     console.log("onFaqClick()");
-    main.ajaxGetHtml("faq/userList", "contents");
+    main.ajaxGetHtml("/faq/userList", "contents");
   },
   
   onQnaClick: function() {
@@ -64,6 +65,43 @@ var index = {
 	    console.log("onQnaWriteClick()");
 	    main.ajaxGetHtml("/qna/frmSelectAll", "contents");
 	  },
+  onMypageInfoClick: function() {
+	 $("#leftMenu").show();
+		  console.log("onMypageInfoClick()");
+		  main.ajaxGetHtml("/user/frmUpdate", "contents");
+  },
+  
+  //마이페이지 하단 메뉴 클릭
+    onMypageRsrvClick: function() {
+	  $("#leftMenu").show();
+    console.log("onMypageRsrvClick()");
+    main.ajaxGetHtml("/mypage/allmypagersrv", "contents");
+  },
+  
+  onMypageRevuClick: function() {
+	  $("#leftMenu").show();
+    console.log("onMypageRevuClick()");
+    main.ajaxGetHtml("/user/uRevu", "contents");
+  },
+  
+  onMypagePointClick: function() {
+	  $("#leftMenu").show();
+	    console.log("onMypagePointClick()");
+	    main.ajaxGetHtml("/user/userPoint", "contents");
+	  },
+	  
+	  onMypageBookmarkClick: function() {
+		  $("#leftMenu").show();
+	    console.log("onMypageBookmarkClick()");
+	    main.ajaxGetHtml("/user/userBookmark", "contents");
+	  },
+	  
+	  onMypageDeleteClick: function() {
+		  $("#leftMenu").show();
+		    console.log("onMypageDeleteClick()");
+		    main.ajaxGetHtml("/user/uDelete", "contents");
+		  },
+
 
   log: function(msg) {
     console.log(">>> " + msg);
