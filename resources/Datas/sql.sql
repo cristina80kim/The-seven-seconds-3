@@ -1,5 +1,5 @@
 작성일: 2021-03-28
-
+.
   * 테이블 정의
     01. 사용자(User; Users)
     02. 숙소(Room_Mst; Room Master)
@@ -17,7 +17,6 @@
     14. 공통코드(Code; Common Codes); Q&A Category, 지역, 사업자등록번호
     15. 공통노트(Note; Common Notes); 이용약관, 개인정보처리방침 등
     16. 즐겨찾기
-
 
 [공통컬럼]
     - C_USER; Tupple 생성자 ID.
