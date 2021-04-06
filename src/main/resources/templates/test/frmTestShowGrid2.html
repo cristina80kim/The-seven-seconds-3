@@ -17,15 +17,54 @@
 <script>
     
   // 기능: 문서의 모든 콘텐츠(images, script, css, etc)가 로드된 후 발생하는 이벤트
-  window.onload = function() {
-    // ...
-  };
-
-  var gridQna = null;
+  window.onload = function() {  };
   
   // 기능: addEventListener를 사용하여 DOMContentLoaded 이벤트 발생시 showGrid() 실행.
   document.addEventListener("DOMContentLoaded", function() {
     // ...
+  });
+  
+  // 기능: docuent.ready()
+  $(function() {
+    console.log(">>> $(): 1");
+    qnaSearch();
+  });
+
+  // 기능: [Enter] 키 시 form 실행 방지
+  var onQnaSearchKeyPressed = function() {
+    if(event.keyCode == 13) {
+      onSearchBtnClick();  
+      event.preventDefault();
+    } 
+  };  
+  
+  // 기능: "검색" 버튼 클릭시 event 처리.
+  var onQnaSearchClicked = function() {
+    qnaSearch();
+  }
+
+  var gridQna = null;
+  
+  // 기능: QNA 검색 및 결과를 TOAST Grid에 출력하기
+  var qnaSearch = function() {
+    console.log("qnaSearch()");
+    
+    showTestGrid();
+    
+    var cateId = main.nvl($("#cateId option:selected").val(), "");
+    
+    if(cateId.substr(0, 1) == "=") {
+      cateId = "";
+    }
+    
+    var keyword = $("#keyword").val();
+    var url = "/test/getData4Toast3?cateId=" + cateId + "&keyword=" + keyword;
+     
+    showQnaListOnGrid(url, "gridQNA");
+  };
+  
+  // 기능: QNA 검색 및 결과를 Toast Grid에 출력하기
+  var showQnaListOnGrid = function(url, componentName) {
     
     var kind = "QNA";
     var actionInsert = "INSERT";
@@ -67,8 +106,11 @@
       }}
     ];
 
-    // TOAST Grid 생성    
-    gridQna = main.showToastGrid("/test/getData4Toast3", "gridQNA", columns);
+    // 이렇게 하지 않으면 기존 grid에 계속 추가된다. 왜???. 메노리 누수가 있는지 확인할 것(*****)
+    $("#" + componentName).html("");
+        
+    // TOAST Grid 생성
+    gridQna = main.showToastGrid(url, componentName, columns);
 
     // mousedown Event
     gridQna.on('mousedown', function(ev) {
@@ -76,10 +118,9 @@
        var rowInfo = gridQna.getRow(ev.rowKey); 
       console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
     });    
-    
-    showTestGrid();
-  });
-  
+  };
+
+  // 기능: callback function  
   callbackButtonClicked = function(kind, action, index) {
     console.log("kind: " + kind + ", action: " + action + ", index: " + index);
     console.log("id: " + gridQna.getValue(index, "id")); 
@@ -89,6 +130,8 @@
   // --------------------------------
   var showTestGrid = function() {
     var url = "/test/getData4Toast2";
+    
+    // $("#gridTest").html("");
 
     var options = {
       el: document.getElementById('gridTest'),
@@ -122,6 +165,12 @@
   
 </head>
 <body>
+  <h1>공지사항</h1>
+    <form id="frmNotiSearch">
+      <select name="cateId" id="cateId"></select>
+      <input type="text" id="keyword" name="keyword">
+      <input type="button" id="btnSearch" value="검색" onclick="onQnaSearchClicked();" onkeypress="onQnaSearchKeyPressed(this);">
+    </form><br />
 	<div id="gridQNA"></div> <br />
     <div id="gridTest"></div> <br />
 </body>
