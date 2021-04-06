@@ -22,8 +22,6 @@ font-family: 'Noto Sans KR', sans-serif; */
 
 nav>.gnb{
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-
-
 }
 
 #skipNavi {
@@ -88,7 +86,7 @@ nav>.gnb{
 	margin-left:20px;
 }
 
-/*수정중~  */
+
 
 nav .gnb>li>a{
 	color:#fff !important;
@@ -129,4 +127,5 @@ nav>.gnb{
 }
 
 
-/*수정중~~~ */
+
+
