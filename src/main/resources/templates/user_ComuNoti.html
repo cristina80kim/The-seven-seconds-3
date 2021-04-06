@@ -18,11 +18,20 @@ $(function() {
 
 var gridNotice = null;
 
+ $("#NotiSearch").keypress(function (e) {
+     if (e.which == 13){
+     	notice.onSearchBtnClick();  
+     }
+ });
+
+
 var notice = {
 		
-		onSearchBtnClick: function(NotiSearch) {
+		onSearchBtnClick: function() {
 		      console.log("onSearchBtnClick()");
-		      notice.showNoticeOnGrid("/notice/toastSearch", "gridData");
+		      var cateId = $("#Noticate option:selected").val();
+		      var keyWord = $("#NotiSearch").val();
+		      notice.showNoticeOnGrid("/notice/toastSearch?cateId="+ cateId +"&keyWord="+keyWord , "gridData");
 		    },
 		    
 // 		    onQnaWriteClick: function() {
@@ -92,20 +101,20 @@ var notice = {
 <div id="wrap">
 
 	<article>
-	<table id="gridData"></table>
-		<div id="gridData"></div>
+	
 		<div id="NotiSrch">
 		  <h1>공지사항</h1>
 	      <form id="NotisrchFrm">
 	        <select name="Noticate" id="Noticate">
 	          <option value="">전체</option>
 	        </select>
-	        <input type="text" id="NotiSearch" name="">
-	        <input type="button" onclick="onSearchBtnClick(NotiSearch)" value="검색" id="NotiSrchBtn">
+	        <input type="text" id="NotiSearch" name="NotiSearch">
+	        <input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
 	      </form>
+	      <table id="gridData"></table>
+		<div id="gridData"></div>
 	    </div>
 		<hr />
-
 	
 	    <div id="FAQbbs">
 	      <table>
