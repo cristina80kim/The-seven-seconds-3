@@ -52,7 +52,7 @@ var notice = {
 		              {header: "닉네임",     name: "nickname", width: 100                   },
 		              {header: "번호",      name: "no",       width: 100, align: "center"   },
 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
-		              {header: "제목",      name: "title",    width: 200					  },
+		              {header: "제목",      name: "title",    width: 200    				  },
 		              {header: "작성일",     name: "cDate",    width: 20                    },
 		              	            
 		            ];
@@ -60,15 +60,28 @@ var notice = {
 		          main.clearGrid(componentName, gridNotice);
 		          
 		            gridNotice = main.showToastGrid(url, componentName, columns);
+		            
+		         // mousedown Event
+					gridNotice.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridNotice.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+	  					main.ajaxGetHtml("/notice/userNoti?id="+rowInfo["id"],"contents");
+					});    
+
+		            
 		          },
+		          
+		          
 		          
 		          callbackButtonClicked: function(kind, action, index) {
 		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-		            console.log("id: " + gridNoice.getValue(index, "id")); 
+		            console.log("id: " + gridNotice.getValue(index, "id")); 
 		          },
 		          
-		        }
+		        };
 
+				
 
 </script>
 <div id="wrap">

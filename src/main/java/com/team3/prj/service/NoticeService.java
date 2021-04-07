@@ -18,5 +18,7 @@ public interface NoticeService {
 	public Long update(NoticeVO vo);
 	
 	public Long delete(NoticeVO vo);
+	
+//	public List<NoticeVO> selectOne(String result);
 	//
 }

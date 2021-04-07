@@ -44,4 +44,9 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.delete(vo);
 	}
 //
+
+//	@Override
+//	public List<NoticeVO> selectOne(String result) {
+//		return dao.selectOne1(result);
+//	}
 }

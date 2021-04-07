@@ -21,6 +21,8 @@ public interface NoticeDAO {
 	public Long update(NoticeVO vo);
 
 	public Long delete(NoticeVO vo);
+
+//	public List<NoticeVO> selectOne1(String result);
 	
 	//
 	

@@ -19,6 +19,7 @@
 		ORDER BY id
 
 	</select>
+	
 
 	<!-- 검색기능 -->
 	<select id ="search" resultType="com.team3.prj.vo.NoticeVO">

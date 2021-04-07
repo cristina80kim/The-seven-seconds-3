@@ -2,28 +2,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/user_noti.css" />
 <title>admin_공지사항</title>
+<link rel="stylesheet" href="css/user_noti.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.0"></script>
+<script th:inline="javascript">
+
+var id = [[ ${session.id} ]];
+	
+</script>
+<script>
+	$(function(){
+		console.log("id = "+ id);
+		 var param = {
+               id : id
+          }
+            main.ajaxPostJson("/notice/selectOne",param,function(json){
+               console.log(json);
+               $.each(json,function(index,item){
+                  console.log(item["id"]+item["title"]+item["content"]);
+                  $("#no").val(item["no"]);
+                  $("#title").val(item["title"]);
+                  $("#nickName").val(item["nickName"]);
+                  $("#content").val(item["content"]);
+               })
+            });
+	})
+</script>
 </head>
 <body>
 <div id="wrap">
 
 	<section>
-	
+
+<!-- 	<p th:text="${session['id']}"></p>  -->
+
       <h1>공지사항</h1>
       <hr />
       
 	 	
 	  <form name="NotiFrm" id="NotiFrm" action="">
-	      <input type="text" name="no" id="no" value="48"/>
+	      <input type="text" name="no" id="no" value="48" readonly="readonly"/>
 		  <span id="line">| </span>
-		  <input type="text" name="title" id="title" value="세븐 세컨즈 포인트 적립 정책 변경 안내"/>
+		  <input type="text" name="title" id="title" value="세븐 세컨즈 포인트 적립 정책 변경 안내" readonly="readonly"/>
 	  	 <hr />
 	  	 <div id="nickDate">
-		   	 <input type="text" name="nickName" id="nickName" value="세븐세컨즈" />
-		      <input type="text" name="C_DATE" id="C_DATE" value="21.03.15" />
+		   	 <input type="text" name="nickName" id="nickName" value="세븐세컨즈" readonly="readonly" />
+		      <input type="text" name="C_DATE" id="C_DATE" value="21.03.15" readonly="readonly" />
 	  	 </div>
-	    <textarea name="content" id="content" rows="30" cols="50">
+	    <textarea name="content" id="content" rows="30" cols="50" readonly="readonly">
 안녕하세요. 세븐세컨즈 입니다.
 
 관심과 성원에 감사드립니다.
