@@ -5,6 +5,16 @@
 <title>133.user_숙박시설상세</title>
 <link rel="stylesheet" href="css/user_RoomDtl.css" />
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
+<script>
+var paymentt = {
+	onPaymentClicked: function() {
+		console.log("onPaymentClicked()");
+		main.ajaxGetHtml("/userRoomPay", "wrap");
+	},
+}
+</script>
 <body>
 
 	<div id="wrap">
@@ -125,13 +135,13 @@
 					<td><input type="text" name="room_name" id="room_name" value="스탠다드"/><br />
 							<input type="text" name="price_" id="price_" value="100,000원" />
 					</td>
-					<td><input type="button" value="예약하기" id="RsrvBtn"/></td>
+					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="paymentt.onPaymentClicked();"/></td>
 				</tr>
 				<tr>
 					<td><img alt="이미지" src="images/120x80_2.jpg"></td>
 					<td><input type="text" name="room_name" id="room_name" value="스탠다드 트윈"/><br />
 							<input type="text" name="price_" id="price_" value="100,000원" /></td>
-					<td><input type="button" value="예약하기" id="RsrvBtn" /></td>
+					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="paymentt.onPaymentClicked();"/></td>
 				</tr>
 			
 			</table>

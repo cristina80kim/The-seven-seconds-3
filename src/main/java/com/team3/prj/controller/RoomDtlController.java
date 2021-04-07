@@ -34,8 +34,13 @@ public class RoomDtlController {
 		System.out.println(className + ".selectAll()");
 		return service.selectAll();
 	}
-
 	
+	// 룸 상세보기 페이지 연결
+	// http://localhost:8081/roomDtl/roomDtlAll
+	@GetMapping("/roomDtlAll")
+	public String roomDtl() {
+	    return "user_RoomDtl";
+	}
 	
 	@GetMapping("/search")
 	public @ResponseBody List<RoomDtlVO> search(RoomDtlSerchVO svo){

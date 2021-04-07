@@ -51,7 +51,6 @@ public class RsrvListController {
 	// http://localhost:8081/managerRsrvList/rsrvCancel
 	@GetMapping("/managerRsrvList/rsrvCancel")
 	public String rsrvCancel() {
-	    return "user_Login";
-	   // return "manager_Rsrv_cancel";
+	    return "manager_Rsrv_cancel";
 	}
 }
