@@ -4,13 +4,13 @@
 
 <mapper namespace="com.team3.prj.dao.RoomDtlDAO">
 	<select id="selectAll" resultType="com.team3.prj.vo.RoomDtlVO">
-		SELECT id, mst_id, room_name,
-		num_of_guests, check_in_time,
-		check_out_time, weekday_price,
-		weekend_price,
-		pic1_org, pic1_uuid,
-		pic2_org, pic2_uuid, pic3_org,
-		pic3_uuid
+		SELECT 
+		id, mst_id, room_name,
+		type_of_room, num_of_guests, check_in_time,
+		check_out_time, weekday_price, weekend_price,
+		sum_of_stars, num_of_revu, pic1_org, 
+		pic1_uuid, pic2_org, pic2_uuid, 
+		pic3_org, pic3_uuid
 		FROM room_dtl
 	</select>
 
