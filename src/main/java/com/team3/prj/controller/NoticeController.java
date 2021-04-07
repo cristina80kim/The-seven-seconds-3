@@ -62,7 +62,7 @@ public class NoticeController {
 	
 	
 //	공지사항 수정
-//	http://localhost:8081/notice/update?title= &content= &id=
+//	http://localhost:8081/notice/update?title= &content= &id= 
 	@GetMapping("/update")
 	public @ResponseBody String update(NoticeVO vo) {
 		System.out.println(className + "update()" + vo.toString());

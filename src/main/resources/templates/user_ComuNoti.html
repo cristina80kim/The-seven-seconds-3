@@ -48,45 +48,17 @@ var notice = {
 		    
 		          
 		          var columns = [
-// 		              {header: "아이디",     name: "id",       width: 50,  height: 100                    },
-// 		              {header: "닉네임",     name: "nickname", width: 100                   },
+		              {header: "아이디",     name: "id",       width: 50,  height: 100      },
+		              {header: "닉네임",     name: "nickname", width: 100                   },
 		              {header: "번호",      name: "no",       width: 100, align: "center"   },
-		            
-// 		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
-// 		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
-// 		              }},
-		              
-// 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
-		            //{header: "카테고리",    name: "cate",     width: 0                     },
-// 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
-		              {header: "제목",      name: "title",    width: 100 
-// 				,formatter:function(){
-// 		            	  	var url = '#';
-// 		                     return '<a href="' + url + '" target="">' + this.getvalue() + '</a>';}
-		                     },
-// 		              {header: "내용",    	name: "content",  width: 300                   },
-// 		              {header: "답변내용",    name: "a",        width: 300                   },
-// 		              {header: "작성자ID",   name: "cUser",    width: 20                    },
-// 		              {header: "aaUser",   name: "aaUser",   width: 20                    },
-// 		              {header: "cuser",    name: "cUser",    width: 20                    },
+		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
+		              {header: "제목",      name: "title",    width: 200					  },
 		              {header: "작성일",     name: "cDate",    width: 20                    },
-		              
-// 		              {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
-// 		                // this.index, this.item, this.list 에 모두 접근 가능
-// 		                // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
-		                
-// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
-// 		                + kind + "\", \"" + actionInsert + "\", \"" 
-// 		                + this.index + "\");'>수정</button>"; 
-// 		              }},
-		              
-// 		              {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
-// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
-// 		                + kind + "\", \"" + actionDelete + "\", \"" 
-// 		                + this.index + "\");'>삭제</button>"; 
-// 		              }}
+		              	            
 		            ];
 		            
+		          main.clearGrid(componentName, gridNotice);
+		          
 		            gridNotice = main.showToastGrid(url, componentName, columns);
 		          },
 		          
@@ -106,9 +78,9 @@ var notice = {
 		<div id="NotiSrch">
 		  <h1>공지사항</h1>
 	      <form id="NotisrchFrm">
-	        <select name="Noticate" id="Noticate">
-	          <option value="">전체</option>
-	        </select>
+<!-- 	        <select name="Noticate" id="Noticate"> -->
+<!-- 	          <option value="">전체</option> -->
+<!-- 	        </select> -->
 	        <input type="text" id="NotiSearch" name="NotiSearch">
 	        <input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
 	      </form>
@@ -117,102 +89,102 @@ var notice = {
 	    </div>
 		<hr />
 	
-	    <div id="FAQbbs">
-	      <table>
-	        <tr>
-	          <th id="noth">번호</th>
-	          <th id="titleth">제목</th>
-	          <th id="C_DATEth">일시</th>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">48</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 포인트 적립 정책 변경 안내</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">47</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 정기 점검 안내(03/25 AM 2:00 ~ 7:00)</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">46</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 할인 정책 변경 안내</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">45</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 개인정보처리방침 개정 안내</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">43</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 가입 이벤트 안내</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td id="no"><a href="">42</a></td>
-	          <td id="title"><a href="">세븐 세컨즈 정기 점검 변견 안내(03/17 AM 3:00 ~ 8:00)</a></td>
-	          <td id="C_DATE"><a href="">21.03.15</a></td>
-	        </tr>
-	        <tr>
-	          <td colspan="3">
-	            <hr>
-	          </td>
-	        </tr>
+<!-- 	    <div id="FAQbbs"> -->
+<!-- 	      <table> -->
+<!-- 	        <tr> -->
+<!-- 	          <th id="noth">번호</th> -->
+<!-- 	          <th id="titleth">제목</th> -->
+<!-- 	          <th id="C_DATEth">일시</th> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">48</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 포인트 적립 정책 변경 안내</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">47</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 정기 점검 안내(03/25 AM 2:00 ~ 7:00)</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">46</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 할인 정책 변경 안내</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">45</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 개인정보처리방침 개정 안내</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">43</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 가입 이벤트 안내</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td id="no"><a href="">42</a></td> -->
+<!-- 	          <td id="title"><a href="">세븐 세컨즈 정기 점검 변견 안내(03/17 AM 3:00 ~ 8:00)</a></td> -->
+<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
+<!-- 	        </tr> -->
+<!-- 	        <tr> -->
+<!-- 	          <td colspan="3"> -->
+<!-- 	            <hr> -->
+<!-- 	          </td> -->
+<!-- 	        </tr> -->
 	        
-	      </table>
-	    </div>
+<!-- 	      </table> -->
+<!-- 	    </div> -->
 	
 	
 	
-	    <div id="paging">
-	        <span class="block">《</span>
-	        <span class="block">〈</span>
-	        <span class="pageNo" id="nowPage">1</span>
-	        <span class="pageNo">2</span>
-	        <span class="pageNo">3</span>
-	        <span class="pageNo">4</span>
-	        <span class="pageNo">5</span>
-	        <span class="pageNo">6</span>
-	        <span class="pageNo">7</span>
-	        <span class="pageNo">8</span>  
-	        <span class="block">〉</span>
-	        <span class="block">》</span>
-	      </div>
+<!-- 	    <div id="paging"> -->
+<!-- 	        <span class="block">《</span> -->
+<!-- 	        <span class="block">〈</span> -->
+<!-- 	        <span class="pageNo" id="nowPage">1</span> -->
+<!-- 	        <span class="pageNo">2</span> -->
+<!-- 	        <span class="pageNo">3</span> -->
+<!-- 	        <span class="pageNo">4</span> -->
+<!-- 	        <span class="pageNo">5</span> -->
+<!-- 	        <span class="pageNo">6</span> -->
+<!-- 	        <span class="pageNo">7</span> -->
+<!-- 	        <span class="pageNo">8</span>   -->
+<!-- 	        <span class="block">〉</span> -->
+<!-- 	        <span class="block">》</span> -->
+<!-- 	      </div> -->
 	      
-	</article>
+<!-- 	</article> -->
 	
-</div>
+<!-- </div> -->
 
 
 

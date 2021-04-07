@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class NoticeVO {
 	private Long id;			// 공지사항 아이디
-	private String nickName;	// 닉네임
+	private String nickname;	// 닉네임
 	private String no; 			// 글번호
 	private String title; 		// 공지사항 제목
 	private String content; 	// 공지사항 내용
