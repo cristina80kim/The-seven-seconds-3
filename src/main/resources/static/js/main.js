@@ -451,6 +451,20 @@ var main = {
     return result;
   },
   
+  //----------------------------------------    
+  // 기능: TOAST Grid 초기화 
+  // 주의: gird 출룍용 html tag의 heml를 초기화하지 않으면 Grid에 리스트 출력시 layout이 한 번 더 생김
+  // TODO: (김용수): 2021-04-07: grid 초기화 방법 모색 & 적용 필요
+  //----------------------------------------    
+  clearGrid: function(componentName, grid) {
+     if(main.isNotEmpty(grid)) {
+      main.log("grid 초기화 함");
+      grid.clear();
+      
+      $("#" + componentName).html("");
+    }
+  },
+    
   //============================================================
   // 기능: console에 log 출력. 
   //============================================================

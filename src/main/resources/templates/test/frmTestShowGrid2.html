@@ -7,12 +7,20 @@
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 
+<!-- TOAST ㅊ미둥ㅁㄱ를 위한 CDN -->
+<!-- <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>  -->
+<!-- <script src="https://uicdn.toast.com/tui.dom/v3.0.0/tui-dom.js"></script> -->
+<!-- <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script> -->
+<!-- <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script> -->
+<!-- <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script> -->
+
+
 <!-- TOAST pagenation 시 필요 -->
-<!-- <link rel="stylesheet" href="https://uicdn.toast.com/tui-pagination/dist/tui-pagination.css" /> -->
-<!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script> -->
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-pagination/dist/tui-pagination.css" />
+<script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/main.js?ver=1.01"></script>
+<script src="/js/main.js?ver=1.00"></script>
   
 <script>
     
@@ -27,7 +35,26 @@
   // 기능: docuent.ready()
   $(function() {
     console.log(">>> $(): 1");
+    
+    // 공통코드-Q&A 유형 부러오기
+    main.ajaxCodeQnaToSelectBox("cateId");
+    
+    // QNA 검색
     qnaSearch();
+    
+    // 테스트 그리드 그리기
+    showTestGrid("/test/getData4Toast2", "gridTest");
+    
+    /*
+    // TOAST calendar 작성. Canendar()가 없음
+    var calendar = new Calendar('#calendar', {
+      defaultView: 'week',
+      useCreationPopup: true,
+      useDetailPopup: true
+    });
+
+    calendar.render();
+    */    
   });
 
   // 기능: [Enter] 키 시 form 실행 방지
@@ -48,8 +75,6 @@
   // 기능: QNA 검색 및 결과를 TOAST Grid에 출력하기
   var qnaSearch = function() {
     console.log("qnaSearch()");
-    
-    showTestGrid();
     
     var cateId = main.nvl($("#cateId option:selected").val(), "");
     
@@ -106,9 +131,9 @@
       }}
     ];
 
-    // 이렇게 하지 않으면 기존 grid에 계속 추가된다. 왜???. 메노리 누수가 있는지 확인할 것(*****)
-    $("#" + componentName).html("");
-        
+    // Grid 초기화
+    main.clearGrid(componentName, gridQna);
+    
     // TOAST Grid 생성
     gridQna = main.showToastGrid(url, componentName, columns);
 
@@ -128,11 +153,9 @@
   
 
   // --------------------------------
-  var showTestGrid = function() {
-    var url = "/test/getData4Toast2";
-    
-    // $("#gridTest").html("");
-
+  var gridTest;
+  
+  var showTestGrid = function(url, componentName) {
     var options = {
       el: document.getElementById('gridTest'),
       columns: [
@@ -157,8 +180,11 @@
       }
     };
 
+    // Grid 초기화
+    main.clearGrid("#" + componentName, gridTest);
+
     // GRID 를 생성한다.
-    var grid = new tui.Grid(options);
+    gridTest = new tui.Grid(options);
   }
   
 </script>
@@ -173,5 +199,7 @@
     </form><br />
 	<div id="gridQNA"></div> <br />
     <div id="gridTest"></div> <br />
+    <div id="calendar" style="height: 800px;"></div><br />
+
 </body>
 </html>
