@@ -6,6 +6,6 @@ import lombok.Data;
 public class FaqSearchVO {
 	
 	private String keyWord; //검색어
-	private String cateId; //카테고리
+	private String cate_id; //카테고리
 
 }

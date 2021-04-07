@@ -20,23 +20,27 @@
 	</select>
 
 	<!-- 검색기능 -->
-	<select id="search" resultType="com.team3.prj.vo.FaqVO">
+	<select id ="search" resultType="com.team3.prj.vo.FaqVO">
 		SELECT *
 		FROM faq
 		<where>
-			<if test='cateId!= null and !"".equals(cateId)'>
-				AND cate_id = '%' ||#{cateId}|| '%'
-			</if>
-			<if test='keyWord != null and !"".equals(keyWord)'>
-				AND(
+		
+		<if test = 'cate_id != null and !"".equals(cate_id)'>
+			AND cate_id = #{cate_id}		
+		</if>
+		
+		<if test = 'keyWord != null and !"".equals(keyWord)'>
+		
+			AND (
 				title LIKE '%'||#{keyWord}||'%'
-				OR content LIKE '%'||#{keyWord}||'%'
-				)
-			</if>
+			OR  content LIKE '%'||#{keyWord}||'%'
+			)
+		
+		</if>
+		
 		</where>
-
+	
 	</select>
-
 	<!-- Faq 등록 -->
 	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
@@ -51,7 +55,7 @@
 		(
 		#{id},
 		(SELECT NVL(MAX(no),0) + 1 FROM faq),
-		#{cateId}, #{title}, #{content}, #{c_user}
+		#{cate_id}, #{title}, #{content}, #{c_user}
 		)
 	</insert>
 

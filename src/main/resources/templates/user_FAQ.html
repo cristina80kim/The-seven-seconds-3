@@ -4,6 +4,33 @@
 <meta charset="UTF-8">
 <title>user_FAQ 게시글 view</title>
 <link rel="stylesheet" href="css/user_faq.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.0"></script>
+<script th:inline="javascript">
+
+var id = [[ ${session.id} ]];
+	
+</script>
+<script>
+	$(function(){
+		console.log("id = "+ id);
+		 var param = {
+               id : id
+          }
+            main.ajaxPostJson("/faq/selectOne",param,function(json){
+               console.log(json);
+               $.each(json,function(index,item){
+                  console.log(item["id"]+item["title"]+item["content"]);
+                  $("#no").val(item["no"]);
+                  $("#title").val(item["title"]);
+                  $("#nickName").val(item["nickname"]);
+                  $("#content").val(item["content"]);
+                  $("#C_DATE").val(item["c_date"]);
+                  $("#cate_id").val(item["cate_id"]);
+               })
+            });
+	})
+</script>
 </head>
 <body>
 <div id="wrap">
@@ -15,24 +42,23 @@
       
 	 	
 	  <form name="FAQFrm" id="FAQFrm" action="">
-
-	      <input type="text" name="cate_id" id="cate_id" value="[취소/환불]"/>
+		<input type="text" name="no" id="no" value="" readonly="readonly"/>
+		<span id="line">| </span>
+	      <input type="text" name="cate_id" id="cate_id" value=""readonly="readonly"/>
 		  <span id="line">| </span>
-		  <input type="text" name="title" id="title" value="환불은 언제 되나요"/>
+		  <input type="text" name="title" id="title" value=""readonly="readonly"/>
 	  	 <hr />
 	  	 <div id="nickDate">
-		   	 <input type="text" name="nickName" id="nickName" value="닉네임1" />
-		      <input type="text" name="C_DATE" id="C_DATE" value="21.03.16" />
+		   	 <input type="text" name="nickName" id="nickName" value="" readonly="readonly"/>
+		      <input type="text" name="C_DATE" id="C_DATE" value="" readonly="readonly"/>
 	  	 </div>
-	    <textarea name="content" id="content" rows="5" cols="50">
-돈주세요
+	    <textarea name="content" id="content" rows="5" cols="50" readonly="readonly">
+
 	    </textarea> <br />
 		
 			<span id="line2"></span>
 			
-		    <input type="button" name="returnBtn" id="returnBtn" value="목록">
-		    <input type="button" name="deleteBtn" id="deleteBtn" value="삭제">
-			<input type="button" name="updateBtn" id="updateBtn" value="수정"/>
+		    <input type="button" name="returnBtn" id="returnBtn"onclick="index.onFaqClick();" value="목록">
 	 </form>
 	</section>
 </div>

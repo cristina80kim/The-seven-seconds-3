@@ -2,17 +2,23 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.FaqService;
 import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
+import com.team3.prj.vo.NoticeVO;
 
 @Controller
 @RequestMapping("/faq")
@@ -32,10 +38,13 @@ public class FaqController {
 
 //	1개 출력
 //	http://localhost:8081/faq/selectOne?id=
-	@GetMapping("/selectOne")
-	public @ResponseBody List<FaqVO> selectOne(FaqVO vo) {
+	@RequestMapping("/selectOne")
+	public @ResponseBody List<FaqVO> selectOne(@RequestBody FaqVO vo) {
 		System.out.println(className + "selectOne()");
-		return service.selectOne(vo);
+		System.out.println("입력 : " + vo);
+		List<FaqVO> result = service.selectOne(vo);
+		System.out.println("출력 : " + result);
+		return result;
 	}
 
 //	검색
@@ -106,5 +115,18 @@ public class FaqController {
 		return "user_ComuFAQ";
 
 	}
+	
+	// http://localhost:8081/faq/userFaq
+		@GetMapping("/userFaq")
+		public String userFaq(String id) {
+			ServletRequestAttributes servletRequestAttribute =
+					(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			
+			HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+			
+			httpSession.setAttribute("id", id);
+
+			return "user_FAQ";
+		}
 
 }

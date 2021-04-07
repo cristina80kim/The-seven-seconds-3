@@ -13,22 +13,32 @@
 <script>
 $(function() {
     console.log(">>> $(): 1");
+     main.ajaxCodeQnaToSelectBox("cateId");
     faq.showFaqOnGrid("/faq/searchData", "gridData");
   });
 
 var gridFaq = null;
 
+$("#FAQSrch").keypress(function (e) {
+    if (e.which == 13){
+    	faq.onSearchBtnClick();  
+    	event.preventDefault();
+    } 
+});
+
 var faq = {
 		
 		onSearchBtnClick: function() {
 		      console.log("onSearchBtnClick()");
-		      faq.showFaqOnGrid("/faq/toastSearch", "gridData");
+		      var cate_id = $("#cateId option:selected").val();
+		      var keyWord = $("#FAQSrch").val();
+		      faq.showFaqOnGrid("/faq/toastSearch?cate_id="+ cate_id +"&keyWord="+keyWord, "gridData");
 		    },
 		    
-		    onFaqWriteClick: function() {
-		        console.log("onQnaWriteClick()");
-		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
-		      },
+// 		    onFaqWriteClick: function() {
+// 		        console.log("onQnaWriteClick()");
+// 		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
+// 		      },
 		      
 		      
 		      showFaqOnGrid: function(url, componentName) {
@@ -38,42 +48,24 @@ var faq = {
 		    
 		          
 		          var columns = [
-		              {header: "아이디",     name: "id",       width: 50,  height: 100                    },
-// 		              {header: "닉네임",     name: "nickname", width: 100                   },
 		              {header: "번호",      name: "no",       width: 100, align: "center"   },
-		            
-		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
-		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
-		              }},
-		              
-		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
-		            //{header: "카테고리",    name: "cate",     width: 0                     },
-// 		              {header: "공개여부",    name: "isPub",    width: 100, align: "center"  }, 
+		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
 		              {header: "제목",      name: "title",    width: 100 		              },
-// 		              {header: "내용",    	name: "content",  width: 300                   },
-// 		              {header: "답변내용",    name: "a",        width: 300                   },
-		            //{header: "작성자ID",   name: "cUser",    width: 20                    },
-// 		              {header: "aaUser",   name: "aaUser",   width: 20                    },
 		              {header: "cuser",    name: "cUser",    width: 20                    },
-		              {header: "작성일",     name: "cDate",    width: 20                    },
+		              {header: "작성일",     name: "c_date",    width: 20                    },
 		              
-// 		              {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
-// 		                // this.index, this.item, this.list 에 모두 접근 가능
-// 		                // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
-		                
-// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
-// 		                + kind + "\", \"" + actionInsert + "\", \"" 
-// 		                + this.index + "\");'>수정</button>"; 
-// 		              }},
-		              
-// 		              {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
-// 		                return "<button class='AXButton' onclick='faq.callbackButtonClicked(\"" 
-// 		                + kind + "\", \"" + actionDelete + "\", \"" 
-// 		                + this.index + "\");'>삭제</button>"; 
-// 		              }}
 		            ];
-		            
+		          main.clearGrid(componentName, gridFaq);  
+		          
 		            gridFaq = main.showToastGrid(url, componentName, columns);
+		            
+		            // mousedown Event
+					gridFaq.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridFaq.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+	  					main.ajaxGetHtml("/faq/userFaq?id="+rowInfo["id"],"contents");
+					});
 		          },
 		          
 		          callbackButtonClicked: function(kind, action, index) {
@@ -81,7 +73,7 @@ var faq = {
 		            console.log("id: " + gridFaq.getValue(index, "id")); 
 		          },
 		          
-		        }
+		        };
 
 
 </script>
@@ -90,112 +82,27 @@ var faq = {
 <body>
 
 	<div id="wrap">
-		<table id="gridData"></table>
-		<div id="gridData"></div>
+	
 		 	<section>
 		<div id="FAQSrch">
 		  <h1>FAQ</h1>
-	      <form id="FAQsrchFrm" action ="/faq/search">
+	      <form id="FAQsrchFrm">
 		        <select name="cateId" id="cateId">
 		          <option value="">카테고리</option>
 		        </select>
 <!-- 		        <select name="FAQAllCate" id="FAQAllCate"> -->
 <!-- 		          <option value="">전체</option> -->
 <!-- 		        </select> -->
-		        <input type="text" id="keyWord" name="keyword">
-		        <input type="submit" value="검색" id="FAQSrchBtn">
-	      </form>
+		        <input type="text" id="FAQSrch" name="FAQSrch">
+		        <input type="button" onclick="faq.onSearchBtnClick()" value="검색" id="FAQSrchBtn">
+		       </form>
+	      	<table id="gridData"></table>
+			<div id="gridData"></div>
 	    </div>
 	  <hr />
 	
 
 	
-<!-- 	    <div id="FAQbbs"> -->
-<!-- 	      <table> -->
-<!-- 	        <tr> -->
-<!-- 	          <th id="cateth">카테고리</th> -->
-<!-- 	          <th id="titleth">제목</th> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[취소/환불]</a></td> -->
-<!-- 	          <td id="title"><a href="">환불은 언제 되나요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[포인트]</a></td> -->
-<!-- 	          <td id="title"><a href="">포인트 적립은 언제 되나요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[회원/개인정보]</a></td> -->
-<!-- 	          <td id="title"><a href="">탈퇴하고 싶어요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[회원/개인정보]</a></td> -->
-<!-- 	          <td id="title"><a href="">회원정보 수정은 어떻게 하나요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[예약/결제]</a></td> -->
-<!-- 	          <td id="title"><a href="">예약 후 금액이 달라졌어요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="cate"><a href="">[서비스 이용]</a></td> -->
-<!-- 	          <td id="title"><a href="">방을 2개 예약하려면 어떻게 해야하나요</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="2"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-	        
-<!-- 	      </table> -->
-<!-- 	    </div> -->
-	
-	
-	
-<!-- 	    <div id="paging"> -->
-<!-- 	        <span class="block">《</span> -->
-<!-- 	        <span class="block">〈</span> -->
-<!-- 	        <span class="pageNo" id="nowPage">1</span> -->
-<!-- 	        <span class="pageNo">2</span> -->
-<!-- 	        <span class="pageNo">3</span> -->
-<!-- 	        <span class="pageNo">4</span> -->
-<!-- 	        <span class="pageNo">5</span> -->
-<!-- 	        <span class="pageNo">6</span> -->
-<!-- 	        <span class="pageNo">7</span> -->
-<!-- 	        <span class="pageNo">8</span>   -->
-<!-- 	        <span class="block">〉</span> -->
-<!-- 	        <span class="block">》</span> -->
-<!-- 	      </div> -->
-	      
 	</section>
 	
 </div>

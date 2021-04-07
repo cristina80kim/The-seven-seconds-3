@@ -61,20 +61,20 @@
         {header: "cuser",    name: "cuser",    width: 20                    },
         {header: "작성일",     name: "mdate",    width: 20                    },
         
-        {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
-          // this.index, this.item, this.list 에 모두 접근 가능
-          // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
+//         {header: "수정",      name: "btnUpdate", width: 20, align: "center", formatter: function() {
+//           // this.index, this.item, this.list 에 모두 접근 가능
+//           // 단, this.index는 pageOptions: { perPage: ... },를 사용하는 경우 동작하지 않는다.
           
-          return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
-          + kind + "\", \"" + actionInsert + "\", \"" 
-          + this.index + "\");'></button>"; 
-        }},
+//           return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
+//           + kind + "\", \"" + actionInsert + "\", \"" 
+//           + this.index + "\");'></button>"; 
+//         }},
         
-        {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
-          return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
-          + kind + "\", \"" + actionDelete + "\", \"" 
-          + this.index + "\");'>삭제</button>"; 
-        }}
+//         {header: "삭제",      name: "btnDelete", width: 20, align: "center", formatter: function() {
+//           return "<button class='AXButton' onclick='qna.callbackButtonClicked(\"" 
+//           + kind + "\", \"" + actionDelete + "\", \"" 
+//           + this.index + "\");'>삭제</button>"; 
+//         }}
       ];
       
       gridQna = main.showToastGrid(url, componentName, columns);
