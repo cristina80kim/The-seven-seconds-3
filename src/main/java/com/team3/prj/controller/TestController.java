@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.AjaxTestVO;
@@ -25,10 +26,18 @@ import com.team3.prj.vo.QnaVO;
 public class TestController {
     
     private final String className = "TestController";
+    private final String className2 = className + ".";
     
     @Autowired
     QnaService qnaSrvice;
 
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "jsonTest", Common.strRoleAMUY},
+            {className2 + "getData4Toast", Common.strRoleAUY},
+        };
+    }
+    
     // http://localhost:8081/test/json
     @GetMapping("/jsonTest")
     @ResponseBody

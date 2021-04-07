@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 
@@ -205,11 +206,23 @@ public class Libs {
        return str == null || str.length() == 0 ? defVal : str;
     }
     
-    // 기능: 문자열이 null이면 ""를 그렇지 않으면 str를 응답한다. 
+    // 기능: 문자열이 null이면 ""를 그렇지 않으면 str를 응
     public static String toString(String str) {
        return str == null ? "" : str;
     }
 
+    // 기능: 권한 정의 문자열을 HashMap에 추가한다.
+    public static void addAuthorizations(HashMap<String, String> hm, String[][] authorizations) {
+        for(String[] item : authorizations) {
+            if(hm.containsValue(item[0])) {
+                System.out.println("중복 적용 권한: " + item[0]);
+            }
+            else {
+                hm.put(item[0], item[1]);
+            }
+        }
+    }
+    
     
     
     //================================================
@@ -244,5 +257,5 @@ public class Libs {
         jsonResult.put("data", contents);
         return jsonResult;
     }
-    
+
 }
