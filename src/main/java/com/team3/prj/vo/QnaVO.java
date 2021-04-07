@@ -12,9 +12,11 @@ public class QnaVO {
 	private String title; //제목
 	private String q; //질문 내용
 	private String a; //답변 내용
-	private String cUser; // 생성자
-	private String mDate; // 수정날짜
-	private String aaUser; // 생성자
+	private String c_user; // 생성자
+	private String c_date; // 생성날짜
+	private String m_user; // 수정자
+	private String m_date; // 수정날짜
+
 
 	 
 	/*

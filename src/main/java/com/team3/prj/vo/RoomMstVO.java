@@ -19,10 +19,10 @@ public class RoomMstVO {
   private String pic2Uuid;	//사진2 UUID
   private String pic3Org;	//사진3 원본파일명
   private String pic3Uuid;	//사진3 UUID
-  private String cUser;		//생성자 id
-  private String mUser;		//수정자 id
-  private String cDate;		//생성일자/시간
-  private String mDate;		//수정일자/시간
+  private String c_user;		//생성자 id
+  private String m_user;		//수정자 id
+  private String c_date;		//생성일자/시간
+  private String m_date;		//수정일자/시간
   private String typeOfAcco; // 숙박시설종류/ 공통코드
   private String mainAddr;   // 00시 00구 
   private String dtlAddr;	// 00아파트000동000호

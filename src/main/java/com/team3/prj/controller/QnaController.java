@@ -81,7 +81,7 @@ public class QnaController {
 	@PostMapping("/insert")
 	public @ResponseBody String insert(@RequestBody QnaVO vo) {
 		System.out.println(className + ".insert() : " + vo.toString());
-		vo.setCUser("user");
+		vo.setC_user("user");
 		return service.insert(vo).toString();
 	}
 

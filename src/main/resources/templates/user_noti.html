@@ -23,8 +23,9 @@ var id = [[ ${session.id} ]];
                   console.log(item["id"]+item["title"]+item["content"]);
                   $("#no").val(item["no"]);
                   $("#title").val(item["title"]);
-                  $("#nickName").val(item["nickName"]);
+                  $("#nickName").val(item["nickname"]);
                   $("#content").val(item["content"]);
+                  $("#C_DATE").val(item["c_date"]);
                })
             });
 	})
@@ -47,33 +48,11 @@ var id = [[ ${session.id} ]];
 		  <input type="text" name="title" id="title" value="세븐 세컨즈 포인트 적립 정책 변경 안내" readonly="readonly"/>
 	  	 <hr />
 	  	 <div id="nickDate">
-		   	 <input type="text" name="nickName" id="nickName" value="세븐세컨즈" readonly="readonly" />
-		      <input type="text" name="C_DATE" id="C_DATE" value="21.03.15" readonly="readonly" />
+		   	 <input type="text" name="nickName" id="nickName" value="" readonly="readonly" />
+		      <input type="text" name="C_DATE" id="C_DATE" value="" readonly="readonly" />
 	  	 </div>
 	    <textarea name="content" id="content" rows="30" cols="50" readonly="readonly">
-안녕하세요. 세븐세컨즈 입니다.
 
-관심과 성원에 감사드립니다.
-
-
-
-2021년 04월 06일부터 당사의 패키지 구매 시, 포인트 사용이 가능합니다.
-
-1포인트는 1원으로 현금처럼 사용하실 수 있습니다.
-
-
-
-▶최소 사용 가능 포인트: 100 포인트부터 사용 가능.
-
--2021년 4월 6일부터 변경 적용함.
-
-
-
-▶포인트 누적 기준 : 구매 금액의 1% 씩 적립됨.
-
-
-
-감사합니다.
 	    </textarea> 
 		
 			<span id="line2"></span>

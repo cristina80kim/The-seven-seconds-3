@@ -5,9 +5,7 @@
 <mapper namespace="com.team3.prj.dao.NoticeDAO">
 	<!-- 전체 출력 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.NoticeVO">
-		SELECT no,nickname,title,
-		content,C_USER,M_USER,
-		C_DATE,M_DATE
+		SELECT *
 		FROM notice
 	</select>
 	
@@ -57,7 +55,7 @@
 		(
 		#{id},
 		(SELECT NVL(MAX(no),0) + 1 FROM notice),
-		#{nickName}, #{title}, #{content}, #{cUser}
+		#{nickName}, #{title}, #{content}, #{c_user}
 		)
 	</insert>
 

@@ -51,7 +51,7 @@
 		(
 		#{id},
 		(SELECT NVL(MAX(no),0) + 1 FROM faq),
-		#{cateId}, #{title}, #{content}, #{cUser}
+		#{cateId}, #{title}, #{content}, #{c_user}
 		)
 	</insert>
 

@@ -19,8 +19,8 @@ public class RoomDtlVO {
 	private String pic2Uuid;		// 룸이미지 UUID 2
 	private String pic3Org;			// 룸이미지 3
 	private String pic3Uuid;		// 룸이지미 UUID 3
-	private String cUser;			// 생성자 ID
-	private String mUser;			// 수정자 ID
-	private String cDate;			// 생성 날짜
-	private String mDate;			// 수정 날짜
+	private String c_user;			// 생성자 ID
+	private String m_user;			// 수정자 ID
+	private String c_date;			// 생성 날짜
+	private String m_date;			// 수정 날짜
 }

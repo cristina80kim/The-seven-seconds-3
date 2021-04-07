@@ -9,6 +9,6 @@ public class FaqVO {
 	private String cateId; 	// 카테고리
 	private String title; 	// 제목
 	private String content; // 내용
-	private String cUser; 	// 글쓴이
-	private String cDate;	// 생성 일자,시간
+	private String c_user; 	// 글쓴이
+	private String c_date;	// 생성 일자,시간
 }

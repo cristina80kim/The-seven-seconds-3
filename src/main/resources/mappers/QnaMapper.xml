@@ -5,9 +5,7 @@
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 	<!-- 전체 출력 sql문 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.QnaVO">
-		SELECT nickname, no,
-		cate_id,
-		is_pub, title, q, a
+		SELECT *
 		FROM qna
 		ORDER BY id
 	</select>
@@ -62,7 +60,7 @@
 		#{nickname},
 		(SELECT NVL(MAX(no),0) + 1 FROM qna), <!-- #{no}, -->
 		#{cateId},
-		#{isPub}, #{title}, #{q}, #{cUser}
+		#{isPub}, #{title}, #{q}, #{c_user}
 		)
 	</insert>
 
