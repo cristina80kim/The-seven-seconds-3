@@ -156,25 +156,29 @@
     -- 03. 룸(Room_Dtl; Room Detail)
     CREATE SEQUENCE seq_room_dtl START WITH 1000000000 INCREMENT BY 1 CACHE 10;
     CREATE TABLE room_dtl(
-      id             NUMBER(10) NOT NULL,        -- ID
-      mst_id         NUMBER(10) NOT NULL,        -- RoomMst(fk)
-      room_name      VARCHAR2(200) NOT NULL,     -- 룸 명
-      num_of_guests  NUMBER(3) NOT NULL,         -- 인원수
-      check_in_time  VARCHAR2(5) NULL,           -- 입실시간
-      check_out_time VARCHAR2(5) NULL,           -- 퇴실시간
-      weekday_price  NUMBER(10) NOT NULL,        -- 평일가격
-      weekend_price  NUMBER(10) NOT NULL,        -- 휴일가격
-      pic1_org       VARCHAR2(300) NULL,         -- 사진1 원본파일명
-      pic1_uuid      VARCHAR2(32) NULL,          -- 사진1 UUID(Universally Unique IDentifier)
-      pic2_org       VARCHAR2(300) NULL,         -- 사진2 원본파일명
-      pic2_uuid      VARCHAR2(32) NULL,          -- 사진2 UUID(Universally Unique IDentifier)
-      pic3_org       VARCHAR2(300) NULL,         -- 사진3 원본파일명
-      pic3_uuid      VARCHAR2(32) NULL,          -- 사진3 UUID(Universally Unique IDentifier)
-      C_USER         VARCHAR2(20) NOT NULL,      -- 생성자 ID.
-      M_USER         VARCHAR2(20) NULL,          -- 수정자 ID.
-      C_DATE         TIMESTAMP DEFAULT SYSDATE NOT NULL, -- 생성 날짜/시간
-      M_DATE         TIMESTAMP NULL              -- 수성 날짜/시간
-    );    
+	
+	id NUMBER(10) NOT NULL, -- ID
+	mst_id NUMBER(10) NOT NULL, -- RoomMst(fk)
+	room_name VARCHAR2(200) NOT NULL, -- 룸 명
+	type_of_room VARCHAR2(30) NOT NULL, -- 룸 종류(공통코드 class1='ROOM', class2='TYPE_OF_ROOM')
+	num_of_guests NUMBER(3) NOT NULL, -- 인원수
+	check_in_time VARCHAR2(5) NULL, -- 입실시간
+	check_out_time VARCHAR2(5) NULL, -- 퇴실시간
+	weekday_price NUMBER(10) NOT NULL, -- 평일가격
+	weekend_price NUMBER(10) NOT NULL, -- 휴일가격
+	sum_of_stars NUMBER(10) NOT NULL, -- 별점합계(추가), 평균별점=별점합계/리뷰합계
+	num_of_revu NUMBER(10) NOT NULL, -- 리뷰합계(추가)
+	pic1_org VARCHAR2(300) NULL, -- 사진1 원본파일명
+	pic1_uuid VARCHAR2(32) NULL, -- 사진1 UUID(Universally Unique IDentifier)
+	pic2_org VARCHAR2(300) NULL, -- 사진2 원본파일명
+	pic2_uuid VARCHAR2(32) NULL, -- 사진2 UUID(Universally Unique IDentifier)
+	pic3_org VARCHAR2(300) NULL, -- 사진3 원본파일명
+	pic3_uuid VARCHAR2(32) NULL, -- 사진3 UUID(Universally Unique IDentifier)
+	C_USER VARCHAR2(20) NOT NULL, -- 생성자 ID.
+	M_USER VARCHAR2(20) NULL, -- 수정자 ID.
+	C_DATE TIMESTAMP DEFAULT SYSDATE NOT NULL, -- 생성 날짜/시간
+	M_DATE TIMESTAMP NULL -- 수성 날짜/시간
+);
 
     -- DECLARE
     --   i NUMBER;

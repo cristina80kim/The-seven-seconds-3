@@ -38,6 +38,10 @@ private final String className="StayListController";
 		List<StayListSearchResultVO> resilt = stayService.search(vo);
 		return "user_RoomList";
 }
-	
-	
+	//131번 페이지연결
+	//http://localhost:8081/staylist/userRoomList2 
+	@GetMapping("/userRoomList2")
+	public String userRoomList2() {
+	    return "user_RoomList";
+	}
 }

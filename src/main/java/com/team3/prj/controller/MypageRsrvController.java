@@ -27,6 +27,13 @@ public class MypageRsrvController {
 	    return mypagersrvService.selectAllMypage();
 	}
 	
+	//페이지 130번
+	//http://localhost:8081/mypage/mypagersrv
+	@GetMapping("/mypagersrv")
+	public String mypagersrv() {
+	    return "user_MypageRsrv";
+	}
+	
 	//예약 삭제
 	//http://localhost:8081/mypage/delete?id=
 	@GetMapping("/delete")
