@@ -4,18 +4,79 @@
 <meta charset="UTF-8">
 <title>190.user_커뮤니티_QnA_목록</title>
 <link rel="stylesheet" href="css/user_ComuQnAList.css" />
-
-<script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
-<script src="/js/main.js?ver=1.0"></script>
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 <script>
 $(function() {
-  main.ajaxCodeQnaToSelectBox("cateId");
-  
-/*
-  var qna = {
-  }; 
-*/
+    console.log(">>> $(): 1");
+     main.ajaxCodeQnaToSelectBox("cateId");
+    qna.showQnaOnGrid("/qna/searchData", "gridData");
+  });
+
+var gridQna = null;
+
+$("#QnaSearch").keypress(function (e) {
+    if (e.which == 13){
+    	qna.onSearchBtnClick();  
+    	event.preventDefault();
+    } 
 });
+
+var qna = {
+		
+		onSearchBtnClick: function() {
+		      console.log("onSearchBtnClick()");
+		      var cate_id = $("#cateId option:selected").val();
+		      var keyword = $("#QnaSearch").val();
+		      console.log("keyWord : " + keyword);
+		      qna.showQnaOnGrid("/qna/toastSearch?cate_id="+ cate_id +"&keyword="+keyword, "gridData");
+		    },
+		    
+		    onQnaWriteClick: function() {
+		        console.log("onQnaWriteClick()");
+		        main.ajaxGetHtml("/qna/qWriter", "contents");
+		      },
+		      
+		      
+		      showQnaOnGrid: function(url, componentName) {
+		          var kind = "QnA";
+		          var actionInsert = "INSERT";
+		          var actionDelete = "DELETE";
+		    
+		          
+		          var columns = [
+		              {header: "번호",      name: "no",       width: 100, align: "center"   },
+		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
+		              {header: "제목",      name: "title",    width: 100 		              },
+		              {header: "답변유/무",      name: "a",    width: 20 		              },
+		              {header: "닉네임",      name: "nickname",    width: 20 		              },
+		              {header: "작성일",     name: "c_date",    width: 20                    },
+		              
+		            ];
+		          main.clearGrid(componentName, gridQna);  
+		          
+		            gridQna = main.showToastGrid(url, componentName, columns);
+		            
+		            // mousedown Event
+					gridQna.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridQna.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+	  					main.ajaxGetHtml("/qna/userQna?id="+rowInfo["id"],"contents");
+					});
+		          },
+		          
+		          callbackButtonClicked: function(kind, action, index) {
+		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+		            console.log("id: " + gridQna.getValue(index, "id")); 
+		          },
+		          
+		        };
+
+
 </script>
 </head>
 <body>
@@ -28,121 +89,22 @@ $(function() {
 			<div id="QnASrch">
 				  <h1>Q&A</h1>
 			      <form id="QnASrchFrm">
-			      	<input type="submit" value="글쓰기" id="writeBtn">
 			        <select name="cateId" id="cateId">
 			        	<option value="">카테고리</option>
 			        </select>
-	    		    <select name="QnATitleSrch" id="QnATitleSrch">
-			          <option value="">제목</option>
-			        </select>
-			        <input type="text" id="QnASearch">
-			        <input type="submit" value="검색" id="QnASearchBtn">
+			        <input type="text" id="QnaSearch" name="QnaSearch">
+			        <input type="button" value="검색" onclick="qna.onSearchBtnClick()" id="QnASearchBtn">
 			      </form>
+			      <table id="gridData"></table>
+			<div id="gridData"></div>
 		    </div>
+		    	<div id="writeBtn">
+		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기">
+	</div>
 			<hr />
 	
 		
-		    <div id="QnAbbs">
-		      <table>
-		        <tr>
-		          <th id="noth">번호</th>
-		          <th id="titleth">제목</th>
-		          <th id="nickNameth">글쓴이</th>
-		          <th id="C_DATEth">등록일</th>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[취소/환불]</a></td>
-		          <td id="title"><a href="">환불이 안된것같아요</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATE"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[포인트]</a></td>
-		          <td id="title"><a href="">포인트 적립 오류 문의</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATEth"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[회원/개인정보]</a></td>
-		          <td id="title"><a href="">회원 정보 수정이 안됩니다</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATEth"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[예약/결제]</a></td>
-		          <td id="title"><a href="">결제 오류라고 떴는데 결제가 되었음ㅡㅡ</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATEth"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[기타]</a></td>
-		          <td id="title"><a href="">왜 세븐 세컨즈만 이렇게 싼가요?</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATEth"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td id="no"><a href="">[서비스 이용]</a></td>
-		          <td id="title"><a href="">즐겨찾기가 사라졌어용</a></td>
-		          <td id="nickName"><a href="">닉네임1</a></td>
-		          <td id="C_DATEth"><a href="">21.03.16</a></td>
-		        </tr>
-		        <tr>
-		          <td colspan="4">
-		            <hr>
-		          </td>
-		        </tr>
-		        
-		      </table>
-		    </div>
-		
-		
-		
-		    <div id="paging">
-		        <span class="block">《</span>
-		        <span class="block">〈</span>
-		        <span class="pageNo" id="nowPage">1</span>
-		        <span class="pageNo">2</span>
-		        <span class="pageNo">3</span>
-		        <span class="pageNo">4</span>
-		        <span class="pageNo">5</span>
-		        <span class="pageNo">6</span>
-		        <span class="pageNo">7</span>
-		        <span class="pageNo">8</span>  
-		        <span class="block">〉</span>
-		        <span class="block">》</span>
-		      </div>
-		      
-		</section>
+		    </section>
 		
 	</div>
 

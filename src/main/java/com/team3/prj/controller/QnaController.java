@@ -2,6 +2,8 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.QnaService;
+import com.team3.prj.vo.FaqSearchVO;
+import com.team3.prj.vo.FaqVO;
 import com.team3.prj.vo.QnaSearchVO;
 import com.team3.prj.vo.QnaVO;
 
@@ -29,7 +35,7 @@ public class QnaController {
 	@GetMapping("/frmSelectAll")
 	public String frmSelectAll() {
 		System.out.println(className + ".frmSelectAll()");
-		return "frmQnaSelectAll"; // .html
+		return "user_ComuQnAList"; // .html
 	}
 
 	// http://localhost:8081/qna/selectAll
@@ -40,10 +46,13 @@ public class QnaController {
 	}
 
 //	http://localhost:8081/qna/oneSelect?id=1000000001
-	@GetMapping("/oneSelect")
-	public @ResponseBody List<QnaVO> selectOne(QnaVO vo){
+	@RequestMapping("/oneSelect")
+	public @ResponseBody List<QnaVO> selectOne(@RequestBody QnaVO vo) {
 		System.out.println(className + "selectOne()");
-		return service.selectOne(vo);
+		System.out.println("입력 : " + vo);
+		List<QnaVO> result = service.selectOne(vo);
+		System.out.println("출력 : " + result);
+		return result;
 	}
 	
 	// 기능 : Qna 목록 검색
@@ -120,5 +129,44 @@ public class QnaController {
 		System.out.println(className + ".delete():" + vo.toString());
 		return service.delete(vo).toString();
 	}
+	
+	// http://localhost:8081/qna/searchDate
+		@GetMapping("/searchData")
+		public @ResponseBody Object getData4Toast3(QnaSearchVO svo) {
+			System.out.println(className + ".getData4Toast3()");
 
+			List<QnaVO> lstQnaResult = service.search(svo);
+			return Libs.makeToastJsonResult(lstQnaResult);
+		}
+
+
+//	    http://localhost:8081/qna/adminList
+		@GetMapping("/adminList")
+		public String adminList() {
+			return "admin_comu_QnA";
+		}
+
+	//  http://localhost:8081/qna/userList
+		@GetMapping("/userList")
+		public String userList() {
+			return "user_ComuQnAList";
+
+		}
+		
+		// http://localhost:8081/qna/userQna
+			@GetMapping("/userQna")
+			public String userQna(String id) {
+				ServletRequestAttributes servletRequestAttribute =
+						(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+				
+				HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+				
+				httpSession.setAttribute("id", id);
+
+				return "user_QnA";
+			}
+
+
+	
+	
 }

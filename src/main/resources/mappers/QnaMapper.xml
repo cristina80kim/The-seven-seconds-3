@@ -24,8 +24,8 @@
 		SELECT *
 		FROM qna
 		<where>
-			<if test='cateId!= null and !"".equals(cateId)'>
-				AND cate_id = #{cateId} 
+			<if test='cate_id!= null and !"".equals(cate_id)'>
+				AND cate_id = #{cate_id} 
 			</if>
 			<if test='keyword!= null and !"".equals(keyword)'>
 
@@ -59,8 +59,8 @@
 		#{id}, <!-- 시퀀스 ID값이 들어감. -->
 		#{nickname},
 		(SELECT NVL(MAX(no),0) + 1 FROM qna), <!-- #{no}, -->
-		#{cateId},
-		#{isPub}, #{title}, #{q}, #{c_user}
+		#{cate_id},
+		#{is_pub}, #{title}, #{q}, #{c_user}
 		)
 	</insert>
 
@@ -68,7 +68,7 @@
 	<update id="updateQ">
 		UPDATE qna
 		SET title=#{title}, q=#{q},
-		cate_id=#{cateId}, is_pub=#{isPub}
+		cate_id=#{cate_id}, is_pub=#{is_pub}
 		WHERE id=#{id}
 	</update>
 

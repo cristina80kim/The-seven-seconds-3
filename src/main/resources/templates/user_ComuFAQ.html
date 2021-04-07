@@ -19,7 +19,7 @@ $(function() {
 
 var gridFaq = null;
 
-$("#FAQSrch").keypress(function (e) {
+$("#FAQSearch").keypress(function (e) {
     if (e.which == 13){
     	faq.onSearchBtnClick();  
     	event.preventDefault();
@@ -31,7 +31,8 @@ var faq = {
 		onSearchBtnClick: function() {
 		      console.log("onSearchBtnClick()");
 		      var cate_id = $("#cateId option:selected").val();
-		      var keyWord = $("#FAQSrch").val();
+		      var keyWord = $("#FAQSearch").val();
+		      console.log("keyWord : " + keyWord);
 		      faq.showFaqOnGrid("/faq/toastSearch?cate_id="+ cate_id +"&keyWord="+keyWord, "gridData");
 		    },
 		    
@@ -51,7 +52,6 @@ var faq = {
 		              {header: "번호",      name: "no",       width: 100, align: "center"   },
 		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
 		              {header: "제목",      name: "title",    width: 100 		              },
-		              {header: "cuser",    name: "cUser",    width: 20                    },
 		              {header: "작성일",     name: "c_date",    width: 20                    },
 		              
 		            ];
@@ -93,7 +93,7 @@ var faq = {
 <!-- 		        <select name="FAQAllCate" id="FAQAllCate"> -->
 <!-- 		          <option value="">전체</option> -->
 <!-- 		        </select> -->
-		        <input type="text" id="FAQSrch" name="FAQSrch">
+		        <input type="text" id="FAQSearch" name="FAQSearch">
 		        <input type="button" onclick="faq.onSearchBtnClick()" value="검색" id="FAQSrchBtn">
 		       </form>
 	      	<table id="gridData"></table>

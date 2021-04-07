@@ -32,6 +32,7 @@ var notice = {
 		      console.log("onSearchBtnClick()");
 		      var cateId = $("#Noticate option:selected").val();
 		      var keyWord = $("#NotiSearch").val();
+		      console.log(keyWord);
 		      notice.showNoticeOnGrid("/notice/toastSearch?cateId="+ cateId +"&keyWord="+keyWord , "gridData");
 		    },
 		    
