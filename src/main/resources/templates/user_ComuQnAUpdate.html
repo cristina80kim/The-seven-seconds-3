@@ -2,30 +2,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>191. user_커뮤니티_QnA_글쓰기</title>
+<title>191. user_커뮤니티_QnA_수정</title>
 <link rel="stylesheet" href="css/user_ComuQnAwrite.css" />
 <script src="/js/Guriddo_jqGrid_JS_5.5.4-Trial/js/jquery-1.11.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
+<script th:inline="javascript">
+
+var id = [[ ${session.id} ]];
+	
+</script>
 <script>
-	function login() {
+
+$(function(){
+	console.log("id="+id);
+	var data = {
+			id : id
+	}
+	main.ajaxPostJson("/qna/oneSelect",data,function(json){
+        console.log(json);
+        $.each(json,function(index,item){
+           console.log(item["id"]+item["title"]+item["content"]);
+           $("#id").val(item["id"]);
+           $("#title").val(item["title"]);
+           $("#nickName").val(item["nickname"]);
+           $("#q").val(item["q"]);
+           $("#cate_id").val(item["cate_id"]);
+           $("#cUser").val(item["c_user"]);
+        })
+     });
+});
+
+</script>
+
+<script>
+	function update() {
 		var QnASrchFrm = this.QnASrchFrm;
 		var param = {
-			nickname : $("#nickname").val(),
 			cate_id : $("select[id='cateId']").val(),
 			is_pub : $("#isPub").val(),
 			title : $("#title").val(),
 			q : $("#q").val(),
-			c_user : $("#cUser").val(),
+			id : $("#id").val(),
 
 		/* , isPub, cUser, title, q, nickname */
 		};
 		console.log(param);
-		main.ajaxPostJson("/qna/insert", param, function(jsonStr) {
+		main.ajaxPostJson("/qna/updateQ", param, function(jsonStr) {
 			if (jsonStr != null && jsonStr != "") {
-				window.alert("질문이 등록되었습니다");
+				window.alert("질문이 수정되었습니다");
 				index.onQnaClick();
 			} else {
-				window.alert("질문이 등록되지 않았습니다");
+				window.alert("질문이 수정되지 않았습니다");
 			}
 		});
 		/* QnASrchFrm.submit(); */
@@ -80,11 +107,12 @@
 
 					<br />
 					<div id="submitBtn_">
-						<input type="button" onclick="login()" value="등록" id="submitBtn">
+						<input type="button" onclick="update();" value="수정" id="submitBtn">
 						<input type="button" value="취소" onclick="index.onQnaClick();" id="cancleBtn">
 					</div>
-					<input type="hidden" name="nickname" id="nickname" value="jho" />
-					<input type="hidden" name="cUser" id="cUser" value="user" />
+					<input type="text" name="nickName" id="nickName" value="jho" />
+					<input type="text" name="cUser" id="cUser" value="user" />
+					<input type="text" name="id" id="id" value="" />
 				</form>
 			</div>
 

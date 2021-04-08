@@ -24,12 +24,34 @@ var id = [[ ${session.id} ]];
                   $("#no").val(item["no"]);
                   $("#title").val(item["title"]);
                   $("#nickName").val(item["nickname"]);
-                  $("#content").val(item["q"]);
+                  $("#q").val(item["q"]);
                   $("#C_DATE").val(item["c_date"]);
                   $("#cate_id").val(item["cate_id"]);
                })
             });
-	})
+	});
+</script>
+<script>
+	function onQnaUpdateQClick(){
+		console.log("id : "+id);
+		main.ajaxGetHtml("/qna/qUpdate?id="+id,"contents");
+	}
+		
+	function onQnaDeleteClick(){
+		var param = {id:id}
+		var msg= confirm("삭제하시겠습니까??");
+		
+		if (msg){
+			main.ajaxPostJson("/qna/delete",param,function(result){
+				if(result != null && result != ""){
+					window.alert("삭제되었습니다.");
+					index.onQnaClick();
+				}else
+					window.alert("삭제에 실패하였습니다. 잠시후 다시 시도해주세요");
+					
+			});
+		};
+	};
 </script>
 </head>
 <body>
@@ -51,14 +73,14 @@ var id = [[ ${session.id} ]];
 		   	 <input type="text" name="nickName" id="nickName" value="" readonly="readonly"/>
 		      <input type="text" name="C_DATE" id="C_DATE" value="" readonly="readonly"/>
 	  	 </div>
-	    <textarea name="content" id="content" rows="5" cols="50"readonly="readonly">
+	    <textarea name="q" id="q" rows="5" cols="50"readonly="readonly">
 
 	    </textarea> <br />
 		
 			<span id="line2"></span>
 		    <input type="button" name="returnBtn" id="returnBtn"onclick="index.onQnaClick();" value="목록">
-		    <input type="button" name="deleteBtn" id="deleteBtn" value="삭제">
-		    <input type="button" name="updateBtn" id="updateBtn" value="수정">
+		    <input type="button" name="deleteBtn" id="deleteBtn" onclick="onQnaDeleteClick();"value="삭제">
+		    <input type="button" name="updateBtn" id="updateBtn"onclick="onQnaUpdateQClick();" value="수정">
 	
 	 </form>
 	</section>

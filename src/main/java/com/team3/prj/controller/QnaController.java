@@ -100,8 +100,21 @@ public class QnaController {
 	// title, q
 	// http://localhost:8081/qna/qupdate?title=cddcdd&q=aaaaa&cateId=bbbb&isPub=y&id=
 
-	@GetMapping("/updateQ")
-	public @ResponseBody String updateQ(QnaVO vo) {
+	 //http://localhost:8081/qna/qUpdate
+		@GetMapping("/qUpdate")
+		public String qUpdate(String id) {
+			ServletRequestAttributes servletRequestAttribute =
+					(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			
+			HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+			
+			httpSession.setAttribute("id", id);
+
+			return "user_ComuQnAUpdate";
+		}
+//	http://localhost:8081/qna/updateQ
+	@PostMapping("/updateQ")
+	public @ResponseBody String updateQ(@RequestBody QnaVO vo) {
 		System.out.println(className + ".updateQ():" + vo.toString());
 		return service.updateQ(vo).toString();
 	}
@@ -124,8 +137,8 @@ public class QnaController {
 	// 기능 : Qna_admin 게시글 삭제
 	// param :QnaVO 중 - id(insert된 ID/자동대입)
 	// http://localhost:8081/qna/delete?id=
-	@GetMapping("/delete")
-	public @ResponseBody String delete(QnaVO vo) {
+	@PostMapping("/delete")
+	public @ResponseBody String delete(@RequestBody QnaVO vo) {
 		System.out.println(className + ".delete():" + vo.toString());
 		return service.delete(vo).toString();
 	}
