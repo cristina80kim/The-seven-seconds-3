@@ -3,11 +3,18 @@
 <head lang="en">
 <meta charset="UTF-8">
 
-<!-- TOAST grid를 위한 CDN -->
-<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
-<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 
-<!-- TOAST ㅊ미둥ㅁㄱ를 위한 CDN -->
+<!-- TOAST grid를 위한 CDN -->
+<link rel="stylesheet" href="/css/tui-grid.css" />
+<script src="/js/tui-grid.js"></script>
+
+<!-- TOAST pagenation 시 필요 -->
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
+
+<!-- TOAST Canendar를 위한 CDN -->
 <!-- <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>  -->
 <!-- <script src="https://uicdn.toast.com/tui.dom/v3.0.0/tui-dom.js"></script> -->
 <!-- <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script> -->
@@ -15,15 +22,14 @@
 <!-- <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script> -->
 
 
-<!-- TOAST pagenation 시 필요 -->
-<link rel="stylesheet" href="https://uicdn.toast.com/tui-pagination/dist/tui-pagination.css" />
-<script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script>
+<script th:inline="javascript">
+  // javascript에서 thymeleaf 값 대입하기
+  var id = [[ ${session.id} ]];
+</script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/main.js?ver=1.00"></script>
-  
+
 <script>
-    
+  
   // 기능: 문서의 모든 콘텐츠(images, script, css, etc)가 로드된 후 발생하는 이벤트
   window.onload = function() {  };
   
@@ -36,14 +42,16 @@
   $(function() {
     console.log(">>> $(): 1");
     
-    // 공통코드-Q&A 유형 부러오기
+    console.log("id: " + id);
+    
+    // 공통코드 "Q&A 유형" 불러오기
     main.ajaxCodeQnaToSelectBox("cateId");
+    
+    // Grid 초기화
+    var gridTest = initTestGrid("/test/getData4Toast2", "gridTest");
     
     // QNA 검색
     qnaSearch();
-    
-    // 테스트 그리드 그리기
-    showTestGrid("/test/getData4Toast2", "gridTest");
     
     /*
     // TOAST calendar 작성. Canendar()가 없음
@@ -76,6 +84,12 @@
   var qnaSearch = function() {
     console.log("qnaSearch()");
     
+    var page = $("#page").val();
+    var perPage = $("#perPage").val();
+
+    // 테스트 그리드 그리기
+    showTestGrid(page, rowsPerPage);
+    
     var cateId = main.nvl($("#cateId option:selected").val(), "");
     
     if(cateId.substr(0, 1) == "=") {
@@ -85,7 +99,7 @@
     var keyword = $("#keyword").val();
     var url = "/test/getData4Toast3?cateId=" + cateId + "&keyword=" + keyword;
      
-    showQnaListOnGrid(url, "gridQNA");
+    showQnaListOnGrid(url, "gridQNA");//, 1024, 768);
   };
   
   // 기능: QNA 검색 및 결과를 Toast Grid에 출력하기
@@ -153,12 +167,11 @@
   
 
   // --------------------------------
-  var gridTest;
-  
-  var showTestGrid = function(url, componentName) {
-    var options = {
-      el: document.getElementById('gridTest'),
-      columns: [
+  // 테스트 Grid을 생성한다.
+  var initTestGrid = function(url, componentName, page, perPage) {
+    console.log(url);
+     
+    var columns = [
         {
           header: "이름",
           name: "name"
@@ -168,8 +181,8 @@
           name: "value",
           editor: "text"
         }
-      ],
-      data: {
+    ];
+    var datasource = {
         contentType: "application/json",
         api: {
           readData: { 
@@ -177,25 +190,44 @@
             method: "GET" 
           }
         }
-      }
+    };
+    var pageOptions = {
+      page:    main.nvl(page, "1"),
+      perPage: main.nvl(perPage, "5"),
+    };
+
+    var options = {
+      el:          document.getElementById(componentName),
+      columns:     columns,
+      data:        datasource,
+      pageOptions: pageOptions, 
+      pagination:  true,
     };
 
     // Grid 초기화
-    main.clearGrid("#" + componentName, gridTest);
+    // main.clearGrid("#" + componentName, gridTest);
 
     // GRID 를 생성한다.
-    gridTest = new tui.Grid(options);
+    return new tui.Grid(options);
+  }
+  
+  var showTestGrid = function(page, perPage) {
+  // "/test/getData4Toast2?page=" + page + "&perPage=" + perPage, "gridTest"
   }
   
 </script>
   
 </head>
 <body>
+  id: [[${session.id}]]<br />
+  id: [[${session["id"]}]]<br />
   <h1>공지사항</h1>
     <form id="frmNotiSearch">
       <select name="cateId" id="cateId"></select>
-      <input type="text" id="keyword" name="keyword">
-      <input type="button" id="btnSearch" value="검색" onclick="onQnaSearchClicked();" onkeypress="onQnaSearchKeyPressed(this);">
+      <input  type="text"   id="keyword"   name="keyword">
+      <input  type="number" id="page"      name="page"    value="1">
+      <input  type="number" id="perPage"   name="perPage" value="5">
+      <input  type="button" id="btnSearch" value="검색" onclick="onQnaSearchClicked();" onkeypress="onQnaSearchKeyPressed(this);">
     </form><br />
 	<div id="gridQNA"></div> <br />
     <div id="gridTest"></div> <br />
