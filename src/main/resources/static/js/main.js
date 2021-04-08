@@ -233,7 +233,7 @@ var main = {
         //   - error: SyntaxError: Unexpected end of JSON input
         console.log("[ERROR]: request: " + request + ", status: " + status + ", error: " + error);
         console.log(request);
-        
+
         if(main.isNotEmpty(callbackError)) {
           console.log(">>> ajaxPostJson(): success 4");
           callbackError(request, status, error);
@@ -396,16 +396,17 @@ var main = {
   //============================================================
   // 기능: TOAST Grid 그리기 
   //============================================================
-  showToastGrid: function(url, componentId, columns) {
+  showToastGrid: function(url, componentId, columns, width, height) {
     var result = null;
     var url = url;  // http://localhost:8081/test/getData4Toast3
     
     var options = {
       el: document.getElementById(componentId),
       columns: columns,
-      bodyHeight: 'auto',
-      rowHeight:  'auto', // 자동 높이   
-      rowHeaders: ['rowNum'],
+      bodyWidth: main.isEmpty(width) ? 'auto' : width,
+      bodyHeight: main.isEmpty(height) ? 'auto' : height,
+      rowHeight:  'auto', // 각 Row의 자동 높이   
+      //rowHeaders: ['rowNum'],  // 번호 출력
       //pageOptions: { perPage: 5 },
       data: {
         contentType: "application/json",
