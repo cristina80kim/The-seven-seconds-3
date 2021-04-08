@@ -87,18 +87,49 @@ nav ul li a{
 }
 nav {
 	color:#fff !important;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	height:100vh;
 }
 
-nav .gnb>li>a:hover,#logoTopMenu>#topMenu li a:hover {
-	color: #785aef !important;
+
+nav .gnb>li>a:hover{
+	color:  #8c73f2 !important;
 }
+
+
 #logoTopMenu>#topMenu li a, #inComm li a{
 	color: #4aa1f7 !important;
+	position:relative; /* 추가ㅣ */
+	padding:6px 12px; /*추가  */
 }
+ 
 
 #topMenu li a:hover,#inComm li a:hover {
 	color: #785aef !important;
 }
+
+/*추가한 css 시작 */
+
+
+nav .gnb>li:hover a::after{
+	content:"";
+	position:absolute;
+	bottom:0;
+	left:50%;
+	transform:translateX(-50%);
+ 	width: 0;
+	height: 3px;
+	background-color:  #8c73f2;
+	transition:all .5s ease-out;
+}
+
+nav .gnb>li>a:hover::after{
+	width: 100%;
+}
+
+/*추가한 css 끝 */
 
 nav ul li a {
 	color:inherit;
