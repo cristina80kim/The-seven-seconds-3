@@ -2,6 +2,8 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.etc.Common;
@@ -24,10 +27,10 @@ import com.team3.prj.vo.QnaVO;
 @Controller
 @RequestMapping("/test")
 public class TestController {
-    
+
     private final String className = "TestController";
     private final String className2 = className + ".";
-    
+
     @Autowired
     QnaService qnaSrvice;
 
@@ -37,7 +40,7 @@ public class TestController {
             {className2 + "getData4Toast", Common.strRoleAUY},
         };
     }
-    
+
     // http://localhost:8081/test/json
     @GetMapping("/jsonTest")
     @ResponseBody
@@ -47,7 +50,7 @@ public class TestController {
     }
 
     // http://localhost:8081/test/getData4Toast
-    @GetMapping("/getData4Toast")
+    @RequestMapping("/getData4Toast")
     public @ResponseBody String getData4Toast() {
         System.out.println(className + ".getData4Toast()");
 
@@ -69,30 +72,65 @@ public class TestController {
 
         return jsonData;
     }
-    
+
+    // http://localhost:8081/test/qnaSearch?cateId=&keyWord=
+    @GetMapping("/qnaSearch")
+    public @ResponseBody List<QnaVO> qnaSearch(QnaSearchVO svo) {
+        System.out.println(className + ".qnaSearch()");
+        System.out.println(svo);
+        List<QnaVO> result = qnaSrvice.search(svo);
+        System.out.println("출력: " + result);
+        return result;
+    }
+
     // http://localhost:8081/test/getData4Toast2
-    @GetMapping("/getData4Toast2")
-    public @ResponseBody Object getData4Toast2() {
-        System.out.println(className + ".getData4Toast2()");
-        
+    @RequestMapping("/getData4Toast2")
+    public @ResponseBody Object getData4Toast2(@RequestParam String page,
+            @RequestParam String perPage) {
+        System.out.println(className + ".getData4Toast2(" + page + ", " + perPage + ")");
+
         // String[][] str = new String[][] {{"111", "112", "113"}, {"121", "122", "123"}};
-        
+
         // [결과]
         // {"result": true, "data": { "contents": [ { "name": "yskim", "value": "99세" }, { "name": "한가인", "value": "20세" } ] }}
         // {"result": true, "data": { "contents": [ { "name": "yskim", "value": "10세" }, { "name": "한가인2", "value": "20세" } ] }}
-        
-        JSONObject jsonData = new JSONObject();
-        
-        jsonData.put("result", true);
-        jsonData.put("data",
-                Libs.makeJosnValue("contents",
-                        new Object[] { 
-                                Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", null } }),
-                                Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } }), 
-                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", null } }), 
-                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", "99세" } }) 
-                                }));
-        
+
+        int page2 = Integer.valueOf(Libs.nvl(page, "1"));
+        int perPage2 = Integer.valueOf(Libs.nvl(perPage, "5"));
+        int totalCount = 100;
+        System.out.println("보정값: page: " + page2 + ", perPage: " + perPage2);
+
+        Object[] objs = new Object[perPage2];
+        int start = (page2 - 1) * perPage2;
+
+        for(int nI = 0; nI < perPage2; nI ++) {
+            start++;
+            String name = (nI % 2 == 0 ? "한가인" : "윤아") + start;
+            String value = String.valueOf((nI % 2 == 0 ? 25 : 20) + start);
+            objs[nI] = Libs.makeJosnValue(new Object[][] {
+                { "name", name }, { "value", value } });
+        }
+
+        JSONObject data = new JSONObject();
+        data.put("contents", objs);
+
+        JSONObject pagination = new JSONObject();
+        pagination.put("page", String.valueOf(page2));
+        pagination.put("totalCount", String.valueOf(totalCount));
+        data.put("pagination", pagination);
+
+        JSONObject result = new JSONObject();
+        result.put("result", true);
+        result.put("data", data);
+
+//                Libs.makeJosnValue("contents",
+//                        new Object[] {
+//                                Libs.makeJosnValue(new Object[][] { { "name", "yskim" }, { "value", null } }),
+//                                Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } }),
+//                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", null } }),
+//                                Libs.makeJosnValue(new Object[][] { { "name", null }, { "value", "99세" } })
+//                });
+
 //                Libs.makeJosnValue(Libs.makeJosnValue("result", true),
 //                        Libs.makeJosnValue("data",
 //                                Libs.makeJosnValue("contents", new Object[] {
@@ -100,51 +138,53 @@ public class TestController {
 //                                        Libs.makeJosnValue(new Object[][] { { "name", "한가인2" }, { "value", "20세" } })
 //
 //                                })));
-
-        return jsonData;
+        return result;
     }
-    
+
     // http://localhost:8081/test/getData4Toast3
     @GetMapping("/getData4Toast3")
     public @ResponseBody Object getData4Toast3(QnaSearchVO vo) {
         System.out.println(className + ".getData4Toast3()");
-        
+
         List<QnaVO> lstQnaResult = qnaSrvice.search(vo);
         return Libs.makeToastJsonResult(lstQnaResult);
     }
-    
+
     // http://localhost:8081/test/frmShowGrid
     @GetMapping("/frmShowGrid")
     public String frmShowGrid() {
         System.out.println(className + ".frmShowGrid()");
+
+        HttpSession httpSession = Libs.getSession();
+        httpSession.setAttribute("id", "yskim");
         return "/test/frmTestShowGrid2";  // .html
     }
-    
+
     // http://localhost:8081/test/frmToggleCheckBox
     @GetMapping("/frmToggleCheckBox")
     public String frmToggleCheckBox() {
         System.out.println(className + ".frmToggleCheckBox()");
         return "/test/frmToggleCheckBox";  // .html
     }
-        
+
     @PostMapping("/toggleCheckBox")
     public @ResponseBody AjaxTestVO toggleCheckBox(
             // @RequestParam(value="isPub", required=false, defaultValue="N") // isPub이 전달 안 된 경우 "N"을 가짐.
             // String isPub, String name, String age, String tel) {
             AjaxTestVO vo) {
         System.out.println(className + ".toggleCheckBox()");
-        
+
         if(vo != null) {
             vo.setPub(Libs.nvl(vo.getPub(), "N"));  // null 또는 "" 인 경우 "N"으로 변경
         }
-        
+
         System.out.println("[상태값] " + vo);
         return vo;
     }
-    
+
     // ************************************************
     // * JSON 데이터를 parameter로 전달하는  경우
-    //   - POST 방식, 
+    //   - POST 방식,
     //   - P@RequestBody로 parameter 받고,
     //   - Parameter VO에 @NoArgsConstructor
     //   가 있어야 한다.
@@ -155,13 +195,14 @@ public class TestController {
             // String isPub, String name, String age, String tel) {
             @RequestBody AjaxTestVO vo) {
         System.out.println(className + ".toggleCheckBox()");
-        
+
         if(vo != null) {
             vo.setPub(Libs.nvl(vo.getPub(), "N"));  // null 또는 "" 인 경우 "N"으로 변경
         }
-        
+
         System.out.println("[상태값] " + vo);
         return vo;
     }
 
 }
+
