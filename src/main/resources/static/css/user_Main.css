@@ -205,16 +205,16 @@ input[type=number], select,option {
 
 #slide {
     /* width: 440px; */
-    width: 490px;
+    width: 488px;
     height: 140px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    border:1px solid black;
+
 }
 
 #slideShow{
-	width: 490px;
+	width: 488px;
    /*  width: 440px; */
     height: 140px;
     margin: 0 auto;
@@ -223,10 +223,11 @@ input[type=number], select,option {
 
 #slideShow>img {
     position: absolute;
+    width: 488px;
 }
 
 #slideShow>img:not(:first-child) {
-    margin-left:-490px;
+    margin-left:-488px;
     /* margin-left: -440px;  */
 }
 
@@ -325,6 +326,7 @@ input[type=number], select,option {
 
 .column {
   margin: 15px 15px 0;
+  width: 490px;
   padding: 0;
   	display: inline-block;
 	float: left;
@@ -339,13 +341,13 @@ input[type=number], select,option {
   display: block;
 }
 
-.column a/* div */ {
+.column td>a/* div */ {
   position: relative;
   text-decoration: none;
   color:inherit;
   float: left;
-  width: 225px;
-  height: 140px;
+  width: 240px;
+  height: 150px;
   padding: 0;
 }
 .column tr/* div:first-child */ {
@@ -353,47 +355,90 @@ input[type=number], select,option {
 }
 .column span {
   position: absolute;
-  bottom:-10px;
+/*   bottom:-10px; */
   left:0;
-  z-index: -1;
+  z-index: 11111;
   display: block;
 /*   width: 100%;// */
-  width: 225px;
-  height:40px;
+  width: 240px;
+/*   height:40px; */
   margin: 0;
   padding: 0;
   color: white;
-  font-size: 12px;
+	margin: 10px auto; 
+  font-size: 15px;
   text-decoration: none;
+  	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
   text-align: center;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
-  opacity: 0;
+/*   -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out; */
+  text-shadow: 2px 2px 2px gray;
+  opacity: 1;
   line-height:20px;
 }
-.column a:hover span {
+
+.colmun span:hover {
+	width: 240px;
+	height:100%;
+	color:white;
+  	background-color:rgba(0,0,0,0.5);
+  	text-shadow: 6px 2px 2px gray;
+}
+
+.column label {
+	  position: absolute;
+bottom:0;
+  left:0;
+  z-index: 11111;
+  display: block;
+  width: 240px;
+height:40px; 
+  margin: 0;
+  padding: 0;
+  color: white;
+	margin: 10px auto; 
+  font-size: 13px;
+  text-decoration: none;
+  	top: 70%;
+	left: 50%;
+	font-weight:100;
+	transform: translate( -50%, -50% );
+  text-align: center;
+  text-shadow: 2px 2px 2px gray;
+  opacity: 1;
+  line-height:20px;
+}
+/* .column a:hover span {
  	margin: 10px auto;
-  	width: 225px;
+    width: 240px;
   	height:40px;
 	background-color:rgba(0,0,0,0.5);
 	color:white;
 	line-height:20px;
-/* 	top: 50%;
+	top: 50%;
 	left: 50%;
-	transform: translate( -50%, -50% ); */
+	transform: translate( -50%, -50% );
+	font-size:1.2em;// 
 	z-index:1111;
 	opacity:1;
-}
+} */
 
 /* figure  */
 .column tr>td>a{
-	width: 225px;
-	height: 140px;
-  margin: 0;
+  width: 240px;
+	height: 150px;
+  margin: 2px;
   padding: 0;
   background: #fff;
   overflow: hidden;
   cursor: pointer;
+
+}
+
+.column tr>td:first-child a{
+	  margin-left:-10px;
 }
 
 /* figure */a>img {
@@ -420,4 +465,5 @@ input[type=number], select,option {
 	width: 100%;
 	vertical-align: middle;
 }
+
 
