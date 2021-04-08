@@ -6,7 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class Libs {
 
@@ -256,6 +260,18 @@ public class Libs {
         jsonResult.put("result", param != null);
         jsonResult.put("data", contents);
         return jsonResult;
+    }
+
+    //================================================
+    // 7. 기타 관련 
+    //================================================
+    
+    // 기능: HttpSession을 응답한다.
+    public static HttpSession getSession() {
+        ServletRequestAttributes servletRequestAttribute 
+            = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+        return httpSession;
     }
 
 }
