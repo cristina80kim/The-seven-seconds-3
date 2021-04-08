@@ -4,7 +4,65 @@
 <meta charset="UTF-8">
 <title>user_메인</title>
 <link rel="stylesheet" href="css/user_Main.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+let now = 0;
+let imgCnt = 2; 
 
+slideStart();
+
+
+function slideStart() {
+
+        setInterval(slideShow, 3000);
+}
+
+
+
+function slideShow() {
+
+        now = now == imgCnt ? now = 0 : ++now;
+
+
+        $("#slideShow>img").eq(now - 1)
+                .css({
+                        "margin-left": "1000px", //-1000>1000
+                        "transition": "all 1s"
+                }); //1번쨰이미지
+
+        $("#slideShow>img").eq(now)
+                .css({
+                        "margin-left": "0px",
+                        "transition": "all 1s"
+                }); //2번째 이미지
+
+        if (now == 0) {
+                $("#slideShow>img").eq(1)
+                        .css({
+                                "margin-left": "-1000px",
+                                "transition": "none"
+                        });
+        }
+
+        if (now == 1) {
+                $("#slideShow>img").eq(2)
+                        .css({
+                                "margin-left": "-1000px",
+                                "transition": "none"
+                        });
+        }
+        if (now == 2) {
+                $("#slideShow>img").eq(0)
+                        .css({
+                                "margin-left": "-1000px",
+                                "transition": "none"
+                        });
+        }
+
+
+}
+
+</script>
 </head>
 <body>
 
@@ -86,8 +144,8 @@
 		<div id="slide">
 			<div id="slideShow">
 				<img src="images/flowerban.png" width="488" height="140" alt="배너1" />
-				 <img src="images/lovekorea.png" width="488" height="140"  alt="배너2" />
-				 <img src="images/pakage.png" width="488" height="140" alt="배너3" /> 
+				 <img src="images/hotel.png" width="488" height="140"  alt="배너2" />
+				 <img src="images/korealove.png" width="488" height="140" alt="배너3" /> 
 			</div>
 		</div>
 		
@@ -98,50 +156,50 @@
 		</div>
 <!--bannerBtn END  -->		
 
-
-	<table class="hover01 column">
-	<tr>
-		<td>
-			<a href="#">
-				
-					<img src="images/seoul.jpg" width="240" alt="여행지1_img" id="tr1"/>
-					<span>서울</span>
-					<label>숙소 4,433개</label>
-				
-			</a>
-		</td>
-		<td>
-			<a href="#">
-				
-					<img src="images/jeju.jpg" width="240" alt="여행지2_img" id="tr2"/>
-					<span>제주</span>
-					<label>숙소 3,083개</label>
-				
-			</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a href="#">
-				
-					<img src="images/Gangneung.jpg" width="240" alt="여행지3_img" id="tr3"/>
-					<span>강릉</span>
-					<label>숙소 655개</label>
-				
-			</a>
-		</td>
-		<td>
-			<a href="#">
-				
-					<img src="images/busan.jpg" width="240" alt="여행지4_img" id="tr4" />
-					<span>부산</span>
-					<label>숙소 1,235개</label>
-				
-			</a>
-		</td>
-	</tr>
-
-</table>
+	
+		<table class="hover01 column">
+			<tr>
+				<td>
+					<a href="#">
+						
+							<img src="images/seoul.jpg" width="240" alt="여행지1_img" id="tr1"/>
+							<span>서울</span>
+							<label>숙소 4,433개</label>
+						
+					</a>
+				</td>
+				<td>
+					<a href="#">
+						
+							<img src="images/jeju.jpg" width="240" alt="여행지2_img" id="tr2"/>
+							<span>제주</span>
+							<label>숙소 3,083개</label>
+						
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#">
+						
+							<img src="images/Gangneung.jpg" width="240" alt="여행지3_img" id="tr3"/>
+							<span>강릉</span>
+							<label>숙소 655개</label>
+						
+					</a>
+				</td>
+				<td>
+					<a href="#">
+						
+							<img src="images/busan.jpg" width="240" alt="여행지4_img" id="tr4" />
+							<span>부산</span>
+							<label>숙소 1,235개</label>
+						
+					</a>
+				</td>
+			</tr>
+	
+		</table>
 		
 
 	</section>
