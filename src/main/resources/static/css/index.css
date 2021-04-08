@@ -2,12 +2,14 @@
 @import url(reset.css);
 
 #inWarp{
-	width:1080px;
+/* 	width:1080px; */
+	width: 960px;
 	margin:0 auto;
 }
 #leftMenu {
 		float:left;
 	}
-#contents {
+/* #contents {
 		float:right;
-	}
+}
+ */

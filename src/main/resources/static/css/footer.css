@@ -16,6 +16,7 @@ footer {
 	clear: both;
 	width: 1080px;
 	height:105px;
+	margin-top:40px !important;
 	margin: 0 auto;
 	font-size:10.5pt;
 }

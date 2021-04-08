@@ -16,15 +16,17 @@ nav>.gnb{
 }
 
 #hWrap{
-	width: 1080px;
+/* 	width: 1080px; */
+	width: 960px;
 	height:150px;  
 	margin: 0 auto;
-	padding-top: 20px;
+	padding-top: 25px;
+
 }
 
 #hWrap header {
 	clear: both;
-	width: 1080px;
+	width: 960px;
 	height:105px;  
 	margin: 0 auto;
 	padding-top: 20px;
@@ -59,7 +61,7 @@ nav>.gnb{
 }
 #hWrap #topMenu>li {
 	float: right;
-	margin-right:15px;
+	margin-right:8px;
 	
 }
 

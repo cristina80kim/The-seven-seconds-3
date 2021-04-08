@@ -4,13 +4,7 @@
 <meta charset="UTF-8">
 <title>user_메인</title>
 <link rel="stylesheet" href="css/user_Main.css" />
-<style>
-#banner {
-width:400px;
-height:50px;
-background-color: #eee;
-}
-</style>
+
 </head>
 <body>
 
@@ -18,8 +12,8 @@ background-color: #eee;
 
 	<section id="userRoomDtl_left">
 			
-					<input type="text" name="MainSrch" id="MainSrch" placeholder="검색창" /><br />
-			
+					<input type="text" name="MainSrch" id="MainSrch" placeholder="지역, 호텔, 명소명 입력" /><br />
+	
 					<div class="chkTime">
 							
 							<label for="userChkIn">
@@ -34,6 +28,7 @@ background-color: #eee;
 					
 					<div class="numG">
 						<label for="numGuests">인원수
+							
 							<select name="numGuests" id="numGuests">
 							    <option value="1">1</option>
 							    <option value="2">2</option>
@@ -53,11 +48,11 @@ background-color: #eee;
 					<div id="SrchBtn">					
 						<input type="submit" value="검색" id="MainSrchBtn"/>
 					</div>
-					<hr />
+					<hr id="srchHr"/>
 					
-					<span class="userSubTitle"><label for="price">가격</label><br /></span><br />
+					<span id="userSubTitle"><label for="price">가격</label><br /></span><br />
 					<input type="text" name="price" id="priceMin" placeholder="최저가"/>
-					<span class="userSubTitle">~</span>
+					<span class="userSubTitle_">~</span>
 					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
 					<br /><br />
 					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
@@ -103,18 +98,64 @@ background-color: #eee;
 		</div>
 <!--bannerBtn END  -->		
 
+
+	<table class="hover01 column">
+	<tr>
+		<td>
+			<a href="#">
+				<img src="images/travel_1.jpg" alt="여행지1_img" id="tr1"/>
+				<span>강원도</span>
+			</a>
+		</td>
+		<td>
+			<a href="#">
+				<img src="images/travel_2.jpg" alt="여행지2_img" id="tr2"/>
+				<span>부산</span>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="#"><img src="images/travel_3.jpg" alt="여행지3_img" id="tr3"/>
+				<span>대구</span>
+			</a>
+		</td>
+		<td>
+			<a href="#"><img src="images/travel_4.jpg" alt="여행지4_img" id="tr4" />
+				<span>tjdnf</span>
+			</a>
+		</td>
+	</tr>
+
+</table>
 		
-		<table id="travelImg">
+<!-- 		<table id="travelImg">
 			<tr>
-				<td><a href="#"><img src="images/travel_1.jpg" alt="여행지1_img" id="tr1"/></a></td>
-				<td><a href="#"><img src="images/travel_2.jpg" alt="여행지2_img" id="tr2"/></a></td>
+				<td><a href="#">
+					<img src="images/travel_1.jpg" alt="여행지1_img" id="tr1"/>
+					</a>
+					<div class="darkness"></div>
+				</td>
+				<td>
+					<a href="#">
+						<img src="images/travel_2.jpg" alt="여행지2_img" id="tr2"/>
+					</a>
+					<div class="darkness"></div>
+				</td>
 			</tr>
 			<tr>
-				<td><a href="#"><img src="images/travel_3.jpg" alt="여행지3_img" id="tr3"/></a></td>
-				<td><a href="#"><img src="images/travel_4.jpg" alt="여행지4_img" id="tr4" /></a></td>
+				<td><a href="#"><img src="images/travel_3.jpg" alt="여행지3_img" id="tr3"/></a>
+					<div class="darkness"></div>
+				</td>
+				<td><a href="#"><img src="images/travel_4.jpg" alt="여행지4_img" id="tr4" /></a>
+					<div class="darkness"></div>
+				</td>
 			</tr>
 		
-		</table>
+		</table> -->
+		
+		
+
 		
 	</section>
 
