@@ -4,6 +4,42 @@
 <meta charset="UTF-8">
 <title>300. admin_회원관리_회원리스트</title>
 <link rel="stylesheet" href="css/admin_memberList.css" />
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
+
+<script>
+	window.onload = function() {
+	};
+	
+	var gridList = null;
+	
+	document.addEventListener("DOMContentLoaded", function() {
+		
+		var actionDelete = "DELETE";
+		
+		var columns = [
+			{header: "구분",		name: "role",		width: 100, height: 100},
+			{header: "아이디",	name: "id",			width: 150},
+			{header: "이름",		name: "name",		width: 100},
+			{header: "닉네임",	name: "nickname",	width: 100},
+			{header: "전화번호",	name: "tel",		width: 200},
+			{header: "이메일",	name: "email",		width: 200},
+			{header: "성별",		name: "gen",		width: 100},
+			{header: "탈퇴",		name: "btnDelete",	width: 100},		
+		];
+		
+		gridList = main.showToastGrid("/user/userAll", "wrap", columns);
+		
+		gridList.on('mousedown', function(ev) {
+			var rowInfo = gridList.getRow(ev.rowKey);
+			console.log("id: " + rowInfo["id"]);
+		});
+		
+	});
+</script>
+
 </head>
 <body>
 

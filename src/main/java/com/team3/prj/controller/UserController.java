@@ -29,7 +29,7 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-	
+
 	// 로그인
 	// http://localhost:8081/user/frmLogin
 	@GetMapping("/frmLogin")
@@ -53,7 +53,7 @@ public class UserController {
 		System.out.println(result);
 		return result;
 	}
-	
+
 	// 회원가입
 	// http://localhost:8081/user/frmJoin
 	@GetMapping("/frmJoin")
@@ -61,17 +61,17 @@ public class UserController {
 		System.out.println(className + ".frmJoin()");
 		return "user_Join";// user_Join.html
 	}
-	
+
 	@PostMapping("/join")
 	public @ResponseBody ExecResultVO join(@RequestBody UserVO vo) {
 		System.out.println(className + ".join()");
 		System.out.println(vo);
 		String result = userService.join(vo);
 		System.out.println(result);
-		//#####json으로 리턴할때는 String이 아닌 VO클래스를 하나 만들어서 결과를 응답해야만 한다.
+		// #####json으로 리턴할때는 String이 아닌 VO클래스를 하나 만들어서 결과를 응답해야만 한다.
 		return new ExecResultVO(result);
 	}
-	
+
 	// 아이디 중복확인
 	@RequestMapping("/checkDuplId")
 	public @ResponseBody int checkDuplId(@RequestBody UserVO vo) throws Exception {
@@ -101,7 +101,7 @@ public class UserController {
 		System.out.println(result);
 		return result;
 	}
-	
+
 	// 마이페이지 수정
 	// http://localhost:8081/user/frmUpdate
 	@RequestMapping("frmUpdate")
@@ -119,7 +119,7 @@ public class UserController {
 		System.out.println(result);
 		return new ExecResultVO(result);
 	}
-	
+
 	// 회원탈퇴
 	// http://localhost:8081/user/uDelete
 	@RequestMapping("/uDelete")
@@ -133,7 +133,7 @@ public class UserController {
 	public @ResponseBody ExecResultVO delete(@RequestBody UserVO vo) {
 		System.out.println(className + ".delete()");
 		System.out.println(vo);
-		int result = (int)userService.delete(vo);
+		int result = (int) userService.delete(vo);
 		System.out.println(result);
 		return new ExecResultVO(result);
 	}
@@ -147,14 +147,14 @@ public class UserController {
 		return userService.mUpdate(vo);
 	}
 
-	//  후기 관리
-	//  http://localhost:8081/user/uRevu
+	// 후기 관리
+	// http://localhost:8081/user/uRevu
 	@GetMapping("/uRevu")
 	public String userRevu() {
 		System.out.println(className + ".uRevu()");
-		return "user_MypageRevu"; //.html
+		return "user_MypageRevu"; // .html
 	}
-	
+
 	@GetMapping("revu")
 	public @ResponseBody Object revu(RevuVO vo) {
 		System.out.println(className + ".revu()");
@@ -170,29 +170,31 @@ public class UserController {
 	}
 
 	// admin 회원리스트
-	// http://localhost:8081/user/userAll
-	@GetMapping("/userAll")
-	public @ResponseBody List<UserVO> selectAll() {
-		System.out.println("selectAll()");
-		List<UserVO> lstUser = userService.selectAll();
-		return lstUser;
+	// http://localhost:8081/user/frmUserAll
+	@GetMapping("frmUserAll")
+	public String frmUserALl() {
+		System.out.println(className + ".frmUserAll()");
+		return "admin_memberList"; //.html
 	}
-// 후기관리 152번줄로 옮겨놨어요~
-	
-//  포인트 관리
-//  http://localhost:8081/user/userPoint
+	@GetMapping("/userAll")
+	public @ResponseBody Object userAll() {
+		System.out.println("selectAll()");
+		List<UserVO> lstUser = userService.userAll();
+		return Libs.makeToastJsonResult(lstUser);
+	}
+
+	//  포인트 관리
+	//  http://localhost:8081/user/userPoint
 	@GetMapping("/userPoint")
 	public String userPoint() {
 		return "user_MypagePoint";
-
 	}
-	
-//  즐겨찾기
-//  http://localhost:8081/user/userBookmark
+
+	//  즐겨찾기
+	//  http://localhost:8081/user/userBookmark
 	@GetMapping("/userBookmark")
 	public String userBookmark() {
 		return "user_MypageBookMark";
-
 	}
 
 }

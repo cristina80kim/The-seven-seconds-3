@@ -3,51 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <title>140.user_마이페이지_후기 관리</title>
-<!-- <link rel="stylesheet" href="css/user_MypageRevu.css" /> -->
+<link rel="stylesheet" href="css/user_MypageRevu.css" />
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
-
+</head>
+<body>
 <script>
-	window.onload = function() {
-	};
-	
+
 	var gridRevu = null;
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	
+		var kind = "REVU";
 		var actionDelete = "DELETE";
 		
 		var columns = [
 			//{header: "번호", 		name:	"no",		width: 100,	height: 100},
 			//{header: "id", 		name:	"id",	width: 200},
 			{header: "후기", 		name:	"content",	width: 300},
-			{header: "작성 날짜",	name:	"mDate",	width: 300},
+			{header: "작성 날짜",	name:	"mDate",	width: 150},
 			
 			{header: "후기 삭제",	name:	"btnDelete", width: 100, align: "center", formatter: function() {
+			return "<button class='AXButton' onclick='callbackButtonClicked(\""
+			+ kind + "\", \"" + actionDelete + "\", \""
+			+ this.index + "\");'>삭제</button>";
 			}}
 		];
 		
-	gridRevu = main.showToastGrid("/user/revu", "gridREVU", columns);
+	gridRevu = main.showToastGrid("/user/revu", "RevuBbs", columns);
 	
 	gridRevu.on('mousedown', function(ev) {
 		var rowInfo = gridRevu.getRow(ev.rowKey);
 		console.log("id: " + rowInfo["id"] + ", content: " + rowInfo["content"]);
 	});
 });
-</script>
+	callbackButtonClicked = function(kind, action, index) {
+    	console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+    	console.log("id: " + gridRevu.getValue(index, "id")); 
+  	};
 
-</head>
-<body>
+</script>
 <!--css 수정 완료  -->
 
-<div id="gridREVU">
+<div id="RevuBbs">
 </div>
 	
-	<!-- <section>
+<!-- <section>
 	
-	    <div id="RevuBbs">
+	     <div id="RevuBbs">
 	    	  <h1>후기 관리</h1>
 	    	  <hr>
 	    	  

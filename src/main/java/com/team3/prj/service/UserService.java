@@ -8,7 +8,7 @@ import com.team3.prj.vo.UserVO;
 public interface UserService {
 	
 	//admin 회원리스트
-	public List<UserVO> selectAll();
+	public List<UserVO> userAll();
 	
 	public UserVO login(UserVO vo);
 	
