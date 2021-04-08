@@ -178,7 +178,16 @@
 	M_USER VARCHAR2(20) NULL, -- 수정자 ID.
 	C_DATE TIMESTAMP DEFAULT SYSDATE NOT NULL, -- 생성 날짜/시간
 	M_DATE TIMESTAMP NULL -- 수성 날짜/시간
-);
+    );
+
+    * 같은 folder에 있는 room_mst, room_dtl을 import하면 equence도 아래와 같이 변경해야 함,
+
+    DROP SEQUENCE seq_room_mst ;
+    CREATE SEQUENCE seq_room_mst START WITH 1000000061 INCREMENT BY 1 CACHE 10;
+
+    DROP SEQUENCE seq_room_dtl ;
+    CREATE SEQUENCE seq_room_dtl START WITH 1000000181 INCREMENT BY 1 CACHE 10;
+
 
     -- DECLARE
     --   i NUMBER;
