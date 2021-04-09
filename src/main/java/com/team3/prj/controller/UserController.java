@@ -184,16 +184,19 @@ public class UserController {
 	// admin 회원리스트 검색기능
 	// http://localhost:8081/user/toastSearch
 	@GetMapping("/toastSearch")
-	public @ResponseBody JSONObject ToastSearch(UserSearchVO svo) {
+	public @ResponseBody JSONObject ToastSearch() {
 		System.out.println(className + ".UserSearchVO()");
-		System.out.println(svo);
-		return Libs.makeToastJsonResult(userService.search(svo));
+		//System.out.println(svo);
+		UserSearchVO svo = new UserSearchVO();
+		List<UserVO> result = userService.userSearch(svo);
+		System.out.println(result);
+		return Libs.makeToastJsonResult(result);
 	}
 
 	@GetMapping("/search")
 	public @ResponseBody List<UserVO> search(UserSearchVO svo) {
 		System.out.println(className + "search()");
-		return userService.search(svo);
+		return userService.userSearch(svo);
 	}
 
 	// 포인트 관리

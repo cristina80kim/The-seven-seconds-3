@@ -12,7 +12,7 @@ import com.team3.prj.vo.UserVO;
 public interface UserDAO {
 	
 	//admin 회원리스트
-	public List<UserVO> userSelectAll();
+//	public List<UserVO> userSelectAll();
 	
 	public UserVO userLogin(UserVO vo);
 	
@@ -36,5 +36,5 @@ public interface UserDAO {
 	public Long revuDelete(RevuVO vo);
 
 	// 검색기능
-	public List<UserVO> search(UserSearchVO svo);
+	public List<UserVO> userSearch(UserSearchVO svo);
 }

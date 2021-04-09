@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 		//admin 회원리스트
 		@Override
 		public List<UserVO> userAll() {
-			return userDAO.userSelectAll();
+			return userDAO.userSearch(new UserSearchVO());
 		}
 		
 		@Override
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
 		}
 
 		@Override
-		public List<UserVO> search(UserSearchVO svo) {
-			return userDAO.search(svo);
+		public List<UserVO> userSearch(UserSearchVO svo) {
+			return userDAO.userSearch(svo);
 		}
 
 		

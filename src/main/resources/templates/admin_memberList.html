@@ -12,7 +12,7 @@
 <script>
 	$(function() {
 		console.log(">>> $(): 1");
-		user.showUserOnGrid("/user/userAll", "gridData");
+		user.showUserOnGrid("/user/toastSearch", "gridData");
 	});
 	
 	var gridUser = null;
@@ -39,7 +39,7 @@
 			var actionDelete = "DELETE";
 			
 			var columns = [
-			{header: "구분",		name: "role",		width: 100, height: 100},
+			{header: "구분",		name: "role",		width: 100},
 			{header: "아이디",	name: "id",			width: 150},
 			{header: "이름",		name: "name",		width: 100},
 			{header: "닉네임",	name: "nickname",	width: 100},
@@ -49,8 +49,8 @@
 			{header: "탈퇴",		name: "btnDelete",	width: 100},
 			];
 			
-			main.clearGrid(componentName, gridUser);
-			//gridUser = main.showToastGrid(url, componentName, columns);
+			//main.clearGrid(componentName, gridUser);
+			gridUser = main.showToastGrid(url, componentName, columns);
 			
 			gridUser.on('mousedown', function(ev) {
 				var rowInfo = gridUser.getRow(ev.rowKey);

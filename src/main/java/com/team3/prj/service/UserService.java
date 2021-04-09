@@ -32,6 +32,6 @@ public interface UserService {
 	//리뷰 삭제
 	public Long revuDelete(RevuVO vo);
 
-	public List<UserVO> search(UserSearchVO svo);
+	public List<UserVO> userSearch(UserSearchVO svo);
 	
 }

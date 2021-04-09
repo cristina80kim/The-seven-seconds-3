@@ -5,7 +5,7 @@
 <mapper namespace="com.team3.prj.dao.UserDAO">
 
 	<!-- admin 회원리스트 -->
-	<select id="userSelectAll" resultType="com.team3.prj.vo.UserVO">
+	<select id="userSearch" resultType="com.team3.prj.vo.UserVO">
 		SELECT *
 		FROM users
 		<where>
