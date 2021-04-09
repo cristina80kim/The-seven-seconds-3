@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
 @Mapper
@@ -33,4 +34,7 @@ public interface UserDAO {
 
 	// 리뷰 삭제
 	public Long revuDelete(RevuVO vo);
+
+	// 검색기능
+	public List<UserVO> search(UserSearchVO svo);
 }

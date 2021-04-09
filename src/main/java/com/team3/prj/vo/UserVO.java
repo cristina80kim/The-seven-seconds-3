@@ -13,6 +13,6 @@ public class UserVO {
 	private String gen;
 	private String role;
 	private String point;
-	private String cUser;
+	private String c_user;
 
 } 

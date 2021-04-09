@@ -9,7 +9,8 @@ public class RevuVO {
 	private String nickname; //닉네임
 	private String content; //내용
 	private String star; //별점(1~5)
-	private String cUser; // 생성자
-	private String mDate; // 수정날짜
+	private String c_user; // 생성자
+	private String c_date;
+	private String m_date; // 수정날짜
 
 } 

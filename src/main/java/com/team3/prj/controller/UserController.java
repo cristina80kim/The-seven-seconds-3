@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.UserService;
 import com.team3.prj.vo.ExecResultVO;
+import com.team3.prj.vo.NoticeSearchVO;
+import com.team3.prj.vo.NoticeVO;
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
 @Controller
@@ -43,13 +47,6 @@ public class UserController {
 		System.out.println(className + ".frmLogin");
 		HttpSession session = req.getSession();
 		UserVO result = userService.login(vo);
-
-//		if (id == null) {
-//			session.setAttribute("id", null);
-//			rttr.addFlashAttribute("msg", false);
-//		} else {
-//			session.setAttribute("id", id);
-//		}
 		System.out.println(result);
 		return result;
 	}
@@ -174,8 +171,9 @@ public class UserController {
 	@GetMapping("frmUserAll")
 	public String frmUserALl() {
 		System.out.println(className + ".frmUserAll()");
-		return "admin_memberList"; //.html
+		return "admin_memberList"; // .html
 	}
+
 	@GetMapping("/userAll")
 	public @ResponseBody Object userAll() {
 		System.out.println("selectAll()");
@@ -183,15 +181,30 @@ public class UserController {
 		return Libs.makeToastJsonResult(lstUser);
 	}
 
-	//  포인트 관리
-	//  http://localhost:8081/user/userPoint
+	// admin 회원리스트 검색기능
+	// http://localhost:8081/user/toastSearch
+	@GetMapping("/toastSearch")
+	public @ResponseBody JSONObject ToastSearch(UserSearchVO svo) {
+		System.out.println(className + ".UserSearchVO()");
+		System.out.println(svo);
+		return Libs.makeToastJsonResult(userService.search(svo));
+	}
+
+	@GetMapping("/search")
+	public @ResponseBody List<UserVO> search(UserSearchVO svo) {
+		System.out.println(className + "search()");
+		return userService.search(svo);
+	}
+
+	// 포인트 관리
+	// http://localhost:8081/user/userPoint
 	@GetMapping("/userPoint")
 	public String userPoint() {
 		return "user_MypagePoint";
 	}
 
-	//  즐겨찾기
-	//  http://localhost:8081/user/userBookmark
+	// 즐겨찾기
+	// http://localhost:8081/user/userBookmark
 	@GetMapping("/userBookmark")
 	public String userBookmark() {
 		return "user_MypageBookMark";

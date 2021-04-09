@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.UserDAO;
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
 @Service
@@ -65,6 +66,11 @@ public class UserServiceImpl implements UserService {
 		@Override
 		public Long revuDelete(RevuVO vo) {
 			return userDAO.revuDelete(vo);
+		}
+
+		@Override
+		public List<UserVO> search(UserSearchVO svo) {
+			return userDAO.search(svo);
 		}
 
 		

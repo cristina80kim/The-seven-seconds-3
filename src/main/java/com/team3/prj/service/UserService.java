@@ -3,6 +3,7 @@ package com.team3.prj.service;
 import java.util.List;
 
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
 public interface UserService {
@@ -31,8 +32,6 @@ public interface UserService {
 	//리뷰 삭제
 	public Long revuDelete(RevuVO vo);
 
+	public List<UserVO> search(UserSearchVO svo);
 	
-
-	
-
 }

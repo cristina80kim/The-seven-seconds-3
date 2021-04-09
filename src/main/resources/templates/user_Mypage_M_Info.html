@@ -21,7 +21,13 @@
 			console.log(loc);
 			if (pwd != pwd2) {
 				alert("비밀번호가 일치하지 않습니다.");
-			} else {
+			} else if (nickname == ""){
+				alert("수정할 닉네임을 적어주세요");
+			} else if (tel == ""){
+				alert("수정할 전화번호를 적어주세요");
+			} else if (email == ""){
+				alert("수정할 이메일을 적어주세요");
+			} else{
 				var param = {
 					id: id,
 					pwd: pwd,
@@ -44,6 +50,11 @@
 	
 	updateError: function() {
 		alert("회원수정에 실패했습니다.");
+	},
+	
+	onCancleClicked: function() {
+		console.log("onCancleClicked()");
+		main.ajaxGetHtml("/user/frmMypage", "contents");
 	},
 	
 	log: function(msg) {
@@ -88,7 +99,7 @@
 				 
 				 <br />
 				 <label for="nickname">닉네임</label>
-				 <input type="text" name="nickname" id="nickname"/>
+				 <input type="text" name="nickname" id="nickname" value="어우"/>
 				 
 				 <br />
 				 <label for="tel">전화번호</label>
@@ -96,7 +107,7 @@
 				 
 				 <br />
 				 <label for="email">이메일</label>
-				 <input type="text" name="email" id="email" />
+				 <input type="text" name="email" id="email" value="ohhhhhh@gmail.com"/>
 				
 				<br />
 				  <label for="userGen">성별</label>
@@ -105,7 +116,7 @@
 				  
 				  <div id="submitBtn_">
 					  <input type="button" value="수정" id="submitBtn" onclick="mypageInfo.onUpdateClicked();"/>
-					  <input type="reset" value="취소" id="cancleBtn"/>
+					  <input type="button" value="취소" id="cancleBtn" onclick="mypageInfo.onCancleClicked();"/>
 				  </div>
 			</form>
 		</section>

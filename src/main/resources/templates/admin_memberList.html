@@ -10,16 +10,35 @@
 <script src="/js/main.js?ver=1.00"></script>
 
 <script>
-	window.onload = function() {
-	};
+	$(function() {
+		console.log(">>> $(): 1");
+		user.showUserOnGrid("/user/userAll", "gridData");
+	});
 	
-	var gridList = null;
+	var gridUser = null;
 	
-	document.addEventListener("DOMContentLoaded", function() {
+	$("#UserSearch").keypress(function (e) {
+		if (e.which == 13) {
+			user.onSearchBtnClick();
+			event.preventDefault();
+		}
+	});
+	
+	var user = {
+		onSearchBtnClick: function() {
+			console.log("onSearchBtnClick()");
+			var id = $("#id option:selected").val();
+			var keyWord = $("#userSearch").val();
+			console.log(keyWord);
+			user.showUserOnGrid("/user/toastSearch?id="+ id + "&keyWord="+keyWord, "gridData");
+		},
 		
-		var actionDelete = "DELETE";
+		showUserOnGrid: function(url, componentName) {
 		
-		var columns = [
+			var kind = "USER";
+			var actionDelete = "DELETE";
+			
+			var columns = [
 			{header: "구분",		name: "role",		width: 100, height: 100},
 			{header: "아이디",	name: "id",			width: 150},
 			{header: "이름",		name: "name",		width: 100},
@@ -27,17 +46,23 @@
 			{header: "전화번호",	name: "tel",		width: 200},
 			{header: "이메일",	name: "email",		width: 200},
 			{header: "성별",		name: "gen",		width: 100},
-			{header: "탈퇴",		name: "btnDelete",	width: 100},		
-		];
-		
-		gridList = main.showToastGrid("/user/userAll", "wrap", columns);
-		
-		gridList.on('mousedown', function(ev) {
-			var rowInfo = gridList.getRow(ev.rowKey);
-			console.log("id: " + rowInfo["id"]);
-		});
-		
-	});
+			{header: "탈퇴",		name: "btnDelete",	width: 100},
+			];
+			
+			main.clearGrid(componentName, gridUser);
+			//gridUser = main.showToastGrid(url, componentName, columns);
+			
+			gridUser.on('mousedown', function(ev) {
+				var rowInfo = gridUser.getRow(ev.rowKey);
+					console.log("id: " + rowInfo["id"]);
+			});
+		},
+		callbackButtonClicked: function(kind, action, index) {
+			console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+			console.log("id: " + gridUser.getValue(index, "id"));
+		},
+	};
+
 </script>
 
 </head>
@@ -49,18 +74,20 @@
 		<form action="post" id="memberSrchFrm" name="memberSrchFrm">
 			<h1>회원 관리</h1>
 			<hr />
-			<div id="chkBox">
+			<!-- <div id="chkBox">
 				<label for="roleChk1"><input type="checkbox" name="roleChk1" id="roleChk1" />전체</label>
 				<label for="roleChk2"><input type="checkbox" name="roleChk2" id="roleChk2" />개인</label>
 				<label for="roleChk3"><input type="checkbox" name="roleChk3" id="roleChk3" />사장님</label>
-			</div>
-			<input type="text" name="Srch" id="roleSrch" />
-			<input type="button" value="조회하기" id="memberSrchBtn"/>
+			</div> -->
+			<input type="text" name="userSearch" id="userSearch" />
+			<input type="button" onclick="user.onSearchBtnClick()" value="조회하기" id="userSrchBtn"/>
 		</form>
-		
+</section>
+</div>
+
 		<hr />
 		
-		      <table>
+		      <!-- <table>
 		        <tr>
 		          <th id="roleth">구분</th>
 		          <th id="idth" >아이디</th>
@@ -155,7 +182,7 @@
 		      </div>
 		
 	</section>
-</div>
+</div> -->
 
 
 </body>

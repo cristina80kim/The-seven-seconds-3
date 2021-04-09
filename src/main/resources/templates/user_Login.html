@@ -27,12 +27,12 @@ var userLogin = {
 		}  else {
 			document.alert("로그인 성공");
 		} */
-		window.alert(jsonStr == "" || jsonStr == null ? "로그인 실패" : "로그인 성공"); 
+		window.alert(jsonStr == "" || jsonStr == null ? "로그인 실패" : "로그인 성공");
+		// main.ajaxGetHtml("/index", "contents");
 	},
 	
 	onJoinClicked: function() {
 		console.log("onJoinClicked()");
-		main.ajaxGetHtml("/user/frmJoin", "contents");
 	},
   
     log: function(msg) {

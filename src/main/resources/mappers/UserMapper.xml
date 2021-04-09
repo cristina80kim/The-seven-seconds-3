@@ -8,6 +8,14 @@
 	<select id="userSelectAll" resultType="com.team3.prj.vo.UserVO">
 		SELECT *
 		FROM users
+		<where>
+			<if test = 'keyWord != null and !"".equals(keyWord)'>
+				AND (
+					id LIKE '%'||#{keyWord}||'%'
+				OR	name LIKE '%'||#{keyWord}||'%'
+				)
+			</if>
+		</where>
 	</select>
 
 	<!-- 유저 로그인 -->
