@@ -6,13 +6,19 @@ outline:none;
 
 
 #wrap {
-	width: 900px;
+	width: 960px;
 	margin: 0 auto;
 	color:#785aef;
 }
 
+#wrap h1 {
+	font-size:1.8em;
+	padding-top:50px;
+	padding-bottom:10px;
+	text-align: center;
+}
+
 section {
-	width: 500px;
 	text-align:left;
 	margin: 0 auto;
 	font-weight:bolder;
@@ -31,7 +37,7 @@ section h1 {
 
 
 .loginForm {
-	width: 500px;
+	width: 460px;
 	margin: 0 auto;
 	color:#785aef;
 	font-size:1.0em;
@@ -62,8 +68,9 @@ section h1 {
 /*회원가입,취소 Btn///////////////////  */
 
 .SubmitBtn{
-	width: 330px;
-	margin: 0 auto;
+/* 	width: 279px; */
+	margin-left: 90px;
+/* 	margin: 0 auto; */
 }
 
 .SubmitBtn button{
@@ -77,10 +84,30 @@ section h1 {
 	text-align: center;
 }
 
+.SubmitBtn button:focus{
+	outline:none;
+}
+
 .SubmitBtn button:hover {
 	cursor:pointer;
 	color: white;
 	border:2px solid #9881f3;
     font-size:1.0em;
 	background-color:#9881f3;
+}
+
+#subScript{
+	margin:0 auto;
+	font-weight:500;
+	font-size:0.8em;
+	padding: 10px;
+	margin-left:91px;
+}
+
+#Hr {
+	opacity:0.3;
+	width: 9px;
+	height: 1px;
+	background-color: black;
+	margin-top: 30px;
 }

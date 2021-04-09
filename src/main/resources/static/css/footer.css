@@ -2,6 +2,7 @@
 @import url(reset.css);
 
 hr {
+	margin-top:100px;
 	opacity:0.3;
 	clear:both;
 }
