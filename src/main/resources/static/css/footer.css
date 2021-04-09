@@ -1,6 +1,10 @@
 @charset "UTF-8";
 @import url(reset.css);
 
+hr {
+	opacity:0.3;
+	clear:both;
+}
 
 ul li a {
 	list-style:none;
