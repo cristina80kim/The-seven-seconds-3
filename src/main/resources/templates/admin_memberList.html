@@ -17,7 +17,7 @@
 	
 	var gridUser = null;
 	
-	$("#UserSearch").keypress(function (e) {
+	$("#keyword").keypress(function (e) {
 		if (e.which == 13) {
 			user.onSearchBtnClick();
 			event.preventDefault();
@@ -28,7 +28,7 @@
 		onSearchBtnClick: function() {
 			console.log("onSearchBtnClick()");
 			var id = $("#id option:selected").val();
-			var keyWord = $("#userSearch").val();
+			var keyword = $("#keyword").val();
 			console.log(keyword);
 			user.showUserOnGrid("/user/toastSearch?id="+ id + "&keyword="+keyword, "gridData");
 		},
@@ -79,7 +79,7 @@
 				<label for="roleChk2"><input type="checkbox" name="roleChk2" id="roleChk2" />개인</label>
 				<label for="roleChk3"><input type="checkbox" name="roleChk3" id="roleChk3" />사장님</label>
 			</div> -->
-			<input type="text" name="userSearch" id="userSearch" />
+			<input type="text" name="keyword" id="keyword" />
 			<input type="button" onclick="user.onSearchBtnClick()" value="조회하기" id="userSrchBtn"/>
 		</form>
 </section>
