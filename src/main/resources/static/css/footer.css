@@ -2,21 +2,24 @@
 @import url(reset.css);
 
 
-hr{
-	clear: both;
-	opacity:0.3;
-}
 ul li a {
 	list-style:none;
 	text-decoration: none;
 	list-style:none;
 }
 
+#fwrap{
+	width: 100%;
+	margin:0 auto;
+}
+
+
 footer {
 	clear: both;
-	width: 1080px;
+	width: 960px;
 	height:105px;
-	margin-top:40px !important;
+	margin-top:30px;
+	padding-top:30px;
 	margin: 0 auto;
 	font-size:10.5pt;
 }

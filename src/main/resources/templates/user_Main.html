@@ -26,9 +26,9 @@ function slideShow() {
 
         $("#slideShow>img").eq(now - 1)
                 .css({
-                        "margin-left": "1000px", //-1000>1000
+                        "margin-left": "488px", 
                         "transition": "all 1s"
-                }); //1번쨰이미지
+                }); //1번째 이미지
 
         $("#slideShow>img").eq(now)
                 .css({
@@ -39,7 +39,7 @@ function slideShow() {
         if (now == 0) {
                 $("#slideShow>img").eq(1)
                         .css({
-                                "margin-left": "-1000px",
+                                "margin-left": "-488px",
                                 "transition": "none"
                         });
         }
@@ -47,14 +47,14 @@ function slideShow() {
         if (now == 1) {
                 $("#slideShow>img").eq(2)
                         .css({
-                                "margin-left": "-1000px",
+                                "margin-left": "-488px",
                                 "transition": "none"
                         });
         }
         if (now == 2) {
                 $("#slideShow>img").eq(0)
                         .css({
-                                "margin-left": "-1000px",
+                                "margin-left": "-488px",
                                 "transition": "none"
                         });
         }
@@ -209,7 +209,6 @@ function slideShow() {
 
 
 </div>
-
 
 
 
