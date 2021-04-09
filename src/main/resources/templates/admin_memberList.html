@@ -29,8 +29,8 @@
 			console.log("onSearchBtnClick()");
 			var id = $("#id option:selected").val();
 			var keyWord = $("#userSearch").val();
-			console.log(keyWord);
-			user.showUserOnGrid("/user/toastSearch?id="+ id + "&keyWord="+keyWord, "gridData");
+			console.log(keyword);
+			user.showUserOnGrid("/user/toastSearch?id="+ id + "&keyword="+keyword, "gridData");
 		},
 		
 		showUserOnGrid: function(url, componentName) {

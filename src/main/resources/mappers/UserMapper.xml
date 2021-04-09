@@ -10,10 +10,10 @@
 		SELECT *
 		FROM users
 		<where>
-			<if test = 'keyWord != null and !"".equals(keyWord)'>
+			<if test = 'keyword != null and !"".equals(keyword)'>
 				AND (
-					id LIKE '%'||#{keyWord}||'%'
-				OR	name LIKE '%'||#{keyWord}||'%'
+					id LIKE '%'||#{keyword}||'%'
+				OR	name LIKE '%'||#{keyword}||'%'
 				)
 			</if>
 		</where>

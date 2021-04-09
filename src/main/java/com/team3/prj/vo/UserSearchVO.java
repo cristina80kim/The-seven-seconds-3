@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserSearchVO {
-	private String keyWord;  // 검색 단어
+	private String keyword;  // 검색 단어
 	private String id; // id
 }
