@@ -27,10 +27,10 @@
 	var user = {
 		onSearchBtnClick: function() {
 			console.log("onSearchBtnClick()");
-			var id = $("#id option:selected").val();
 			var keyword = $("#keyword").val();
 			console.log(keyword);
-			user.showUserOnGrid("/user/toastSearch?id="+ id + "&keyword="+keyword, "gridData");
+            // user.showUserOnGrid("/user/toastSearch?"+ "keyword="+keyword, "gridData");
+			user.showUserOnGrid("/user/toastSearch", "gridData");
 		},
 		
 		showUserOnGrid: function(url, componentName) {
@@ -50,17 +50,78 @@
 			];
 			
 			//main.clearGrid(componentName, gridUser);
-			gridUser = main.showToastGrid(url, componentName, columns);
+			gridUser = user.showToastGrid(url, componentName, columns);
 			
 			gridUser.on('mousedown', function(ev) {
 				var rowInfo = gridUser.getRow(ev.rowKey);
 					console.log("id: " + rowInfo["id"]);
 			});
 		},
+    
 		callbackButtonClicked: function(kind, action, index) {
 			console.log("kind: " + kind + ", action: " + action + ", index: " + index);
 			console.log("id: " + gridUser.getValue(index, "id"));
 		},
+    
+  //============================================================
+  // 기능: TOAST Grid 그리기 
+  //============================================================
+  showToastGrid: function(url, componentId, columns, width, height) {
+    var result = null;
+    var url = url;  // http://localhost:8081/test/getData4Toast3
+    
+    var options = {
+      el: document.getElementById(componentId),
+      columns: columns,
+      bodyWidth: main.isEmpty(width) ? 'auto' : width,
+      bodyHeight: main.isEmpty(height) ? 'auto' : height,
+      rowHeight:  'auto', // 각 Row의 자동 높이   
+      //rowHeaders: ['rowNum'],  // 번호 출력
+      //pageOptions: { perPage: 5 },
+      data: {
+        contentType: "application/json",
+        api: {
+          readData: { 
+            url: url, 
+            method: "GET" 
+          }
+        }
+      }
+    };
+  
+    // GRID 를 생성.
+    result = new tui.Grid(options);
+    
+    /*
+    // grid 클릭시 row 선택
+    result.on('click', function(ev) {
+      var record = {
+           start : [ev.rowKey, 0],
+           end : [ev.rowKey, result.getColumns().length]
+       }
+       result.setSelectionRange(record);
+       
+       console.log("현재 선택된 Row 번호: " + ev.rowKey);
+    });
+    */
+
+    /*
+    //----------------------------------------    
+    var selectedRowKey = null;
+    
+    // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
+    result.on("focusChange", ev => {
+      if (selectedRowKey) {
+        result.removeRowClassName(selectedRowKey, "someClassName");
+      }
+      selectedRowKey = ev.rowKey;
+      result.addRowClassName(selectedRowKey, "someClassName");
+    });
+    */
+    
+    return result;
+  },
+      
 	};
 
 </script>
@@ -84,6 +145,8 @@
 		</form>
 </section>
 </div>
+
+<div id="gridData"></div> <br />
 
 		<hr />
 		
