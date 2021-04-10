@@ -6,23 +6,26 @@
 
 	<!-- 전체출력 sql문 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.FaqVO">
-		SELECT *
-		FROM faq
-		ORDER BY id
+		SELECT f.*,
+		(SELECT name FROM code c WHERE f.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
+		FROM faq f
+		ORDER BY f.id
 	</select>
 
 	<!-- 단일출력 sql문 -->
 	<select id="selectOne" resultType="com.team3.prj.vo.FaqVO">
-		SELECT *
-		FROM faq
+		SELECT f.*,
+		(SELECT name FROM code c WHERE f.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
+		FROM faq f
 		WHERE id = #{id}
-		ORDER BY id
+		ORDER BY f.id
 	</select>
 
 	<!-- 검색기능 -->
 	<select id ="search" resultType="com.team3.prj.vo.FaqVO">
-		SELECT *
-		FROM faq
+		SELECT f.*,
+		(SELECT name FROM code c WHERE f.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
+		FROM faq f
 		<where>
 		
 		<if test = 'cate_id != null and !"".equals(cate_id)'>
@@ -39,9 +42,9 @@
 		</if>
 		
 		</where>
-	
+		ORDER BY f.id
 	</select>
-	<!-- Faq 등록 -->
+	<!-- Faq 등록  -->
 	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
 			SELECT

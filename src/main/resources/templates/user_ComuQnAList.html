@@ -9,6 +9,8 @@
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
 <script>
 $(function() {
     console.log(">>> $(): 1");
@@ -48,15 +50,15 @@ var qna = {
 		    
 		          
 		          var columns = [
-		              {header: "번호",      name: "no",       width: 100, align: "center"   },
-		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
-		              {header: "제목",      name: "title",    width: 100 		              },
-		              {header: "답변유/무",      name: "a",    width: 20 		              },
-		              {header: "닉네임",      name: "nickname",    width: 20 		              },
-		              {header: "작성일",     name: "c_date",    width: 20                    },
+		              {header: "번호",      name: "no",       width: 50, align: "center"   },
+		              {header: "카테고리", name: "cate",   width: 100,   align: "center"       },
+		              {header: "제목",      name: "title",    width: 300 		              },
+		              {header: "답변유/무",      name: "aox",    width: 80 , align: "center"     },
+		              {header: "닉네임",      name: "nickname",    width: 100, align: "center" },
+		              {header: "작성일",     name: "c_date",    width: 150                    },
 		              
 		            ];
-		          main.clearGrid(componentName, gridQna);  
+		          main.clearGrid(componentName, gridQna); 
 		          
 		            gridQna = main.showToastGrid(url, componentName, columns);
 		            
@@ -74,13 +76,38 @@ var qna = {
 		            console.log("id: " + gridQna.getValue(index, "id")); 
 		          },
 		          
-		        };
-
-
+		        };	
+				
+				var pagination2 = new tui.Pagination($("#pagination"), {
+						totalItems: 500, //그리드로 불러온 데이터 길이 (총데이터 갯수 구해서 대입)
+						  itemsPerPage: 10, // 페이지당 표시할 갯수
+						  visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+						  page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+						  centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+				});
+				pagination2.on('afterMove', (function(x){
+					var pageNumber = x.page
+					alert(pageNumber);
+					//var data = test(pageNumber);
+					//result.resetData(data);
+				}));
+				pagination2.getCurrentPage();//페이지 현재 페이지 불러옴
+					
+				
+				function test(page) {
+					//ajax 통신
+// 					$.{(
+// 						type : "GET",
+// 						url : 
+// 							)}
+					
+					return data;
+				}
+ 
 </script>
 </head>
 <body>
-
+ 
 
 	<div id="wrap">
 	
@@ -95,10 +122,11 @@ var qna = {
 			        <input type="text" id="QnaSearch" name="QnaSearch">
 			        <input type="button" value="검색" onclick="qna.onSearchBtnClick()" id="QnASearchBtn">
 			      </form>
-			      <table id="gridData"></table>
+<!-- 			      <table id="gridData" width="1500px" ></table> -->
 			<div id="gridData"></div>
+			<div id="pagination" class="tui-pagination"></div>
 		    </div>
-		    	
+		    	 
 		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기" id="writeBtn">
 	
 			<hr />
