@@ -30,7 +30,7 @@ section {
 section h1 {
 	text-align: center;
 	color:#474646;
-	font-size:1.4em;
+	font-size:1.2em;
 	padding-bottom:10px;
 }
 
@@ -46,6 +46,7 @@ section p {
 section label {
 	text-align:center;
 	padding: 10px 20px;
+	font-size:0.8em;
 	vertical-align: middle;
 }
 
@@ -61,7 +62,6 @@ section label {
 
 
 input[type=text]{
-	width: 230px;
 	padding: 10px 10px;
 	text-align:left;
 	margin-right:180px;
@@ -72,7 +72,7 @@ input[type=text]{
 input[type=password]{
 	width: 230px;
 	border:2px solid #6F6F6F;
-	padding: 10px 10px;
+	padding: 8px;
 	text-align:left;
 	margin-right:112px;
 }

@@ -11,8 +11,8 @@
 	position: relative;
 	top: 7px;
 	left: 0;
-	width: 200px;
-	border: 2px solid #9881f3;
+	width: 160px;
+	border: 1px solid #e7e7e7;
 	box-sizing: border-box;
 	
 }
@@ -32,6 +32,7 @@ padding-bottom:25px;
 
 #leftWrap a{
 	color:black;
+	opacity:0.5;
 	text-decoration: none;
 	text-align:center;
 	font-size:0.9em;
@@ -43,9 +44,15 @@ padding-bottom:25px;
 	padding:10px 0;
 	color:#fff;
 }
+
+#leftWrap ul>li:hover a{
+	color:#9881f3;
+}
+
 #leftMenuTitle{
 		background-color:#9881f3;
-		padding:10px;
+		opacity: 0.5;
+		padding: 2px;
 }
 #leftLine{
 	width:10px;

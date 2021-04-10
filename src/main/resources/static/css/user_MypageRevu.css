@@ -39,6 +39,8 @@ section h1 {
 	color:#785aef;
 	font-weight:bolder;
 	vertical-align: middle;
+	margin-top: 15px;
+	margin-bottom: 23px;
 }
 
 
@@ -69,6 +71,7 @@ th td {
 	color:#785aef;
 	text-align: center;
 	margin: 0 auto;
+	
 }
 
 
@@ -146,5 +149,8 @@ th td {
 	margin: 0 auto;
 	text-align: center;
 	padding-top:10px;
+	font-size:1.2em;
+	font-weight:bolder;
+	padding-top:26px;
 }
 

@@ -38,7 +38,6 @@ section h1 {
 	text-align: center;
 	color:#785aef;
 	margin-top: 23px;
-	margin-bottom: 17px;
 	font-weight:bolder;
 	vertical-align: middle;
 }
@@ -115,6 +114,6 @@ tr>td>input[type=button] {
 	text-align: center;
 	font-size:1.2em;
 	font-weight:bolder;
-	padding-top:26px;
+	padding-top:10px;
 }
 
