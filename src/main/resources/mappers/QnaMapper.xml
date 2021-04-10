@@ -3,6 +3,29 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.team3.prj.dao.QnaDAO">
+
+<!-- 	전체데이터 갯수 -->
+	<select id="selectCnt" resultType="com.team3.prj.vo.QnaVO">
+		SELECT count(*) as total
+		FROM qna
+		<where>
+			<if test='cate_id!= null and !"".equals(cate_id)'>
+				AND cate_id = #{cate_id} 
+			</if>
+			<if test='keyword!= null and !"".equals(keyword)'>
+
+				AND
+				(title LIKE '%'||#{keyword}||'%'
+				OR nickname LIKE '%'||#{keyword}||'%'
+				OR q LIKE '%'||#{keyword}||'%'
+				OR a LIKE '%'||#{keyword}||'%'
+				)
+
+			</if>
+		</where>
+		ORDER BY id
+	</select>
+
 <!-- 	전체 출력 sql문 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.QnaVO">
 		SELECT q.*,
@@ -22,7 +45,7 @@
 		ORDER BY q.id
 	</select>
 
-	<!-- 검색기능 sql문 // 통합 검색으로 -->
+	<!-- 검색기능 sql문 / / 통합 검색으로 -->
 	<select id="search" resultType="com.team3.prj.vo.QnaVO">
 		SELECT *
 		FROM(SELECT q.*,
