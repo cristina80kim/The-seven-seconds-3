@@ -13,5 +13,6 @@ public Long updateA(QnaVO vo);
 public Long delete(QnaVO vo);
 public List<QnaVO> search(QnaSearchVO svo);
 public List<QnaVO> selectOne(QnaVO vo);
-//
+///
+public List<QnaVO> selectCnt();
 }

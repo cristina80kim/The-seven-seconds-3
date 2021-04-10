@@ -22,6 +22,8 @@ public interface QnaDAO {
 	public List<QnaVO> search(QnaSearchVO svo);
 
 	public List<QnaVO> selectOne(QnaVO vo);
+
+	public List<QnaVO> selectCnt();
 	
-	
+	//
 }

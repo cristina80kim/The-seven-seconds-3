@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -159,7 +158,7 @@ public class QnaController {
 			return "admin_comu_QnA";
 		}
 
-	//  http://localhost:8081/qna/userList
+	///  http://localhost:8081/qna/userList
 		@GetMapping("/userList")
 		public String userList() {
 			return "user_ComuQnAList";
@@ -179,6 +178,13 @@ public class QnaController {
 				return "user_QnA";
 			}
 
+			
+			@GetMapping("/selectCnt")
+			public @ResponseBody List<QnaVO> selectCnt(){
+				System.out.println(className+ " selectCnt()");
+				return service.selectCnt();
+				
+			}
 
 	
 	

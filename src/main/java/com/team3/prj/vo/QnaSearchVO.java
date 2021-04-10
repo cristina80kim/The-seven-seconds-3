@@ -6,5 +6,5 @@ import lombok.Data;
 public class QnaSearchVO {
 	private String keyword;  // 검색 단어
 	private String cate_id; // 카테고리 값 
-	private String pageNumber;	// 페이지 번호
+	private String pageNumber;	// 페이지  번호
 }

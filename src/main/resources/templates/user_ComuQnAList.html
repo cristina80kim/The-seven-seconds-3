@@ -15,7 +15,7 @@
 $(function() {
     console.log(">>> $(): 1");
      main.ajaxCodeQnaToSelectBox("cateId");
-    qna.showQnaOnGrid("/qna/searchData", "gridData");
+    qna.showQnaOnGrid("/qna/toastSearch?pageNumber=1", "gridData");
   });
 
 var gridQna = null;
@@ -34,7 +34,7 @@ var qna = {
 		      var cate_id = $("#cateId option:selected").val();
 		      var keyword = $("#QnaSearch").val();
 		      console.log("keyWord : " + keyword);
-		      qna.showQnaOnGrid("/qna/toastSearch?cate_id="+ cate_id +"&keyword="+keyword, "gridData");
+		      qna.showQnaOnGrid("/qna/toastSearch?pageNumber=1&cate_id="+ cate_id +"&keyword="+keyword, "gridData");
 		    },
 		    
 		    onQnaWriteClick: function() {
@@ -88,15 +88,25 @@ var qna = {
 				pagination2.on('afterMove', (function(x){
 					var pageNumber = x.page
 					alert(pageNumber);
-					//var data = test(pageNumber);
-					//result.resetData(data);
+					var data = test(pageNumber);
+					result.resetData(data);
 				}));
 				pagination2.getCurrentPage();//페이지 현재 페이지 불러옴\
 				
 				
 				function test(pageNumber) {
 					//ajax 통신
+					alert("확인");
+// 					main.clearGrid(gridData, gridQna);
 					
+					var cate_id = $("#cateId option:selected").val();
+				    var keyword = $("#QnaSearch").val();
+					qna.showQnaOnGrid("/qna/toastSearch?cate_id="+ cate_id +"&keyword="+keyword+"&pageNumber="+pageNumber,
+							"gridData");
+					console.log("cate_id : "+cate_id+"keyword : "+ keyword+"pageNumber : "+pageNumber);
+// 					alert("확인 1");
+					
+					return data;
 					return data;
 				}
  
@@ -118,7 +128,6 @@ var qna = {
 			        <input type="text" id="QnaSearch" name="QnaSearch">
 			        <input type="button" value="검색" onclick="qna.onSearchBtnClick()" id="QnASearchBtn">
 			      </form>
-<!-- 			      <table id="gridData" width="1500px" ></table> -->
 			<div id="gridData"></div>
 			<div id="pagination" class="tui-pagination"></div>
 		    </div>

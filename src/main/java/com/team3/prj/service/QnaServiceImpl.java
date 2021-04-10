@@ -52,5 +52,11 @@ public class QnaServiceImpl implements QnaService {
 	public List<QnaVO>selectOne(QnaVO vo) {
 		return dao.selectOne(vo);
 	}
-	//
+	///
+
+	@Override
+	public List<QnaVO> selectCnt() {
+		// TODO Auto-generated method stub
+		return dao.selectCnt();
+	}
 }
