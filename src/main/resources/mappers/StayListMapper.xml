@@ -20,7 +20,7 @@
                 or (typeOfAcco[4] != null and !"".equals(typeOfAcco[4])) 
                 or (typeOfAcco[5] != null and !"".equals(typeOfAcco[5])) )'>
                 <foreach collection="typeOfAcco" item="item" open="AND type_of_acco IN (" close=")" separator=", ">
-                  #{item}
+                  #{item} 
                 </foreach>
              </if> 
              <if test='keyword != null and !"".equals(keyword)'>
@@ -36,15 +36,25 @@
     AND   c.class2 = 'TYPE_OF_ACCO'
     AND   c.class3 = m.type_of_acco
     INNER JOIN (
-      SELECT id, mst_id, weekday_price, weekend_price, 
+      SELECT id as dtl_id, mst_id, weekday_price, weekend_price, 
              CASE num_of_revu WHEN 0 THEN 0
                               ELSE sum_of_stars / num_of_revu END as star
       FROM   room_dtl
       <where>
-        <if test='minPrice gte 1 and maxPrice gte 1'>
-          AND (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
-          OR   weekend_price BETWEEN #{minPrice} AND #{maxPrice})
-        </if>
+        <choose>
+          <when test='minPrice gte 1 and maxPrice gte 1'>
+            AND (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
+            OR   weekend_price BETWEEN #{minPrice} AND #{maxPrice})
+          </when>
+          <when test='minPrice gte 1'>
+            AND (weekday_price gte #{minPrice}
+            OR   weekend_price gte #{minPrice})
+          </when>
+          <when test='minPrice gte 1'>
+            AND (weekday_price lte #{minPrice}
+            OR   weekend_price lte #{minPrice})
+          </when>
+        </choose>
         <if test='numOfGuests gte 1'>
           AND num_of_guests = #{numOfGuests}
         </if>
@@ -53,30 +63,30 @@
     ON    m.id = d.mst_id
     
     <choose>
-    <when test='checkIn != null and !"".equals(checkIn) and checkOut != null and !"".equals(checkOut)'>
-      <![CDATA[
-      INNER JOIN rsrv r
-      ON    (
-              (#{checkIn} < check_in  AND #{checkOut} < check_in)  
-          OR  (#{checkIn} > check_out AND #{checkOut} > check_out)
-      )  
-      AND   r.room_dtl_id = d.id
-      ]]>
-    </when>
-    <when test='checkIn != null and !"".equals(checkIn)'>
-      <![CDATA[
-      INNER JOIN rsrv r
-      ON    #{checkIn} < check_in AND #{checkIn} > check_out
-      AND   r.room_dtl_id = d.id
-      ]]>
-    </when>
-    <when test='checkOut != null and !"".equals(checkOut)'>
-      <![CDATA[
-      INNER JOIN rsrv r
-      ON    #{checkOut} < check_in AND #{checkOut} > check_out
-      AND   r.room_dtl_id = d.id
-      ]]>
-    </when>
+      <when test='checkIn != null and !"".equals(checkIn) and checkOut != null and !"".equals(checkOut)'>
+        <![CDATA[
+        INNER JOIN rsrv r
+        ON    (
+                (#{checkIn} < check_in  AND #{checkOut} < check_in)  
+            OR  (#{checkIn} > check_out AND #{checkOut} > check_out)
+        )  
+        AND   r.room_dtl_id = d.id
+        ]]>
+      </when>
+      <when test='checkIn != null and !"".equals(checkIn)'>
+        <![CDATA[
+        INNER JOIN rsrv r
+        ON    #{checkIn} < check_in AND #{checkIn} > check_out
+        AND   r.room_dtl_id = d.id
+        ]]>
+      </when>
+      <when test='checkOut != null and !"".equals(checkOut)'>
+        <![CDATA[
+        INNER JOIN rsrv r
+        ON    #{checkOut} < check_in AND #{checkOut} > check_out
+        AND   r.room_dtl_id = d.id
+        ]]>
+      </when>
     </choose>
     
     ORDER BY 
