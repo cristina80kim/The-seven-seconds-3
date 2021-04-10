@@ -11,51 +11,26 @@
     SELECT m.*, d.*, c.name as type_of_acco_name
     FROM ( SELECT id, region, title, addr, pic1_uuid, type_of_acco   
            FROM   room_mst
-            <where>
-              <if test='(isHotel != null and !"".equals(isHotel)) 
-                or (isMotel != null and !"".equals(isMotel)) 
-                or (isPension != null and !"".equals(isPension)) 
-                or (isGlamping != null and !"".equals(isGlamping)) 
-                or (isGuestHouse != null and !"".equals(isGuestHouse)) 
-                or (isResort != null and !"".equals(isResort))'>
-                (1 = 1
-              </if>
-              
-              <if test='isHotel != null and !"".equals(isHotel)'>
-                OR type_of_acco = #{isHotel} <!-- 공통코드 class3 참조 -->
-              </if> 
-              <if test='isMotel != null and !"".equals(isMotel)'>
-                OR type_of_acco = #{isMotel} <!-- 공통코드 class3 참조 -->
-              </if> 
-              <if test='isPension != null and !"".equals(isPension)'>
-                OR type_of_acco = #{isPension} <!-- 공통코드 class3 참조 -->
-              </if> 
-              <if test='isGlamping != null and !"".equals(isGlamping)'>
-                OR type_of_acco = #{isGlamping} <!-- 공통코드 class3 참조 -->
-              </if> 
-              <if test='isGuestHouse != null and !"".equals(isGuestHouse)'>
-                OR type_of_acco = #{isGuestHouse} <!-- 공통코드 class3 참조 -->
-              </if>
-              <if test='isResort != null and !"".equals(isResort)'>
-                OR type_of_acco = #{isResort} <!-- 공통코드 class3 참조 -->
-              </if>
-            
-              <if test='(isHotel != null and !"".equals(isHotel)) 
-                or (isMotel != null and !"".equals(isMotel)) 
-                or (isPension != null and !"".equals(isPension)) 
-                or (isGlamping != null and !"".equals(isGlamping)) 
-                or (isGuestHouse != null and !"".equals(isGuestHouse)) 
-                or (isResort != null and !"".equals(isResort))'>              
-                )
-              </if>
-            
-              <if test='keyword != null and !"".equals(keyword)'>
-                AND (region LIKE '%'|| #{keyword} ||'%'
-                  OR title  LIKE '%'|| #{keyword} ||'%'
-                  OR addr   LIKE '%'|| #{keyword} ||'%'
-                )
-              </if> 
-            </where>
+           <if test='typeOfAcco != null and (
+                 (typeOfAcco[0] != null and !"".equals(typeOfAcco[0])) 
+              or (typeOfAcco[1] != null and !"".equals(typeOfAcco[1]))
+              or (typeOfAcco[2] != null and !"".equals(typeOfAcco[2])) 
+              or (typeOfAcco[3] != null and !"".equals(typeOfAcco[3])) 
+              or (typeOfAcco[4] != null and !"".equals(typeOfAcco[4])) 
+              or (typeOfAcco[5] != null and !"".equals(typeOfAcco[5])) )'> 
+             <where>
+               <foreach collection="typeOfAcco" item="item" open="type_of_acco IN (" close=")" separator=", ">
+                 #{item.value}
+               </foreach>
+               
+               <if test='keyword != null and !"".equals(keyword)'>
+                 AND (region LIKE '%'|| #{keyword} ||'%'
+                   OR title  LIKE '%'|| #{keyword} ||'%'
+                   OR addr   LIKE '%'|| #{keyword} ||'%'
+                 )
+               </if> 
+             </where>
+           </if>
     ) m
     INNER JOIN code c
     ON    c.class1 = 'ROOM' 
@@ -66,9 +41,15 @@
              CASE num_of_revu WHEN 0 THEN 0
                               ELSE sum_of_stars / num_of_revu END as star
       FROM   room_dtl
-      WHERE (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
-      OR     weekend_price BETWEEN #{minPrice} AND #{maxPrice})
-      AND    num_of_guests = #{numOfGuests}
+      <where>
+        <if test='minPrice gte 1 and maxPrice gte 1'>
+          AND (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
+          OR weekend_price BETWEEN #{minPrice} AND #{maxPrice})
+        </if>
+        <if test='numOfGuests gte 1'>
+          AND num_of_guests = #{numOfGuests}
+        </if>
+      </where>
       ) d
     ON    m.id = d.mst_id
     
