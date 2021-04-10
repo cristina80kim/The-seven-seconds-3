@@ -9,9 +9,9 @@ public class NoticeVO {
 	private String no; 			// 글번호
 	private String title; 		// 공지사항 제목
 	private String content; 	// 공지사항 내용
-	private String c_user; 		// 생성자 ID
-	private String m_user; 		// 수정자 ID
-	private String c_date; 		// 생성 날짜/시간
-	private String m_date; 		// 수정 날짜/시간 
+	private String cuser; 		// 생성자 ID
+	private String muser; 		// 수정자 ID
+	private String cdate; 		// 생성 날짜/시간
+	private String mdate; 		// 수정 날짜/시간 
 
 }

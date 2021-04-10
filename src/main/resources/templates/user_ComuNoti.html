@@ -14,7 +14,7 @@
 	<script>
 $(function() {
     console.log(">>> $(): 1");
-    notice.showNoticeOnGrid("/notice/searchData", "gridData");
+    notice.showNoticeOnGrid("/notice/toastSearch", "gridData");
   });
 
 var gridNotice = null;
@@ -53,9 +53,9 @@ var notice = {
 		              {header: "아이디",     name: "id",       width: 75,  height: 100      },
 		              {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
 		              {header: "번호",      name: "no",       width: 50, align: "center"   },
-		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
+// 		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
 		              {header: "제목",      name: "title",    width: 220    				  },
-		              {header: "작성일",     name: "c_date",    width: 150, align: "center"       },
+		              {header: "작성일",     name: "cdate",    width: 150, align: "center"       },
 		              	            
 		            ];
 		            

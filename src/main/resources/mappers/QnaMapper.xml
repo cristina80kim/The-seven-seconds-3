@@ -4,73 +4,86 @@
 
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 
-<!-- 	전체데이터 갯수 -->
+	<!-- 전체데이터 갯수 -->
 	<select id="selectCnt" resultType="com.team3.prj.vo.QnaVO">
 		SELECT count(*) as total
 		FROM qna
-		<where>
+			<where>
 			<if test='cate_id!= null and !"".equals(cate_id)'>
-				AND cate_id = #{cate_id} 
+				AND cate_id = #{cate_id}
 			</if>
 			<if test='keyword!= null and !"".equals(keyword)'>
-
 				AND
 				(title LIKE '%'||#{keyword}||'%'
 				OR nickname LIKE '%'||#{keyword}||'%'
 				OR q LIKE '%'||#{keyword}||'%'
 				OR a LIKE '%'||#{keyword}||'%'
 				)
-
 			</if>
-		</where>
-		ORDER BY id
+			</where>
 	</select>
 
-<!-- 	전체 출력 sql문 -->
+	<!-- 전체 출력 sql문 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.QnaVO">
 		SELECT q.*,
-		(SELECT name FROM code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate,
+		(SELECT name FROM
+		code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 =
+		'TYPE_OF_QNA') as cate,
 		nvl2(q.a,'답변완료','대기중') as aox
 		FROM qna q
-		ORDER BY q.id
+		ORDER BY
+		q.id
 	</select>
-	
+
 
 	<!-- 1개 출력 sql 문 -->
 	<select id="selectOne" resultType="com.team3.prj.vo.QnaVO">
 		SELECT q.*,
-		(SELECT name FROM code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
+		(SELECT name FROM
+		code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 =
+		'TYPE_OF_QNA') as cate
 		FROM qna q
 		WHERE q.id = #{id}
 		ORDER BY q.id
 	</select>
 
+<!-- SELECT * -->
+<!-- 		FROM(SELECT q.*, -->
+<!-- 				(SELECT name FROM code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate, -->
+<!-- 				nvl2(q.a,'답변완료','대기중') as aox, rownum rnum -->
+<!-- 			FROM qna q -->
+<!--             where cate_id = 'point' -->
+            
+<!--             order by id -->
+<!--             ) -->
+<!--         WHERE  rnum BETWEEN (5*('2'-1)+1) AND (5*'2'); -->
+
 	<!-- 검색기능 sql문 / / 통합 검색으로 -->
 	<select id="search" resultType="com.team3.prj.vo.QnaVO">
-		SELECT *
+	SELECT *
 		FROM(SELECT q.*,
 				(SELECT name FROM code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate,
-				nvl2(q.a,'답변완료','대기중') as aox, rownum as rnum
-			FROM qna q)
-		
-		<where>
-			<if test='pageNumber!= null and !"".equals(pageNumber)'>	
-				AND rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
-				</if>
+				nvl2(q.a,'답변완료','대기중') as aox, rownum rnum
+			FROM qna q
+			<where>
 			<if test='cate_id!= null and !"".equals(cate_id)'>
-				AND cate_id = #{cate_id} 
+				AND cate_id = #{cate_id}
 			</if>
 			<if test='keyword!= null and !"".equals(keyword)'>
-
 				AND
 				(title LIKE '%'||#{keyword}||'%'
 				OR nickname LIKE '%'||#{keyword}||'%'
 				OR q LIKE '%'||#{keyword}||'%'
 				OR a LIKE '%'||#{keyword}||'%'
 				)
-
 			</if>
-		</where>
+			</where>
+			ORDER BY id)
+			<where>
+			<if test='pageNumber!= null and !"".equals(pageNumber)'>
+			  rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
+			</if>
+			</where>
 	</select>
 
 	<!-- 게시글 등록 sql문 -->

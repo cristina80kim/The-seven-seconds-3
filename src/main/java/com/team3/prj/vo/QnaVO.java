@@ -14,10 +14,10 @@ public class QnaVO {
 	private String q; //질문 내용
 	private String a; //답변 내용
 	private String aox; //답변유무
-	private String c_user; // 생성자
-	private String c_date; // 생성날짜
-	private String m_user; // 수정자
-	private String m_date; // 수정날짜
+	private String cuser; // 생성자
+	private String cdate; // 생성날짜
+	private String muser; // 수정자
+	private String mdate; // 수정날짜
 
 
 

@@ -6,9 +6,10 @@ import lombok.Data;
 public class FaqVO {
 	private Long id; 		// 고유id
 	private String no; 		// 글번호
-	private String cate_id; 	// 카테고리
+	private String cateId; // 카테고리
+	private String cate;	// 카테고리명
 	private String title; 	// 제목
 	private String content; // 내용
-	private String c_user; 	// 글쓴이
-	private String c_date;	// 생성 일자,시간
+	private String cUser; 	// 글쓴이
+	private String cdate;	// 생성 일자,시간
 }

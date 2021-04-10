@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <title>190.user_커뮤니티_QnA_목록</title>
 <link rel="stylesheet" href="css/user_ComuQnAList.css?after" />
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
 <link rel="stylesheet"
-	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+   href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
-<link rel="stylesheet" href="/css/tui-pagination.css" />
-<script type="text/javascript" src="/js/tui-pagination.js"></script>
+
 <script>
 $(function() {
     console.log(">>> $(): 1");
@@ -22,122 +23,123 @@ var gridQna = null;
 
 $("#QnaSearch").keypress(function (e) {
     if (e.which == 13){
-    	qna.onSearchBtnClick();  
-    	event.preventDefault();
+       qna.onSearchBtnClick();  
+       event.preventDefault();
     } 
 });
 
 var qna = {
-		
-		onSearchBtnClick: function() {
-		      console.log("onSearchBtnClick()");
-		      var cate_id = $("#cateId option:selected").val();
-		      var keyword = $("#QnaSearch").val();
-		      console.log("keyWord : " + keyword);
-		      qna.showQnaOnGrid("/qna/toastSearch?pageNumber=1&cate_id="+ cate_id +"&keyword="+keyword, "gridData");
-		    },
-		    
-		    onQnaWriteClick: function() {
-		        console.log("onQnaWriteClick()");
-		        main.ajaxGetHtml("/qna/qWriter", "contents");
-		      },
-		      
-		      
-		      showQnaOnGrid: function(url, componentName) {
-		          var kind = "QnA";
-		          var actionInsert = "INSERT";
-		          var actionDelete = "DELETE";
-		    
-		          
-		          var columns = [
-		              {header: "번호",      name: "no",       width: 50, align: "center"   },
-		              {header: "카테고리", name: "cate",   width: 100,   align: "center"       },
-		              {header: "제목",      name: "title",    width: 340 		              },
-		              {header: "답변유/무",      name: "aox",    width: 80 , align: "center"     },
-		              {header: "닉네임",      name: "nickname",    width: 120 	, align: "center" 	              },
-		              {header: "작성일",     name: "c_date",    width: 150                    },
-		              
-		            ];
-		          main.clearGrid(componentName, gridQna); 
-		          
-		            gridQna = main.showToastGrid(url, componentName, columns);
-		            
-		            // mousedown Event
-					gridQna.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridQna.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("/qna/userQna?id="+rowInfo["id"],"contents");
-					});
-		          },
-		          
-		          callbackButtonClicked: function(kind, action, index) {
-		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-		            console.log("id: " + gridQna.getValue(index, "id")); 
-		          },
-		          
-		        };	
-				
-				var pagination2 = new tui.Pagination($("#pagination"), {
-						totalItems: 500, //그리드로 불러온 데이터 길이
-						  itemsPerPage: 10, // 페이지당 표시할 갯수
-						  visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
-						  page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
-						  centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
-				});
-				pagination2.on('afterMove', (function(x){
-					var pageNumber = x.page
-					alert(pageNumber);
-					var data = test(pageNumber);
-					result.resetData(data);
-				}));
-				pagination2.getCurrentPage();//페이지 현재 페이지 불러옴\
-				
-				
-				function test(pageNumber) {
-					//ajax 통신
-					alert("확인");
-// 					main.clearGrid(gridData, gridQna);
-					
-					var cate_id = $("#cateId option:selected").val();
-				    var keyword = $("#QnaSearch").val();
-					qna.showQnaOnGrid("/qna/toastSearch?cate_id="+ cate_id +"&keyword="+keyword+"&pageNumber="+pageNumber,
-							"gridData");
-					console.log("cate_id : "+cate_id+"keyword : "+ keyword+"pageNumber : "+pageNumber);
-// 					alert("확인 1");
-					
-					return data;
-					return data;
-				}
+      
+      onSearchBtnClick: function() {
+            console.log("onSearchBtnClick()");
+            var cate_id = $("#cateId option:selected").val();
+            var keyword = $("#QnaSearch").val();
+            console.log("keyWord : " + keyword);
+            qna.showQnaOnGrid("/qna/toastSearch?pageNumber=1&cate_id="+ cate_id +"&keyword="+keyword, "gridData");
+          },
+          
+          onQnaWriteClick: function() {
+              console.log("onQnaWriteClick()");
+              main.ajaxGetHtml("/qna/qWriter", "contents");
+            },
+            
+            
+            showQnaOnGrid: function(url, componentName) {
+                var kind = "QnA";
+                var actionInsert = "INSERT";
+                var actionDelete = "DELETE";
+          
+                
+                var columns = [
+                    {header: "번호",      name: "no",       width: 50, align: "center"   },
+                    {header: "카테고리", name: "cate",   width: 100,   align: "center"       },
+                    {header: "제목",      name: "title",    width: 340                     },
+                    {header: "답변유/무",      name: "aox",    width: 80 , align: "center"     },
+                    {header: "닉네임",      name: "nickname",    width: 120    , align: "center"                  },
+                    {header: "작성일",     name: "cdate",    width: 150                    },
+                    
+                  ];
+                main.clearGrid(componentName, gridQna); 
+                
+                  gridQna = main.showToastGrid(url, componentName, columns);
+                  
+                  // mousedown Event
+               gridQna.on('mousedown', function(ev) {
+                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                  var rowInfo = gridQna.getRow(ev.rowKey); 
+                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                    main.ajaxGetHtml("/qna/userQna?id="+rowInfo["id"],"contents");
+               });
+                },
+                
+                callbackButtonClicked: function(kind, action, index) {
+                  console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+                  console.log("id: " + gridQna.getValue(index, "id")); 
+                },
+                
+              };   
+            
+            // 페이지 이동 
+            var pagination2 = new tui.Pagination($("#pagination"), {
+                  totalItems: 500, //그리드로 불러온 데이터 길이
+                    itemsPerPage: 10, // 페이지당 표시할 갯수
+                    visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+                    page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+                    centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+            });
+            pagination2.on('afterMove', (function(x){
+               var pageNumber = x.page
+               alert(pageNumber);
+               var data = test(pageNumber);
+               result.resetData(data);
+            }));
+            pagination2.getCurrentPage();//페이지 현재 페이지 불러옴\
+            
+            
+            function test(pageNumber) {
+               //ajax 통신
+               alert("확인");
+//                main.clearGrid(gridData, gridQna);
+               
+               var cate_id = $("#cateId option:selected").val();
+                var keyword = $("#QnaSearch").val();
+               qna.showQnaOnGrid("/qna/toastSearch?cate_id="+ cate_id +"&keyword="+keyword+"&pageNumber="+pageNumber,
+                     "gridData");
+               console.log("cate_id : "+cate_id+"keyword : "+ keyword+"pageNumber : "+pageNumber);
+//                alert("확인 1");
+               
+               return data;
+               return data;
+            }
  
 </script>
 </head>
 <body>
  
 
-	<div id="wrap">
-	
-		<section>
-		
-			<div id="QnASrch">
-				  <h1>Q&A</h1>
-			      <form id="QnASrchFrm">
-			        <select name="cateId" id="cateId">
-			        	<option value="">카테고리</option>
-			        </select>
-			        <input type="text" id="QnaSearch" name="QnaSearch">
-			        <input type="button" value="검색" onclick="qna.onSearchBtnClick()" id="QnASearchBtn">
-			      </form>
-			<div id="gridData"></div>
-			<div id="pagination" class="tui-pagination"></div>
-		    </div>
-		    	 
-		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기" id="writeBtn">
-	
-		
-		    </section>
-		
-	</div>
+   <div id="wrap">
+   
+      <section>
+      
+         <div id="QnASrch">
+              <h1>Q&A</h1>
+               <form id="QnASrchFrm">
+                 <select name="cateId" id="cateId">
+                    <option value="">카테고리</option>
+                 </select>
+                 <input type="text" id="QnaSearch" name="QnaSearch">
+                 <input type="button" value="검색" onclick="qna.onSearchBtnClick()" id="QnASearchBtn">
+               </form>
+         <div id="gridData"></div>
+         <div id="pagination" class="tui-pagination"></div>
+          </div>
+              
+      <input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기" id="writeBtn">
+   
+      
+          </section>
+      
+   </div>
 
 
 </body>
