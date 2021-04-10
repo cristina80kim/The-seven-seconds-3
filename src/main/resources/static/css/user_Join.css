@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 input:focus{
 outline:none;
 }
@@ -15,7 +16,7 @@ hr {
 	opacity:0.5;
 }
 
-#wrap {
+#Join_wrap {
 	width: 960px;
 	margin: 0 auto;
 	color:#785aef;
@@ -31,16 +32,19 @@ section {
 }
 
 section h1 {
+	margin-top: 50px;
+	margin-bottom: 15px;
 	text-align: center;
 	color:#785aef;
 }
 
 
-textarea {
+#userJoinTxtrea {
 	 resize: none;
-	 margin-top:5px;
-	margin-left:18%;
 	text-align: left;
+	width: 420px;
+	height: 150px;
+	margin-left: 16%;
 }
 
 /*/////////////////////////////////////////////////// */
@@ -49,7 +53,10 @@ textarea {
 #userJoinFrm {
 	color:#785aef;
 	text-align: left;
-
+	top: 30%;
+	left: 20%;
+	width: 743px;
+	margin-left: 15%;
 }
 
 #userJoinFrm label{
@@ -57,9 +64,13 @@ textarea {
 	display:inline-block;
 	line-height:5px;
 	text-align: left;
-	padding-left:120px;
 	vertical-align:middle;
 	padding-top:25px;
+}
+
+#JoinAgreeLbl, #roleLbl, #roleULbl, #idLbl, #pwdLbl,#pswChkLbl, 
+#nameLbl, #nickNameLbl,#telLbl,#emailLbl,#userGenLbl,#genFLbl{
+    margin-left: 16%;
 }
 
 
@@ -81,17 +92,24 @@ textarea {
 	text-align: left;
 }
 
+#roleArea #roleULbl{
+	margin-left: -107px !important;
+	padding-left:0;
+}
+
+#roleArea #roleMLbl {
+	margin-left:-100px !important;
+	padding-left:0;
+}
+
 #genArea {
 	width: 120px;
 	margin-left:-100px;
 	text-align: left;
 }
 
-#doubleChk {
 
-}
-
-#doubleChk:hover {
+#checkDupl:hover {
 	cursor:pointer;
 	color: white;
 	background-color:#9881f3;	
@@ -138,8 +156,10 @@ textarea {
 /*회원가입,취소 Btn///////////////////  */
 
 #joinBtn {
-	width: 700px;
-	margin-left:13%;
+	width: 960px;
+	height: 100px;
+	margin-left:10%;
+	margin-top: 10px;
 }
 
 #joinBtn input{

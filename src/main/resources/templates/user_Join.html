@@ -91,13 +91,13 @@
 </head>
 <body>
 
-<div id="wrap">
+<div id="Join_wrap">
 
 	<section>
 			<h1>회원가입</h1>
 			<form id="userJoinFrm">
 				
-				<textarea name="" id="" cols="60" rows="10">
+				<textarea name="userJoinTxtrea" id="userJoinTxtrea" cols="60" rows="10">
 제 1 조 (목적)
 1. 본 약관은 기업마당 사이트가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 기업마당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
 제 2 조 (약관의 효력과 변경)
@@ -118,59 +118,59 @@
 제 5 조 (이용계약의 성립)
 				</textarea>
 				<br />
-				<label for="JoinAgree">
+				<label for="JoinAgree" id="JoinAgreeLbl">
 					<input type="checkbox" name="JoinAgree" id="JoinAgree" />동의함
 				 </label>
 				 
 				 <br />
-				 <label>구분</label>
-				 	<label for="roleU" id="roleArea">
+				 <label id="roleLbl">구분</label>
+				 	<label for="roleU" id="roleArea roleULbl">
 				 		<input type="radio" name="role" id="roleU" value="U" checked/>개인
 				 	</label>
-			 		<label for="roleM" id="roleArea">
+			 		<label for="roleM" id="roleArea roleMLbl">
 			 			<input type="radio" name="role" id="roleM" value="M" />사장
 			 		</label>
 				
 				<br />
-				 <label for="id">아이디
+				 <label for="id" id="idLbl">아이디
 					 <input type="text" class="id" name="id" id="id" value="ssh"/>
 					 <input type="button" value="중복 확인" id="checkDupl" onclick="userJoin.onCheckDuplClicked();"/>
 				 </label>
 				 
 				 <br />
-				 <label for="pwd">비밀번호
+				 <label for="pwd" id="pwdLbl">비밀번호
 					 <input type="password" class="pwd" name="pwd" id="pwd" value="1234" />
 				 </label>
 				 <br />
-				 <label for="pwd2">비밀번호 확인
+				 <label for="pwd2" id="pswChkLbl">비밀번호 확인
 					 <input type="password" name="pwd2" id="pwd2" />
 				 </label>
 				 
 				 <br />
-				 <label for="name">이름
+				 <label for="name" id="nameLbl">이름
 					 <input type="text" name="name" id="name" value="성승현"/>
 				 </label>
 				 
 				  <br />
-				 <label for="nickname">닉네임
+				 <label for="nickname" id="nickNameLbl">닉네임
 					 <input type="text" name="nickname" id="nickname" value="ㄴ닉" />
 				 </label>
 				 
 				 <br />
-				 <label>전화번호
+				 <label id="telLbl">전화번호
 					 <input type="text" name="tel" id="tel" placeholder="01011111111"/>
 				</label>
 				 
 				 <br />
-				 <label for="email">이메일
+				 <label for="email" id="emailLbl">이메일
 					 <input type="text" name="email" id="email" value="sshyun90@naver.com"/>
 				 </label>
 				
 				<br />
-				  <label for="userGen">성별
+				  <label for="userGen" id="userGenLbl">성별
 				  </label>
-				  <label for="genF" id="genArea"><input type="radio" name="gen" id="genF" value="F" />여자</label>
-				  <label for="genM" id="genArea"><input type="radio" name="gen" id="genM" value="M" />남자</label>
+				  <label for="genF" id="genArea genFLbl"><input type="radio" name="gen" id="genF" value="F" />여자</label>
+				  <label for="genM" id="genArea genMLbl"><input type="radio" name="gen" id="genM" value="M" />남자</label>
 				  
 				  <br /><br />
 				  <div id="joinBtn">
