@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>181. user_커뮤니티_FAQ</title>
-<link rel="stylesheet" href="css/user_ComuFAQ.css" /> 
+<link rel="stylesheet" href="css/user_ComuFAQ.css?after" /> 
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
@@ -49,10 +49,10 @@ var faq = {
 		    
 		          
 		          var columns = [
-		              {header: "번호",      name: "no",       width: 100, align: "center"   },
+		              {header: "번호",      name: "no",       width: 50, align: "center"   },
 		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
-		              {header: "제목",      name: "title",    width: 100 		              },
-		              {header: "작성일",     name: "c_date",    width: 20                    },
+		              {header: "제목",      name: "title",    width: 400 		              },
+		              {header: "작성일",     name: "c_date",    width: 150                    },
 		              
 		            ];
 		          main.clearGrid(componentName, gridFaq);  
@@ -99,8 +99,6 @@ var faq = {
 	      	<table id="gridData"></table>
 			<div id="gridData"></div>
 	    </div>
-	  <hr />
-	
 
 	
 	</section>

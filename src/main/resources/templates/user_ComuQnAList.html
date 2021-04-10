@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>190.user_커뮤니티_QnA_목록!</title>
-<link rel="stylesheet" href="css/user_ComuQnAList.css" />
+<link rel="stylesheet" href="css/user_ComuQnAList.css?after" />
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
@@ -52,9 +52,9 @@ var qna = {
 		          var columns = [
 		              {header: "번호",      name: "no",       width: 50, align: "center"   },
 		              {header: "카테고리", name: "cate",   width: 100,   align: "center"       },
-		              {header: "제목",      name: "title",    width: 300 		              },
+		              {header: "제목",      name: "title",    width: 340 		              },
 		              {header: "답변유/무",      name: "aox",    width: 80 , align: "center"     },
-		              {header: "닉네임",      name: "nickname",    width: 100 	, align: "center" 	              },
+		              {header: "닉네임",      name: "nickname",    width: 120 	, align: "center" 	              },
 		              {header: "작성일",     name: "c_date",    width: 150                    },
 		              
 		            ];
@@ -124,8 +124,6 @@ var qna = {
 		    </div>
 		    	 
 		<input type="button" onclick="qna.onQnaWriteClick();" value="글 쓰기" id="writeBtn">
-	
-			<hr />
 	
 		
 		    </section>

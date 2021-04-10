@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>180. user_커뮤니티_공지사항_목록</title>
-<link rel="stylesheet" href="css/user_ComuNoti.css" />
-<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<link rel="stylesheet" href="css/user_ComuNoti.css?after" />
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 </head>
 <body>
-<script>
+	<script>
 $(function() {
     console.log(">>> $(): 1");
     notice.showNoticeOnGrid("/notice/searchData", "gridData");
@@ -49,12 +50,12 @@ var notice = {
 		    
 		          
 		          var columns = [
-		              {header: "아이디",     name: "id",       width: 50,  height: 100      },
-		              {header: "닉네임",     name: "nickname", width: 100                   },
-		              {header: "번호",      name: "no",       width: 100, align: "center"   },
+		              {header: "아이디",     name: "id",       width: 75,  height: 100      },
+		              {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
+		              {header: "번호",      name: "no",       width: 50, align: "center"   },
 		              {header: "카테고리ID.", name: "cateId",   width: 100                   },
-		              {header: "제목",      name: "title",    width: 200    				  },
-		              {header: "작성일",     name: "c_date",    width: 50                    },
+		              {header: "제목",      name: "title",    width: 220    				  },
+		              {header: "작성일",     name: "c_date",    width: 150, align: "center"       },
 		              	            
 		            ];
 		            
@@ -85,124 +86,22 @@ var notice = {
 				
 
 </script>
-<div id="wrap">
+	<div id="wrap">
 
-	<article>
-	
-		<div id="NotiSrch">
-		  <h1>공지사항</h1>
-	      <form id="NotisrchFrm">
-<!-- 	        <select name="Noticate" id="Noticate"> -->
-<!-- 	          <option value="">전체</option> -->
-<!-- 	        </select> -->
-	        <input type="text" id="NotiSearch" name="NotiSearch">
-	        <input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
-	      </form>
-	      <table id="gridData"></table>
-		<div id="gridData"></div>
-	    </div>
-		<hr />
-	
-<!-- 	    <div id="FAQbbs"> -->
-<!-- 	      <table> -->
-<!-- 	        <tr> -->
-<!-- 	          <th id="noth">번호</th> -->
-<!-- 	          <th id="titleth">제목</th> -->
-<!-- 	          <th id="C_DATEth">일시</th> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">48</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 포인트 적립 정책 변경 안내</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">47</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 정기 점검 안내(03/25 AM 2:00 ~ 7:00)</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">46</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 할인 정책 변경 안내</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">45</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 개인정보처리방침 개정 안내</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">43</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 가입 이벤트 안내</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td id="no"><a href="">42</a></td> -->
-<!-- 	          <td id="title"><a href="">세븐 세컨즈 정기 점검 변견 안내(03/17 AM 3:00 ~ 8:00)</a></td> -->
-<!-- 	          <td id="C_DATE"><a href="">21.03.15</a></td> -->
-<!-- 	        </tr> -->
-<!-- 	        <tr> -->
-<!-- 	          <td colspan="3"> -->
-<!-- 	            <hr> -->
-<!-- 	          </td> -->
-<!-- 	        </tr> -->
-	        
-<!-- 	      </table> -->
-<!-- 	    </div> -->
-	
-	
-	
-<!-- 	    <div id="paging"> -->
-<!-- 	        <span class="block">《</span> -->
-<!-- 	        <span class="block">〈</span> -->
-<!-- 	        <span class="pageNo" id="nowPage">1</span> -->
-<!-- 	        <span class="pageNo">2</span> -->
-<!-- 	        <span class="pageNo">3</span> -->
-<!-- 	        <span class="pageNo">4</span> -->
-<!-- 	        <span class="pageNo">5</span> -->
-<!-- 	        <span class="pageNo">6</span> -->
-<!-- 	        <span class="pageNo">7</span> -->
-<!-- 	        <span class="pageNo">8</span>   -->
-<!-- 	        <span class="block">〉</span> -->
-<!-- 	        <span class="block">》</span> -->
-<!-- 	      </div> -->
-	      
-<!-- 	</article> -->
-	
-<!-- </div> -->
-
-
-
-
+		<article>
+			<div id="NotiSrch">
+				<h1>공지사항</h1>
+				<form id="NotisrchFrm">
+					<input type="text" id="NotiSearch" name="NotiSearch">
+					<input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
+				</form>
+			</div>
+			<!-- end-NotiSrch -->
+			<table id="gridData"></table>
+			<div id="gridData"></div>
+		</article>
+		
+	</div><!-- end-wrap -->
 
 </body>
 </html>
