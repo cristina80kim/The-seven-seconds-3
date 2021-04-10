@@ -34,6 +34,7 @@ input:focus,textarea:focus,select:focus,option:focus {
 	background-color:#9881f3;
 }
 
+/* 글 css */
 #wrap {
 	width: 700px;
 	margin: 0 auto;
@@ -107,7 +108,8 @@ input[type=text], textarea,select{
 #qLabel{
 	vertical-align:top;
 	line-height:1.1em;
-} ​
+} 
+
 
 
 

@@ -226,12 +226,14 @@
   white-space: nowrap;
   padding: 0;
   overflow: hidden;
+  cursor: pointer;
 }
 .tui-grid-cell .tui-grid-cell-content {
   padding: 12px 12px 11px;
   overflow: hidden;
   box-sizing: border-box;
   word-break: break-all;
+  cursor: pointer;
 }
 .tui-grid-cell img {
   vertical-align: middle;

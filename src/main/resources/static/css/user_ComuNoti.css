@@ -93,11 +93,7 @@ select, option {
 table {
 	margin:0 auto;
 	width: 670px;
-/*	table-layout: fixed;
- 	color:#785aef;
-	border-collapse: collapse; */
-
-	
+	cursor: pointer;
 }
 
 
