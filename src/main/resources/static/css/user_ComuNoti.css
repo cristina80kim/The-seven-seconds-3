@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@import url(reset.css);
 
 input[type=text]{
 	border:none;
@@ -22,15 +22,16 @@ a {
 }
 
 #wrap {
-	width: 900px;
-	margin: 0 auto;
+	text-align:center;
 	color:#785aef;
+	margin-bottom:50px;
 }
 
+#gridData{
+	margin:0 auto;
+	text-align:center;
+}
 section {
-	width: 800px;
-	text-align:left;
-	margin: 0 auto;
 	color:#785aef;
 	vertical-align: middle;
 }
@@ -42,36 +43,45 @@ select, option {
 	border: 2px solid #785aef;
 }
 
-#NotiSrch {
+/* #NotiSrch {
 	width: 700px;
 	margin: 0 auto;
 	text-align: center;
 	vertical-align: middle;
 }
-
+ */
 #NotiSrch h1 {
-	text-align: center;
 	color:#785aef;
-	font-size:1.8em;
+	font-size:1.5em;
+	padding-top:15px;
+	padding-bottom:20px;
+}
+
+#NotisrchFrm{
+	margin-bottom:30px;
+	
 }
 
 #NotiSearch {
 	width: 350px;
-	border:2px solid #785aef;
-	padding: 7px 5px;
+	border:2px solid #9881f3;
+	padding: 8px 6px;
 	vertical-align: middle;
 }
 
 #NotiSrchBtn { /* 검색버튼 */
 	width: 80px;
 	border:2px solid #9881f3;
-	padding: 5px 3px;
+	margin-left:3px;
+	padding: 7px 7px;
 	color:#785aef;
 	background-color:white;
+	font-weight:bold;
 	text-align: center;
 	vertical-align: middle;
+		font-size:0.9em
 }
-#FAQSrchBtn:hover{
+#NotiSrchBtn:hover{
 	cursor:pointer;
 	color: white;
 	border:2px solid #9881f3;
@@ -81,11 +91,11 @@ select, option {
 
 
 table {
-	table-layout: fixed;
-	color:#785aef;
-	width: 800px;
-	width: 100%;
-	border-collapse: collapse;
+	margin:0 auto;
+	width: 670px;
+/*	table-layout: fixed;
+ 	color:#785aef;
+	border-collapse: collapse; */
 
 	
 }
@@ -146,6 +156,8 @@ input[type=date]{
 	vertical-align: middle;
 }
 /*/////////////////////////////////////////////////// */
+
+
 
 #srchBtn_ {
 	width: 500px;

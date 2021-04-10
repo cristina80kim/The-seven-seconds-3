@@ -6,10 +6,11 @@
 	width: 960px;
 	margin:0 auto;
 }
-#leftMenu {
-		float:left;
+#inWarp > #leftMenu {
+	width: 200px;
+	float:left;
 	}
-/* #contents {
-		float:right;
-}
- */
+#inWarp > #contents {
+	float:left;
+	width: 760px;
+	}

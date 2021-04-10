@@ -1,97 +1,16 @@
 @charset "UTF-8";
-
+@import url(reset.css);
 
 input:focus,textarea:focus,select:focus,option:focus {
 	outline:none;
 }
 
-
-textarea {
-	resize: none;
-}
-
-#wrap {
-	width: 900px;
-	margin: 0 auto;
-	color:#785aef;
-}
-
-section {
-	width: 500px;
-	text-align:left;
-	margin: 0 auto;
-	font-weight:bolder;
-	font-size:1.2em;
-}
-
-section h1 {
-	text-align: center;
-	color:#785aef;
-}
-
-
-#FAQWriteFrm span {
-	color:#785aef;
-	font-size:1.0em;
-	font-weight:bolder;
-	padding-right: 10px;
-	padding-bottom: 5px;
-	display: inline-block;
-/* 	border:1px solid black; */
-	clear:left;
-	float:left;
-}
-
-#cateId, #title, #content {
-	border: 2px solid #9881f3;
-	display:inline-block;
-	padding: 3px;
-	clear:left;
-	color:#9881f3;
-	vertical-align: top;
-	margin-right:10px;
-	
-}
-
-input[type=text], textarea,select{
-	border: 2px solid #9881f3;
-	padding: 3px 5px;
-	margin: 2px;
-}
-
-#title {
-	width: 390px;
-	margin-left: 41px;
-}
-
-#q {
-	margin-top:5px;
-	margin-left:47px;
-	resize: none;	
-	width: 386px;
-}
-
-#qLabel{
-	width: 40px;
-	display: inline-block;	
-	float: left;
-	margin-top:5px;
-	margin-left:-2px;
-}
-
-#QnASrchFrm #isPubLabel{
-	display: inline-block;
-	float: right;
-	width: 100px;
-
-}
-
 /*submitBtn////////////////////////////////////  */
 
 #submitBtn_ {
-	width: 500px;
-	text-align: center;
+	width: 700px;
 	margin: 0 auto;
+	text-align: center;
 	margin-top:15px;
 }
 
@@ -114,5 +33,82 @@ input[type=text], textarea,select{
     font-size:1.0em;
 	background-color:#9881f3;
 }
+
+#wrap {
+	width: 700px;
+	margin: 0 auto;
+	text-align:center;
+	color:#785aef;
+	margin-bottom:50px;
+}
+
+section {
+	width: 700px;
+	text-align:left;
+	margin: 0 auto;
+	color:#785aef;
+	border:none;
+}
+
+section h1 {
+	text-align: center;
+	color:#785aef;
+	font-size:1.5em;
+	padding-top:15px;
+	padding-bottom:30px;
+}
+
+
+/* #cateId, #title, #content {
+	border: 2px solid #9881f3;
+	display:inline-block;
+	color:#9881f3;
+	margin-right:10px;
+	
+} */
+
+
+input[type=text], textarea,select{
+	border: 2px solid #9881f3;
+	padding: 3px 5px;
+	height:2.0em;
+}
+
+
+#QnASrchFrm #isPubLabel{
+	display: inline-block;
+	width: 100px;
+
+}
+#QnAwrite{
+	display:block;
+}
+#QnAwrite label{
+	font-size:0.9em;
+}
+#q{
+	width:550px;
+	height:25em;
+}
+
+#title{
+	width:300px;
+	height:2em;
+}
+.leftTitle{
+	display:inline-block;
+	text-align:center;
+	width:80px;
+	font-weight:bold;
+}
+#QnAwrite p {
+	margin:10px 0;
+}
+#qLabel{
+	vertical-align:top;
+	line-height:1.1em;
+} ​
+
+
 
 
