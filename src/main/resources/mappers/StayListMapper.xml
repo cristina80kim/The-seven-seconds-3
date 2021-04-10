@@ -11,26 +11,25 @@
     SELECT m.*, d.*, c.name as type_of_acco_name
     FROM ( SELECT id, region, title, addr, pic1_uuid, type_of_acco   
            FROM   room_mst
-           <if test='typeOfAcco != null and (
-                 (typeOfAcco[0] != null and !"".equals(typeOfAcco[0])) 
-              or (typeOfAcco[1] != null and !"".equals(typeOfAcco[1]))
-              or (typeOfAcco[2] != null and !"".equals(typeOfAcco[2])) 
-              or (typeOfAcco[3] != null and !"".equals(typeOfAcco[3])) 
-              or (typeOfAcco[4] != null and !"".equals(typeOfAcco[4])) 
-              or (typeOfAcco[5] != null and !"".equals(typeOfAcco[5])) )'> 
-             <where>
-               <foreach collection="typeOfAcco" item="item" open="type_of_acco IN (" close=")" separator=", ">
-                 #{item.value}
-               </foreach>
-               
-               <if test='keyword != null and !"".equals(keyword)'>
-                 AND (region LIKE '%'|| #{keyword} ||'%'
-                   OR title  LIKE '%'|| #{keyword} ||'%'
-                   OR addr   LIKE '%'|| #{keyword} ||'%'
-                 )
-               </if> 
-             </where>
-           </if>
+           <where>
+             <if test='typeOfAcco != null and (
+                   (typeOfAcco[0] != null and !"".equals(typeOfAcco[0])) 
+                or (typeOfAcco[1] != null and !"".equals(typeOfAcco[1]))
+                or (typeOfAcco[2] != null and !"".equals(typeOfAcco[2])) 
+                or (typeOfAcco[3] != null and !"".equals(typeOfAcco[3])) 
+                or (typeOfAcco[4] != null and !"".equals(typeOfAcco[4])) 
+                or (typeOfAcco[5] != null and !"".equals(typeOfAcco[5])) )'>
+                <foreach collection="typeOfAcco" item="item" open="AND type_of_acco IN (" close=")" separator=", ">
+                  #{item.value}
+                </foreach>
+             </if> 
+             <if test='keyword != null and !"".equals(keyword)'>
+               AND (region LIKE '%'|| #{keyword} ||'%'
+                 OR title  LIKE '%'|| #{keyword} ||'%'
+                 OR addr   LIKE '%'|| #{keyword} ||'%'
+               )
+             </if>
+           </where>
     ) m
     INNER JOIN code c
     ON    c.class1 = 'ROOM' 

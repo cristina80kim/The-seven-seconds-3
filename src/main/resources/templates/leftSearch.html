@@ -76,7 +76,11 @@ var leftSearch = {
               isResort:     $("#isResort").val(),
         };
         
-        main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult);
+        main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
+          , function() {
+            alert("검색된 자료가 없습니다.");
+          }
+        );
     },
    
     callBackSearchResult: function(jsonData){
