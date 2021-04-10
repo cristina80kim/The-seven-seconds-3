@@ -3,41 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>leftSearch</title>
-<style>
-#wrap {
-  width: 1080px;
-  margin: 0 auto;
-  font-size:10pt;
-}
-
-aside{
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 350px;
-  outline:1px solid black;
-}
-
-fieldset {
-  border: none;
-}
-
-input{
-  margin-bottom:10px;
-}
-
-.btnSearch {
-  display: block;
-}
-
-.priceBox{
-  width:100px;
-}
-
-</style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.01"></script>
+<link rel="stylesheet" href="/css/leftSearch.css?ver=1.0">
 
 <script>
 
@@ -96,7 +65,7 @@ var leftSearch = {
 
 </head>
 <body>
-  <div id="wrap">
+  <div id="leftWrap">
     <aside>
       <section id="topSearch">
         <form action="post">
@@ -129,5 +98,6 @@ var leftSearch = {
       </section>
     </aside>
   </div>
+  <div id="leftLine"> </div>
 </body>
 </html>

@@ -3,43 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/leftMenu.css?after">
 <title>leftCommu</title>
 <style>
-#wrap {
-	width: 1080px;
-	margin: 0 auto;
-}
-
-aside {
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 350px;
-	outline: 1px solid black;
-}
-
-li{
-	padding:10px;
-	text-align:center;
-}
-
-a{
-	color:black;
-	text-decoration: none;
-	text-align:center;
-}
-
-h2{
-	font-size:2em;
-	text-align:center;
-	padding:10px;
+#leftWrap aside {
+	margin-bottom:400px;
 }
 </style>
 </head>
 <body>
-	<div id="wrap">
+	<div id="leftWrap">
 		<aside>
-			<h2>커뮤니티</h2>
+			<div id="leftMenuTitle"><h2>커뮤니티</h2></div>
 			<ul>
 				<li><a href="javascript:void(0);" onclick="index.onNoticeClick();">공지사항</a></li>
 				<li><a href="javascript:void(0);" onclick="index.onFaqClick();">FAQ</a></li>
