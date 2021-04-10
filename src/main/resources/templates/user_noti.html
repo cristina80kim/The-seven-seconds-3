@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>admin_공지사항</title>
-<link rel="stylesheet" href="css/user_noti.css" />
+<link rel="stylesheet" href="css/user_noti.css?after" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.0"></script>
 <script th:inline="javascript">
@@ -51,14 +51,10 @@ var id = [[ ${session.id} ]];
 		   	 <input type="text" name="nickName" id="nickName" value="" readonly="readonly" />
 		      <input type="text" name="C_DATE" id="C_DATE" value="" readonly="readonly" />
 	  	 </div>
-	    <textarea name="content" id="content" rows="30" cols="50" readonly="readonly">
-
-	    </textarea> 
-		
-			<span id="line2"></span>
-		    <input type="button" name="returnBtn" id="returnBtn" onclick="index.onNoticeClick();" value="목록">
-
-	
+	  	 <hr />
+	    <p><textarea name="content" id="content" rows="20" cols="10" readonly="readonly"></textarea></p> 
+	    
+	     <input type="button" name="returnBtn" id="returnBtn" onclick="index.onNoticeClick();" value="목록">
 	 </form>
 	</section>
 </div>

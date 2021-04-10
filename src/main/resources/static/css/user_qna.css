@@ -1,9 +1,10 @@
 @charset "UTF-8";
-
+@import url(reset.css);
 
 #wrap {
-	width: 900px;
+	width: 680px;
 	margin: 0 auto;
+	padding-bottom:100px;
 }
 
 input:focus {
@@ -23,8 +24,6 @@ hr {
 }
 
 section {
-	width: 500px;
-	text-align:left;
 	margin: 0 auto;
 	font-weight:bolder;
 	font-size:1.2em;
@@ -32,16 +31,21 @@ section {
 
 section h1 {
 	text-align: center;
-	color:#9881f3;
+	padding-top:15px;
+	padding-bottom:20px;
+	font-size:1.3em;
+	color:#785aef;
 }
 #QnAFrm{
-	width: 500px;
+	width: 680px;
 }
 #cate_id, #title, #nickName, #C_DATE, #content{
 	padding: 3px;
 	vertical-align: middle;
 	color:#9881f3;
 }
+
+
 
 #cate_id {
 	width: 80px;
@@ -60,7 +64,7 @@ section h1 {
 	border:none;
 	vertical-align: middle;
 	font-size:0.8em;
-	
+	font-weight:bold;
 }
 
 #nickName {
@@ -78,7 +82,7 @@ section h1 {
 }
 
 #content {
-	width: 450px;
+	width: 680px;
 	margin-top:10px;
 	border:none;
 }
@@ -91,7 +95,7 @@ input[type=button]{
 	border:2px solid #9881f3;
 	background-color: #9881f3;
 	color:white;
-
+	cursor:pointer;
 }
 input[type=button]:hover{
 	width: 80px;
@@ -99,7 +103,7 @@ input[type=button]:hover{
 	border:2px solid #9881f3;
 	background-color: #fff;
 	color:#9881f3;
-
+	cursor:pointer;
 }
 
 
@@ -114,13 +118,20 @@ input[type=button]:hover{
 
 
 #nickDate{
-	width: 500px;
-	height: 30px;
+	width: 680px;
+	height: 20px;
 	vertical-align: middle;
 	
 }
+#q{
+	width: 680px;
+	margin-top:10px;
+	border:none;
+}
 #line2 {
-	width: 500px;
+	display:block;
+	margin:20px 0;
+	width: 680px;
 	border-top:2px solid #9881f3;
 	opacity:0.2;
 }
