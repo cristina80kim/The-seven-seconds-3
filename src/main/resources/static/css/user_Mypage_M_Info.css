@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(reset.css);
 
 input:focus{
 outline:none;
@@ -13,19 +14,16 @@ hr {
 }
 
 #wrap {
-	width: 900px;
+	width: 770px;
 	margin: 0 auto;
 	color:#785aef;
 }
 
 section {
-	width: 500px;
 	text-align:left;
-	margin: 0 auto;
 	font-weight:bolder;
-	font-size:1.1em;
+	font-size:1.0em;
 	color:#785aef;
-	padding-bottom:20px;
 }
 
 input{
@@ -45,9 +43,6 @@ form h1 {
 
 /*/////////////////////////////////////////////////// */
 
-section {
-	
-}
 
 label {
 	text-align: left;
@@ -60,12 +55,20 @@ label {
 	border:2px solid #9881f3;
 }
 
+#pwd, #pwd2 {
+	border:2px solid #9881f3;
+}
+
 #slt_Email:focus, option:focus {
 	outline:none;
 }
 #tel {
-	width: 60px;
+	width: 160px;
 	border:2px solid #9881f3;
+}
+
+#telLbl {
+	margin-left: -63px;
 }
 
 #userEmail {
@@ -86,6 +89,8 @@ label {
 	width: 700px;
 	margin: 0 auto;
 	color:#785aef;
+	padding-top: 50px;
+	font-size:1.1em;
 	text-align: center;
 }
 
@@ -96,26 +101,6 @@ label {
 
 }
 
-
-#userPageMInfoFrm input{
-/* 	border:2px solid #9881f3;
-	color:#785aef;
-	background-color:white;
-	text-align: left; */
-}
-
-
-
-
-#userPageMInfoFrm input[type=text], input[type=password]{
-/* 	width:250px;
-	padding-right:20px;
-	padding:5px;
-	font-size:0.6em;
-	vertical-align :middle;
-	text-align: left; */
-
-}
 
 
 
@@ -128,21 +113,21 @@ label {
 	margin-top: 20px;
 }
 
-#updateBtn,#cancleBtn {
-	width: 150px;
-	height: 40px;
+#submitBtn,#cancleBtn {
+	width: 73px;
+	height: 32px;
+	font-size:0.7em;
 	margin-top:10px;
-	font-size:1.0em;
 	border:2px solid #9881f3;
 	color:#785aef;
 	background-color:white;
 	text-align: center;
 }
 
-#updateBtn:hover,#cancleBtn:hover{
+#submitBtn:hover,#cancleBtn:hover{
 	cursor:pointer;
 	color: white;
 	border:2px solid #9881f3;
-    font-size:1.0em;
+	font-size:0.7em;
 	background-color:#9881f3;
 }

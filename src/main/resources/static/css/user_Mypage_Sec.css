@@ -13,13 +13,13 @@ hr {
 }
 
 #wrap {
-	width: 900px;
+	width: 770px;
 	margin: 0 auto;
 	
 }
 
 section {
-	width: 700px;
+	width: 770px;
 	text-align:center;
 	margin: 0 auto;
 	font-weight:bolder;
@@ -30,14 +30,16 @@ section {
 section h1 {
 	text-align: center;
 	color:#474646;
+	font-size:1.4em;
+	padding-bottom:10px;
 }
 
 section p {
 	text-align: center;
 	color:#474646;
 	margin: 0 auto;
-	padding: 10px 30px;
-	font-size:1.2em;
+	padding: 11px;
+	font-size:1.1em;
 	padding-bottom:20px;
 }
 
@@ -52,8 +54,11 @@ section label {
 	width: 550px;
 	text-align: right;
 	margin: 0 auto;
+	margin-top: 63px;
 
 }
+
+
 
 input[type=text]{
 	width: 230px;
@@ -77,11 +82,12 @@ input[type=password]{
 	width: 550px;
 	margin: 0 auto;
 	text-align: center;
+	margin-top: 5px;
 }
 
 #submitBtn, #cancleBtn {
-	width: 140px;
-	height:40px;
+	width: 65px;
+	height:30px;
 	font-weight:bolder;
 	background-color: #fff;
 	border:2px solid #6F6F6F;

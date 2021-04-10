@@ -18,13 +18,13 @@ a {
 }
 
 #wrap {
-	width: 900px;
+	width: 770px;
 	margin: 0 auto;
 	color:#785aef;
 }
 
 section {
-	width: 800px;
+	width: 770px;
 	text-align:left;
 	margin: 0 auto;
 	color:#785aef;
@@ -34,7 +34,8 @@ section {
 
 
 #bookMarkBbs{
-	width: 700px;
+	width: 690px;
+	margin-top:23px;
 	margin: 0 auto;
 	text-align: center;
 	vertical-align: middle;
@@ -43,7 +44,8 @@ section {
 #bookMarkBbs h1 {
 	text-align: center;
 	color:#785aef;
-	font-size:1.8em;
+	margin-top:23px;
+	padding-bottom:17px;
 }
 
 
@@ -222,6 +224,6 @@ th, tr, td, td input {
 	text-align: center;
 	font-size:1.2em;
 	font-weight:bolder;
-	padding-top:10px;
+	padding-top:34px;
 }
 

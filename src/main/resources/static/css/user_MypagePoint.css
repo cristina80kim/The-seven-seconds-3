@@ -18,17 +18,17 @@ hr {
 }
 
 #wrap {
-	width: 900px;
+	width: 770px;
 	margin: 0 auto;
 	color:#785aef;
 }
 
 section {
-	width: 700px;
+	width: 770px;
 	text-align:left;
 	margin: 0 auto;
 	font-weight:bolder;
-	font-size:1.2em;
+	font-size:1.0em;
 	color:#785aef;
 }
 
@@ -44,7 +44,12 @@ section h1, p,h5 {
 	border:2px solid #9881f3;
 	padding: 3px;
 	vertical-align: middle;
+	text-align: center;
 	color:#9881f3;
+}
+
+#PointBbs span{
+	vertical-align: middle;
 }
 
 table {
@@ -66,6 +71,26 @@ th td {
 
 /*/////////////////////////////////////////////////// */
 
+#PointBbs{
+	width: 690px;
+	margin: 0 auto;
+	margin-top: 23px;
+	padding: 12px 10px;
+}
+
+#PointBbs>h1 {
+  padding-bottom: 17px;
+		
+}
+
+#PointBbs>h5{
+  padding-bottom: 10px;
+}
+
+#PointBbs p {
+	padding:16px;
+	font-size:1.3em;
+}
 
 #PointFrm {
 	color:#785aef;
@@ -79,7 +104,7 @@ th td {
 #PointFrm input[type=text]{
 
 	padding:5px;
-	font-size:0.7em;
+	font-size:0.9em;
 	vertical-align :middle;
 
 }
