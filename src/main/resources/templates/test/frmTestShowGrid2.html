@@ -221,6 +221,14 @@
 
     // GRID 를 생성한다.
     return new tui.Grid(options);
+    
+var pagination2 = new tui.Pagination($("#pagination2"), {
+                  totalItems: 500, //그리드로 불러온 데이터 길이
+                    itemsPerPage: 10, // 페이지당 표시할 갯수
+                    visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+                    page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+                    centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+            });    
   }
   
   var showTestGrid = function(page, perPage) {
@@ -244,6 +252,9 @@
     </form><br />
 	<div id="gridQNA"></div> <br />
     <div id="gridTest"></div> <br />
+    <hr />    
+    <div id="pagination2"></div> <br />
+    <br /><br /><br /><br />    
     <div id="calendar" style="height: 800px;"></div><br />
 
 </body>

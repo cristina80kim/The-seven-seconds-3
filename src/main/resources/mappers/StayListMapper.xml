@@ -7,7 +7,7 @@
   </select>
 
   <select id ="search" resultType="com.team3.prj.vo.StayListSearchResultVO">
-  
+
     SELECT m.*, d.*, c.name as type_of_acco_name
     FROM ( SELECT id, region, title, addr, pic1_uuid, type_of_acco   
            FROM   room_mst
