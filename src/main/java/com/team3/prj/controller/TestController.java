@@ -83,10 +83,11 @@ public class TestController {
         return result;
     }
 
-    // http://localhost:8081/test/getData4Toast2
+    // http://localhost:8081/test/getData4Toast2?page=1&perPage=10
     @RequestMapping("/getData4Toast2")
-    public @ResponseBody Object getData4Toast2(@RequestParam String page,
-            @RequestParam String perPage) {
+    public @ResponseBody Object getData4Toast2(
+            @RequestParam(value="page", required=false, defaultValue="1") String page,
+            @RequestParam(value="perPage", required=false, defaultValue="5") String perPage) {
         System.out.println(className + ".getData4Toast2(" + page + ", " + perPage + ")");
 
         // String[][] str = new String[][] {{"111", "112", "113"}, {"121", "122", "123"}};

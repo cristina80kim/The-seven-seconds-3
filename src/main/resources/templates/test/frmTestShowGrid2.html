@@ -6,13 +6,13 @@
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 
-<!-- TOAST grid를 위한 CDN -->
-<link rel="stylesheet" href="/css/tui-grid.css" />
-<script src="/js/tui-grid.js"></script>
-
 <!-- TOAST pagenation 시 필요 -->
 <link rel="stylesheet" href="/css/tui-pagination.css" />
 <script type="text/javascript" src="/js/tui-pagination.js"></script>
+
+<!-- TOAST grid를 위한 CDN -->
+<link rel="stylesheet" href="/css/tui-grid.css" />
+<script src="/js/tui-grid.js"></script>
 
 <!-- TOAST Canendar를 위한 CDN -->
 <!-- <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>  -->
@@ -23,7 +23,7 @@
 
 
 <script th:inline="javascript">
-  // javascript에서 thymeleaf 값 대입하기 [[ ]]
+  // javascript에서 thymeleaf 값 대입하기
   var id = [[ ${session.id} ]];
 </script>
 
@@ -37,18 +37,30 @@
   document.addEventListener("DOMContentLoaded", function() {
     // ...
   });
+
+
+  // [참조자료] 
+  //   - javascript 와 tui pagination 연동 방법이 궁급합니다.: https://github.com/nhn/tui.grid/issues/917
+  //   - ToastUI Grid Pagination 질문: https://okky.kr/article/791210
+    
+  var gridTest = null;
   
   // 기능: docuent.ready()
   $(function() {
-    console.log(">>> $(): 1");
-    
+    console.log(">>> $(): 1");    
     console.log("id: " + id);
     
     // 공통코드 "Q&A 유형" 불러오기
     main.ajaxCodeQnaToSelectBox("cateId");
     
     // Grid 초기화
-    var gridTest = initTestGrid("/test/getData4Toast2", "gridTest");
+    gridTest = initTestGrid("/test/getData4Toast2", "gridTest");
+    
+    //var paginationTest = this.getPagination();
+    //paginationTest.on('beforeMove', function(ev) {
+    //  page = ev.page;
+    //  showTestGrid(page);
+    //});
     
     // QNA 검색
     qnaSearch();
@@ -88,7 +100,7 @@
     var perPage = $("#perPage").val();
 
     // 테스트 그리드 그리기
-    showTestGrid(page, rowsPerPage);
+    showTestGrid(page, perPage);
     
     var cateId = main.nvl($("#cateId option:selected").val(), "");
     
@@ -212,7 +224,8 @@
   }
   
   var showTestGrid = function(page, perPage) {
-  // "/test/getData4Toast2?page=" + page + "&perPage=" + perPage, "gridTest"
+    // "/test/getData4Toast2?page=" + page + "&perPage=" + perPage, "gridTest"
+    //gridTest.setData(data.jobHistoryList);
   }
   
 </script>
