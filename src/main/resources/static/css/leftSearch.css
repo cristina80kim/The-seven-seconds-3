@@ -2,8 +2,6 @@
 @import url(reset.css);
 
 #leftwrap {
-/* 	width: 1080px;
-	margin:0 auto; */
   font-size:10pt;
 }
 
@@ -11,7 +9,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 350px;
+  width: 200px;
   outline:1px solid black;
 }
 
