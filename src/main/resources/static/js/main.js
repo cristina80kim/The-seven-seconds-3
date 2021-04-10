@@ -206,7 +206,8 @@ var main = {
      // window.open(loc);
      // window.location.href = loc; 
     console.log(">>> ajaxPostJson(): 1---");
-    console.log(">>> ajaxPostJson(): loc=" + loc + ", param="+ param);
+    console.log(">>> ajaxPostJson(): loc=" + loc + ", param=");
+    console.log(param);
       
     $.ajax({ 
       type : "POST",

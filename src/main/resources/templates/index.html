@@ -6,9 +6,13 @@
 <script src="/js/main.js?ver=1.0"></script>
 
 <script>
-window.onload = function(){
-	 main.ajaxGetHtml("/main/iContents", "contents");
-}
+//window.onload = function(){
+//	 main.ajaxGetHtml("/main/iContents", "contents");
+//}
+$(function() {
+   main.ajaxGetHtml("/main/iContents", "contents");
+})
+
 var index = {
   onLoginClick: function() {
     console.log("onLoginClick()");

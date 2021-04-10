@@ -20,7 +20,7 @@
                 or (typeOfAcco[4] != null and !"".equals(typeOfAcco[4])) 
                 or (typeOfAcco[5] != null and !"".equals(typeOfAcco[5])) )'>
                 <foreach collection="typeOfAcco" item="item" open="AND type_of_acco IN (" close=")" separator=", ">
-                  #{item.value}
+                  #{item}
                 </foreach>
              </if> 
              <if test='keyword != null and !"".equals(keyword)'>
@@ -43,7 +43,7 @@
       <where>
         <if test='minPrice gte 1 and maxPrice gte 1'>
           AND (weekday_price BETWEEN #{minPrice} AND #{maxPrice}
-          OR weekend_price BETWEEN #{minPrice} AND #{maxPrice})
+          OR   weekend_price BETWEEN #{minPrice} AND #{maxPrice})
         </if>
         <if test='numOfGuests gte 1'>
           AND num_of_guests = #{numOfGuests}
