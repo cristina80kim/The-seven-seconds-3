@@ -194,7 +194,7 @@ public class UserController {
 	// 후기 관리
 	// http://localhost:8081/user/uRevu
 	@GetMapping("/uRevu")
-	public String userRevu() {
+	public String uRevu() {
 		System.out.println(className + ".uRevu()");
 		return "user_MypageRevu"; // .html
 	}
