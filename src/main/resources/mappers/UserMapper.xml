@@ -22,7 +22,7 @@
 
 	<!-- 유저 로그인 -->
 	<select id="userLogin" resultType="com.team3.prj.vo.UserVO">
-		SELECT id, name, nickname, tel, email, role 
+		SELECT *
 		FROM users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
@@ -51,6 +51,12 @@
 
 	<!-- 마이페이지 메인 비밀번호 확인 -->
 	<select id="userMypage" resultType="com.team3.prj.vo.UserVO">
+		SELECT role, name, nickname
+		FROM users
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<select id="userMyMain" resultType="com.team3.prj.vo.UserVO">
 		SELECT role, name, nickname
 		FROM users
 		WHERE id=#{id} AND pwd=#{pwd}

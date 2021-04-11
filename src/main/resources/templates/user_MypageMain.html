@@ -3,8 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>110.user_마이페이지_메인</title>
-<link rel="stylesheet" href="css/user_MypageMain.css" />
+<link rel="stylesheet" href="/css/user_MypageMain.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 </head>
+<script>
+var mypageMain = {
+			onCheckClicked: function() {
+				console.log("onCheckClicked()");
+				var param = {
+						id: $("#id").val(),
+						pwd: $("#pwd").val()
+				}
+
+		        var loc = "/user/mypage";
+		        console.log(param);
+
+				main.ajaxPostJson(loc, param, mypageMain.checkCallback);
+			},  
+			
+			checkCallback: function(jsonStr) {
+				console.log(jsonStr);
+				if(jsonStr["strResult"] != ""){
+					window.alert("확인되었습니다.");
+				}else {
+					window.alert("비밀번호가 맞지 않습니다.");
+				}
+			},
+		  
+		    log: function(msg) {
+		      console.log(">>> " + msg);
+		    }
+		}	
+</script>
 <body>
 <!--css수정완료  -->
 
@@ -18,16 +49,16 @@
 			<h1>비밀번호 확인</h1>
 	 
 			<label>아이디
-		        <input type="text" id="userID" value="아이디" readonly> 
+		        <input type="text" id="id" th:value="${session.id}" readonly> 
 			</label> 
 			<br />
 			<label>비밀번호
-		        <input type="password" id="userPW" placeholder="비밀번호">
+		        <input type="password" id="pwd" placeholder="비밀번호">
 			</label>
 			<br />
 
 			<div id="Umypage_chkBtn">
-				<input type="button" id="ChkBtn" value="확인" />
+				<input type="button" id="ChkBtn" value="확인" onclick="mypageMain.onCheckClicked();" />
 				<input type="button" id="cancleBtn" value="취소" />
 			</div>
 		</form>

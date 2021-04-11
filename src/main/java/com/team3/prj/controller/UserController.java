@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.etc.LoginManager;
 import com.team3.prj.service.UserService;
@@ -29,6 +30,32 @@ import com.team3.prj.vo.UserVO;
 @RequestMapping("/user")
 public class UserController {
 	private final String className = "UserController";
+	private final String className2 = className + ".";
+	
+	public String[][] getAuthorizations() {
+		return new String[][] {
+			{className2 + "frmLogin", Common.strRoleAMUY},
+			{className2 + "login", Common.strRoleAMUY},
+			{className2 + "frmJoin", Common.strRoleAMUY},
+			{className2 + "join", Common.strRoleAMUY},
+			{className2 + "frmMypage", Common.strRoleAMUY},
+			{className2 + "mypage", Common.strRoleAMUY},
+			{className2 + "frmUpdate", Common.strRoleAMUY},
+			{className2 + "update", Common.strRoleAMUY},
+			{className2 + "uDelete", Common.strRoleAMUY},
+			{className2 + "delete", Common.strRoleAMUY},
+			{className2 + "frmMUpdate", Common.strRoleAMUY},
+			{className2 + "mUpdate", Common.strRoleAMUY},
+			{className2 + "uRevu", Common.strRoleAMUY},
+			{className2 + "revu", Common.strRoleAMUY},
+			{className2 + "revuDelete", Common.strRoleAMUY},
+			{className2 + "frmUserAll", Common.strRoleA},
+			{className2 + "toastSearch", Common.strRoleA},
+			{className2 + "toastUserSearch", Common.strRoleA},
+			{className2 + "userPoint", Common.strRoleAMUY},
+			{className2 + "userBookmark", Common.strRoleAMUY},
+		};
+	}
 
 	@Autowired
 	UserService userService;
@@ -76,32 +103,41 @@ public class UserController {
 
 	// http://localhost:8081/user/frmMypage
 	// 마이페이지 메인
-	@GetMapping("frmMypage")
+	@RequestMapping("frmMypage")
 	public String frmMypage() {
 		System.out.println(className + ".frmMypage");
-		ServletRequestAttributes servletRequestAttribute = (ServletRequestAttributes) RequestContextHolder
-				.currentRequestAttributes();
-		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
-		UserVO curvo = new UserVO();
-		curvo.setId("shseong"); // 로그인manager에서 불러옴
-		httpSession.setAttribute("userId", curvo.getId());
+//		ServletRequestAttributes servletRequestAttribute = (ServletRequestAttributes) RequestContextHolder
+//				.currentRequestAttributes();
+//		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+//		UserVO curvo = new UserVO();
+//		curvo.setId("shseong"); // 로그인manager에서 불러옴
+		UserInstanceVO vo = LoginManager.getUserInfo();
+		System.out.println("user vo: " + vo);
+		String userId = LoginManager.getUserId();
+		Libs.setSessionAttribute("id", userId);
+		System.out.println("확인 아이디: " + userId);
 		return "user_MypageMain"; // user_MypageMain.html
 	}
 
-	@GetMapping("mypage")
-	public @ResponseBody UserVO mypage(UserVO vo, HttpServletRequest req) {
+	@RequestMapping("mypage")
+	public @ResponseBody UserVO mypage(@RequestBody UserVO vo) {
 		System.out.println(className + ".frmLogin");
-		HttpSession session = req.getSession();
-		UserVO result = userService.login(vo);
+		System.out.println(vo);
+		UserVO result = userService.myMain(vo);
 		System.out.println(result);
 		return result;
 	}
+
 
 	// 마이페이지 수정
 	// http://localhost:8081/user/frmUpdate
 	@RequestMapping("frmUpdate")
 	public String frmUpdate() {
 		System.out.println(className + ".frmUpdate");
+		UserInstanceVO vo = LoginManager.getUserInfo();
+		String userId = LoginManager.getUserId();
+		Libs.setSessionAttribute("id", userId);
+		System.out.println("수정할 유저 아이디: " + userId);
 		return "user_Mypage_M_Info"; // .html
 	}
 

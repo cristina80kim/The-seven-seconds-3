@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.MypageRsrvService;
 import com.team3.prj.vo.MypageRsrvVO;
 
@@ -16,6 +17,16 @@ import com.team3.prj.vo.MypageRsrvVO;
 @RequestMapping("/mypage")
 public class MypageRsrvController {
 	private final String className = "MypageRsrvController";
+	private final String className2 = className + ".";
+	
+	public String[][] getAuthorizations() {
+		return new String[][] {
+			{className2 + "allmypagersrv", Common.strRoleAMUY},
+			{className2 + "mypagersrv", Common.strRoleAMUY},
+			{className2 + "delete", Common.strRoleAMUY},
+		};
+	}
+	
 	@Autowired
 	MypageRsrvService mypagersrvService;
 	

@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 			UserVO result = userDAO.userLogin(vo);
 			String sessionId = Libs.getSession().getId();
 			System.out.println(sessionId);
-				if (result != null || result.getId() != null || result.getId().trim().length() >= 1) {
+				if (result != null && result.getId() != null &&  result.getId().trim().length() >= 1) {
 					LoginManager.setUserInfo(sessionId, new UserInstanceVO(result));
 				}
 			return userDAO.userLogin(vo);
@@ -84,6 +84,12 @@ public class UserServiceImpl implements UserService {
 		@Override
 		public List<UserVO> userSearch(UserSearchVO svo) {
 			return userDAO.userSearch(svo);
+		}
+
+		@Override
+		public UserVO myMain(UserVO vo) {
+			// TODO Auto-generated method stub
+			return userDAO.userMyMain(vo);
 		}
 
 		

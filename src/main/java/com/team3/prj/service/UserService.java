@@ -13,6 +13,8 @@ public interface UserService {
 	
 	public UserVO login(UserVO vo);
 	
+	public UserVO myMain(UserVO vo);
+	
 	public String join(UserVO vo);
 	
 	public int checkDuplId(String id);

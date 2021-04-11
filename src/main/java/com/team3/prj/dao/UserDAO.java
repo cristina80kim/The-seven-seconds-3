@@ -16,6 +16,8 @@ public interface UserDAO {
 	
 	public UserVO userLogin(UserVO vo);
 	
+	public UserVO userMyMain(UserVO vo);
+	
 	public int userJoin(UserVO vo);
 	
 	public int checkDuplId(String id);
