@@ -106,7 +106,7 @@ public class FaqController {
 
 	// http://localhost:8081/faq/searchData
 	@GetMapping("/searchData")
-	public @ResponseBody Object getData4Toast3(FaqSearchVO svo) {
+	public @ResponseBody Object searchData(FaqSearchVO svo) {
 		System.out.println(className + ".getData4Toast3()");
 
 		List<FaqVO> lstQnaResult = service.search(svo);
@@ -116,7 +116,7 @@ public class FaqController {
 	// 기능 TOAST grid를 위한 검색 및 결과 작성
 	// http://localhost:8081/faq/toastSearch?cateId=&keyWord=
 	@GetMapping("/toastSearch")
-	public @ResponseBody JSONObject ToastSearch(FaqSearchVO svo) {
+	public @ResponseBody JSONObject toastSearch(FaqSearchVO svo) {
 		System.out.println(className + ".faqToastSearch()");
 		System.out.println(svo);
 		return Libs.makeToastJsonResult(service.search(svo));

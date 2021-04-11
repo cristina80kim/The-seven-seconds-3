@@ -84,7 +84,7 @@ public class QnaController {
 	// param : QnaSearchVO중 - cateIdValue(카테고리 값),searchType(제목,닉네임),keyWord(검색어)
 	// http://localhost:8081/qna/search?cateId=&keyWord=
 	@GetMapping("/search")
-	public @ResponseBody List<QnaVO> qnaSearch(QnaSearchVO svo) {
+	public @ResponseBody List<QnaVO> search(QnaSearchVO svo) {
 		System.out.println(className + ".search()");
         System.out.println(svo);
 		return service.search(svo);
@@ -93,7 +93,7 @@ public class QnaController {
 	// 기능 TOAST grid를 위한 검색 및 결과 작성	
     // http://localhost:8081/qna/toastSearch?cateId=&keyWord=
     @GetMapping("/toastSearch")
-    public @ResponseBody JSONObject qnaToastSearch(QnaSearchVO svo) {
+    public @ResponseBody JSONObject toastSearch(QnaSearchVO svo) {
         System.out.println(className + ".qnaToastSearch()");
         System.out.println(svo);
         List<QnaVO> result = service.search(svo);
@@ -154,7 +154,7 @@ public class QnaController {
 	
 //	http://localhost:8081/qna/updateA?id=&a=
 	@GetMapping("/updateA")
-	public @ResponseBody String aupdate(QnaVO vo) {
+	public @ResponseBody String updateA(QnaVO vo) {
 		System.out.println(className + "updateA():" + vo.toString());
 		return service.updateQ(vo).toString();
 	}
@@ -170,7 +170,7 @@ public class QnaController {
 	
 	// http://localhost:8081/qna/searchDate
 		@GetMapping("/searchData")
-		public @ResponseBody Object getData4Toast3(QnaSearchVO svo) {
+		public @ResponseBody Object searchData(QnaSearchVO svo) {
 			System.out.println(className + ".getData4Toast3()");
 
 			List<QnaVO> lstQnaResult = service.search(svo);

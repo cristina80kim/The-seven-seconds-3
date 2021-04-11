@@ -106,7 +106,7 @@ public class NoticeController {
 
 	// http://localhost:8081/notice/searchData
 	@GetMapping("/searchData")
-	public @ResponseBody Object getDataToast(NoticeSearchVO svo) {
+	public @ResponseBody Object searchData(NoticeSearchVO svo) {
 		System.out.println(className + ".getDataToast()");
 
 		List<NoticeVO> lstQnaResult = service.search(svo);
@@ -115,7 +115,7 @@ public class NoticeController {
 
 	// http://localhost:8081/notice/toastSearch?cateId=&keyWord=
 	@GetMapping("/toastSearch")
-	public @ResponseBody JSONObject ToastSearch(NoticeSearchVO svo) {
+	public @ResponseBody JSONObject toastSearch(NoticeSearchVO svo) {
 		System.out.println(className + ".NoticeToastSearch()");
 		System.out.println(svo);
 		return Libs.makeToastJsonResult(service.search(svo));
