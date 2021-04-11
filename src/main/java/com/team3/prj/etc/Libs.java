@@ -194,7 +194,7 @@ public class Libs {
 
     public static boolean isNotEmpty(String str) {
         return str != null && str.length() != 0;
-     }
+    }
 
     // 기능: 문자열이 null 또는 trim()후 "" 인 경우 true를 응답한다.
     public static boolean isEmptyExt(String str) {
@@ -212,11 +212,11 @@ public class Libs {
 
     public static Integer nvl(Integer i, Integer defVal) {
         return i == null ? defVal : i;
-     }
+    }
 
     public static Long nvl(Long l, Long defVal) {
         return l == null ? defVal : l;
-     }
+    }
 
     // 기능: 문자열이 null이면 ""를 그렇지 않으면 str를 응
     public static String toString(String str) {
