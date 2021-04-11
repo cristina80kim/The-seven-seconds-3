@@ -38,6 +38,7 @@ public String[][] getAuthorizations() {
     StayListService stayService;
 
 
+    
     //http://localhost:8081/staylist/userRoomList
     @RequestMapping("/userRoomList")
     public @ResponseBody JSONObject userRoomList ( StayListSearchVO vo) {

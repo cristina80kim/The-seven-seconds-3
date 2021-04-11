@@ -4,6 +4,7 @@
 
 <mapper namespace="com.team3.prj.dao.StayListDAO">
   <select id ="search" resultType="com.team3.prj.vo.StayListSearchResultVO">
+    
     SELECT * FROM ( 
   
     SELECT m.*, d.*, c.name as type_of_acco_name , rownum as num 

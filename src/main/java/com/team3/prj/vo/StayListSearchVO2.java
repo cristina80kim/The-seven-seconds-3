@@ -35,6 +35,7 @@ public class StayListSearchVO2 {
         this.maxPrice    = vo.getMaxPrice();
         this.page        = Libs.nvl(vo.getPage(),1);
         this.perPage     = Libs.nvl(vo.getPerPage(),5);
+        
 
         this.typeOfAcco[idx++] = vo.getIsHotel();
         this.typeOfAcco[idx++] = vo.getIsMotel();
