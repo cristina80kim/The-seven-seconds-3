@@ -202,7 +202,8 @@ public class CheckPermission {
                 }
             }
             else {
-                System.out.println(methodName + "(): 미정의 권한 Method. 실행안됨.");
+                System.out.println(methodName + "(): 미정의 권한 Method. 실행함.");
+                result = joinPoint.proceed();
             }
         }
         catch (Exception e) {
