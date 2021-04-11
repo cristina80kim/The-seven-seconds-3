@@ -34,7 +34,14 @@ public class TestController {
     public String[][] getAuthorizations() {
         return new String[][] {
             {className2 + "jsonTest", Common.strRoleAMUY},
-            {className2 + "getData4Toast", Common.strRoleAUY},
+            {className2 + "getData4Toast", Common.strRoleAMUY},
+            {className2 + "qnaSearch", Common.strRoleAMUY},
+            {className2 + "getData4Toast2", Common.strRoleAMUY},
+            {className2 + "getData4Toast3", Common.strRoleAMUY},
+            {className2 + "frmShowGrid", Common.strRoleAMUY},
+            {className2 + "frmToggleCheckBox", Common.strRoleAMUY},
+            {className2 + "toggleCheckBox", Common.strRoleAMUY},
+            {className2 + "ajaxToggleCheckBox", Common.strRoleAMUY}
         };
     }
 
