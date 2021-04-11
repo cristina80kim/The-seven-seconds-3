@@ -38,8 +38,9 @@ public class NoticeController {
             {className2 + "searchData", Common.strRoleAMUY},
             {className2 + "toastSearch", Common.strRoleAMUY},
             {className2 + "adminList", Common.strRoleAMUY},
-            {className2 + "searchList", Common.strRoleAMUY},
+            {className2 + "userList", Common.strRoleAMUY},
             {className2 + "userNoti", Common.strRoleAMUY},
+            
            
         };
     }
@@ -127,7 +128,7 @@ public class NoticeController {
 	}
 
 	// http://localhost:8081/notice/searchList
-	@GetMapping("/searchList")
+	@GetMapping("/userList")
 	public String userList() {
 		return "user_ComuNoti";
 

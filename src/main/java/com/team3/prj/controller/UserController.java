@@ -49,9 +49,9 @@ public class UserController {
 			{className2 + "uRevu", Common.strRoleAMUY},
 			{className2 + "revu", Common.strRoleAMUY},
 			{className2 + "revuDelete", Common.strRoleAMUY},
-			{className2 + "frmUserAll", Common.strRoleA},
-			{className2 + "toastSearch", Common.strRoleA},
-			{className2 + "toastUserSearch", Common.strRoleA},
+			{className2 + "frmUserAll", Common.strRoleAMUY},
+			{className2 + "toastSearch", Common.strRoleAMUY},
+			{className2 + "toastUserSearch", Common.strRoleAMUY},
 			{className2 + "userPoint", Common.strRoleAMUY},
 			{className2 + "userBookmark", Common.strRoleAMUY},
 		};
