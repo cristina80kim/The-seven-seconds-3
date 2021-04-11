@@ -261,6 +261,23 @@ public class Libs {
         return jsonResult;
     }
 
+    public static JSONObject makeToastJsonResult(Object param, String page, String perPage, int count) {
+        int page2 = Integer.valueOf(Libs.nvl(page, "1"));
+        JSONObject data = new JSONObject();
+        data.put("contents", param);
+
+        JSONObject pagination = new JSONObject();
+        pagination.put("page", String.valueOf(page2));
+        pagination.put("totalCount", String.valueOf(count));
+        data.put("pagination", pagination);
+
+        JSONObject jsonResult = new JSONObject();
+        jsonResult.put("result", true); // param != null);
+        jsonResult.put("data", data);
+        return jsonResult;
+    }
+
+
     //================================================
     // 7. 기타 관련
     //================================================

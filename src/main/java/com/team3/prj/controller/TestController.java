@@ -98,9 +98,9 @@ public class TestController {
 
         int page2 = Integer.valueOf(Libs.nvl(page, "1"));
         int perPage2 = Integer.valueOf(Libs.nvl(perPage, "5"));
-        int totalCount = 100;
         System.out.println("보정값: page: " + page2 + ", perPage: " + perPage2);
 
+        // 조회 결과 데이터 만들기
         Object[] objs = new Object[perPage2];
         int start = (page2 - 1) * perPage2;
 
@@ -112,17 +112,42 @@ public class TestController {
                 { "name", name }, { "value", value } });
         }
 
-        JSONObject data = new JSONObject();
-        data.put("contents", objs);
+        // 조회 건수 지정
+        int totalCount = 13;
 
-        JSONObject pagination = new JSONObject();
-        pagination.put("page", String.valueOf(page2));
-        pagination.put("totalCount", String.valueOf(totalCount));
-        data.put("pagination", pagination);
+        // 결과를 TOAST Grid 형태의 JSON으로 만듦.
+        JSONObject result = Libs.makeToastJsonResult(objs, page, perPage, totalCount);
+        // 결과
+        //   {
+        //     "result":true,
+        //     "data": { "pagination": {"page":"1", "totalCount":"13"},
+        //               "contents":[
+        //                 {"name":"한가인1", "value":"26"},
+        //                 {"name":"윤아2",  "value":"22"},
+        //                 {"name":"한가인3", "value":"28"},
+        //                 {"name":"윤아4",  "value":"24"},
+        //                 {"name":"한가인5", "value":"30"},
+        //                 {"name":"윤아6",  "value":"26"},
+        //                 {"name":"한가인7", "value":"32"},
+        //                 {"name":"윤아8",  "value":"28"},
+        //                 {"name":"한가인9", "value":"34"},
+        //                 {"name":"윤아10", "value":"30"}
+        //               ]
+        //             }
+        //   }
 
-        JSONObject result = new JSONObject();
-        result.put("result", true);
-        result.put("data", data);
+//        JSONObject data = new JSONObject();
+//        data.put("contents", objs);
+//
+//        JSONObject pagination = new JSONObject();
+//        pagination.put("page", String.valueOf(page2));
+//        pagination.put("totalCount", String.valueOf(totalCount));
+//        data.put("pagination", pagination);
+//
+//        JSONObject result = new JSONObject();
+//        result.put("result", true);
+//        result.put("data", data);
+
 
 //                Libs.makeJosnValue("contents",
 //                        new Object[] {
@@ -148,7 +173,10 @@ public class TestController {
         System.out.println(className + ".getData4Toast3()");
 
         List<QnaVO> lstQnaResult = qnaSrvice.search(vo);
-        return Libs.makeToastJsonResult(lstQnaResult);
+        String page = "1";
+        String perPage = "5";
+        int totalCount = 13;
+        return Libs.makeToastJsonResult(lstQnaResult, page, perPage, totalCount);
     }
 
     // http://localhost:8081/test/frmShowGrid
