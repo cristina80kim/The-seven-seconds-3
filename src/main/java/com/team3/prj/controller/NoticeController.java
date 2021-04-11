@@ -23,7 +23,7 @@ import com.team3.prj.vo.NoticeVO;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
-	private final String className = "NotiController";
+	private final String className = "NoticeController";
     private final String className2 = className + ".";
 
     public String[][] getAuthorizations() {
@@ -127,7 +127,7 @@ public class NoticeController {
 		return "admin_comu_NotiList";
 	}
 
-	// http://localhost:8081/notice/searchList
+	// http://localhost:8081/notice/userList
 	@GetMapping("/userList")
 	public String userList() {
 		return "user_ComuNoti";
