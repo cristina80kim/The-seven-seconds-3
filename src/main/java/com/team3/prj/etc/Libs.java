@@ -210,6 +210,14 @@ public class Libs {
        return str == null || str.length() == 0 ? defVal : str;
     }
 
+    public static Integer nvl(Integer i, Integer defVal) {
+        return i == null ? defVal : i;
+     }
+
+    public static Long nvl(Long l, Long defVal) {
+        return l == null ? defVal : l;
+     }
+
     // 기능: 문자열이 null이면 ""를 그렇지 않으면 str를 응
     public static String toString(String str) {
        return str == null ? "" : str;
