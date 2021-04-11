@@ -58,7 +58,11 @@ public class UserServiceImpl implements UserService {
 
 		@Override
 		public int delete(UserVO vo) {
-			return userDAO.userDelete(vo);
+			int result = userDAO.userDelete(vo);
+			if (result != 0) {
+				LoginManager.removeUserInfo(Libs.getSession().getId(), vo.getId());
+			}
+			return result;
 		}
 
 		//manager

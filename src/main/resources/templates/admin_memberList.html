@@ -5,246 +5,196 @@
 <title>300. admin_회원관리_회원리스트</title>
 <link rel="stylesheet" href="/css/admin_memberList.css" />
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 
 <script>
-	$(function() {
-		console.log(">>> $(): 1");
-		user.showUserOnGrid("/user/ToastSearch", "gridData");
-	});
-	
-	var gridUser = null;
-	
-	$("#keyword").keypress(function (e) {
-		if (e.which == 13) {
-			user.onSearchBtnClick();
-			event.preventDefault();
-		}
-	});
-	
-	var user = {
+
+$(function() {
+    console.log(">>> $(): 1");
+    user.showUserOnGrid("/user/toastSearch", "gridData");
+  });
+
+var gridUser = null;
+
+ $("#keyword").keypress(function (e) {
+     if (e.which == 13){
+     	user.onSearchBtnClick();  
+     	event.preventDefault();
+     } 
+ });
+
+var user = {
+		
 		onSearchBtnClick: function() {
-			console.log("onSearchBtnClick()");
-			var keyword = $("#keyword").val();
-			console.log(keyword);
-            // user.showUserOnGrid("/user/ToastSearch?"+ "keyword="+keyword, "gridData");
-			user.showUserOnGrid("/user/ToastSearch", "gridData");
-		},
-		
-		
-		showUserOnGrid: function(url, componentName) {
-		
-			var kind = "USER";
-			var actionDelete = "DELETE";
-			
-			var columns = [
-			{header: "구분",		name: "role",		width: 100},
-			{header: "아이디",	name: "id",			width: 150},
-			{header: "이름",		name: "name",		width: 100},
-			{header: "닉네임",	name: "nickname",	width: 100},
-			{header: "전화번호",	name: "tel",		width: 200},
-			{header: "이메일",	name: "email",		width: 200},
-			{header: "성별",		name: "gen",		width: 100},
-			{header: "탈퇴",		name: "btnDelete",	width: 100},
-			];
-			
-			//main.clearGrid(componentName, gridUser);
-			gridUser = user.showToastGrid(url, componentName, columns);
-			
-			gridUser.on('mousedown', function(ev) {
-				var rowInfo = gridUser.getRow(ev.rowKey);
-					console.log("id: " + rowInfo["id"]);
-			});
-		},
-    
-		callbackButtonClicked: function(kind, action, index) {
-			console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-			console.log("id: " + gridUser.getValue(index, "id"));
-		},
-    
-  //============================================================
-  // 기능: TOAST Grid 그리기 
-  //============================================================
-  showToastGrid: function(url, componentId, columns, width, height) {
-    var result = null;
-    var url = url;  // http://localhost:8081/test/getData4Toast3
-    
-    var options = {
-      el: document.getElementById(componentId),
-      columns: columns,
-      bodyWidth: main.isEmpty(width) ? 'auto' : width,
-      bodyHeight: main.isEmpty(height) ? 'auto' : height,
-      rowHeight:  'auto', // 각 Row의 자동 높이   
-      //rowHeaders: ['rowNum'],  // 번호 출력
-      //pageOptions: { perPage: 5 },
-      data: {
-        contentType: "application/json",
-        api: {
-          readData: { 
-            url: url, 
-            method: "GET" 
-          }
-        }
-      }
-    };
-  
-    // GRID 를 생성.
-    result = new tui.Grid(options);
-    
-    /*
-    // grid 클릭시 row 선택
-    result.on('click', function(ev) {
-      var record = {
-           start : [ev.rowKey, 0],
-           end : [ev.rowKey, result.getColumns().length]
-       }
-       result.setSelectionRange(record);
-       
-       console.log("현재 선택된 Row 번호: " + ev.rowKey);
-    });
-    */
-
-    /*
-    //----------------------------------------    
-    var selectedRowKey = null;
-    
-    // 선택된 row를 재 선택할 경우 row선택 해제되는 문제 해결을 위한 코드(오류 발생)
-    result.on("focusChange", ev => {
-      if (selectedRowKey) {
-        result.removeRowClassName(selectedRowKey, "someClassName");
-      }
-      selectedRowKey = ev.rowKey;
-      result.addRowClassName(selectedRowKey, "someClassName");
-    });
-    */
-    return result;
-  },
-      
-	};
-
+		      console.log("onSearchBtnClick()");
+		      var keyWord = $("#keyword").val();
+		      console.log(keyWord);
+		      user.showUserOnGrid("/user/toastSearch", "gridData");
+		    },
+		      
+		      showUserOnGrid: function(url, componentName) {
+		          var kind = "USER";
+		          var actionDelete = "DELETE";
+		    
+		          
+		          var columns = [
+         {header: "구분",      name: "role",      width: 100},
+         {header: "아이디",   name: "id",         width: 150},
+         {header: "이름",      name: "name",      width: 100},
+         {header: "닉네임",   name: "nickname",   width: 100},
+         {header: "전화번호",   name: "tel",      width: 200},
+         {header: "이메일",   name: "email",      width: 200},
+         {header: "성별",      name: "gen",      width: 100},
+         {header: "탈퇴",      name: "btnDelete",   width: 100},
+         ];
+		            
+		          main.clearGrid(componentName, gridUser);
+		          
+		            gridUser = main.showToastGrid(url, componentName, columns);
+		            
+		         // mousedown Event
+					gridUser.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridUser.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"]);
+	  					main.ajaxGetHtml("/user/frmUserAll?id="+rowInfo["id"],"contents");
+					});    
+		            
+		          },
+		          
+		          callbackButtonClicked: function(kind, action, index) {
+		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+		            console.log("id: " + gridUser.getValue(index, "id")); 
+		          },
+		          
+		        };
+		         
 </script>
 
 </head>
 <body>
 
 <div id="wrap">
-	<section>
-		
-		<form action="post" id="memberSrchFrm" name="memberSrchFrm">
-			<h1>회원 관리</h1>
-			<hr />
-			<!-- <div id="chkBox">
-				<label for="roleChk1"><input type="checkbox" name="roleChk1" id="roleChk1" />전체</label>
-				<label for="roleChk2"><input type="checkbox" name="roleChk2" id="roleChk2" />개인</label>
-				<label for="roleChk3"><input type="checkbox" name="roleChk3" id="roleChk3" />사장님</label>
-			</div> -->
-			<input type="text" name="keyword" id="keyword" />
-			<input type="button" onclick="user.onSearchBtnClick()" value="조회하기" id="userSrchBtn"/>
-		</form>
+   <section>
+      
+      <form action="post" id="memberSrchFrm" name="memberSrchFrm">
+         <h1>회원 관리</h1>
+         <hr />
+         <!-- <div id="chkBox">
+            <label for="roleChk1"><input type="checkbox" name="roleChk1" id="roleChk1" />전체</label>
+            <label for="roleChk2"><input type="checkbox" name="roleChk2" id="roleChk2" />개인</label>
+            <label for="roleChk3"><input type="checkbox" name="roleChk3" id="roleChk3" />사장님</label>
+         </div> -->
+         <input type="text" name="keyword" id="keyword" />
+         <input type="button" onclick="user.onSearchBtnClick()" value="조회하기" id="userSrchBtn"/>
+      </form>
 </section>
 </div>
 
 <div id="gridData"></div> <br />
+<div id="pagination" class="tui-pagination"></div>
 
-		<hr />
-		
-		      <!-- <table>
-		        <tr>
-		          <th id="roleth">구분</th>
-		          <th id="idth" >아이디</th>
-		          <th id="nameth">이름</th>
-		          <th id="nickNameth">닉네임</th>
-		          <th id="telth">전화번호</th>
-		          <th id="emailth">이메일</th>
-		          <th id="genth">성별</th>
-		          <th id="secth">탈퇴</th>
-		        </tr>
-		        <tr>
-		          <td colspan="8">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="개인" name="role" id="role" /></td>
-		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
-		          <td><input type="text" value="김철수" name="name" id="name" /></td>
-		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
-		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
-		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
-		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" id="sec" /></td>
-		        </tr>
-		        <tr>
-		          <td colspan="8">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="개인" name="role" id="role" /></td>
-		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
-		          <td><input type="text" value="김철수" name="name" id="name" /></td>
-		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
-		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
-		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
-		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" id="sec" /></td>
-		        </tr>
-		        <tr>
-		          <td colspan="8">
-		            <hr>
-		          </td>
-		        </tr>
-		       <tr>
-		          <td><input type="text" value="개인" name="role" id="role" /></td>
-		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
-		          <td><input type="text" value="김철수" name="name" id="name" /></td>
-		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
-		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
-		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
-		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" id="sec" /></td>
-		        </tr>
-		        <tr>
-		          <td colspan="8">
-		            <hr>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td><input type="text" value="개인" name="role" id="role" /></td>
-		          <td><input type="text" value="abc123456" name="id" id="id" /></td>
-		          <td><input type="text" value="김철수" name="name" id="name" /></td>
-		          <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
-		          <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
-		          <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
-		          <td><input type="text" value="여자" name="gen" id="gen" /></td>
-		          <td><input type="button" value="탈퇴" id="sec" /></td>
-		        </tr>
-		        <tr>
-		          <td colspan="8">
-		            <hr>
-		          </td>
-		        </tr>
-		        
-		      </table>
-			
-			   <div id="paging">
-		        <span class="block">《</span>
-		        <span class="block">〈</span>
-		        <span class="pageNo" id="nowPage">1</span>
-		        <span class="pageNo">2</span>
-		        <span class="pageNo">3</span>
-		        <span class="pageNo">4</span>
-		        <span class="pageNo">5</span>
-		        <span class="pageNo">6</span>
-		        <span class="pageNo">7</span>
-		        <span class="pageNo">8</span>  
-		        <span class="block">〉</span>
-		        <span class="block">》</span>
-		      </div>
-		
-	</section>
+      <hr />
+      
+            <!-- <table>
+              <tr>
+                <th id="roleth">구분</th>
+                <th id="idth" >아이디</th>
+                <th id="nameth">이름</th>
+                <th id="nickNameth">닉네임</th>
+                <th id="telth">전화번호</th>
+                <th id="emailth">이메일</th>
+                <th id="genth">성별</th>
+                <th id="secth">탈퇴</th>
+              </tr>
+              <tr>
+                <td colspan="8">
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="text" value="개인" name="role" id="role" /></td>
+                <td><input type="text" value="abc123456" name="id" id="id" /></td>
+                <td><input type="text" value="김철수" name="name" id="name" /></td>
+                <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+                <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+                <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+                <td><input type="text" value="여자" name="gen" id="gen" /></td>
+                <td><input type="button" value="탈퇴" id="sec" /></td>
+              </tr>
+              <tr>
+                <td colspan="8">
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="text" value="개인" name="role" id="role" /></td>
+                <td><input type="text" value="abc123456" name="id" id="id" /></td>
+                <td><input type="text" value="김철수" name="name" id="name" /></td>
+                <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+                <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+                <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+                <td><input type="text" value="여자" name="gen" id="gen" /></td>
+                <td><input type="button" value="탈퇴" id="sec" /></td>
+              </tr>
+              <tr>
+                <td colspan="8">
+                  <hr>
+                </td>
+              </tr>
+             <tr>
+                <td><input type="text" value="개인" name="role" id="role" /></td>
+                <td><input type="text" value="abc123456" name="id" id="id" /></td>
+                <td><input type="text" value="김철수" name="name" id="name" /></td>
+                <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+                <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+                <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+                <td><input type="text" value="여자" name="gen" id="gen" /></td>
+                <td><input type="button" value="탈퇴" id="sec" /></td>
+              </tr>
+              <tr>
+                <td colspan="8">
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="text" value="개인" name="role" id="role" /></td>
+                <td><input type="text" value="abc123456" name="id" id="id" /></td>
+                <td><input type="text" value="김철수" name="name" id="name" /></td>
+                <td><input type="text" value="닉네임1" name="nickName" id="nickName" /></td>
+                <td><input type="text" value="010-xxxx-xxxx" name="tel" id="tel" /></td>
+                <td><input type="text" value="xxx@naver.com" name="email" id="email" /></td>
+                <td><input type="text" value="여자" name="gen" id="gen" /></td>
+                <td><input type="button" value="탈퇴" id="sec" /></td>
+              </tr>
+              <tr>
+                <td colspan="8">
+                  <hr>
+                </td>
+              </tr>
+              
+            </table>
+         
+            <div id="paging">
+              <span class="block">《</span>
+              <span class="block">〈</span>
+              <span class="pageNo" id="nowPage">1</span>
+              <span class="pageNo">2</span>
+              <span class="pageNo">3</span>
+              <span class="pageNo">4</span>
+              <span class="pageNo">5</span>
+              <span class="pageNo">6</span>
+              <span class="pageNo">7</span>
+              <span class="pageNo">8</span>  
+              <span class="block">〉</span>
+              <span class="block">》</span>
+            </div>
+      
+   </section>
 </div> -->
 
 

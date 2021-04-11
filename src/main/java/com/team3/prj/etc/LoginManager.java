@@ -64,16 +64,17 @@ public class LoginManager {
       return result;
    }
 
+   // 로그인 매니저에ㅔ 등록된 사용자 정보를 제거한다.
    public static boolean removeUserInfo(String sessionId, String userId) {
        boolean result = false;
        UserInstanceVO vo = getUserInfo(sessionId);
 
        if(vo != null && Libs.isNotEmpty(userId)) {
            if(vo.getId().equals(userId)) {
-               synchronized (hmUsers) {
+               synchronized (hmUsers) { //객체를 동기화
                    hmUsers.remove(sessionId);
                    result = true;
-                   System.out.println(userId + "의 사용자 정보를 LoginManagerㅇ에서 제거함");
+                   System.out.println(userId + "의 사용자 정보를 LoginManager에서 제거함. 남은사용자 수: " + hmUsers.size());
                }
            }
        }
