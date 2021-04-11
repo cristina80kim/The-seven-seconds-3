@@ -40,7 +40,7 @@ public class FaqController {
             {className2 + "toastSearch", Common.strRoleAMUY},            
             {className2 + "adminList", Common.strRoleAMUY},          
             {className2 + "userList", Common.strRoleAMUY},            
-            {className2 + "admiuserFaqnList", Common.strRoleAMUY},
+            {className2 + "userFaq", Common.strRoleAMUY},
             
         };
     }
