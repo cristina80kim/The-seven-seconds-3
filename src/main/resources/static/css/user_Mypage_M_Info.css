@@ -22,15 +22,15 @@ hr {
 section {
 	text-align:left;
 	font-weight:bolder;
-	font-size:1.0em;
+	font-size:0.9em;
 	color:#785aef;
 }
 
 input{
 	color:#785aef;
-	font-size:1.0em;
+	font-size:0.9em;
 	padding: 3px 5px;
-	margin: 3px 5px;
+	margin: 10px 14px;
 }
 
 form h1 {
@@ -38,7 +38,12 @@ form h1 {
 	margin: 0 auto;
 	text-align: center;
 	color:#785aef;
-	margin-bottom:20px;
+	margin-bottom:25px;
+}
+
+.titleText{
+	width: 150px;	
+	text-align:center;
 }
 
 /*/////////////////////////////////////////////////// */
@@ -65,10 +70,6 @@ label {
 #tel {
 	width: 160px;
 	border:2px solid #9881f3;
-}
-
-#telLbl {
-	margin-left: -63px;
 }
 
 #userEmail {
@@ -114,9 +115,9 @@ label {
 }
 
 #submitBtn,#cancleBtn {
-	width: 73px;
-	height: 32px;
-	font-size:0.7em;
+	width: 80px;
+	height: 40px;
+	font-size:0.9em;
 	margin-top:10px;
 	border:2px solid #9881f3;
 	color:#785aef;
@@ -128,6 +129,6 @@ label {
 	cursor:pointer;
 	color: white;
 	border:2px solid #9881f3;
-	font-size:0.7em;
+	font-size:0.9em;
 	background-color:#9881f3;
 }
