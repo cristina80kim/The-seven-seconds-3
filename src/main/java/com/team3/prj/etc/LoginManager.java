@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.team3.prj.vo.UserInstanceVO;
 
 public class LoginManager {
-   private static final boolean isTestMode = true; 
+   private static final boolean isTestMode = false; 
    private static final String testSessionId = ">>> test_session_id <<<";
    public static HashMap<String, UserInstanceVO> hmUsers = new HashMap<>();
 
@@ -56,7 +56,7 @@ public class LoginManager {
             hmUsers.put(sessionId, newVo);
          }
       }
-      
+      System.out.println("사용자 수: " + hmUsers.size());
       return result;
    }
 

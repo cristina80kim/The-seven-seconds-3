@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.prj.dao.UserDAO;
+import com.team3.prj.etc.Libs;
+import com.team3.prj.etc.LoginManager;
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserInstanceVO;
 import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
@@ -24,6 +27,12 @@ public class UserServiceImpl implements UserService {
 		
 		@Override
 		public UserVO login(UserVO vo) {
+			UserVO result = userDAO.userLogin(vo);
+			String sessionId = Libs.getSession().getId();
+			System.out.println(sessionId);
+				if (result != null || result.getId() != null || result.getId().trim().length() >= 1) {
+					LoginManager.setUserInfo(sessionId, new UserInstanceVO(result));
+				}
 			return userDAO.userLogin(vo);
 		}
 		

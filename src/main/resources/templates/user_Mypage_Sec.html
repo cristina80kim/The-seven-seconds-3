@@ -8,6 +8,7 @@
 <script src="/js/main.js?ver=1.00"></script>
 </head>
 <script>
+var id = [[ ${session.id} ]];
 	var mypageSec = {
 			onDeleteClicked: function() {
 				console.log("onDeleteClicked()");
@@ -37,6 +38,8 @@
 		}	
 </script>
 <body>
+id: [[${session.id}]]<br />
+  id: [[${session["id"]}]]<br />
 
 	<div id="wrap">
 		<section>
@@ -45,8 +48,7 @@
 				<hr />
 				<p>비밀번호 확인</p>
 				<label for="userID">아이디
-					<input type="text" name="id" id="id"
-					 placeholder="아이디" readonly value="limuj"/>
+					<input th:text="${session.id}" type="text" name="id" id="id" readonly />
 				</label>
 				<br />
 				<label for="userPW">비밀번호 확인

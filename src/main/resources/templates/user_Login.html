@@ -34,6 +34,7 @@ var userLogin = {
 	
 	onJoinClicked: function() {
 		console.log("onJoinClicked()");
+		main.ajaxGetHtml("/user/frmJoin", "contents");
 	},
   
     log: function(msg) {

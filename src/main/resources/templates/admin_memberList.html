@@ -12,7 +12,7 @@
 <script>
 	$(function() {
 		console.log(">>> $(): 1");
-		user.showUserOnGrid("/user/toastSearch", "gridData");
+		user.showUserOnGrid("/user/ToastSearch", "gridData");
 	});
 	
 	var gridUser = null;
@@ -29,9 +29,10 @@
 			console.log("onSearchBtnClick()");
 			var keyword = $("#keyword").val();
 			console.log(keyword);
-            // user.showUserOnGrid("/user/toastSearch?"+ "keyword="+keyword, "gridData");
-			user.showUserOnGrid("/user/toastSearch", "gridData");
+            // user.showUserOnGrid("/user/ToastSearch?"+ "keyword="+keyword, "gridData");
+			user.showUserOnGrid("/user/ToastSearch", "gridData");
 		},
+		
 		
 		showUserOnGrid: function(url, componentName) {
 		
@@ -118,7 +119,6 @@
       result.addRowClassName(selectedRowKey, "someClassName");
     });
     */
-    
     return result;
   },
       

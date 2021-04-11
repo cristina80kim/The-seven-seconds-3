@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team3.prj.etc.Libs;
+import com.team3.prj.etc.LoginManager;
 import com.team3.prj.service.UserService;
 import com.team3.prj.vo.ExecResultVO;
-import com.team3.prj.vo.NoticeSearchVO;
-import com.team3.prj.vo.NoticeVO;
 import com.team3.prj.vo.RevuVO;
+import com.team3.prj.vo.UserInstanceVO;
 import com.team3.prj.vo.UserSearchVO;
 import com.team3.prj.vo.UserVO;
 
@@ -122,6 +121,11 @@ public class UserController {
 	@RequestMapping("/uDelete")
 	public String uDelete() {
 		System.out.println(className + ".uDelete()");
+		HttpSession session = Libs.getSession();
+		UserInstanceVO uvo = LoginManager.getUserInfo(session.getId());
+		String userId = uvo != null?Libs.nvl(uvo.getId(), ""):""; //로그인된 id를 
+		session.setAttribute("id", userId);
+		System.out.println("삭제할 유저 아이디: " + userId);
 		return "user_Mypage_Sec"; // .html
 	}
 
@@ -136,12 +140,20 @@ public class UserController {
 	}
 
 	// Manage 내정보수정
-	// http://localhost:8081/user/mUpdate?pwd=&nickname=&tel=&email=&id=
-	@GetMapping("mUpdate")
-	public @ResponseBody String mupdate(UserVO vo) {
+	// http://localhost:8081/user/frmMUpdate
+	@RequestMapping("frmMUpdate")
+	public String frmMUpdate() {
+		System.out.println(className + ".frmMUpdate");
+		return "manager_Mypage_M_info"; // .html
+	}
+	
+	@RequestMapping("mUpdate")
+	public @ResponseBody ExecResultVO mupdate(@RequestBody UserVO vo) {
 		System.out.println(className + ".mUpdate()");
 		System.out.println(vo);
-		return userService.mUpdate(vo);
+		String result = userService.mUpdate(vo);
+		System.out.println(result);
+		return new ExecResultVO(result);
 	}
 
 	// 후기 관리
@@ -192,12 +204,20 @@ public class UserController {
 		System.out.println(result);
 		return Libs.makeToastJsonResult(result);
 	}
-
-	@GetMapping("/search")
-	public @ResponseBody List<UserVO> search(UserSearchVO svo) {
-		System.out.println(className + "search()");
-		return userService.userSearch(svo);
+	
+	@GetMapping("/toastUserSearch")
+	public @ResponseBody Object getData4Toast3(UserSearchVO svo) {
+		System.out.println(className + ".getData4Toast3()");
+		List<UserVO> result = userService.userSearch(svo);
+		return Libs.makeToastJsonResult(result);
 	}
+
+//	@GetMapping("/searchData")
+//	public @ResponseBody Object getDataToast(UserSearchVO svo) {
+//		System.out.println(className + "searchData()");
+//		List<UserVO> result = userService.userSearch(svo);
+//		return Libs.makeToastJsonResult(result);
+//	}
 
 	// 포인트 관리
 	// http://localhost:8081/user/userPoint
@@ -212,5 +232,6 @@ public class UserController {
 	public String userBookmark() {
 		return "user_MypageBookMark";
 	}
+
 
 }
