@@ -21,8 +21,9 @@ public class Common {
     public static final String strRoleY = strRoleAnonymous;
 
     public static final String strRoleAMUY = strRoleA + strRoleM + strRoleU + strRoleY;
-    public static final String strRoleAMY = strRoleA + strRoleM + strRoleY;
-    public static final String strRoleAUY = strRoleA + strRoleU + strRoleY;
+    public static final String strRoleAMU = strRoleA + strRoleM + strRoleU;
+    public static final String strRoleAM = strRoleA + strRoleM;
+    public static final String strRoleAU = strRoleA + strRoleU;
 
 
     //----------
