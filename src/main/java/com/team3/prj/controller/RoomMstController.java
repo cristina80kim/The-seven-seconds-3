@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.RoomMstService;
 import com.team3.prj.vo.RoomMstSearchVO;
@@ -24,7 +25,21 @@ import com.team3.prj.vo.RoomMstVO;
 @RequestMapping("/roomMst")
 public class RoomMstController {
 	private final String className = "RoomMstController";
+    private final String className2 = className + ".";
 
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "selectAll", Common.strRoleAMUY},
+            {className2 + "selectOne", Common.strRoleAMUY},
+            {className2 + "search", Common.strRoleAMUY},
+            {className2 + "roomInsert", Common.strRoleAMUY},
+            {className2 + "insert", Common.strRoleAMUY},
+            {className2 + "roomUpdate", Common.strRoleAMUY},
+            {className2 + "update", Common.strRoleAMUY},
+            {className2 + "delete", Common.strRoleAMUY},
+            
+        };
+    }
 	@Autowired
 	RoomMstService service;
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.QnaService;
 import com.team3.prj.vo.FaqSearchVO;
@@ -26,7 +27,32 @@ import com.team3.prj.vo.QnaVO;
 @RequestMapping("/qna")
 public class QnaController {
 	private final String className = "QnaController";
+    private final String className2 = className + ".";
 
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            
+        	{className2 + "frmSelectAll", Common.strRoleAMUY},        	
+        	{className2 + "selectAll", Common.strRoleAMUY},        	
+        	{className2 + "oneSelect", Common.strRoleAMUY},        	
+        	{className2 + "search", Common.strRoleAMUY},
+        	{className2 + "toastSearch", Common.strRoleAMUY},
+            {className2 + "qWriter", Common.strRoleAUY},            
+            {className2 + "insert", Common.strRoleAUY},            
+            {className2 + "qUpdate", Common.strRoleAUY},            
+            {className2 + "updateQ", Common.strRoleAUY},            
+            {className2 + "aWriter", Common.strRoleAUY},            
+            {className2 + "updateA", Common.strRoleAUY},            
+            {className2 + "delete", Common.strRoleAUY},            
+            {className2 + "searchData", Common.strRoleAUY},            
+            {className2 + "adminList", Common.strRoleAUY},            
+            {className2 + "userList", Common.strRoleAUY},
+            {className2 + "userQna", Common.strRoleAUY},
+            {className2 + "selectCnt", Common.strRoleAUY},
+            
+        };
+    }
+	
 	@Autowired
 	QnaService service;
 

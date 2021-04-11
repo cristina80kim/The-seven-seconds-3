@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.NoticeService;
 import com.team3.prj.vo.NoticeSearchVO;
@@ -23,7 +24,25 @@ import com.team3.prj.vo.NoticeVO;
 @RequestMapping("/notice")
 public class NoticeController {
 	private final String className = "NotiController";
+    private final String className2 = className + ".";
 
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "selectAll", Common.strRoleAMUY},
+            {className2 + "selectOne", Common.strRoleAMUY},
+            {className2 + "search", Common.strRoleAMUY},
+            {className2 + "insertNotice", Common.strRoleAMUY},
+            {className2 + "insert", Common.strRoleAMUY},
+            {className2 + "update", Common.strRoleAMUY},
+            {className2 + "delete", Common.strRoleAMUY},
+            {className2 + "searchData", Common.strRoleAMUY},
+            {className2 + "toastSearch", Common.strRoleAMUY},
+            {className2 + "adminList", Common.strRoleAMUY},
+            {className2 + "searchList", Common.strRoleAMUY},
+            {className2 + "userNoti", Common.strRoleAMUY},
+           
+        };
+    }
 	@Autowired
 	NoticeService service;
 
