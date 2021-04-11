@@ -4,8 +4,56 @@
 <meta charset="UTF-8">
 <title>131. user_숙박시설목록</title>
 <link rel="stylesheet" href="css/user_RoomList.css" />
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
+
+<script>
+$(function() {
+    console.log(">>> $(): 1");
+    List.showListOnGrid("/staylist/userRoomList", "gridData");
+  });
+
+var gridList = null;
+
+var List = {
+		
+		      showListOnGrid: function(url, componentName) {
+		          var kind = "RoomList";
+
+		          var columns = [
+		              {header: "지역",     name: "region",      width: 50,  height: 100                    },
+ 		              {header: "숙소명",     name: "title", width: 100                   },
+		              {header: "주소",   name: "addr", width: 100, align: "center"   },
+		            
+		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+		              }},
+		              
+		              {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
+		              {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
+		              {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
+		              {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
+		              {header: "별점",    	name: "star",  width: 300                   },
+		            ];
+		            
+		            gridList = main.showToastGrid(url, componentName, columns);
+		          },
+		          
+		          callbackButtonClicked: function(kind, action, index) {
+		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+		            console.log("id: " + gridList.getValue(index, "id")); 
+		          },
+		          
+		        }
+
+</script>
 </head>
 <body>
+
+<div id="gridData"></div>
 
 <div id="wrap">
 

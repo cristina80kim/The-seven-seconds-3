@@ -18,17 +18,6 @@ public class StayListServiceImpl implements StayListService {
 	@Autowired
 	StayListDAO staylistDao;
 
-
-	@Override
-	public List<StayListVO> StayListAll(){
-		return staylistDao.StayListAll();
-	}
-
-	@Override
-    public List<StayListSearchVO> SearchAll(){ //수정
-		return staylistDao.SearchAll();
-	}
-
     @Override
     public List<StayListSearchResultVO> search(StayListSearchVO2 vo) {
         return staylistDao.search(vo);

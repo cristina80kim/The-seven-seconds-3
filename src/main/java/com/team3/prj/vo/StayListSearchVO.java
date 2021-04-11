@@ -22,4 +22,6 @@ public class StayListSearchVO {
     private String isGuestHouse;    // 숙소유형(게하/한옥)
     private String isResort;        // 숙소유형(리조트/콘도)
     private String sortMethod;      // "star": 별점순, "revu": 후기순, "price": 가격순
+    private Integer page;           // page 위치 (1부터 시작) 
+    private Integer perPage;        // page 당 row수
 }

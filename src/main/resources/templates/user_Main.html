@@ -8,7 +8,11 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.01"></script>
-
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.00"></script>
 <script>
 
 $(function() {
@@ -53,12 +57,61 @@ var leftSearch = {
               isGuestHouse: $("#isGuestHouse").val(),   
               isResort:     $("#isResort").val(),
         };
+     
+        var keyword 	= main.nvl($("#keyword").val(), ""); 
+        var checkIn 	= main.nvl($("#checkIn").val(), "");
+        var checkOut	= main.nvl($("#checkOut").val(), "" );
+        var numOfGuests	= main.nvl($("#numOfGuests").val(),"0");
+        var minPrice	= main.nvl($("#minPrice").val(),"0");
+        var maxPrice	= main.nvl($("#maxPrice").val(),"0");
+        var isHotel		= main.nvl($("#isHotel").val(),"");
+        var isMotel		= main.nvl($("#isMotel").val(),"");
+        var isPension	= main.nvl($("#isPension").val(),"");
+        var isGlamping	= main.nvl($("#isGlamping").val(),"");
+        var isGuestHouse= main.nvl($("#isGuestHouse").val(),"");
+        var isResort	= main.nvl($("#isResort").val(),"");
         
-        main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
-          , function() {
-            alert("검색된 자료가 없습니다.");
-          }
-        );
+        var url = loc 
+        + "?keyword="+ keyword
+        + "&checkIn=" + checkIn
+        +  "&checkOut=" + checkOut
+        +  "&numOfGuests="+ numOfGuests
+        +  "&minPrice=" + minPrice
+        +  "&maxPrice=" + maxPrice
+        +  "&isHotel=" + isHotel
+        +  "&isMotel=" + isMotel
+        +  "&isPension=" + isPension
+        +  "&isGlamping=" + isGlamping
+        +  "&isGuestHouse=" + isGuestHouse
+        +  "&isResort=" + isResort ;
+        
+        
+        
+        		      var columns = [
+		              {header: "지역",     name: "region",      width: 50,  height: 100                    },
+ 		              {header: "숙소명",     name: "title", width: 100                   },
+		              {header: "주소",   name: "addr", width: 100, align: "center"   },
+		            
+		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+		              }},
+		              
+		              {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
+		              {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
+		              {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
+		              {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
+		              {header: "별점",    	name: "star",  width: 300                   },
+		            ];
+        
+        
+        main.showToastGrid(url, "gridData" , columns );
+        
+        
+       // main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
+        //  , function() {
+        //    alert("검색된 자료가 없습니다.");
+       //   }
+		//);
     },
    
     callBackSearchResult: function(jsonData){
@@ -220,7 +273,7 @@ function slideShow() {
      		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
 		</div>
 <!--bannerBtn END  -->		
-
+<div id="gridData"></div>
 	
 		<table class="hover01 column">
 			<tr>

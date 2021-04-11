@@ -2,6 +2,7 @@ package com.team3.prj.controller;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.prj.etc.Common;
+import com.team3.prj.etc.Libs;
 import com.team3.prj.service.StayListService;
+import com.team3.prj.vo.QnaVO;
 import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
 import com.team3.prj.vo.StayListSearchVO2;
@@ -25,7 +28,6 @@ private final String className2 = className + ".";
 
 public String[][] getAuthorizations() {
     return new String[][] {
-        {className2 + "listall", Common.strRoleAMUY},
         {className2 + "userRoomList", Common.strRoleAMUY},
         {className2 + "userRoomList2", Common.strRoleAMUY},
     };
@@ -35,16 +37,10 @@ public String[][] getAuthorizations() {
     @Autowired
     StayListService stayService;
 
-    //http://localhost:8081/staylist/listall
-    @GetMapping("/listall")
-    public @ResponseBody List<StayListVO> StayListAll() {
-        System.out.println(className+".StayListAll()");
-        return stayService.StayListAll();
-    }
 
     //http://localhost:8081/staylist/userRoomList
-    @PostMapping("/userRoomList")
-    public String userRoomList (@RequestBody StayListSearchVO vo) {
+    @RequestMapping("/userRoomList")
+    public @ResponseBody JSONObject userRoomList ( StayListSearchVO vo) {
         System.out.println(className+".userRoomList()");
         System.out.println(vo);
 
@@ -53,8 +49,10 @@ public String[][] getAuthorizations() {
 
         List<StayListSearchResultVO> result = stayService.search(vo2);
 //        new ListToString().print(result);
-
-        return "user_RoomList";
+        String page = "1";
+        String perPage = "5";
+        int totalCount = 13;
+        return Libs.makeToastJsonResult(result, page, perPage, totalCount);
 }
     //131번 페이지연결
     //http://localhost:8081/staylist/userRoomList2

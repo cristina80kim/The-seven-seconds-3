@@ -11,9 +11,6 @@ import com.team3.prj.vo.StayListVO;
 
 @Mapper
 public interface StayListDAO { //수정
-	public List<StayListVO> StayListAll();
-
-	public List<StayListSearchVO> SearchAll();
 
     public List<StayListSearchResultVO> search(StayListSearchVO2 vo);
 
