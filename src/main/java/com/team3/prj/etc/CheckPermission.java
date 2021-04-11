@@ -12,7 +12,21 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import com.team3.prj.controller.EtcController;
+import com.team3.prj.controller.FaqController;
+import com.team3.prj.controller.MainController;
+import com.team3.prj.controller.MypageRsrvController;
+import com.team3.prj.controller.NoticeController;
+import com.team3.prj.controller.PaymentController;
+import com.team3.prj.controller.QnaController;
+import com.team3.prj.controller.RoomDtlController;
+import com.team3.prj.controller.RoomListOpenController;
+import com.team3.prj.controller.RoomMstController;
+import com.team3.prj.controller.RsrvListController;
+import com.team3.prj.controller.StayListController;
 import com.team3.prj.controller.TestController;
+import com.team3.prj.controller.UploadTestContorller;
+import com.team3.prj.controller.UserController;
 
 @Aspect
 @Component
@@ -25,8 +39,65 @@ public class CheckPermission {
     static { // private static void collectAuthorizations() {
         System.out.println(className + "cnt = " + ++cnt);
 
+        // 01
+        EtcController etcController = new EtcController();
+        Libs.addAuthorizations(hmAuthorizations, etcController.getAuthorizations());
+
+        // 02
+        FaqController faqController = new FaqController();
+        Libs.addAuthorizations(hmAuthorizations, faqController.getAuthorizations());
+
+        // 03
+        MainController mainController = new MainController();
+        Libs.addAuthorizations(hmAuthorizations, mainController.getAuthorizations());
+
+        // 04
+        MypageRsrvController mypageRsrvController = new MypageRsrvController();
+        Libs.addAuthorizations(hmAuthorizations, mypageRsrvController.getAuthorizations());
+
+        // 05
+        NoticeController noticeController = new NoticeController();
+        Libs.addAuthorizations(hmAuthorizations, noticeController.getAuthorizations());
+
+        // 06
+        PaymentController paymentController = new PaymentController();
+        Libs.addAuthorizations(hmAuthorizations, paymentController.getAuthorizations());
+
+        // 07
+        QnaController qnaController = new QnaController();
+        Libs.addAuthorizations(hmAuthorizations, qnaController.getAuthorizations());
+
+        // 08
+        RoomDtlController roomDtlController = new RoomDtlController();
+        Libs.addAuthorizations(hmAuthorizations, roomDtlController.getAuthorizations());
+
+        // 09
+        RoomListOpenController roomListOpenController = new RoomListOpenController();
+        Libs.addAuthorizations(hmAuthorizations, roomListOpenController.getAuthorizations());
+
+        // 10
+        RoomMstController roomMstController = new RoomMstController();
+        Libs.addAuthorizations(hmAuthorizations, roomMstController.getAuthorizations());
+
+        // 11
+        RsrvListController rsrvListController = new RsrvListController();
+        Libs.addAuthorizations(hmAuthorizations, rsrvListController.getAuthorizations());
+
+        // 12
+        StayListController stayListController = new StayListController();
+        Libs.addAuthorizations(hmAuthorizations, stayListController.getAuthorizations());
+
+        // 13
         TestController testController = new TestController();
         Libs.addAuthorizations(hmAuthorizations, testController.getAuthorizations());
+
+        // 14
+        UploadTestContorller uploadTestContorller = new UploadTestContorller();
+        Libs.addAuthorizations(hmAuthorizations, uploadTestContorller.getAuthorizations());
+
+        // 15
+        UserController userController = new UserController();
+        Libs.addAuthorizations(hmAuthorizations, userController.getAuthorizations());
     }
 
     // AOP(Aspect Oriented Programming): https://velog.io/@fortice/Spring-AOP
