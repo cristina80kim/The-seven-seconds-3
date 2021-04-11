@@ -3,14 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <title>user_메인</title>
-<link rel="stylesheet" href="css/user_Main.css" />
+
+<link rel="stylesheet" href="/css/user_Main.css" />
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js?ver=1.01"></script>
+
 <script>
+
+$(function() {
+  slideStart();
+});
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+var leftSearch = {
+
+    idCheckBoxes: ["isHotel", "isMotel", "isPension", "isGlamping", "isGuestHouse", "isResort"],
+    
+    onAccoCheckAllClick: function(chk, arrIds) {
+        console.log("onAccoCheckAllClick(): 1");
+        var setVal = chk.checked;
+        console.log(arrIds);
+        
+        for(var i in arrIds) {
+            var id = "#" + arrIds[i]; 
+            $(id).prop("checked", setVal);
+            $(id).change(); // change event 발생
+        }
+        console.log("onAccoCheckAllClick(): 2"); 
+    },
+    
+    search: function(){
+        console.log("search(): 1");
+        var loc = "/staylist/userRoomList";
+        var param = {
+              keyword:      $("#keyword").val(),
+              checkIn:      $("#checkIn").val(),
+              checkOut:     $("#checkOut").val(),
+              numOfGuests:  $("#numOfGuests").val(),  
+              minPrice:     $("#minPrice").val(),
+              maxPrice:     $("#maxPrice").val(),
+              isHotel:      $("#isHotel").val(),
+              isMotel:      $("#isMotel").val(),
+              isPension:    $("#isPension").val(),
+              isGlamping:   $("#isGlamping").val(), 
+              isGuestHouse: $("#isGuestHouse").val(),   
+              isResort:     $("#isResort").val(),
+        };
+        
+        main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
+          , function() {
+            alert("검색된 자료가 없습니다.");
+          }
+        );
+    },
+   
+    callBackSearchResult: function(jsonData){
+      console.log("callBackSearchResult(): 1");
+      console.log(jsonData);
+    },
+    
+    log: function(msg) {
+        console.log(">>> " + msg);
+    }
+};
+
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
 let now = 0;
 let imgCnt = 2; 
-
-slideStart();
-
 
 function slideStart() {
 
@@ -22,7 +89,6 @@ function slideStart() {
 function slideShow() {
 
         now = now == imgCnt ? now = 0 : ++now;
-
 
         $("#slideShow>img").eq(now - 1)
                 .css({
@@ -58,8 +124,6 @@ function slideShow() {
                                 "transition": "none"
                         });
         }
-
-
 }
 
 </script>
@@ -70,16 +134,16 @@ function slideShow() {
 
 	<section id="userRoomDtl_left">
 			
-					<input type="text" name="MainSrch" id="MainSrch" placeholder="지역, 호텔, 명소명 입력" /><br />
+					<input type="text" name="keyword" id="keyword" placeholder="지역, 호텔, 명소명 입력" /><br />
 	
 					<div class="chkTime">
 							
 							<label for="userChkIn">
-								<input type="month" name="userChkIn" id="userChkIn" />
+								<input type="month" name="checkIn" id="checkIn" />
 								체크인
 							</label>
 							<label for="userChkOut">
-								<input type="month" name="userChkOut" id="userChkOut" />
+								<input type="month" name="checkOut" id="checkOut" />
 								체크아웃
 							</label><br />
 					</div>
@@ -87,7 +151,7 @@ function slideShow() {
 					<div class="numG">
 						<label for="numGuests">인원수
 							
-							<select name="numGuests" id="numGuests">
+							<select name="numOfGuests" id="numOfGuests">
 							    <option value="1">1</option>
 							    <option value="2">2</option>
 							    <option value="3">3</option>
@@ -103,8 +167,8 @@ function slideShow() {
 						</label>
 					</div>
 					<br />
-					<div id="SrchBtn">					
-						<input type="submit" value="검색" id="MainSrchBtn"/>
+					<div id="SrchBtn">		
+                        <input type="button" value="검색" id="MainSrchBtn" onclick="leftSearch.search();"/> 			
 					</div>
 					<hr id="srchHr"/>
 					
@@ -114,13 +178,14 @@ function slideShow() {
 					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
 					<br /><br />
 					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
-					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="room_name" id="room_name1" />전체</label></span>
-					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="room_name" id="room_name2" />호텔</label></span>
-					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="room_name" id="room_name3" />모텔</label></span>
-					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="room_name" id="room_name4" />펜션/풀빌라</label></span>
-					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="room_name" id="room_name5" />글램핑/캠핑</label></span><br />
-					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="room_name" id="room_name6" />게하/한옥</label></span>
-					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="room_name" id="room_name7" />리조트/콘도</label></span>
+					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="onAccoCheckAll" id="hangeCheckBoxes" value="" 
+                                                                                                             onchange="leftSearch.onAccoCheckAllClick(this, leftSearch.idCheckBoxes);">전체      </label></span>
+					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="isMotel"      id="isMotel"      value="" onchange="main.onMotelChanged(this);"      />모텔      </label></span>  
+					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="isHotel"      id="isHotel"      value="" onchange="main.onHotelChanged(this);"      />호텔      </label></span>
+					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="isPension"    id="isPension"    value="" onchange="main.onPensionChanged(this);"    />펜션/풀빌라</label></span>
+					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="isGlamping"   id="isGlamping"   value="" onchange="main.onGlampingChanged(this);"   />글램핑/캠핑</label></span>
+					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);" />게하/한옥 </label></span>
+					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="isResort"     id="isResort"     value="" onchange="main.onResortChanged(this);"     />리조트/콘도</label></span>
 					
 				
 					<!-- <hr /> -->
