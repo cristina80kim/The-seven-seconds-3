@@ -68,14 +68,14 @@ var leftSearch = {
   <div id="leftWrap">
     <aside>
       <section id="topSearch">
-        <form action="post">
+        <form action="post" onSubmit="return false;">
           <fieldset>
             <input type="text" name="keyword" id="keyword" placeholder="지역명 또는 호텔명 검색" />
             <div class="dateArea">
               <input type="date" name="checkIn" id="checkIn" /> ~ <input type="date" name="checkOut" id="checkOut"/>
             </div>
             <input type="text" name="numOfGuests" id="numOfGuests" placeholder="인원수" />
-            <input type="button" value="검색" onclick="leftSearch.search();"/> 
+            <input type="submit" value="검색" onclick="leftSearch.search();"/> 
           </fieldset>
         </form>
       </section>

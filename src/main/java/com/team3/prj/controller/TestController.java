@@ -31,15 +31,15 @@ public class TestController {
     private final String className = "TestController";
     private final String className2 = className + ".";
 
-    @Autowired
-    QnaService qnaSrvice;
-
     public String[][] getAuthorizations() {
         return new String[][] {
             {className2 + "jsonTest", Common.strRoleAMUY},
             {className2 + "getData4Toast", Common.strRoleAUY},
         };
     }
+
+    @Autowired
+    QnaService qnaSrvice;
 
     // http://localhost:8081/test/json
     @GetMapping("/jsonTest")
