@@ -5,11 +5,12 @@
 <title>181. user_커뮤니티_FAQ</title>
 <link rel="stylesheet" href="css/user_ComuFAQ.css?after" /> 
 <link rel="stylesheet"
-	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+   href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
-
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
 <script>
 $(function() {
     console.log(">>> $(): 1");
@@ -21,60 +22,60 @@ var gridFaq = null;
 
 $("#FAQSearch").keypress(function (e) {
     if (e.which == 13){
-    	faq.onSearchBtnClick();  
-    	event.preventDefault();
+       faq.onSearchBtnClick();  
+       event.preventDefault();
     } 
 });
 
 var faq = {
-		
-		onSearchBtnClick: function() {
-		      console.log("onSearchBtnClick()");
-		      var cate_id = $("#cateId option:selected").val();
-		      var keyWord = $("#FAQSearch").val();
-		      console.log("keyWord : " + keyWord);
-		      faq.showFaqOnGrid("/faq/toastSearch?cate_id="+ cate_id +"&keyWord="+keyWord, "gridData");
-		    },
-		    
-// 		    onFaqWriteClick: function() {
-// 		        console.log("onQnaWriteClick()");
-// 		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
-// 		      },
-		      
-		      
-		      showFaqOnGrid: function(url, componentName) {
-		          var kind = "FAQ";
-		          var actionInsert = "INSERT";
-		          var actionDelete = "DELETE";
-		    
-		          
-		          var columns = [
-	                    {header: "번호",      name: "no",       width: 50, align: "center"   },
-	                    {header: "카테고리", name: "cate",   width: 120  , align: "center"       },
-// 	                    {header: "카테고리id", name: "cateId",   width: 100  , align: "center"       },
-	                    {header: "제목",      name: "title",    width: 370                     },
-	                    {header: "작성일",     name: "cdate",    width: 150, align: "center"                     },
-	                    
-	                  ];
-		          main.clearGrid(componentName, gridFaq);  
-		          
-		            gridFaq = main.showToastGrid(url, componentName, columns);
-		            
-		            // mousedown Event
-					gridFaq.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridFaq.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("/faq/userFaq?id="+rowInfo["id"],"contents");
-					});
-		          },
-		          
-		          callbackButtonClicked: function(kind, action, index) {
-		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-		            console.log("id: " + gridFaq.getValue(index, "id")); 
-		          },
-		          
-		        };
+      
+      onSearchBtnClick: function() {
+            console.log("onSearchBtnClick()");
+            var cate_id = $("#cateId option:selected").val();
+            var keyWord = $("#FAQSearch").val();
+            console.log("keyWord : " + keyWord);
+            faq.showFaqOnGrid("/faq/toastSearch?cate_id="+ cate_id +"&keyWord="+keyWord, "gridData");
+          },
+          
+//           onFaqWriteClick: function() {
+//               console.log("onQnaWriteClick()");
+//               main.ajaxGetHtml("/faq/FaqWriter", "contents");
+//             },
+            
+            
+            showFaqOnGrid: function(url, componentName) {
+                var kind = "FAQ";
+                var actionInsert = "INSERT";
+                var actionDelete = "DELETE";
+          
+                
+                var columns = [
+                       {header: "번호",      name: "no",       width: 50, align: "center"   },
+                       {header: "카테고리", name: "cate",   width: 120  , align: "center"       },
+//                        {header: "카테고리id", name: "cateId",   width: 100  , align: "center"       },
+                       {header: "제목",      name: "title",    width: 370                     },
+                       {header: "작성일",     name: "cdate",    width: 150 ,  align: "center"  },
+                       
+                     ];
+                main.clearGrid(componentName, gridFaq);  
+                
+                  gridFaq = main.showToastGrid(url, componentName, columns);
+                  
+                  // mousedown Event
+               gridFaq.on('mousedown', function(ev) {
+                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                  var rowInfo = gridFaq.getRow(ev.rowKey); 
+                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                    main.ajaxGetHtml("/faq/userFaq?id="+rowInfo["id"],"contents");
+               });
+                },
+                
+                callbackButtonClicked: function(kind, action, index) {
+                  console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+                  console.log("id: " + gridFaq.getValue(index, "id")); 
+                },
+                
+              };
 
 
 </script>
@@ -82,28 +83,28 @@ var faq = {
 </head>
 <body>
 
-	<div id="wrap">
-	
-		 	<section>
-		<div id="FAQSrch">
-		  <h1>FAQ</h1>
-	      <form id="FAQsrchFrm">
-		        <select name="cateId" id="cateId">
-		          <option value="">카테고리</option>
-		        </select>
-<!-- 		        <select name="FAQAllCate" id="FAQAllCate"> -->
-<!-- 		          <option value="">전체</option> -->
-<!-- 		        </select> -->
-		        <input type="text" id="FAQSearch" name="FAQSearch">
-		        <input type="button" onclick="faq.onSearchBtnClick()" value="검색" id="FAQSrchBtn">
-		       </form>
-	      	<table id="gridData"></table>
-			<div id="gridData"></div>
-	    </div>
+   <div id="wrap">
+   
+          <section>
+      <div id="FAQSrch">
+        <h1>FAQ</h1>
+         <form id="FAQsrchFrm">
+              <select name="cateId" id="cateId">
+                <option value="">카테고리</option>
+              </select>
+<!--               <select name="FAQAllCate" id="FAQAllCate"> -->
+<!--                 <option value="">전체</option> -->
+<!--               </select> -->
+              <input type="text" id="FAQSearch" name="FAQSearch">
+              <input type="button" onclick="faq.onSearchBtnClick()" value="검색" id="FAQSrchBtn">
+             </form>
+            <table id="gridData"></table>
+         <div id="gridData"></div>
+       </div>
 
-	
-	</section>
-	
+   
+   </section>
+   
 </div>
 </body>
 </html>

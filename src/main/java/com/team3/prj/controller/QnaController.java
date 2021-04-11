@@ -206,9 +206,9 @@ public class QnaController {
 
 			
 			@GetMapping("/selectCnt")
-			public @ResponseBody List<QnaVO> selectCnt(){
+			public @ResponseBody Integer selectCnt(QnaSearchVO svo){
 				System.out.println(className+ " selectCnt()");
-				return service.selectCnt();
+				return service.selectCnt(svo);
 				
 			}
 

@@ -19,23 +19,31 @@
 	</select>
 	
 
+<!-- select rownum, n.* -->
+<!-- from(select * -->
+<!--     from notice order by id) n -->
+<!-- ; -->
+
 	<!-- 검색기능 -->
 	<select id ="search" resultType="com.team3.prj.vo.NoticeVO">
-		SELECT id, nickname, no, title, c_date
-		FROM notice
-		<where>
-		
-		<if test = 'keyWord != null and !"".equals(keyWord)'>
-		
+		SELECT *
+		FROM (SELECT n1.*, rownum as rnum
+			FROM (SELECT n.*
+					FROM notice n
+			<where>
+			<if test = 'keyWord != null and !"".equals(keyWord)'>
 			AND (
 				title LIKE '%'||#{keyWord}||'%'
 			OR  content LIKE '%'||#{keyWord}||'%'
 			)
-		
 		</if>
-		
-		</where>
-	
+			</where>
+				ORDER BY id) n1)
+			<where>
+		<if test='pageNumber!= null and !"".equals(pageNumber)'>
+			  rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
+			</if>	
+		</where>		
 	</select>
 
 	<!-- 공지사항 등록 -->

@@ -23,7 +23,7 @@ public interface QnaDAO {
 
 	public List<QnaVO> selectOne(QnaVO vo);
 
-	public List<QnaVO> selectCnt();
+	public Integer selectCnt(QnaSearchVO svo);
 	
 	//
 }

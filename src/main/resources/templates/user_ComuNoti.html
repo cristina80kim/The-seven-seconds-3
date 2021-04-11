@@ -5,103 +5,129 @@
 <title>180. user_커뮤니티_공지사항_목록</title>
 <link rel="stylesheet" href="css/user_ComuNoti.css?after" />
 <link rel="stylesheet"
-	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+   href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
+<link rel="stylesheet" href="/css/tui-pagination.css" />
+<script type="text/javascript" src="/js/tui-pagination.js"></script>
 </head>
 <body>
-	<script>
+   <script>
 $(function() {
     console.log(">>> $(): 1");
-    notice.showNoticeOnGrid("/notice/toastSearch", "gridData");
+    notice.showNoticeOnGrid("/notice/toastSearch?pageNumber=1&keyWord=", "gridData");
   });
 
 var gridNotice = null;
 
  $("#NotiSearch").keypress(function (e) {
      if (e.which == 13){
-     	notice.onSearchBtnClick();  
-     	event.preventDefault();
+        notice.onSearchBtnClick();  
+        event.preventDefault();
      } 
  });
 
 
 var notice = {
-		
-		onSearchBtnClick: function() {
-		      console.log("onSearchBtnClick()");
-		      var cateId = $("#Noticate option:selected").val();
-		      var keyWord = $("#NotiSearch").val();
-		      console.log(keyWord);
-		      notice.showNoticeOnGrid("/notice/toastSearch?cateId="+ cateId +"&keyWord="+keyWord , "gridData");
-		    },
-		    
-// 		    onQnaWriteClick: function() {
-// 		        console.log("onQnaWriteClick()");
-// 		        main.ajaxGetHtml("/faq/FaqWriter", "contents");
-// 		      },
-		      
-		      
-		      showNoticeOnGrid: function(url, componentName) {
-		          var kind = "NOTICE";
-		          var actionInsert = "INSERT";
-		          var actionDelete = "DELETE";
-		    
-		          
-		          var columns = [
-		              {header: "아이디",     name: "id",       width: 75,  height: 100      },
-		              {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
-		              {header: "번호",      name: "no",       width: 50, align: "center"   },
-// 		              {header: "카테고리ID.", name: "cate_id",   width: 100                   },
-		              {header: "제목",      name: "title",    width: 310    				  },
-		              {header: "작성일",     name: "cdate",    width: 150, align: "center"       },
-		              	            
-		            ];
-		            
-		          main.clearGrid(componentName, gridNotice);
-		          
-		            gridNotice = main.showToastGrid(url, componentName, columns);
-		            
-		         // mousedown Event
-					gridNotice.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridNotice.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("/notice/userNoti?id="+rowInfo["id"],"contents");
-					});    
+      
+      onSearchBtnClick: function() {
+            console.log("onSearchBtnClick()");
+//             var cateId = $("#Noticate option:selected").val();
+            var keyWord = $("#NotiSearch").val();
+            console.log(keyWord);
+            notice.showNoticeOnGrid("/notice/toastSearch?pageNumber=1&keyWord=" + keyWord , "gridData");
+          },
+          
+//           onQnaWriteClick: function() {
+//               console.log("onQnaWriteClick()");
+//               main.ajaxGetHtml("/faq/FaqWriter", "contents");
+//             },
+            
+            
+            showNoticeOnGrid: function(url, componentName) {
+                var kind = "NOTICE";
+                var actionInsert = "INSERT";
+                var actionDelete = "DELETE";
+          
+                
+                var columns = [
+                    {header: "아이디",     name: "id",       width: 75,  height: 100      },
+                    {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
+                    {header: "번호",      name: "no",       width: 50, align: "center"   },
+//                     {header: "카테고리ID.", name: "cate_id",   width: 100                   },
+                    {header: "제목",      name: "title",    width: 310                  },
+                    {header: "작성일",     name: "cdate",    width: 150, align: "center"       },
+                                   
+                  ];
+                  
+                main.clearGrid(componentName, gridNotice);
+                
+                  gridNotice = main.showToastGrid(url, componentName, columns);
+                  
+               // mousedown Event
+               gridNotice.on('mousedown', function(ev) {
+                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                  var rowInfo = gridNotice.getRow(ev.rowKey); 
+                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                    main.ajaxGetHtml("/notice/userNoti?id="+rowInfo["id"],"contents");
+               });    
 
-		            
-		          },
-		          
-		          
-		          
-		          callbackButtonClicked: function(kind, action, index) {
-		            console.log("kind: " + kind + ", action: " + action + ", index: " + index);
-		            console.log("id: " + gridNotice.getValue(index, "id")); 
-		          },
-		          
-		        };
-
-				
+                  
+                },
+                
+                
+                
+                callbackButtonClicked: function(kind, action, index) {
+                  console.log("kind: " + kind + ", action: " + action + ", index: " + index);
+                  console.log("id: " + gridNotice.getValue(index, "id")); 
+                },
+                
+              };
+            var pagination2 = new tui.Pagination($("#pagination"), {
+                totalItems: 500, //그리드로 불러온 데이터 길이
+                  itemsPerPage: 10, // 페이지당 표시할 갯수
+                  visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+                  page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+                  centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+            });
+            pagination2.on('afterMove', (function(x){
+             var pageNumber = x.page
+              alert(pageNumber);
+             var data = test(pageNumber);
+             notice.resetData(data);
+            }));
+            pagination2.getCurrentPage();//페이지 현재 페이지 불러옴\
+            
+            
+            function test(pageNumber) {
+             //ajax 통신
+//              var cate_id = $("#cateId option:selected").val();
+             var keyWord = $("#NotiSearch").val();
+             notice.showNoticeOnGrid("/notice/toastSearch?&keyWord="+keyWord+"&pageNumber="+pageNumber,
+                   "gridData");
+             console.log("keyword : "+ keyWord+"pageNumber : "+pageNumber);
+             
+             return data;
+            }
 
 </script>
-	<div id="wrap">
+   <div id="wrap">
 
-		<article>
-			<div id="NotiSrch">
-				<h1>공지사항</h1>
-				<form id="NotisrchFrm">
-					<input type="text" id="NotiSearch" name="NotiSearch">
-					<input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
-				</form>
-			</div>
-			<!-- end-NotiSrch -->
-			<table id="gridData"></table>
-			<div id="gridData"></div>
-		</article>
-		
-	</div><!-- end-wrap -->
+      <article>
+         <div id="NotiSrch">
+            <h1>공지사항</h1>
+            <form id="NotisrchFrm">
+               <input type="text" id="NotiSearch" name="NotiSearch">
+               <input type="button" onclick="notice.onSearchBtnClick()" value="검색" id="NotiSrchBtn">
+            </form>
+         </div>
+         <!-- end-NotiSrch -->
+         <div id="gridData"></div>
+       <div id="pagination" class="tui-pagination"></div>
+      </article>
+      
+   </div><!-- end-wrap -->
 
 </body>
 </html>

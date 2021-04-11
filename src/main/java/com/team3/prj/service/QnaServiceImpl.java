@@ -55,8 +55,8 @@ public class QnaServiceImpl implements QnaService {
 	///
 
 	@Override
-	public List<QnaVO> selectCnt() {
+	public Integer selectCnt(QnaSearchVO svo) {
 		// TODO Auto-generated method stub
-		return dao.selectCnt();
+		return dao.selectCnt(svo);
 	}
 }

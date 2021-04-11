@@ -38,8 +38,8 @@ public class NoticeController {
             {className2 + "searchData", Common.strRoleAMUY},
             {className2 + "toastSearch", Common.strRoleAMUY},
             {className2 + "adminList", Common.strRoleAMUY},
-            {className2 + "userList", Common.strRoleAMUY},
             {className2 + "userNoti", Common.strRoleAMUY},
+            {className2 + "userList", Common.strRoleAMUY},
             
            
         };
@@ -113,7 +113,7 @@ public class NoticeController {
 		return Libs.makeToastJsonResult(lstQnaResult);
 	}
 
-	// http://localhost:8081/notice/toastSearch?cateId=&keyWord=
+	// http://localhost:8081/notice/toastSearch?pageNumber=1&keyWord=
 	@GetMapping("/toastSearch")
 	public @ResponseBody JSONObject toastSearch(NoticeSearchVO svo) {
 		System.out.println(className + ".toastSearch()");

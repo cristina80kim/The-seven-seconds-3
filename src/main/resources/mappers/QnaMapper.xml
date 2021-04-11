@@ -5,7 +5,7 @@
 <mapper namespace="com.team3.prj.dao.QnaDAO">
 
 	<!-- 전체데이터 갯수 -->
-	<select id="selectCnt" resultType="com.team3.prj.vo.QnaVO">
+	<select id="selectCnt" resultType="Integer">
 		SELECT count(*) as total
 		FROM qna
 			<where>
@@ -60,10 +60,11 @@
 
 	<!-- 검색기능 sql문 / / 통합 검색으로 -->
 	<select id="search" resultType="com.team3.prj.vo.QnaVO">
-	SELECT *
+SELECT *
+FROM (SELECT w.*, rownum rnum
 		FROM(SELECT q.*,
 				(SELECT name FROM code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate,
-				nvl2(q.a,'답변완료','대기중') as aox, rownum rnum
+				nvl2(q.a,'답변완료','대기중') as aox
 			FROM qna q
 			<where>
 			<if test='cate_id!= null and !"".equals(cate_id)'>
@@ -78,7 +79,7 @@
 				)
 			</if>
 			</where>
-			ORDER BY id)
+			ORDER BY id) w)
 			<where>
 			<if test='pageNumber!= null and !"".equals(pageNumber)'>
 			  rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
