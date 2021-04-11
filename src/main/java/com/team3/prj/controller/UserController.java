@@ -42,9 +42,8 @@ public class UserController {
 	}
 
 	@GetMapping("/login")
-	public @ResponseBody UserVO login(UserVO vo, HttpServletRequest req) {
+	public @ResponseBody UserVO login(UserVO vo) {
 		System.out.println(className + ".frmLogin");
-		HttpSession session = req.getSession();
 		UserVO result = userService.login(vo);
 		System.out.println(result);
 		return result;
@@ -121,10 +120,10 @@ public class UserController {
 	@RequestMapping("/uDelete")
 	public String uDelete() {
 		System.out.println(className + ".uDelete()");
-		HttpSession session = Libs.getSession();
-		UserInstanceVO uvo = LoginManager.getUserInfo(session.getId());
-		String userId = uvo != null?Libs.nvl(uvo.getId(), ""):""; //로그인된 id를 
-		session.setAttribute("id", userId);
+		UserInstanceVO vo = LoginManager.getUserInfo();
+		System.out.println("user vo: " + vo);
+		String userId = LoginManager.getUserId(); // 로그인된 id를 읽음.
+		Libs.setSessionAttribute("id", userId);
 		System.out.println("삭제할 유저 아이디: " + userId);
 		return "user_Mypage_Sec"; // .html
 	}
@@ -134,7 +133,7 @@ public class UserController {
 	public @ResponseBody ExecResultVO delete(@RequestBody UserVO vo) {
 		System.out.println(className + ".delete()");
 		System.out.println(vo);
-		int result = (int) userService.delete(vo);
+		int result = userService.delete(vo);
 		System.out.println(result);
 		return new ExecResultVO(result);
 	}
@@ -146,7 +145,7 @@ public class UserController {
 		System.out.println(className + ".frmMUpdate");
 		return "manager_Mypage_M_info"; // .html
 	}
-	
+
 	@RequestMapping("mUpdate")
 	public @ResponseBody ExecResultVO mupdate(@RequestBody UserVO vo) {
 		System.out.println(className + ".mUpdate()");
@@ -204,7 +203,7 @@ public class UserController {
 		System.out.println(result);
 		return Libs.makeToastJsonResult(result);
 	}
-	
+
 	@GetMapping("/toastUserSearch")
 	public @ResponseBody Object getData4Toast3(UserSearchVO svo) {
 		System.out.println(className + ".getData4Toast3()");

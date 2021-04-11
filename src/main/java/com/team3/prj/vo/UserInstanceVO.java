@@ -1,10 +1,9 @@
 package com.team3.prj.vo;
 
-import lombok.Getter;
+import lombok.Data;
 
-import lombok.Getter;
-
-@Getter
+@Data
+//@Getter
 public class UserInstanceVO {
 
     private String id;
@@ -22,7 +21,7 @@ public class UserInstanceVO {
         this.email = email;
         this.role = role;
     }
-    
+
     public UserInstanceVO(UserVO vo) {
         this.id = vo.getId();
         this.name = vo.getName();

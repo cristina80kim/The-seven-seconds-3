@@ -22,7 +22,7 @@
 
 	<!-- 유저 로그인 -->
 	<select id="userLogin" resultType="com.team3.prj.vo.UserVO">
-		SELECT role, name, nickname
+		SELECT id, name, nickname, tel, email, role 
 		FROM users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
