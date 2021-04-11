@@ -7,12 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.RsrvListService;
 import com.team3.prj.vo.RsrvListVO;
 
 @Controller
 public class RsrvListController {
     private final String className = "RsrvListController";
+    private final String className2 = className + ".";
+    
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "allrsrvlist", Common.strRoleAMUY},
+            {className2 + "managerRsrvList", Common.strRoleAMUY},
+            {className2 + "managerRsrvList/delete", Common.strRoleAMUY},
+            {className2 + "managerRsrvList/update", Common.strRoleAMUY},
+            {className2 + "managerRsrvList/rsrvCancel", Common.strRoleAMUY},
+        };
+    }
+    
+    
+    
 	@Autowired
 	RsrvListService rsrvlistService;
 	

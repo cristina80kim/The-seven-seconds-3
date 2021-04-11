@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.PaymentService;
 import com.team3.prj.vo.PaymentVO;
 
@@ -16,7 +17,17 @@ import com.team3.prj.vo.PaymentVO;
 public class PaymentController {
 
     private final String className = "PaymentController";
+    private final String className2 = className + ".";
     
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "userRoomPay", Common.strRoleAMUY},
+            {className2 + "post", Common.strRoleAMUY},
+            {className2 + "userMain", Common.strRoleAMUY},
+            {className2 + "admin/adminpaylist", Common.strRoleAMUY},
+            {className2 + "admin/delete", Common.strRoleAMUY},
+        };
+    }
     @Autowired
 	PaymentService paymentService;
 	

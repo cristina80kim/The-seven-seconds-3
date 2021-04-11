@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.StayListService;
 import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
@@ -20,6 +21,17 @@ import com.team3.prj.vo.StayListVO;
 @RequestMapping("/staylist")
 public class StayListController {
 private final String className="StayListController";
+private final String className2 = className + ".";
+
+public String[][] getAuthorizations() {
+    return new String[][] {
+        {className2 + "listall", Common.strRoleAMUY},
+        {className2 + "userRoomList", Common.strRoleAMUY},
+        {className2 + "userRoomList2", Common.strRoleAMUY},
+    };
+}
+
+
     @Autowired
     StayListService stayService;
 
