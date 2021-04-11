@@ -138,7 +138,7 @@ public class NoticeController {
 	@GetMapping("/userNoti")
 	public String userNoti(String id) {
 		ServletRequestAttributes servletRequestAttribute =
-				(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			 	(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		
 		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
 		
