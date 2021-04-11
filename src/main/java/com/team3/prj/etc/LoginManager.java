@@ -64,6 +64,24 @@ public class LoginManager {
       return result;
    }
 
+   public static boolean removeUserInfo(String sessionId, String userId) {
+       boolean result = false;
+       UserInstanceVO vo = getUserInfo(sessionId);
+
+       if(vo != null && Libs.isNotEmpty(userId)) {
+           if(vo.getId().equals(userId)) {
+               synchronized (hmUsers) {
+                   hmUsers.remove(sessionId);
+                   result = true;
+                   System.out.println(userId + "의 사용자 정보를 LoginManagerㅇ에서 제거함");
+               }
+           }
+       }
+
+       return result;
+   }
+
+
    // TODO: DB에서 관리자 ID릏 읽도록 구현해야 함.
    public static UserInstanceVO getManagerInfo() {
        return TempUserInstance.createTempManager();
