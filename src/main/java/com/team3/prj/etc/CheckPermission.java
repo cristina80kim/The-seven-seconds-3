@@ -98,6 +98,8 @@ public class CheckPermission {
         // 15
         UserController userController = new UserController();
         Libs.addAuthorizations(hmAuthorizations, userController.getAuthorizations());
+
+        Libs.showAuthInfos(hmAuthorizations);
     }
 
     // AOP(Aspect Oriented Programming): https://velog.io/@fortice/Spring-AOP

@@ -295,4 +295,16 @@ public class Libs {
         Libs.getSession().setAttribute(key, value);
     }
 
+    // 기능: 권한 등록 HashMap 정보를 출력한다.
+    public static void showAuthInfos(HashMap<String, String> hmAuthos) {
+        if(hmAuthos != null) {
+            System.out.println("==============================");
+            for(String key : hmAuthos.keySet()){
+                String value = hmAuthos.get(key);
+                System.out.println(key + " : " + value);
+            }
+            System.out.println("==============================");
+        }
+    }
+
 }
