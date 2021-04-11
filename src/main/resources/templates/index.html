@@ -44,13 +44,13 @@ var index = {
 	  $("#leftMenu").show();
   	console.log("onCommuClick()");
   	main.ajaxGetHtml("/main/leftCommu", "leftMenu");
-  	main.ajaxGetHtml("/notice/toastSearch", "contents");
+  	main.ajaxGetHtml("/notice/userList", "contents");
   },
   
   onNoticeClick: function() {
 	  $("#leftMenu").show();
     console.log("onNoticeClick()");
-    main.ajaxGetHtml("/notice/toastSearch", "contents");
+    main.ajaxGetHtml("/notice/userList", "contents");
     
   },
   
