@@ -290,4 +290,9 @@ public class Libs {
         return httpSession;
     }
 
+    // 기능: HttpSession에 키와 값을 저장한다.
+    public static void setSessionAttribute(String key, String value) {
+        Libs.getSession().setAttribute(key, value);
+    }
+
 }
