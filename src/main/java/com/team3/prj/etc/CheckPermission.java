@@ -133,38 +133,53 @@ public class CheckPermission {
     // 기능: @GetMapping 설정된 클래스/메소드 만 AspectJ를 적용함.
     @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
     public void getMapping() {
-        System.out.println(className + ".getMapping(): begin");
-        System.out.println(className + ".getMapping(): end");
+        System.out.println(className + "getMapping(): begin");
+        System.out.println(className + "getMapping(): end");
     }
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
     public void postMapping() {
-        System.out.println(className + ".postMapping(): begin");
-        System.out.println(className + ".postMapping(): end");
+        System.out.println(className + "postMapping(): begin");
+        System.out.println(className + "postMapping(): end");
     }
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void requestMapping() {
-        System.out.println(className + ".requestMapping(): begin");
-        System.out.println(className + ".requestMapping(): end");
+        System.out.println(className + "requestMapping(): begin");
+        System.out.println(className + "requestMapping(): end");
     }
 
     // 기능: 위의 GetMapping() 이 실행되기 전에 실행하도록 설정함.
     @Before("getMapping()")
     public void beforeMethod(JoinPoint joinPoint) {
-        System.out.println(className + ".beforeMethod(): begin");
-        System.out.println(className + ".beforeMethod(): end");
+        System.out.println(className + "beforeMethod(): begin");
+        System.out.println(className + "beforeMethod(): end");
     }
 
     @Around("getMapping()")
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println(className + ".around(): begin");
+    public Object aroundGet(ProceedingJoinPoint joinPoint) throws Throwable {
+        return around(joinPoint, "aroundGet");
+    }
+
+    @Around("postMapping()")
+    public Object aroundPost(ProceedingJoinPoint joinPoint) throws Throwable {
+        return around(joinPoint, "aroundPost");
+    }
+
+    @Around("requestMapping()")
+    public Object aroundRequest(ProceedingJoinPoint joinPoint) throws Throwable {
+        return around(joinPoint, "aroundRequest");
+    }
+
+    public Object around(ProceedingJoinPoint joinPoint, String prtName) throws Throwable {
+        String classMethodName = className + prtName + "() : ";
+        System.out.println(classMethodName + "begin");
         Object result = null;
 
         try {
-            String className = joinPoint.getTarget().getClass().getSimpleName();
+            String className1 = joinPoint.getTarget().getClass().getSimpleName();
             String sigName = joinPoint.getSignature().getName();
-            String methodName = className + "." + sigName;
+            String methodName = className1 + "." + sigName;
             String args = Arrays.toString(joinPoint.getArgs());
 
             //result = joinPoint.proceed();
@@ -174,9 +189,11 @@ public class CheckPermission {
 
             if(hmAuthorizations.containsKey(methodName)) {
                 String methodAuth = hmAuthorizations.get(methodName);
-                String userAuth = "U";
+                String userAuth = LoginManager.getUserRole();
 
                 if(methodAuth.indexOf(userAuth) >= 0) {
+                    System.out.println(methodName + "(): 충분한 사용자 권한"
+                            + ", 정의권한: " + methodAuth + ", 사용자권한: " + userAuth + ", 실행가능.");
                     result = joinPoint.proceed();
                 }
                 else {
@@ -192,7 +209,7 @@ public class CheckPermission {
             e.printStackTrace();
         }
 
-        System.out.println(className + ".around(): end");
+        System.out.println(classMethodName + "end");
         return result;
     }
 

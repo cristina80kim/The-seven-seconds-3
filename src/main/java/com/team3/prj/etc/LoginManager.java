@@ -102,7 +102,6 @@ public class LoginManager {
    // 기능: sessionId에 대한 Login 여부를 검색하여 login한 user이면 그의 role를 응답
    public static String getUserRole() {
        String result = Common.strRoleAnonymous;
-
        UserInstanceVO vo = getUserInfo();
 
        if(vo != null) {
