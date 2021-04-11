@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.MainService;
 import com.team3.prj.vo.CommonCodeVO;
 
@@ -15,6 +15,23 @@ import com.team3.prj.vo.CommonCodeVO;
 public class MainController {
 
 	private final String className = "MainController";
+    private final String className2 = className + ".";
+
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "mainMenu", Common.strRoleAMUY},
+            {className2 + "header", Common.strRoleAMUY},
+            {className2 + "footer", Common.strRoleAMUY},
+            {className2 + "selectCommonCodes", Common.strRoleAMUY},
+            {className2 + "getAccoCommonCode", Common.strRoleAMUY},
+            {className2 + "getRoomCommonCode", Common.strRoleAMUY},
+            {className2 + "getQnaCommonCode", Common.strRoleAMUY},
+            {className2 + "leftSearch", Common.strRoleAMUY},
+            {className2 + "leftMypage", Common.strRoleAMUY},
+            {className2 + "leftComu", Common.strRoleAMUY},
+            {className2 + "iContents", Common.strRoleAMUY}
+        };
+    }
 
 	@Autowired
 	MainService service;
@@ -24,6 +41,7 @@ public class MainController {
 	public String mainMenu() {
 		return "index";
 	}
+
 
     // http://localhost:8081/header
     @RequestMapping("/header")
@@ -91,8 +109,8 @@ public class MainController {
 	public String leftComu() {
 		return "leftCommu";
 	}
-	
-	
+
+
 	//기능: 메인 contents 출력
 	// http://localhost:8081/main/iContents
 	@RequestMapping("/main/iContents")

@@ -2,12 +2,11 @@ package com.team3.prj.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.service.EtcService;
 import com.team3.prj.vo.NoteVO;
 
@@ -17,7 +16,20 @@ import com.team3.prj.vo.NoteVO;
 public class EtcController {
 
     private final String className = "EtcController";
-    
+    private final String className2 = className + ".";
+
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "frmNote", Common.strRoleAMUY},
+            {className2 + "getTermsOfService", Common.strRoleAMUY},
+            {className2 + "getPrivacyPolicy", Common.strRoleAMUY},
+            {className2 + "select", Common.strRoleAMUY},
+            {className2 + "insert", Common.strRoleAMUY},
+            {className2 + "update", Common.strRoleAMUY},
+            {className2 + "delete", Common.strRoleAMUY}
+        };
+    }
+
     @Autowired
     EtcService service;
 
@@ -47,7 +59,7 @@ public class EtcController {
         System.out.println("출력: " + result);
         return result;
     }
-    
+
     // http://localhost:8081/etc/select
     @RequestMapping("/select")
     public @ResponseBody NoteVO select(@RequestBody NoteVO vo) {
@@ -57,7 +69,7 @@ public class EtcController {
         System.out.println("출력: " + result);
         return result;
     }
-    
+
     // http://localhost:8081/etc/insert
     @RequestMapping("/insert")
     public @ResponseBody String insert(@RequestBody NoteVO vo) {
@@ -77,7 +89,7 @@ public class EtcController {
         System.out.println("출력: " + result);
         return result;
     }
-    
+
     // http://localhost:8081/etc/delete
     @RequestMapping("/delete")
     public @ResponseBody int delete(@RequestBody NoteVO vo) {

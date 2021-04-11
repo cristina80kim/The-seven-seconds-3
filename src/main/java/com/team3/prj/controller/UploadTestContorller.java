@@ -13,16 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 
 @Controller
 @RequestMapping("/test")
 public class UploadTestContorller {
 
+    private final String className = "TestController";
+    private final String className2 = className + ".";
+
+    public String[][] getAuthorizations() {
+        return new String[][] {
+            {className2 + "uploadTest", Common.strRoleAMUY},
+            {className2 + "uploadExcelFile1", Common.strRoleAMUY}
+        };
+    }
+
    @Value("${file.upload.directory}")
    String uploadDir; //application.properties에서 file.upload.directory 경로지정 값을 읽어온다
-   
-   
+
+
    // http://localhost:8081/test/uploadTest
    @GetMapping("/uploadTest")
    public String uploadTest() {
@@ -37,7 +48,7 @@ public class UploadTestContorller {
       // uploadPath는 실행환경의 classpath:/uploads를 이어야 함. (***) 찾아볼 것.
       // String uploadPath = "C:/TMP/uploads/"; // context.getRealPath("/uploads/");
       // TODO: classpath:uploads/를 구하는 방법 확인할 것.
-      ClassPathResource classPathResource = new ClassPathResource("/uploads/"); // classpath위치의 변수명을 읽어올 때 
+      ClassPathResource classPathResource = new ClassPathResource("/uploads/"); // classpath위치의 변수명을 읽어올 때
       System.out.println("classpath = " + classPathResource.toString());
 
       // System.out.println(Libs.getAbsolutePath("/uploads/"));
