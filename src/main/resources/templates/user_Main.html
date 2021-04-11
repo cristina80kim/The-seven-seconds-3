@@ -123,9 +123,27 @@ var leftSearch = {
         console.log(">>> " + msg);
     }
 };
+var pageOptions = {
+      page:    main.nvl(page, "1"),
+      perPage: main.nvl(perPage, "5"),
+    };
+ var options = {
+      el:          document.getElementById(componentName),
+      columns:     columns,
+      data:        datasource,
+      pageOptions: pageOptions, 
+      pagination:  true,
+    };
 
-
-
+var pagination2 = new tui.Pagination($("#pagination2"), {
+                  totalItems: 500, //그리드로 불러온 데이터 길이
+                    itemsPerPage: 10, // 페이지당 표시할 갯수
+                    visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+                    page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+                    centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+            });    
+  
+  
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
