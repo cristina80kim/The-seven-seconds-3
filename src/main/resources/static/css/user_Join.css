@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url(reset.css);
+
+#userJoinFrm input:checked + label{
+	color:blue;
+}
 
 
 input:focus{
@@ -68,6 +73,7 @@ section h1 {
 	padding-top:25px;
 }
 
+
 #JoinAgreeLbl, #roleLbl, #roleULbl, #idLbl, #pwdLbl,#pswChkLbl, 
 #nameLbl, #nickNameLbl,#telLbl,#emailLbl,#userGenLbl,#genFLbl{
     margin-left: 16%;
@@ -79,7 +85,6 @@ section h1 {
 	color:#785aef;
 	background-color:white;
 	text-align: left;
-
 }
 
 #userJoinFrm #id  {
