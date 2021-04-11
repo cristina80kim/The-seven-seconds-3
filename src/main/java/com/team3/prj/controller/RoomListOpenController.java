@@ -12,7 +12,7 @@ public class RoomListOpenController {
     
     public String[][] getAuthorizations() {
         return new String[][] {
-            {className2 + "managerRsrvOpen1", Common.strRoleAMUY},
+            {className2 + "managerRsrvOpen1", Common.strRoleAMUY},  
         };
     }
     
