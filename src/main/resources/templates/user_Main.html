@@ -156,9 +156,8 @@ function slideStart() {
 
 function slideShow() {
 
-        now++;
-        now = now >= imgCnt ? 0 : now;
-        console.log("now: " + now);
+        now = now == imgCnt ? 0 : ++now;
+
 
         $("#slideShow>img").eq(now - 1)
                 .css({
@@ -194,6 +193,8 @@ function slideShow() {
                                 "transition": "none"
                         });
         }
+
+
 }
 
 </script>
