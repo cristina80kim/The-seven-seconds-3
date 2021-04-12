@@ -396,31 +396,53 @@
       M_DATE         TIMESTAMP NULL              -- 수성 날짜/시간
     );
 
+    -- 숙박시설-유형(호텔, 모텔, 펜션/풀빌라, 글램핑/캠프, 게하/한옥, 리조트/콘도)
+	DELETE FROM code;
+	
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'standard', null, '스탠다드룸',   'standard',      'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'hotel', null, '호텔',         'hotel',      'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'single',   null, '싱글룸',     'single room',   'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'motel',    null, '모텔',      'motel',    'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'double',   null, '더블룸',     'double room',   'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'pension',  null, '펜션/풀빌라', 'pension',  'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'triple',   null, '트리플룸',    'triple room',   'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'glamping', null, '글램핑/캠프', 'glamping', 'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'twin',     null, '트윈룸',     'twin room',     'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'guest_house', null, '게하/한옥', 'guest house',      'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'superior', null, '슈페리어룸',   'superior room', 'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'resort', null, '리조트/콘도',   'resort',      'admin');
+
+    -- 룸 유형
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'standard', null, '스탠다드룸',   'standard',      'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'deluxe',   null, '딜럭스룸',    'deluxe room',   'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'single',   null, '싱글룸',     'single room',   'admin');
 
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
-    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ACCO', 'suite',    null, '스위트룸',    'suite room',    'admin');
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'double',   null, '더블룸',     'double room',   'admin');
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'triple',   null, '트리플룸',    'triple room',   'admin');
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'twin',     null, '트윈룸',     'twin room',     'admin');
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'superior', null, '슈페리어룸',   'superior room', 'admin');
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'deluxe',   null, '딜럭스룸',    'deluxe room',   'admin');
+
+    INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
+    VALUES (seq_code.NEXTVAL, 'ROOM', 'TYPE_OF_ROOM', 'suite',    null, '스위트룸',    'suite room',    'admin');
     
-    -- Q&N/FAQ 질문유형: 회원/개인정보, 숙소, 포인트, 서비스이용, 취소/환불, 예약/결제, 기타
+	-- Q&N/FAQ 질문유형: 회원/개인정보, 숙소, 포인트, 서비스이용, 취소/환불, 예약/결제, 기타
     INSERT INTO   code (id, class1, class2, class3, class4, name, dtl, c_user)
     VALUES (seq_code.NEXTVAL, 'QNA', 'TYPE_OF_QNA', 'member', null, '회원/개인정보', 'member_info', 'admin');         -- 회원/개인정보
 
