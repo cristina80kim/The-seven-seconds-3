@@ -10,9 +10,10 @@ public class TempUserInstance {
         String nickname = "TheGotFather";
         String tel = "01011112222";
         String email = "HisNameWasTheKing@gmail.com";
+        String gen = "F";
         String role = "M";
         
-        return new UserInstanceVO(id, name, nickname, tel, email, role);
+        return new UserInstanceVO(id, name, nickname, tel, email, gen, role);
     }
 
     public static UserInstanceVO createTempManager() {
@@ -21,9 +22,10 @@ public class TempUserInstance {
         String nickname = "TheSevenSeconds";
         String tel = "01011113333";
         String email = "TheSevenSeconds@gmail.com";
+        String gen = "F";
         String role = "M";
         
-        return new UserInstanceVO(id, name, nickname, tel, email, role);
+        return new UserInstanceVO(id, name, nickname, tel, email, gen, role);
     }
 
     public static UserInstanceVO createTempUser() {
@@ -32,9 +34,10 @@ public class TempUserInstance {
         String nickname = "TheQueen";
         String tel = "01011114444";
         String email = "HerNameIsTheQueen@gmail.com";
+        String gen = "F";
         String role = "F";
         
-        return new UserInstanceVO(id, name, nickname, tel, email, role);
+        return new UserInstanceVO(id, name, nickname, tel, email, gen, role);
     }
 
 }
