@@ -106,7 +106,7 @@ FROM (SELECT w.*, rownum rnum
 		#{nickname},
 		(SELECT NVL(MAX(no),0) + 1 FROM qna), <!-- #{no}, -->
 		#{cate_id},
-		#{is_pub}, #{title}, #{q}, #{c_user}
+		#{is_pub}, #{title}, #{q}, #{cuser}
 		)
 	</insert>
 
