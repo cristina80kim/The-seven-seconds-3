@@ -70,7 +70,7 @@ var qna = {
             main.clearGrid(componentName, gridQna); 
             gridQna = main.showToastGrid(url, componentName, columns);
             
-            // mousedown Event
+            // mousedown Event.
             gridQna.on('mousedown', function(ev) {
             	// 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
             	var rowInfo = gridQna.getRow(ev.rowKey); 

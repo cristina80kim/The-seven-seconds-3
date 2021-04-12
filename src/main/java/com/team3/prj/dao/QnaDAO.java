@@ -25,5 +25,5 @@ public interface QnaDAO {
 
 	public Integer selectCnt(QnaSearchVO svo);
 	
-	//
+	// 커밋
 }

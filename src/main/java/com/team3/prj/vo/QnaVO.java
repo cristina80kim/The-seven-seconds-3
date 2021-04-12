@@ -20,7 +20,7 @@ public class QnaVO {
 	private String mdate; // 수정날짜
 
 
-
+	// 커밋
 	 
 	/*
 	 * #{nickname}, #{no}, #{cateId},  #{isPub}, #{title}, #{q}, #{cUser})

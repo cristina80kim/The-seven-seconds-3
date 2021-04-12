@@ -52,7 +52,7 @@ public class QnaServiceImpl implements QnaService {
 	public List<QnaVO>selectOne(QnaVO vo) {
 		return dao.selectOne(vo);
 	}
-	///
+	///// 커밋
 
 	@Override
 	public Integer selectCnt(QnaSearchVO svo) {

@@ -87,7 +87,7 @@ FROM (SELECT w.*, rownum rnum
 			</where>
 	</select>
 
-	<!-- 게시글 등록 sql문 -->
+	<!-- 게시글 등록 sql문() -->
 	<insert id="insert">
 		<selectKey keyProperty="id" resultType="Long" order="BEFORE">
 			<!-- order="BEFORE" - 아래 insert문 실행전 실행 -->
