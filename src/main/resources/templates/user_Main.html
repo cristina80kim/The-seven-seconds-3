@@ -43,21 +43,7 @@ var leftSearch = {
     search: function(){
         console.log("search(): 1");
         var loc = "/staylist/userRoomList";
-        var param = {
-              keyword:      $("#keyword").val(),
-              checkIn:      $("#checkIn").val(),
-              checkOut:     $("#checkOut").val(),
-              numOfGuests:  $("#numOfGuests").val(),  
-              minPrice:     $("#minPrice").val(),
-              maxPrice:     $("#maxPrice").val(),
-              isHotel:      $("#isHotel").val(),
-              isMotel:      $("#isMotel").val(),
-              isPension:    $("#isPension").val(),
-              isGlamping:   $("#isGlamping").val(), 
-              isGuestHouse: $("#isGuestHouse").val(),   
-              isResort:     $("#isResort").val(),
-        };
-     
+ 
         var keyword 	= main.nvl($("#keyword").val(), ""); 
         var checkIn 	= main.nvl($("#checkIn").val(), "");
         var checkOut	= main.nvl($("#checkOut").val(), "" );
@@ -105,6 +91,15 @@ var leftSearch = {
         
         
         main.showToastGrid(url, "gridData" , columns );
+        main.clearGrid(componentName, gridList);
+        
+        // mousedown Event
+					gridList.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridList.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+	  					main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
+					});
         
         
        // main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
@@ -143,13 +138,7 @@ var pagination2 = new tui.Pagination($("#pagination2"), {
                     centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
             });    
   
-  // mousedown Event
-					gridData.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridData.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
-					});
+  
 		          
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------

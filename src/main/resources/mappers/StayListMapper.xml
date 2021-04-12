@@ -103,4 +103,15 @@
     )
     WHERE num BETWEEN (#{page}-1) * #{perPage}+1 AND #{page}*#{perPage}
   </select>
+  
+  <select id="selectOne" resultType="com.team3.prj.vo.StayListSearchResultVO">
+		SELECT q.*,
+		(SELECT name FROM
+		code c WHERE q.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 =
+		'TYPE_OF_QNA') as cate
+		FROM qna q
+		WHERE q.id = #{id}
+		ORDER BY q.id
+	</select>
+  
 </mapper>

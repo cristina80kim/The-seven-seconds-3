@@ -27,13 +27,14 @@ public String[][] getAuthorizations() {
     return new String[][] {
         {className2 + "userRoomList", Common.strRoleAMUY},
         {className2 + "userRoomList2", Common.strRoleAMUY},
+        {className2 + "oneSelect", Common.strRoleAMUY},
     };
 }
 
 
     @Autowired
     StayListService stayService;
-
+//  http://localhost:8081/staylist/oneSelect?id=1000000001
     @RequestMapping("/oneSelect")
     public @ResponseBody List<StayListSearchResultVO> selectOne(@RequestBody StayListSearchVO vo){
         System.out.println(className + "selectOne()");
