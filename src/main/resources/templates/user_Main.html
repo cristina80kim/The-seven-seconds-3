@@ -14,7 +14,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 <script>
+
 var mygrid = null;
+let now = 0;
+let imgCnt = 2; 
+
 $(function() {
   slideStart();
 });
@@ -143,9 +147,6 @@ var pagination2 = new tui.Pagination($("#pagination2"), {
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 
-let now = 0;
-let imgCnt = 2; 
-
 function slideStart() {
 
         setInterval(slideShow, 3000);
@@ -155,7 +156,9 @@ function slideStart() {
 
 function slideShow() {
 
-        now = now == imgCnt ? now = 0 : ++now;
+        now++;
+        now = now >= imgCnt ? 0 : now;
+        console.log("now: " + now);
 
         $("#slideShow>img").eq(now - 1)
                 .css({
