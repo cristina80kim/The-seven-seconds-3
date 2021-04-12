@@ -137,7 +137,10 @@ span{
 	width: 680px;
 	height:100px;
 	border:1px solid #c0c0c0;
+	border-radius : 4px;
+	margin-top:10px;
 	color:#3a3a3a;
+	outline:none;
 }
 
 #line2 {
