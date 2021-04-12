@@ -9,11 +9,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.01"></script>
 <link rel="stylesheet"
-	href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+   href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 <script>
+var mygrid = null;
 
 $(function() {
   slideStart();
@@ -41,22 +42,21 @@ var leftSearch = {
     },
     
     search: function(){
-    	$("#mainTable").hide();
         console.log("search(): 1");
         var loc = "/staylist/userRoomList";
  
-        var keyword 	= main.nvl($("#keyword").val(), ""); 
-        var checkIn 	= main.nvl($("#checkIn").val(), "");
-        var checkOut	= main.nvl($("#checkOut").val(), "" );
-        var numOfGuests	= main.nvl($("#numOfGuests").val(),"0");
-        var minPrice	= main.nvl($("#minPrice").val(),"0");
-        var maxPrice	= main.nvl($("#maxPrice").val(),"0");
-        var isHotel		= main.nvl($("#isHotel").val(),"");
-        var isMotel		= main.nvl($("#isMotel").val(),"");
-        var isPension	= main.nvl($("#isPension").val(),"");
-        var isGlamping	= main.nvl($("#isGlamping").val(),"");
+        var keyword    = main.nvl($("#keyword").val(), ""); 
+        var checkIn    = main.nvl($("#checkIn").val(), "");
+        var checkOut   = main.nvl($("#checkOut").val(), "" );
+        var numOfGuests   = main.nvl($("#numOfGuests").val(),"0");
+        var minPrice   = main.nvl($("#minPrice").val(),"0");
+        var maxPrice   = main.nvl($("#maxPrice").val(),"0");
+        var isHotel      = main.nvl($("#isHotel").val(),"");
+        var isMotel      = main.nvl($("#isMotel").val(),"");
+        var isPension   = main.nvl($("#isPension").val(),"");
+        var isGlamping   = main.nvl($("#isGlamping").val(),"");
         var isGuestHouse= main.nvl($("#isGuestHouse").val(),"");
-        var isResort	= main.nvl($("#isResort").val(),"");
+        var isResort   = main.nvl($("#isResort").val(),"");
         
         var url = loc 
         + "?keyword="+ keyword
@@ -74,40 +74,43 @@ var leftSearch = {
         
         
         
-        		      var columns = [
-		              {header: "지역",     name: "region",      width: 50,  height: 100                    },
- 		              {header: "숙소명",     name: "title", width: 100                   },
-		              {header: "주소",   name: "addr", width: 100, align: "center"   },
-		            
-		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
-		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
-		              }},
-		              
-		              {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
-		              {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
-		              {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
-		              {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
-		              {header: "별점",    	name: "star",  width: 300                   },
-		            ];
+                    var columns = [
+                     {header: "id",     name: "id",      width: 50,  height: 100                    },
+                    {header: "지역",     name: "region",      width: 50,  height: 100                    },
+                     {header: "숙소명",     name: "title", width: 100                   },
+                    {header: "주소",   name: "addr", width: 100, align: "center"   },
+                  
+                    {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
+                      return "<img src='/images/11_html_m4956639b.jpg' width=100>";
+                    }},
+                    
+                    {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
+                    {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
+                    {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
+                    {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
+                    {header: "별점",       name: "star",  width: 300                   },
+                  ];
         
-        
-        main.showToastGrid(url, "gridData" , columns );
-        main.clearGrid(componentName, gridList);
+       
+                    
+                    main.clearGrid("gridData", mygrid);
+         mygrid = main.showToastGrid(url, "gridData" , columns );
+                 
         
         // mousedown Event
-					gridList.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridList.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
-					});
+               mygrid.on('mousedown', function(ev) {
+                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                  var rowInfo = mygrid.getRow(ev.rowKey); 
+                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                    //main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
+               });
         
         
        // main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
         //  , function() {
         //    alert("검색된 자료가 없습니다.");
        //   }
-		//);
+      //);
     },
    
     callBackSearchResult: function(jsonData){
@@ -140,7 +143,7 @@ var pagination2 = new tui.Pagination($("#pagination2"), {
             });    
   
   
-		          
+                
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
@@ -201,142 +204,145 @@ function slideShow() {
 
 <div id="wrap">
 
-	<section id="userRoomDtl_left">
-			
-					<input type="text" name="keyword" id="keyword" placeholder="지역, 호텔, 명소명 입력" /><br />
-	
-					<div class="chkTime">
-							
-							<label for="userChkIn">
-								<input type="date" name="checkIn" id="checkIn" />
-								체크인
-							</label>
-							<label for="userChkOut">
-								<input type="date" name="checkOut" id="checkOut" />
-								체크아웃
-							</label><br />
-					</div>
-					
-					<div class="numG">
-						<label for="numGuests">인원수
-							
-							<select name="numOfGuests" id="numOfGuests">
-							    <option value="1">1</option>
-							    <option value="2">2</option>
-							    <option value="3">3</option>
-							    <option value="4">4</option>
-					   		    <option value="5">5</option>
-							    <option value="6">6</option>
-							    <option value="7">7</option>
-							    <option value="8">8</option>
-					   		    <option value="9">9</option>
-							    <option value="10">10</option>
-							    <option value="11">11</option>
-							</select>
-						</label>
-					</div>
-					<br />
-					<div id="SrchBtn">		
-                        <input type="button" value="검색" id="MainSrchBtn" onclick="leftSearch.search();"/> 			
-					</div>
-					<hr id="srchHr"/>
-					
-					<span id="userSubTitle"><label for="price">가격</label><br /></span><br />
-					<input type="text" name="price" id="priceMin" placeholder="최저가"/>
-					<span class="userSubTitle_">~</span>
-					<input type="text" name="price" id="priceMax" placeholder="최고가"/>
-					<br /><br />
-					<span class="userSubTitle"><label for="">숙박 유형</label></span><br />
-					<span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="onAccoCheckAll" id="hangeCheckBoxes" value="" 
+   <section id="userRoomDtl_left">
+         
+               <input type="text" name="keyword" id="keyword" placeholder="지역, 호텔, 명소명 입력" /><br />
+   
+               <div class="chkTime">
+                     
+                     <label for="userChkIn">
+                        <input type="date" name="checkIn" id="checkIn" />
+                        체크인
+                     </label>
+                     <label for="userChkOut">
+                        <input type="date" name="checkOut" id="checkOut" />
+                        체크아웃
+                     </label><br />
+               </div>
+               
+               <div class="numG">
+                  <label for="numGuests">인원수
+                     
+                     <select name="numOfGuests" id="numOfGuests">
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                            <option value="5">5</option>
+                         <option value="6">6</option>
+                         <option value="7">7</option>
+                         <option value="8">8</option>
+                            <option value="9">9</option>
+                         <option value="10">10</option>
+                         <option value="11">11</option>
+                     </select>
+                  </label>
+               </div>
+               <br />
+               <div id="SrchBtn">      
+                        <input type="button" value="검색" id="MainSrchBtn" onclick="leftSearch.search();"/>          
+               </div>
+               <hr id="srchHr"/>
+               
+               <span id="userSubTitle"><label for="price">가격</label><br /></span><br />
+               <input type="text" name="price" id="priceMin" placeholder="최저가"/>
+               <span class="userSubTitle_">~</span>
+               <input type="text" name="price" id="priceMax" placeholder="최고가"/>
+               <br /><br />
+               <span class="userSubTitle"><label for="">숙박 유형</label></span><br />
+               <span id="userSubTitle"><label for="room_name1"><input type="checkbox" name="onAccoCheckAll" id="hangeCheckBoxes" value="" 
                                                                                                              onchange="leftSearch.onAccoCheckAllClick(this, leftSearch.idCheckBoxes);">전체      </label></span>
-					<span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="isMotel"      id="isMotel"      value="" onchange="main.onMotelChanged(this);"      />모텔      </label></span>  
-					<span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="isHotel"      id="isHotel"      value="" onchange="main.onHotelChanged(this);"      />호텔      </label></span>
-					<span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="isPension"    id="isPension"    value="" onchange="main.onPensionChanged(this);"    />펜션/풀빌라</label></span>
-					<span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="isGlamping"   id="isGlamping"   value="" onchange="main.onGlampingChanged(this);"   />글램핑/캠핑</label></span>
-					<span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);" />게하/한옥 </label></span>
-					<span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="isResort"     id="isResort"     value="" onchange="main.onResortChanged(this);"     />리조트/콘도</label></span>
-					
-				
-					<!-- <hr /> -->
-		</section>
-	
-	
-	<section id="userRoomDtl_right">
-	
-		<div class="areaBtn">
-			<input type="button" value="서울" />
-			<input type="button" value="경기도" />
-			<input type="button" value="경상도" />
-			<input type="button" value="전라도" />
-			<input type="button" value="충청도" />
-			<input type="button" value="강원도" />
-			<input type="button" value="제주도" />
-			<input type="button" value="국외" />
-		</div>
-		
+               <span id="userSubTitle"><label for="room_name2"><input type="checkbox" name="isMotel"      id="isMotel"      value="" onchange="main.onMotelChanged(this);"      />모텔      </label></span>  
+               <span id="userSubTitle"><label for="room_name3"><input type="checkbox" name="isHotel"      id="isHotel"      value="" onchange="main.onHotelChanged(this);"      />호텔      </label></span>
+               <span id="userSubTitle"><label for="room_name4"><input type="checkbox" name="isPension"    id="isPension"    value="" onchange="main.onPensionChanged(this);"    />펜션/풀빌라</label></span>
+               <span id="userSubTitle"><label for="room_name5"><input type="checkbox" name="isGlamping"   id="isGlamping"   value="" onchange="main.onGlampingChanged(this);"   />글램핑/캠핑</label></span>
+               <span id="userSubTitle"><label for="room_name6"><input type="checkbox" name="isGuestHouse" id="isGuestHouse" value="" onchange="main.onGuestHouseChanged(this);" />게하/한옥 </label></span>
+               <span id="userSubTitle"><label for="room_name7"><input type="checkbox" name="isResort"     id="isResort"     value="" onchange="main.onResortChanged(this);"     />리조트/콘도</label></span>
+               
+            
+               <!-- <hr /> -->
+      </section>
+   
+   
+   <section id="userRoomDtl_right">
+   
+      <div class="areaBtn">
+         <input type="button" value="서울" />
+         <input type="button" value="경기도" />
+         <input type="button" value="경상도" />
+         <input type="button" value="전라도" />
+         <input type="button" value="충청도" />
+         <input type="button" value="강원도" />
+         <input type="button" value="제주도" />
+         <input type="button" value="국외" />
+      </div>
+      
 <!--banner  -->
-		<div id="slide">
-			<div id="slideShow">
-				<img src="images/flowerban.png" width="488" height="140" alt="배너1" />
-				 <img src="images/hotel.png" width="488" height="140"  alt="배너2" />
-				 <img src="images/korealove.png" width="488" height="140" alt="배너3" /> 
-			</div>
-		</div>
-		
+      <div id="slide">
+         <div id="slideShow">
+            <img src="images/flowerban.png" width="488" height="140" alt="배너1" />
+             <img src="images/hotel.png" width="488" height="140"  alt="배너2" />
+             <img src="images/korealove.png" width="488" height="140" alt="배너3" /> 
+         </div>
+      </div>
+      
 <!--bannerBtn Start  -->
-		<div id="moveBtn">
-	         <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
-     		 <a class="next" onclick="moveSlides(1)">&#10095;</a>
-		</div>
-<!--bannerBtn END  -->		
+      <div id="moveBtn">
+            <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+            <a class="next" onclick="moveSlides(1)">&#10095;</a>
+      </div>
+<!--bannerBtn END  -->      
 <div id="gridData"></div>
-	
-		<table id="mainTable" class="hover01 column">
-			<tr>
-				<td>
-					<a href="#">
-						
-							<img src="images/seoul.jpg" width="240" alt="여행지1_img" id="tr1"/>
-							<span>서울</span>
-							<label>숙소 4,433개</label>
-						
-					</a>
-				</td>
-				<td>
-					<a href="#">
-						
-							<img src="images/jeju.jpg" width="240" alt="여행지2_img" id="tr2"/>
-							<span>제주</span>
-							<label>숙소 3,083개</label>
-						
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<a href="#">
-						
-							<img src="images/Gangneung.jpg" width="240" alt="여행지3_img" id="tr3"/>
-							<span>강릉</span>
-							<label>숙소 655개</label>
-						
-					</a>
-				</td>
-				<td>
-					<a href="#">
-						
-							<img src="images/busan.jpg" width="240" alt="여행지4_img" id="tr4" />
-							<span>부산</span>
-							<label>숙소 1,235개</label>
-						
-					</a>
-				</td>
-			</tr>
-	
-		</table>
-		
+   
+      <table class="hover01 column">
+         <tr>
+            <td>
+               <a href="#">
+                  
+                     <img src="images/seoul.jpg" width="240" alt="여행지1_img" id="tr1"/>
+                     <span>서울</span>
+                     <label>숙소 4,433개</label>
+                  
+               </a>
+            </td>
+            <td>
+               <a href="#">
+                  
+                     <img src="images/jeju.jpg" width="240" alt="여행지2_img" id="tr2"/>
+                     <span>제주</span>
+                     <label>숙소 3,083개</label>
+                  
+               </a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <a href="#">
+                  
+                     <img src="images/Gangneung.jpg" width="240" alt="여행지3_img" id="tr3"/>
+                     <span>강릉</span>
+                     <label>숙소 655개</label>
+                  
+               </a>
+            </td>
+            <td>
+               <a href="#">
+                  
+                     <img src="images/busan.jpg" width="240" alt="여행지4_img" id="tr4" />
+                     <span>부산</span>
+                     <label>숙소 1,235개</label>
+                  
+               </a>
+            </td>
+         </tr>
+   
+      </table>
+      
 
-	</section>
+   </section>
+
+
+
 
 
 </div>
