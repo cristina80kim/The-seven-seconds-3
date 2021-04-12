@@ -37,6 +37,10 @@ textarea {
 	margin: 0 auto;
 }
 
+#gridData {
+   margin-bottom:50px;
+}
+
 #userRoomDtl_left ,#userRoomDtl_right{
 	margin-top:10px;
 }

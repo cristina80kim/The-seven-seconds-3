@@ -45,6 +45,9 @@ var leftSearch = {
     },
     
     search: function(){
+    	$("#areaBtn").hide();
+    	$("#slide").hide();
+    	$("#moveBtn").hide();
     	$("#mainTable").hide();
         console.log("search(): 1");
         var loc = "/staylist/userRoomList";
@@ -265,7 +268,7 @@ function slideShow() {
 	
 	<section id="userRoomDtl_right">
 	
-		<div class="areaBtn">
+		<div class="areaBtn" id="areaBtn">
 			<input type="button" value="서울" />
 			<input type="button" value="경기도" />
 			<input type="button" value="경상도" />
