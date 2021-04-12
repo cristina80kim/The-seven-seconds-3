@@ -8,26 +8,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 <script>
-var id = [[ ${session.id} ]];
-
-$(function(){
-		console.log("id = "+ id);
-		 var param = {
-               id : id
-          }
-            main.ajaxPostJson("/qna/oneSelect",param,function(json){
-               console.log(json);
-               $.each(json,function(index,item){
-                  console.log(item["id"]+item["title"]+item["content"]);
-                  $("#no").val(item["no"]);
-                  $("#title").val(item["title"]);
-                  $("#nickName").val(item["nickname"]);
-                  $("#q").val(item["q"]);
-                  $("#C_DATE").val(item["c_date"]);
-                  $("#cate_id").val(item["cate_id"]);
-               })
-            });
-	});
+function onPaymentClicked(){
+     location.href = "userRoomPay";
+}
 </script>
 <body>
 
@@ -40,11 +23,11 @@ $(function(){
 					<div class="chkTime">
 							
 							<label for="userChkIn">
-								<input type="month" name="userChkIn" id="userChkIn" />
+								<input type="date" name="userChkIn" id="userChkIn" />
 								체크인
 							</label>
 							<label for="userChkOut">
-								<input type="month" name="userChkOut" id="userChkOut" />
+								<input type="date" name="userChkOut" id="userChkOut" />
 								체크아웃
 							</label><br />
 					</div>
@@ -120,12 +103,12 @@ $(function(){
 			
 			<div id="chk">
 				<label for="checkInTime">
-					<input type="datetime-local" name="checkInTime" id="checkInTime" />
+					<input type="date" name="checkInTime" id="checkInTime" />
 				체크인
 				</label>
 				
 				<label for="checkOutTime">
-					<input type="datetime-local" name="checkOutTime" id="checkOutTime" />
+					<input type="date" name="checkOutTime" id="checkOutTime" />
 				체크아웃
 				</label><br />
 				
@@ -149,13 +132,13 @@ $(function(){
 					<td><input type="text" name="room_name" id="room_name" value="스탠다드"/><br />
 							<input type="text" name="price_" id="price_" value="100,000원" />
 					</td>
-					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="paymentt.onPaymentClicked();"/></td>
+					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="onPaymentClicked();"/></td>
 				</tr>
 				<tr>
 					<td><img alt="이미지" src="images/120x80_2.jpg"></td>
 					<td><input type="text" name="room_name" id="room_name" value="스탠다드 트윈"/><br />
 							<input type="text" name="price_" id="price_" value="100,000원" /></td>
-					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="paymentt.onPaymentClicked();"/></td>
+					<td><input type="button" value="예약하기" id="RsrvBtn" onclick="onPaymentClicked();"/></td>
 				</tr>
 			
 			</table>

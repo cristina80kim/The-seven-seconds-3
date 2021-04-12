@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 <script>
-
+var mygrid = null;
 $(function() {
   slideStart();
 });
@@ -91,17 +91,15 @@ var leftSearch = {
 		            ];
         
         
-        main.showToastGrid(url, "gridData" , columns );
-        main.clearGrid(componentName, gridList);
+      main.clearGrid("gridData", mygrid);
+         mygrid = main.showToastGrid(url, "gridData" , columns );
         
-        // mousedown Event
-					gridList.on('mousedown', function(ev) {
-	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-	  				 var rowInfo = gridList.getRow(ev.rowKey); 
-	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-	  					main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
-					});
-        
+            mygrid.on('mousedown', function(ev) {
+                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                  var rowInfo = mygrid.getRow(ev.rowKey); 
+                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                    main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
+               });
         
        // main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
         //  , function() {
