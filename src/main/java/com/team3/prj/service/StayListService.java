@@ -10,4 +10,7 @@ import com.team3.prj.vo.StayListVO;
 public interface StayListService {
 
     public List<StayListSearchResultVO> search(StayListSearchVO2 vo);
+    
+    public List<StayListSearchResultVO> selectOne(StayListSearchVO vo);
+    
 }

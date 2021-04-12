@@ -22,4 +22,9 @@ public class StayListServiceImpl implements StayListService {
     public List<StayListSearchResultVO> search(StayListSearchVO2 vo) {
         return staylistDao.search(vo);
     }
+    
+    @Override
+    public List<StayListSearchResultVO> selectOne (StayListSearchVO vo){
+        return staylistDao.selectOne(vo);
+    }
 }

@@ -143,7 +143,14 @@ var pagination2 = new tui.Pagination($("#pagination2"), {
                     centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
             });    
   
-  
+  // mousedown Event
+					gridData.on('mousedown', function(ev) {
+	 				  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+	  				 var rowInfo = gridData.getRow(ev.rowKey); 
+	  				    console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+	  					main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
+					});
+		          
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
@@ -211,11 +218,11 @@ function slideShow() {
 					<div class="chkTime">
 							
 							<label for="userChkIn">
-								<input type="month" name="checkIn" id="checkIn" />
+								<input type="date" name="checkIn" id="checkIn" />
 								체크인
 							</label>
 							<label for="userChkOut">
-								<input type="month" name="checkOut" id="checkOut" />
+								<input type="date" name="checkOut" id="checkOut" />
 								체크아웃
 							</label><br />
 					</div>

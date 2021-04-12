@@ -8,12 +8,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/main.js?ver=1.00"></script>
 <script>
-var paymentt = {
-	onPaymentClicked: function() {
-		console.log("onPaymentClicked()");
-		main.ajaxGetHtml("/userRoomPay", "wrap");
-	},
-}
+var id = [[ ${session.id} ]];
+
+$(function(){
+		console.log("id = "+ id);
+		 var param = {
+               id : id
+          }
+            main.ajaxPostJson("/qna/oneSelect",param,function(json){
+               console.log(json);
+               $.each(json,function(index,item){
+                  console.log(item["id"]+item["title"]+item["content"]);
+                  $("#no").val(item["no"]);
+                  $("#title").val(item["title"]);
+                  $("#nickName").val(item["nickname"]);
+                  $("#q").val(item["q"]);
+                  $("#C_DATE").val(item["c_date"]);
+                  $("#cate_id").val(item["cate_id"]);
+               })
+            });
+	});
 </script>
 <body>
 

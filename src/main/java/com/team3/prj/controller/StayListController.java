@@ -6,7 +6,6 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.team3.prj.etc.Common;
 import com.team3.prj.etc.Libs;
 import com.team3.prj.service.StayListService;
-import com.team3.prj.vo.QnaVO;
 import com.team3.prj.vo.StayListSearchResultVO;
 import com.team3.prj.vo.StayListSearchVO;
 import com.team3.prj.vo.StayListSearchVO2;
-import com.team3.prj.vo.StayListVO;
 
 @Controller
 @RequestMapping("/staylist")
@@ -37,6 +34,14 @@ public String[][] getAuthorizations() {
     @Autowired
     StayListService stayService;
 
+    @RequestMapping("/oneSelect")
+    public @ResponseBody List<StayListSearchResultVO> selectOne(@RequestBody StayListSearchVO vo){
+        System.out.println(className + "selectOne()");
+        System.out.println("입력 : " + vo);
+        List<StayListSearchResultVO> result = stayService.selectOne(vo);
+        System.out.println("출력 : " + result);
+        return result;
+    }
 
     
     //http://localhost:8081/staylist/userRoomList

@@ -15,4 +15,5 @@ public interface StayListDAO { //수정
     
     public List<StayListSearchResultVO> search(StayListSearchVO2 vo);
 
+    public List<StayListSearchResultVO> selectOne (StayListSearchVO vo);
 }
