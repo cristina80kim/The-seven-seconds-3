@@ -95,23 +95,23 @@
 				 
 				 <br />
 				 <label for="name" class="titleText">이름</label>
-				 <input type="text" name="name" id="name" value="김철수" readonly/>
+				 <input type="text" name="name" id="name" th:value="${session.name}" readonly/>
 				 
 				 <br />
 				 <label for="nickname" class="titleText">닉네임</label>
-				 <input type="text" name="nickname" id="nickname" value="어우"/>
+				 <input type="text" name="nickname" id="nickname" th:value="${session.nickname}"/>
 				 
 				 <br />
 				 <label for="tel" id="telLbl" class="titleText">전화번호</label>
-				 <input type="text" name="tel" id="tel" value="010"/>
+				 <input type="text" name="tel" id="tel" th:value="${session.tel}"/>
 				 
 				 <br />
 				 <label for="email" class="titleText">이메일</label>
-				 <input type="text" name="email" id="email" value="ohhhhhh@gmail.com"/>
+				 <input type="text" name="email" id="email" th:value="${session.email}"/>
 				
 				<br />
 				  <label for="userGen" class="titleText">성별</label>
-				  <label for="gen"><input type="text" name="gen" id="gen" value="F" readonly/></label>
+				  <label for="gen"><input type="text" name="gen" id="gen" th:value="${session.gen}" readonly/></label>
 				  
 				  
 				  <div id="submitBtn_">

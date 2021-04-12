@@ -137,6 +137,11 @@ public class UserController {
 		UserInstanceVO vo = LoginManager.getUserInfo();
 		String userId = LoginManager.getUserId();
 		Libs.setSessionAttribute("id", userId);
+		Libs.setSessionAttribute("name", vo.getName());
+		Libs.setSessionAttribute("nickname", vo.getNickname());
+		Libs.setSessionAttribute("tel", vo.getTel());
+		Libs.setSessionAttribute("email", vo.getEmail());
+		Libs.setSessionAttribute("gen", vo.getGen());
 		System.out.println("수정할 유저 아이디: " + userId);
 		return "user_Mypage_M_Info"; // .html
 	}

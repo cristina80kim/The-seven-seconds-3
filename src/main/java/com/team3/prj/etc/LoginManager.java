@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import com.team3.prj.vo.UserInstanceVO;
+import com.team3.prj.vo.UserVO;
 
 public class LoginManager {
    private static final boolean isTestMode = false;
@@ -63,6 +64,23 @@ public class LoginManager {
       System.out.println("사용자 수: " + hmUsers.size());
       return result;
    }
+   
+   public static boolean updateUserInfo(String sessionId, UserVO vo) {
+	   boolean result = false;
+       UserInstanceVO uvo = getUserInfo(sessionId);
+
+       if(uvo != null && Libs.isNotEmpty(vo.getId())) {
+           if(uvo.getId().equals(vo.getId())) {
+               synchronized (hmUsers) {
+                   hmUsers.put(sessionId, new UserInstanceVO(vo));
+                    result = true;
+                   System.out.println(vo.getId() + "의 사용자 정보를 LoginManager에 업데이트함");
+               }
+           }
+       }
+
+       return result;
+   }
 
    public static boolean removeUserInfo(String sessionId, String userId) {
        boolean result = false;
@@ -73,7 +91,7 @@ public class LoginManager {
                synchronized (hmUsers) {
                    hmUsers.remove(sessionId);
                     result = true;
-                   System.out.println(userId + "의 사용자 정보를 LoginManagerㅇ에서 제거함");
+                   System.out.println(userId + "의 사용자 정보를 LoginManager에서 제거함");
                }
            }
        }
@@ -98,6 +116,7 @@ public class LoginManager {
 
        return result;
    }
+   
 
    // 기능: sessionId에 대한 Login 여부를 검색하여 login한 user이면 그의 role를 응답
    public static String getUserRole() {
@@ -110,5 +129,7 @@ public class LoginManager {
 
        return result;
    }
+
+
 
 }

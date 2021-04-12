@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService {
 
 		@Override
 		public String update(UserVO vo) {
+			int result = userDAO.userUpdate(vo);
+			if (result != 0) {
+				UserVO vo2 = userDAO.userSelect(vo);
+				LoginManager.updateUserInfo(Libs.getSession().getId(), vo2);
+			}
 			return userDAO.userUpdate(vo) >= 1 ? vo.getId() : "";
 		}
 

@@ -39,4 +39,6 @@ public interface UserDAO {
 
 	// 검색기능
 	public List<UserVO> userSearch(UserSearchVO svo);
+
+	public UserVO userSelect(UserVO vo);
 }
