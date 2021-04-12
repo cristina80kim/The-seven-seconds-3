@@ -81,32 +81,44 @@ var leftSearch = {
         
         
         
-        		      var columns = [
-		              {header: "지역",     name: "region",      width: 50,  height: 100                    },
- 		              {header: "숙소명",     name: "title", width: 100                   },
-		              {header: "주소",   name: "addr", width: 100, align: "center"   },
-		            
-		              {header: "사진",      name: "img1", width: 100, align: "center", formatter: function() {
-		                return "<img src='/images/11_html_m4956639b.jpg' width=100>";
-		              }},
-		              
-		              {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
-		              {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
-		              {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
-		              {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
-		              {header: "별점",    	name: "star",  width: 300                   },
-		            ];
+        		        var columns = [
+                          {header: "id",     name: "id",      width: 50,  height: 100                    },
+                          {header: "지역",     name: "region",      width: 50,  height: 100                    },
+                           {header: "숙소명",     name: "title", width: 100                   },
+                          {header: "주소",   name: "addr", width: 100, align: "center"   },
+
+                          {header: "사진",      name: "pic1Uuid", width: 100, align: "center" , formatter:
+                          		function(value) {
+//                           			console.log("value : "+JSON.stringify(value));
+                          			var row = value["row"];
+                          			var uuid = row["pic1Uuid"];
+
+                          			console.log("valuetoString : "+ uuid);
+                                       var url = "images/"+ uuid         
+
+//                                        return '<p>'+url+'</p>';
+                                      var url2 =  '<img src = "' + url + '" width=100/>'
+                              return url2;
+                          }},
+
+                          {header: "숙박시설유형",   name: "typeOfAcco",   width: 100                   },
+                          {header: "숙박시설유형(공통)",    name: "typeOfAccoName",     width: 0                     },
+                          {header: "주중가격",    name: "weekdayPrice",    width: 100, align: "center"  }, 
+                          {header: "주말가격",      name: "weekdayPrice",    width: 100                   },
+                          {header: "별점",       name: "star",  width: 300                   },
+                        ];
         
         
-      main.clearGrid("gridData", mygrid);
-         mygrid = main.showToastGrid(url, "gridData" , columns );
+        		        main.clearGrid("gridData", mygrid);
+        		         mygrid = main.showToastGrid(url, "gridData" , columns );
+
         
             mygrid.on('mousedown', function(ev) {
-                  // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
-                  var rowInfo = mygrid.getRow(ev.rowKey); 
-                     console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
-                    main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
-               });
+                // 클릭된 위치의 Row 정보 읽기 & row의 "id", "title"갑 log에 출력 
+                var rowInfo = mygrid.getRow(ev.rowKey); 
+                   console.log("id: " + rowInfo["id"] + ", title: " + rowInfo["title"]);
+                  main.ajaxGetHtml("roomDtl/roomDtlAll?title="+rowInfo["title"],"contents");
+             });
         
        // main.ajaxPostJson(loc, param, leftSearch.callBackSearchResult
         //  , function() {
