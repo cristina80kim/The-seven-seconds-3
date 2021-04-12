@@ -18,6 +18,7 @@
 var mygrid = null;
 let now = 0;
 let imgCnt = 2; 
+var timerId = null;
 
 $(function() {
   slideStart();
@@ -45,6 +46,9 @@ var leftSearch = {
     },
     
     search: function(){
+        clearInterval(timerId);
+        $("#slideShow").hide();
+    
     	$("#areaBtn").hide();
     	$("#slide").hide();
     	$("#moveBtn").hide();
@@ -162,10 +166,8 @@ var pagination2 = new tui.Pagination($("#pagination2"), {
 //-----------------------------------------------------------------------
 
 function slideStart() {
-
-        setInterval(slideShow, 3000);
+	timerId = setInterval(slideShow, 3000);
 }
-
 
 
 function slideShow() {
