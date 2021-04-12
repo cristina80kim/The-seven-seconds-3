@@ -15,7 +15,8 @@
 $(function() {
     console.log(">>> $(): 1");
      main.ajaxCodeQnaToSelectBox("cateId");
-    faq.showFaqOnGrid("/faq/searchData", "gridData");
+     faq.totalCnt("","");
+//     faq.showFaqOnGrid("/faq/searchData", "gridData");
   });
 
 var gridFaq = null;
@@ -28,13 +29,23 @@ $("#FAQSearch").keypress(function (e) {
 });
 
 var faq = {
-      
+      totalCnt : function(cateId, keyword){
+    	  $.ajax({ 
+				type : "GET",
+		      	url : "/faq/selectCnt?cateId=" + cateId + "&keyword=" + keyword,
+		      	success : function(msg) {
+		    		initToastGrid(msg);
+		    		faq.showFaqOnGrid("/faq/toastSearch?pageNumber=1&cateId="+ cateId +"&keyword="+keyword, "gridData");
+		      	}
+		    });
+      },
+		
       onSearchBtnClick: function() {
             console.log("onSearchBtnClick()");
-            var cate_id = $("#cateId option:selected").val();
-            var keyWord = $("#FAQSearch").val();
-            console.log("keyWord : " + keyWord);
-            faq.showFaqOnGrid("/faq/toastSearch?cate_id="+ cate_id +"&keyWord="+keyWord, "gridData");
+            var cateId = $("#cateId option:selected").val();
+            var keyword = $("#FAQSearch").val();
+            console.log("keyWord : " + keyword);
+            faq.showFaqOnGrid("/faq/toastSearch?cateId="+ cateId +"&keyword="+keyword, "gridData");
           },
           
 //           onFaqWriteClick: function() {
@@ -57,9 +68,8 @@ var faq = {
                        {header: "작성일",     name: "cdate",    width: 150 ,  align: "center"  },
                        
                      ];
-                main.clearGrid(componentName, gridFaq);  
-                
-                  gridFaq = main.showToastGrid(url, componentName, columns);
+               	 main.clearGrid(componentName, gridFaq);  
+				 gridFaq = main.showToastGrid(url, componentName, columns);
                   
                   // mousedown Event
                gridFaq.on('mousedown', function(ev) {
@@ -76,7 +86,30 @@ var faq = {
                 },
                 
               };
+function initToastGrid(totalCnt) {
+    var pagination2 = new tui.Pagination($("#pagination"), {
+          totalItems: totalCnt, //그리드로 불러온 데이터 길이
+          itemsPerPage: 5, // 페이지당 표시할 갯수
+          visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+          page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+          centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+    });
+	
+    pagination2.on('afterMove', (function(x){
+           var pageNumber = x.page
+           test(pageNumber);
+    	})
+    );
+}
 
+function test(pageNumber) {
+   //ajax 통신
+   var cateId = $("#cateId option:selected").val();
+   var keyword = $("#FAQSearch").val();
+   faq.showFaqOnGrid("/faq/toastSearch?cateId="+ cateId +"&keyword="+keyword+"&pageNumber="+pageNumber,
+         "gridData");
+   console.log("cateId : "+cateId+"keyword : "+ keyword+"pageNumber : "+pageNumber);
+}
 
 </script>
 
@@ -92,14 +125,13 @@ var faq = {
               <select name="cateId" id="cateId">
                 <option value="">카테고리</option>
               </select>
-<!--               <select name="FAQAllCate" id="FAQAllCate"> -->
-<!--                 <option value="">전체</option> -->
-<!--               </select> -->
+
               <input type="text" id="FAQSearch" name="FAQSearch">
               <input type="button" onclick="faq.onSearchBtnClick()" value="검색" id="FAQSrchBtn">
              </form>
-            <table id="gridData"></table>
+            
          <div id="gridData"></div>
+          <div id="pagination" class="tui-pagination"></div>
        </div>
 
    

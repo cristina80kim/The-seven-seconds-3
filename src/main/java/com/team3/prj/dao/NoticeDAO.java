@@ -22,6 +22,8 @@ public interface NoticeDAO {
 
 	public Long delete(NoticeVO vo);
 
+	public Integer selectCnt(NoticeSearchVO svo);
+
 //	public List<NoticeVO> selectOne1(String result);
 	
 	//

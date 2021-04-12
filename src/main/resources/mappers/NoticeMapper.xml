@@ -3,47 +3,63 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.team3.prj.dao.NoticeDAO">
+
+	<!-- 전체데이터 갯수 -->
+	<select id="selectCnt" resultType="Integer">
+		SELECT count(*) as total
+		FROM notice
+		<where>
+			<if test='keyword!= null and !"".equals(keyword)'>
+				AND
+				(title LIKE '%'||#{keyword}||'%'
+				OR centent LIKE '%'||#{keyword}||'%'
+				)
+			</if>
+		</where>
+	</select>
+
 	<!-- 전체 출력 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.NoticeVO">
 		SELECT *
 		FROM notice
 	</select>
-	
+
 	<!-- 1개 출력 -->
 	<select id="selectOne" resultType="com.team3.prj.vo.NoticeVO">
 		SELECT *
 		FROM notice
-		WHERE id = #{id}
+		WHERE id =
+		#{id}
 		ORDER BY id
 
 	</select>
-	
 
-<!-- select rownum, n.* -->
-<!-- from(select * -->
-<!--     from notice order by id) n -->
-<!-- ; -->
+
+	<!-- select rownum, n.* -->
+	<!-- from(select * -->
+	<!-- from notice order by id) n -->
+	<!-- ; -->
 
 	<!-- 검색기능 -->
-	<select id ="search" resultType="com.team3.prj.vo.NoticeVO">
+	<select id="search" resultType="com.team3.prj.vo.NoticeVO">
 		SELECT *
 		FROM (SELECT n1.*, rownum as rnum
-			FROM (SELECT n.*
-					FROM notice n
-			<where>
-			<if test = 'keyWord != null and !"".equals(keyWord)'>
-			AND (
-				title LIKE '%'||#{keyWord}||'%'
-			OR  content LIKE '%'||#{keyWord}||'%'
-			)
-		</if>
-			</where>
-				ORDER BY id) n1)
-			<where>
-		<if test='pageNumber!= null and !"".equals(pageNumber)'>
-			  rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
-			</if>	
-		</where>		
+		FROM (SELECT n.*
+		FROM notice n
+		<where>
+			<if test='keyword != null and !"".equals(keyword)'>
+				AND (
+				title LIKE '%'||#{keyword}||'%'
+				OR content LIKE '%'||#{keyword}||'%'
+				)
+			</if>
+		</where>
+		ORDER BY id) n1)
+		<where>
+			<if test='pageNumber!= null and !"".equals(pageNumber)'>
+				rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
+			</if>
+		</where>
 	</select>
 
 	<!-- 공지사항 등록 -->
@@ -55,14 +71,15 @@
 
 		INSERT INTO notice
 		(
-		id, 
+		id,
 		no,
 		nickname, title, content,c_user
 		)
 		VALUES
 		(
 		#{id},
-		(SELECT NVL(MAX(no),0) + 1 FROM notice),
+		(SELECT NVL(MAX(no),0) +
+		1 FROM notice),
 		#{nickName}, #{title}, #{content}, #{c_user}
 		)
 	</insert>
@@ -70,14 +87,15 @@
 	<!-- 공지사항 수정 -->
 	<update id="update">
 		UPDATE notice
-		SET title = #{title}, content =	#{content}
+		SET title = #{title}, content =
+		#{content}
 		WHERE id = #{id}
 	</update>
 
 	<!-- 공지사항 삭제 -->
-	<delete id = "delete">
+	<delete id="delete">
 		DELETE notice
 		WHERE id = #{id}
 	</delete>
-	
+
 </mapper>

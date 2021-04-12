@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
+import com.team3.prj.vo.NoticeSearchVO;
 
 
 public interface FaqService {
@@ -13,5 +14,6 @@ public interface FaqService {
 	public Long insert(FaqVO vo);
 	public Long update(FaqVO vo);
 	public Long delete(FaqVO vo);
+	public Integer selectCnt(FaqSearchVO svo);
 	
 }

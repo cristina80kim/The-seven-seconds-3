@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.team3.prj.dao.FaqDAO;
 import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
+import com.team3.prj.vo.NoticeSearchVO;
 
 
 @Service
@@ -43,6 +44,11 @@ public class FaqServiceImpl implements FaqService {
 	@Override
 	public Long delete(FaqVO vo) {
 		return dao.delete(vo);
+	}
+
+	public Integer selectCnt(FaqSearchVO svo) {
+		// TODO Auto-generated method stub
+		return dao.selectCnt(svo);
 	}
 	   
 	

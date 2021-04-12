@@ -19,6 +19,7 @@ import com.team3.prj.etc.Libs;
 import com.team3.prj.service.FaqService;
 import com.team3.prj.vo.FaqSearchVO;
 import com.team3.prj.vo.FaqVO;
+import com.team3.prj.vo.NoticeSearchVO;
 import com.team3.prj.vo.NoticeVO;
 
 @Controller
@@ -41,12 +42,21 @@ public class FaqController {
             {className2 + "adminList", Common.strRoleAMUY},          
             {className2 + "userList", Common.strRoleAMUY},            
             {className2 + "userFaq", Common.strRoleAMUY},
-            
+            {className2 + "selectCnt", Common.strRoleAMUY},
         };
     }
 	@Autowired
 	FaqService service;
 
+	
+	@GetMapping("/selectCnt")
+	public @ResponseBody Integer selectCnt(FaqSearchVO svo){
+		System.out.println(className+ " selectCnt()");
+		return service.selectCnt(svo);
+		
+	}
+	
+	
 //	전체 출력
 //	http://localhost:8081/faq/selectAll
 	@GetMapping("/selectAll")
@@ -114,7 +124,7 @@ public class FaqController {
 	}
 
 	// 기능 TOAST grid를 위한 검색 및 결과 작성
-	// http://localhost:8081/faq/toastSearch?cateId=&keyWord=
+	// http://localhost:8081/faq/toastSearch?cateId=&keyword=
 	@GetMapping("/toastSearch")
 	public @ResponseBody JSONObject toastSearch(FaqSearchVO svo) {
 		System.out.println(className + ".faqToastSearch()");

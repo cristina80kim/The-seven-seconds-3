@@ -16,7 +16,7 @@
    <script>
 $(function() {
     console.log(">>> $(): 1");
-    notice.showNoticeOnGrid("/notice/toastSearch?pageNumber=1&keyWord=", "gridData");
+    notice.totalCnt("", "");    
   });
 
 var gridNotice = null;
@@ -30,20 +30,25 @@ var gridNotice = null;
 
 
 var notice = {
-      
+      totalCnt : function(keyword){
+    	  $.ajax({
+    		type : "GET",
+    		url : "/notice/selectCnt?&keyword=" + keyword ,
+	      	success : function(msg) {
+// 	      		alert(msg);
+	    		initToastGrid(msg);
+	    		notice.showNoticeOnGrid("/notice/toastSearch?pageNumber=1&keyword="+keyword, "gridData");
+	      	}
+    	  });
+      },
+		
+		
       onSearchBtnClick: function() {
             console.log("onSearchBtnClick()");
-//             var cateId = $("#Noticate option:selected").val();
-            var keyWord = $("#NotiSearch").val();
-            console.log(keyWord);
-            notice.showNoticeOnGrid("/notice/toastSearch?pageNumber=1&keyWord=" + keyWord , "gridData");
+            var keyword = $("#NotiSearch").val();
+			notice.totalCnt(keyword);
           },
-          
-//           onQnaWriteClick: function() {
-//               console.log("onQnaWriteClick()");
-//               main.ajaxGetHtml("/faq/FaqWriter", "contents");
-//             },
-            
+                     
             
             showNoticeOnGrid: function(url, componentName) {
                 var kind = "NOTICE";
@@ -52,17 +57,14 @@ var notice = {
           
                 
                 var columns = [
-                    {header: "아이디",     name: "id",       width: 75,  height: 100      },
-                    {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
                     {header: "번호",      name: "no",       width: 50, align: "center"   },
-//                     {header: "카테고리ID.", name: "cate_id",   width: 100                   },
                     {header: "제목",      name: "title",    width: 310                  },
+                    {header: "닉네임",     name: "nickname", width: 70, align: "center"                 },
                     {header: "작성일",     name: "cdate",    width: 150, align: "center"       },
                                    
                   ];
                   
-                main.clearGrid(componentName, gridNotice);
-                
+              	  main.clearGrid(componentName, gridNotice);
                   gridNotice = main.showToastGrid(url, componentName, columns);
                   
                // mousedown Event
@@ -84,31 +86,33 @@ var notice = {
                 },
                 
               };
-            var pagination2 = new tui.Pagination($("#pagination"), {
-                totalItems: 500, //그리드로 불러온 데이터 길이
-                  itemsPerPage: 10, // 페이지당 표시할 갯수
-                  visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
-                  page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
-                  centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
-            });
-            pagination2.on('afterMove', (function(x){
-             var pageNumber = x.page
-              alert(pageNumber);
-             var data = test(pageNumber);
-             notice.resetData(data);
-            }));
-            pagination2.getCurrentPage();//페이지 현재 페이지 불러옴\
-            
-            
+              
+              function initToastGrid(totalCnt){
+            	  
+                  var pagination2 = new tui.Pagination($("#pagination"), {
+                      totalItems: totalCnt, //그리드로 불러온 데이터 길이
+                        itemsPerPage: 5, // 페이지당 표시할 갯수
+                        visiblePages: 10, // 페이징 버튼에 보일 링크버튼 갯수
+                        page: 1, // 기본적으로 페이징 하고 난 다음에 나오는 페이지
+                        centerAlign: true, //페이지 선택시 버튼을 중앙에 놓을건지 아닌지
+                  });
+                  pagination2.on('afterMove', (function(x){
+                   var pageNumber = x.page
+//                     alert(pageNumber);
+                   test(pageNumber);
+    
+              })
+              
+            );
+           
+           }
+
             function test(pageNumber) {
              //ajax 통신
-//              var cate_id = $("#cateId option:selected").val();
-             var keyWord = $("#NotiSearch").val();
-             notice.showNoticeOnGrid("/notice/toastSearch?&keyWord="+keyWord+"&pageNumber="+pageNumber,
-                   "gridData");
-             console.log("keyword : "+ keyWord+"pageNumber : "+pageNumber);
+             var keyword = $("#NotiSearch").val();
+             notice.showNoticeOnGrid("/notice/toastSearch?&keyword="+keyword+"&pageNumber="+pageNumber,"gridData");
+             console.log("keyword : "+ keyword+"pageNumber : "+pageNumber);
              
-             return data;
             }
 
 </script>

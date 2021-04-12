@@ -45,8 +45,11 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 //
 
-//	@Override
-//	public List<NoticeVO> selectOne(String result) {
-//		return dao.selectOne1(result);
-//	}
+	@Override
+	public Integer selectCnt(NoticeSearchVO svo) {
+		// TODO Auto-generated method stub
+		return dao.selectCnt(svo);
+	}
+
+
 }

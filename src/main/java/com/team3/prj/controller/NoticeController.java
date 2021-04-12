@@ -19,6 +19,7 @@ import com.team3.prj.etc.Libs;
 import com.team3.prj.service.NoticeService;
 import com.team3.prj.vo.NoticeSearchVO;
 import com.team3.prj.vo.NoticeVO;
+import com.team3.prj.vo.QnaSearchVO;
 
 @Controller
 @RequestMapping("/notice")
@@ -40,6 +41,7 @@ public class NoticeController {
             {className2 + "adminList", Common.strRoleAMUY},
             {className2 + "userNoti", Common.strRoleAMUY},
             {className2 + "userList", Common.strRoleAMUY},
+            {className2 + "selectCnt", Common.strRoleAMUY},
             
            
         };
@@ -47,6 +49,15 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 
+	
+	@GetMapping("/selectCnt")
+	public @ResponseBody Integer selectCnt(NoticeSearchVO svo){
+		System.out.println(className+ " selectCnt()");
+		return service.selectCnt(svo);
+		
+	}
+	
+	
 //	전체출력
 //	http://localhost:8081/notice/selectAll
 	@GetMapping("/selectAll")

@@ -4,6 +4,23 @@
 
 <mapper namespace="com.team3.prj.dao.FaqDAO">
 
+	<!-- 전체데이터 갯수 -->
+	<select id="selectCnt" resultType="Integer">
+		SELECT count(*) as total
+		FROM faq
+			<where>
+			<if test='cateId != null and !"".equals(cateId)'>
+				AND cate_id = #{cateId}
+			</if>
+			<if test='keyword!= null and !"".equals(keyword)'>
+				AND
+				(title LIKE '%'||#{keyword}||'%'
+				OR centent LIKE '%'||#{keyword}||'%'
+				)
+			</if>
+			</where>
+	</select>
+
 	<!-- 전체출력 sql문 -->
 	<select id="selectAll" resultType="com.team3.prj.vo.FaqVO">
 		SELECT f.*,
@@ -23,26 +40,29 @@
 
 	<!-- 검색기능 -->
 	<select id ="search" resultType="com.team3.prj.vo.FaqVO">
-		SELECT f.*,
-		(SELECT name FROM code c WHERE f.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
-		FROM faq f
+	SELECT *
+	FROM (SELECT f2.*, rownum rnum
+			FROM(SELECT f.*,
+				(SELECT name FROM code c WHERE f.cate_id = c.class3 AND c.class1 = 'QNA' AND c.class2 = 'TYPE_OF_QNA') as cate
+			FROM faq f
 		<where>
-		
-		<if test = 'cate_id != null and !"".equals(cate_id)'>
-			AND cate_id = #{cate_id}		
+		<if test = 'cateId!= null and !"".equals(cateId)'>
+			AND cate_id = #{cateId}		
 		</if>
-		
-		<if test = 'keyWord != null and !"".equals(keyWord)'>
-		
+		<if test = 'keyword!= null and !"".equals(keyword)'>
 			AND (
-				title LIKE '%'||#{keyWord}||'%'
-			OR  content LIKE '%'||#{keyWord}||'%'
+				title LIKE '%'||#{keyword}||'%'
+			OR  content LIKE '%'||#{keyword}||'%'
 			)
-		
 		</if>
-		
 		</where>
-		ORDER BY f.id
+			ORDER BY id) f2)
+			<where>
+			<if test='pageNumber!= null and !"".equals(pageNumber)'>
+			  rnum BETWEEN (5*(#{pageNumber}-1)+1) AND (5*#{pageNumber})
+			</if>
+			</where>
+
 	</select>
 	<!-- Faq 등록  -->
 	<insert id="insert">
@@ -58,7 +78,7 @@
 		(
 		#{id},
 		(SELECT NVL(MAX(no),0) + 1 FROM faq),
-		#{cate_id}, #{title}, #{content}, #{c_user}
+		#{cateId}, #{title}, #{content}, #{c_user}
 		)
 	</insert>
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.team3.prj.vo.NoticeSearchVO;
 import com.team3.prj.vo.NoticeVO;
+import com.team3.prj.vo.QnaSearchVO;
 
 public interface NoticeService {
 
@@ -19,6 +20,6 @@ public interface NoticeService {
 	
 	public Long delete(NoticeVO vo);
 	
-//	public List<NoticeVO> selectOne(String result);
-	//
+	public Integer selectCnt(NoticeSearchVO svo);
+	
 }
