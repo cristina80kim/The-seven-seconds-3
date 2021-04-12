@@ -26,6 +26,7 @@ var mypageMain = {
 				console.log(jsonStr);
 				if(jsonStr["strResult"] != ""){
 					window.alert("확인되었습니다.");
+					main.ajaxGetHtml("/user/frmUpdate", "contents");
 				}else {
 					window.alert("비밀번호가 맞지 않습니다.");
 				}
