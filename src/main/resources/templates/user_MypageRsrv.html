@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <title>130.user_마이페이지_예약관리</title>
 <link rel="stylesheet" href="css/user_MypageRsrv.css" />
+<script>
+	var mypageRsrv = {
+			delClick: function(){
+				alert("예약 취소되었습니다")
+				$("#hideHotel").hide();
+				$("#hideHotelLine").hide();
+			}
+	}
+</script>
 </head>
 <body>
 <!--css 수정 완료  -->
@@ -26,21 +35,21 @@
 		            <hr>
 		          </td>
 		        </tr>
-		        <tr>
+		        <tr id="hideHotel">
 		          <td><a href="">1</a></td>
-		          <td><a href="">강남역 YAM</a></td>
-		          <td><a href="">21.07.01</a></td>
-		          <td><input type="button" value="취소" /></td>
+		          <td><a href="">테헤란호텔</a></td>
+		          <td><a href="">21.04.17</a></td>
+		          <td><input type="button" value="취소" onclick="mypageRsrv.delClick()"/></td>
 		        </tr>
-		        <tr>
+		        <tr id="hideHotelLine">
 		          <td colspan="4">
 		            <hr>
 		          </td>
 		        </tr>
 		        <tr>
 		          <td><a href="">2</a></td>
-		          <td><a href="">역삼 리치웰</a></td>
-		          <td><a href="">21.07.01</a></td>
+		          <td><a href="">강남호텔</a></td>
+		          <td><a href="">21.04.30</a></td>
 		          <td><input type="button" value="취소" /></td>
 		        </tr>
 		        <tr>
@@ -50,8 +59,8 @@
 		        </tr>
 		        <tr>
 		          <td><a href="">3</a></td>
-		          <td><a href="">역삼 짱파티룸</a></td>
-		          <td><a href="">21.07.01</a></td>
+		          <td><a href="">삼성호텔</a></td>
+		          <td><a href="">21.04.22</a></td>
 		          <td><input type="button" value="취소" /></td>
 		        </tr>
 		        <tr>
@@ -61,8 +70,8 @@
 		        </tr>
 		        <tr>
 		          <td><a href="">5</a></td>
-		          <td><a href="">영종도 굿호텔</a></td>
-		          <td><a href="">21.07.01</a></td>
+		          <td><a href="">신라호텔</a></td>
+		          <td><a href="">21.04.20</a></td>
 		          <td><input type="button" value="취소" /></td>
 		        </tr>
 		        <tr>
@@ -72,8 +81,8 @@
 		        </tr>
 		        <tr>
 		          <td><a href="">6</a></td>
-		          <td><a href="">제주 G 호텔</a></td>
-		          <td><a href="">21.07.01</a></td>
+		          <td><a href="">LG호텔</a></td>
+		          <td><a href="">21.05.01</a></td>
 		          <td><input type="button" value="취소" /></td>
 		        </tr>
 		        <tr>
@@ -83,8 +92,8 @@
 		        </tr>
 		        <tr>
 		          <td><a href="">7</a></td>
-		          <td><a href="">전주 한옥호텔</a></td>
-		          <td><a href="">21.07.01</a></td>
+		          <td><a href="">경기호텔</a></td>
+		          <td><a href="">21.07.04</a></td>
 		          <td><input type="button" value="취소" /></td>
 		        </tr>
 		        <tr>
@@ -94,7 +103,7 @@
 		        </tr>
 		        <tr>
 		          <td><a href="">8</a></td>
-		          <td><a href="">여수 무인호텔</a></td>
+		          <td><a href="">종환호텔</a></td>
 		          <td><a href="">21.03.01</a></td>
 		          <td><input type="button" value="후기 등록" /></td>
 		        </tr>
