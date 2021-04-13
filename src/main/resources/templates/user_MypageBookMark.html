@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <title>120. user_마이페이지_즐겨찾기</title>
 <link rel="stylesheet" href="css/user_MypageBookMark.css" />
+<script>
+	var mypageBookMark = {
+			delClick: function(){
+				alert("즐겨찾기 해제되었습니다")
+				$("#hideBookMark").hide();
+				$("#hideLine").hide();
+			}
+	}
+</script>
 </head>
 <body>
 <!--css수정완료  -->
@@ -23,19 +32,19 @@
 				            <hr>
 				          </td>
 				        </tr>
-				        <tr>
+				        <tr id="hideBookMark">
 				          <td id="no"><a href="">1</a></td>
-				          <td id="title"><a href="">강남역 YAM</a></td>
-				          <td id="release"><input type="submit" value="해제" /></td>
+				          <td id="title"><a href="">테헤란호텔</a></td>
+				          <td id="release"><input type="submit" value="해제"   onclick="mypageBookMark.delClick()"/></td>
 				        </tr>
-				        <tr>
+				        <tr id="hideLine">
 				          <td colspan="3">
 				            <hr>
 				          </td>
 				        </tr>
 				        <tr>
 				          <td id="no"><a href="">2</a></td>
-				          <td id="title"><a href="">강남 굿 호텔</a></td>
+				          <td id="title"><a href="">강남호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 				        <tr>
@@ -45,7 +54,7 @@
 				        </tr>
 				        <tr>
 				          <td id="no"><a href="">3</a></td>
-				          <td id="title"><a href="">명종도 굿 호텔</a></td>
+				          <td id="title"><a href="">삼성호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 				        <tr>
@@ -55,7 +64,7 @@
 				        </tr>
 				        <tr>
 				          <td id="no"><a href="">5</a></td>
-				          <td id="title"><a href="">전주 한옥 호텔</a></td>
+				          <td id="title"><a href="">신라호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 				        <tr>
@@ -65,7 +74,7 @@
 				        </tr>
 				        <tr>
 				          <td id="no"><a href="">6</a></td>
-				          <td id="title"><a href="">여수 무인 호텔</a></td>
+				          <td id="title"><a href="">LG호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 				        <tr>
@@ -75,7 +84,7 @@
 				        </tr>
 				        <tr>
 				          <td id="no"><a href="">7</a></td>
-				          <td id="title"><a href="">제주 G 호텔</a></td>
+				          <td id="title"><a href="">경기호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 				        <tr>
@@ -85,7 +94,7 @@
 				        </tr>
      				    <tr>
 				          <td id="no"><a href="">8</a></td>
-				          <td id="title"><a href="">가평 굿 호텔</a></td>
+				          <td id="title"><a href="">종환호텔</a></td>
 				          <td id="release"><input type="submit" value="해제" /></td>
 				        </tr>
 					    <tr>
