@@ -10,6 +10,12 @@
 <script>
 function onPaymentClicked(){
      location.href = "userRoomPay";
+     
+}
+var mypageRoomDtl = {
+		bookmarkClick: function(){
+			alert("즐겨찾기 완료되었습니다")
+		}
 }
 </script>
 <body>
@@ -74,9 +80,9 @@ function onPaymentClicked(){
 	
 		<section id="userRoomDtl_right">
 			<div id="userRoomDtlShow">
-				<span><input type="button" value="즐겨찾기" id="shortcutBtn"/></span>
-				<span><input type="text" name="roomDtl" id="title" value="강남역 XXX 호텔" readonly/></span>
-				<span><input type="text" name="roomDtl" id="price" value="300,000원"readonly/></span>
+				<span><input type="button" value="즐겨찾기" id="shortcutBtn" onclick="mypageRoomDtl.bookmarkClick()"/></span>
+				<span><input type="text" name="roomDtl" id="title" value="테헤란호텔" readonly/></span>
+				<span><input type="text" name="roomDtl" id="price" value="30,000원"readonly/></span>
 				<span><input type="text" name="roomDtl" id="addr" value="주소"readonly></span>
 				<span><input type="text" name="roomDtl" id="tel" value="02-xxxx-xxxx"readonly/></span>
 			</div>
