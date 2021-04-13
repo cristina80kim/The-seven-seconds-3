@@ -29,7 +29,7 @@
 				console.log(jsonStr);
 				if(jsonStr["numResult"] == 1){
 					window.alert("회원 탈퇴 성공");
-					main.ajaxGetHtml("/user/frmLogin", "contents");
+					window.location = "/index";
 				}else {
 					window.alert("회원 탈퇴 실패");
 				}
